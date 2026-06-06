@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Legal & Privacy Policies" subtitle="Privacy, Cookie & Terms — single page" -->
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasmin Aziz — Legal and Privacy Policies</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cobalt:     #2D35C9;
+  --periwinkle: #7B7FD4;
+  --ochre:      #C99A2C;
+  --ink:        #14110D;
+  --cream:      #FAF8F4;
+  --rule:       #E0DBD4;
+
+  /* A11y text tokens */
+  --periwinkle-text: #5255B5; /* 5.5:1 on cream */
+  --cream-muted:     #A5A09A; /* 7.4:1 on ink   */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain overlay — ~3.5% over cream */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  background: var(--cobalt);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-nav-inner {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-wordmark {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+}
+
+.nav-list a {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.nav-list a:hover {
+  background: rgba(250,248,244,0.2);
+  border-color: rgba(250,248,244,0.35);
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+
+/* ── HEADER ── */
+.wordmark {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+  color: var(--cobalt);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.page-subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.75rem;
+  color: var(--ink);
+  margin-top: 0;
+}
+
+.meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--periwinkle-text);
+  margin-top: 18px;
+}
+
+/* ── ANCHOR NAV ── */
+.anchor-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.anchor-pill {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--periwinkle-text);
+  text-decoration: none;
+  background: var(--cream);
+  border: 1.5px solid var(--periwinkle);
+  border-radius: 999px;
+  padding: 6px 16px;
+  white-space: nowrap;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.anchor-pill:hover {
+  background: var(--cobalt);
+  color: var(--cream);
+  border-color: var(--cobalt);
+}
+
+/* ── POLICY SECTIONS ── */
+.policy {
+  padding-top: 48px;
+  margin-top: 48px;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 24px;
+}
+
+.policy:first-of-type {
+  border-top: none;
+}
+
+h2 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.625rem;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+
+h3 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.125rem;
+  color: var(--ink);
+  margin-top: 34px;
+  margin-bottom: 10px;
+}
+
+.policy p {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-size: 1.03125rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.policy p + p { margin-top: 14px; }
+
+.policy a {
+  color: var(--cobalt);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.contact-line {
+  margin-top: 14px;
+}
+
+/* Placeholders — cobalt, Source Serif italic */
+.placeholder {
+  color: var(--cobalt);
+  font-style: italic;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.footer-inner span,
+.footer-inner a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.footer-inner a:hover { opacity: 0.7; }
+
+.footer-sep { opacity: 0.4; }
+
+
+/* ── SKIP LINK ──────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 9999;
+  background: var(--cobalt);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* ── SCREEN-READER UTILITY ──────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── FOCUS STATES ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+}
+.site-nav :focus-visible {
+  outline: 2px solid rgba(250, 248, 244, 0.9);
+  outline-offset: 2px;
+}
+.anchor-pill:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* ── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-subtitle { font-size: 1.375rem; }
+  .site-nav-inner { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- SITE NAV -->
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-wordmark">Jasmin Aziz</a>
+    <ul class="nav-list">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page" id="main-content" tabindex="-1">
+
+  <!-- HEADER -->
+  <header>
+    <h1 class="page-subtitle">Legal and privacy policies</h1>
+    <p class="meta">Last updated: June 2026</p>
+  </header>
+
+  <!-- ANCHOR NAV -->
+  <nav class="anchor-nav" aria-label="Policy sections">
+    <a href="#privacy" class="anchor-pill">Privacy Policy</a>
+    <a href="#cookies" class="anchor-pill">Cookie Policy</a>
+    <a href="#terms" class="anchor-pill">Terms of Use</a>
+  </nav>
+
+  <!-- POLICY 1 — PRIVACY -->
+  <section class="policy" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>This policy explains what personal data is collected when you use this site, why it is collected, and what happens to it. Nothing complicated is happening here.</p>
+
+    <h3>Who I am</h3>
+    <p>Jasmin Aziz is a senior communications consultant trading as a sole trader in the United Kingdom. This site is jasminaziz.co.uk. I am the data controller for any personal data processed through this site.</p>
+    <p class="contact-line">Contact: <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a></p>
+
+    <h3>What data is collected and why</h3>
+    <p>Name, email address, and message content submitted through the contact form. I use this only to respond to your enquiry. The legal basis is legitimate interests: you have contacted me professionally and I am responding to that.</p>
+    <p>Analytics data via Plausible Analytics (plausible.io). Plausible does not use cookies, does not track individuals, and does not collect personal identifiers. Data is aggregated only — I can see how many people visited a page, but not who they are. The legal basis is legitimate interests: understanding how the site is used in a privacy-respecting way.</p>
+    <p>Email correspondence sent directly to hello@jasminaziz.co.uk is retained as part of normal business records.</p>
+
+    <h3>Who data is shared with</h3>
+    <p>Your data is not sold. It is not shared with third parties for marketing purposes.</p>
+    <p>Analytics data is processed by Plausible Analytics, which is bound by its own privacy policy.</p>
+
+    <h3>How long data is kept</h3>
+    <p>Contact form enquiries are retained for 12 months. If an enquiry becomes a client engagement, correspondence and project records are kept for six years from the end of that engagement, in line with HMRC guidance for sole traders.</p>
+    <p>Plausible Analytics processes aggregated data only. No individual retention period applies.</p>
+
+    <h3>Your rights</h3>
+    <p>Under UK GDPR you have the right to access the personal data I hold about you, to ask for it to be corrected or deleted, to restrict or object to its processing, and to receive a copy in a portable format. To exercise any of these rights, email <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>. I will respond within one calendar month.</p>
+    <p>If you are unhappy with how I have handled your data, you have the right to complain to the Information Commissioner's Office at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>.</p>
+
+    <h3>Changes to this policy</h3>
+    <p>If my approach to data handling changes materially, this page will be updated. The date at the top of the page reflects the most recent revision.</p>
+  </section>
+
+  <!-- POLICY 2 — COOKIES -->
+  <section class="policy" id="cookies">
+    <h2>Cookie Policy</h2>
+    <p>This is a short policy, because this site does very little with cookies.</p>
+
+    <h3>Analytics</h3>
+    <p>This site uses Plausible Analytics for website statistics. Plausible does not set any cookies on your device. It does not track individuals. It collects aggregated, anonymised data about page views and traffic sources. No consent is required and no consent banner appears on this site.</p>
+
+    <h3>Third-party links</h3>
+    <p>This site links to external websites. Those sites have their own cookie policies and are outside my control.</p>
+
+    <h3>Controlling cookies</h3>
+    <p>You can control and delete cookies through your browser settings. Guidance is available at <a href="https://allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a>.</p>
+  </section>
+
+  <!-- POLICY 3 — TERMS -->
+  <section class="policy" id="terms">
+    <h2>Terms of Use</h2>
+    <p>These terms apply to your use of jasminaziz.co.uk. By using the site, you accept them.</p>
+
+    <h3>What this site is</h3>
+    <p>jasminaziz.co.uk is a professional portfolio and consultancy website. Content on this site is for general information only. It does not constitute professional advice. Any engagement with me as a consultant is governed by a separate written contract, not by these terms.</p>
+
+    <h3>Intellectual property</h3>
+    <p>All text, images, and design on this site belong to Jasmin Aziz unless otherwise credited. You may link to any page on this site. You may not reproduce, republish, or adapt content without my written permission.</p>
+
+    <h3>Accuracy</h3>
+    <p>Content is provided in good faith and reviewed periodically. I do not warrant that every page is always current, complete, or free from error.</p>
+
+    <h3>External links</h3>
+    <p>This site links to related properties I own and operate, including The Edit (theeditai.co.uk) and my Substack publication (jasminaziz.substack.com). It also links to third-party sites and resources I do not control. I am not responsible for the content or availability of any third-party site.</p>
+
+    <h3>Liability</h3>
+    <p>To the maximum extent permitted by UK law, I exclude liability for any loss or damage arising from your use of this site or reliance on its content.</p>
+
+    <h3>Governing law</h3>
+    <p>These terms are governed by the law of England and Wales.</p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Jasmin Aziz</span>
+    <span class="footer-sep">·</span>
+    <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
+  </div>
+</footer>
+
+</body>
+</html>

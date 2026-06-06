@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Design archive — 27MB download, not part of the site
+design-download.tar.gz
+
+# Full design system source — reference only, not deployed
+jasmin-aziz-design-system/
+
+# Claude project files
+.claude/
+
+# Local font files — fonts are loaded from CDN (Google Fonts + Fontshare)
+Fonts/
+
+# Misc
+*.orig

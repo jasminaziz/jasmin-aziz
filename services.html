@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Jasmin Aziz</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+/* ── SERVICES-SPECIFIC ── */
+
+/* Anchor bar */
+.anchor-bar {
+  background: var(--cream);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  padding: 0 var(--gutter);
+}
+
+.anchor-inner {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.anchor-inner::-webkit-scrollbar { display: none; }
+
+.anchor-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 16px 20px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: opacity 150ms ease, border-color 150ms ease;
+  display: block;
+}
+
+.anchor-link:hover {
+  opacity: 1;
+  border-bottom-color: var(--cobalt);
+}
+
+/* Page intro */
+.svc-page-intro {
+  padding: var(--sv) 0;
+}
+
+.svc-page-intro .label { margin-bottom: 20px; }
+
+.svc-intro-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+
+.svc-page-h1 {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 6vw, 52px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+.svc-intro-right p {
+  font-size: 16.5px;
+  line-height: 1.65;
+  opacity: 0.72;
+  text-wrap: pretty;
+}
+
+.svc-intro-right p + p { margin-top: 20px; }
+
+/* Tier heading */
+.tier-head {
+  padding: 56px 0 0;
+  border-top: none;
+  margin-top: 0;
+}
+
+.tier-head-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 8px;
+}
+
+.tier-label-line {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--periwinkle-text);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.tier-title {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.tier-intro {
+  font-size: 15.5px;
+  line-height: 1.65;
+  opacity: 0.65;
+  text-wrap: pretty;
+  padding: 20px 0 0;
+  max-width: 640px;
+}
+
+/* Service block */
+.service-block {
+  padding: 56px 0;
+  scroll-margin-top: 128px;
+}
+
+.svc-block-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.svc-block-num {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--periwinkle);
+  user-select: none;
+}
+
+.svc-block-title {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0;
+}
+
+.svc-block-body {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 64px;
+  align-items: start;
+}
+
+.svc-main-copy {
+  font-size: 16px;
+  line-height: 1.68;
+  opacity: 0.72;
+  text-wrap: pretty;
+  margin-bottom: 20px;
+}
+
+.svc-right-for {
+  margin-top: 20px;
+  border-left: 2px solid var(--ochre);
+  padding-left: 20px;
+}
+
+.svc-right-for-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ochre-text);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.svc-right-for p {
+  font-size: 14.5px;
+  line-height: 1.62;
+  opacity: 0.68;
+  text-wrap: pretty;
+}
+
+/* Sidebar */
+.svc-sidebar-cta {
+  padding-top: 8px;
+}
+
+/* Service hairline rule */
+.svc-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* Shape blocks (tier 2) */
+.shape-block {
+  padding: 56px 0;
+  scroll-margin-top: 128px;
+}
+
+.shape-block-header {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 64px;
+  align-items: start;
+}
+
+.shape-title {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.shape-copy {
+  font-size: 16px;
+  line-height: 1.68;
+  opacity: 0.72;
+  text-wrap: pretty;
+}
+
+/* How it starts */
+.how-section {
+  padding: var(--sv) 0;
+  scroll-margin-top: 128px;
+}
+
+.who-section {
+  scroll-margin-top: 128px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.how-grid .label { margin-bottom: 20px; }
+.how-grid .section-head { font-size: 30px; }
+
+.how-body p {
+  font-size: 16.5px;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.how-body p + p {
+  margin-top: 22px;
+  opacity: 0.72;
+}
+
+/* =================================================================
+   SERVICES — MOBILE BREAKPOINTS
+   ================================================================= */
+
+/* ── 768px: grid collapses ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Page intro: 5fr 4fr → 1-col */
+  .svc-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Service block body: 1fr 240px → 1-col. CTA pill full-width. */
+  .svc-block-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .svc-sidebar-cta { padding-top: 0; }
+  .svc-sidebar-cta .pill { width: 100%; justify-content: center; }
+
+  /* Shape block header: 1fr 240px → 1-col. */
+  .shape-block-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .shape-block-header > div:last-child .pill { width: 100%; justify-content: center; }
+
+  /* How-it-starts grid: 2fr 1fr → 1-col.
+     Aside: sticky → static (no viewport to pin to on mobile). */
+  .how-process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .how-process-aside {
+    position: static !important;
+    top: auto !important;
+    border-radius: 16px !important;
+  }
+
+  /* How grid: 1fr 2fr → 1-col */
+  .how-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ── 640px: anchor bar + type scale ────────────────────────────── */
+@media (max-width: 640px) {
+  /* Anchor bar tracks 56px mobile nav */
+  .anchor-bar { top: 56px; }
+
+  /* Service block header: tighten big number */
+  .svc-block-num { font-size: 44px; }
+
+  /* Tier heading */
+  .tier-title { font-size: clamp(24px, 6vw, 36px); }
+
+  /* Service + shape copy */
+  .svc-main-copy, .shape-copy { font-size: 15.5px; }
+
+  /* How-it-starts aside padding */
+  .how-process-aside { padding: 28px 20px !important; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Primary">
+  <a href="index.html" class="wordmark">Jasmin Aziz</a>
+  <ul class="nav-list">
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</nav>
+<nav class="nav-drawer" id="nav-drawer" aria-hidden="true" aria-label="Mobile">
+  <ul class="nav-drawer-list">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main-content" tabindex="-1">
+
+<!-- ANCHOR BAR -->
+<div class="anchor-bar">
+  <div class="anchor-inner">
+    <a href="#audit" class="anchor-link">Audit</a>
+    <a href="#brand" class="anchor-link">Brand</a>
+    <a href="#campaign" class="anchor-link">Campaign</a>
+    <a href="#content" class="anchor-link">Content</a>
+    <a href="#ai-training" class="anchor-link">AI training</a>
+    <a href="#how-i-work" class="anchor-link">How I work</a>
+    <a href="#how-it-starts" class="anchor-link">Process</a>
+  </div>
+</div>
+
+<!-- PAGE INTRO -->
+<div class="wrap">
+  <div class="svc-page-intro">
+    <div class="svc-intro-grid">
+      <div>
+        <h1 class="svc-page-h1">Strategic marketing and communications, delivered in the shape that fits.</h1>
+      </div>
+      <div class="svc-intro-right">
+        <p>Some organisations need a defined piece of work: a brand built, a campaign planned, a function audited and put back on course. Others need senior capacity inside the team for a period, or ongoing strategic input alongside the team they have.</p>
+        <p>Below are the defined services and the engagement shapes they sit inside. Most engagements draw on more than one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── TIER 1: SERVICES ── -->
+<div class="wrap" id="services-tier">
+  <div class="tier-head">
+    <h2 class="tier-title">Services</h2>
+  </div>
+  <p class="tier-intro">Each can run on its own or sit inside a longer engagement. Pricing is scoped per project and arrives at proposal stage.</p>
+
+  <!-- SERVICE 01: COMMUNICATIONS AUDIT -->
+  <section class="service-block" id="audit">
+    <div class="svc-block-header">
+      <div class="svc-block-num">01</div>
+      <div>
+        <h2 class="svc-block-title">Communications audit</h2>
+      </div>
+    </div>
+    <div class="svc-block-body">
+      <div>
+        <p class="svc-main-copy">A strategic review of your marketing and communications function. Audiences, channels, content output across the team, brand consistency, capacity, and whether the strategy underneath the activity is doing real work. The audit finds the gap between what is being produced and what the organisation actually needs. You receive a written assessment and prioritised recommendations, ready to take to a board, a leadership team, or straight into a plan.</p>
+        <div class="svc-right-for">
+          <span class="svc-right-for-label">Right for</span>
+          <p>Organisations that sense something isn't working but haven't been able to name it. Also a starting point before a longer engagement.</p>
+        </div>
+      </div>
+      <div class="svc-sidebar-cta">
+        <a href="contact.html#audit" class="pill pill-cobalt">Discuss an audit →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SERVICE 02: BRAND AND POSITIONING -->
+  <section class="service-block" id="brand">
+    <div class="svc-block-header">
+      <div class="svc-block-num">02</div>
+      <div>
+        <h2 class="svc-block-title">Brand and positioning</h2>
+      </div>
+    </div>
+    <div class="svc-block-body">
+      <div>
+        <p class="svc-main-copy">The strategic clarity work underneath a brand: what the organisation stands for, who it's for, how it talks about itself, and what makes it distinct. I lead the thinking, facilitate the workshops with your leadership team, develop the positioning framework and messaging architecture, and write the brief for any design or creative work that follows. Where an agency is needed for the visual identity, I manage that relationship and process.</p>
+        <div class="svc-right-for">
+          <span class="svc-right-for-label">Right for</span>
+          <p>Organisations building a brand for the first time, repositioning after a period of drift, or redeveloping their mission, vision, and values.</p>
+        </div>
+      </div>
+      <div class="svc-sidebar-cta">
+        <a href="contact.html#brand" class="pill pill-cobalt">Talk about brand →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SERVICE 03: CAMPAIGN STRATEGY AND PLAN -->
+  <section class="service-block" id="campaign">
+    <div class="svc-block-header">
+      <div class="svc-block-num">03</div>
+      <div>
+        <h2 class="svc-block-title">Campaign strategy and plan</h2>
+      </div>
+    </div>
+    <div class="svc-block-body">
+      <div>
+        <p class="svc-main-copy">The strategic foundation for a marketing or communications campaign, internal or external. Whether it's a fundraising push, a public awareness moment, an advocacy campaign, an internal change programme, or an organisational launch, I develop the strategy that holds the campaign together: the audiences, the positioning, the channel approach, the messaging, and the phased plan your team executes against.</p>
+        <div class="svc-right-for">
+          <span class="svc-right-for-label">Right for</span>
+          <p>Organisations with a significant campaign moment ahead and a team ready to deliver it, who need the strategic architecture in place first.</p>
+        </div>
+      </div>
+      <div class="svc-sidebar-cta">
+        <a href="contact.html#campaign" class="pill pill-cobalt">Plan a campaign →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SERVICE 04: CONTENT AND EDITORIAL SYSTEM -->
+  <section class="service-block" id="content">
+    <div class="svc-block-header">
+      <div class="svc-block-num">04</div>
+      <div>
+        <h2 class="svc-block-title">Content and editorial system</h2>
+      </div>
+    </div>
+    <div class="svc-block-body">
+      <div>
+        <p class="svc-main-copy">A working system for producing and delivering content consistently. The editorial calendar. The role of each channel: social media, newsletter, web. Formats the team builds from, rather than starts from each time. The scheduling workflow. AI-assisted production that keeps quality consistent without doubling the workload. Most teams produce content reactively because the system for doing it any other way isn't there. This is that system.</p>
+        <div class="svc-right-for">
+          <span class="svc-right-for-label">Right for</span>
+          <p>Marketing and communications teams whose content output is inconsistent or reactive, who want a system the team can run without senior input at every step.</p>
+        </div>
+      </div>
+      <div class="svc-sidebar-cta">
+        <a href="contact.html#content" class="pill pill-cobalt">Build a content system →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SERVICE 05: AI FLUENCY TRAINING -->
+  <section class="service-block" id="ai-training">
+    <div class="svc-block-header">
+      <div class="svc-block-num">05</div>
+      <div>
+        <h2 class="svc-block-title">AI fluency training</h2>
+      </div>
+    </div>
+    <div class="svc-block-body">
+      <div>
+        <p class="svc-main-copy">Practical, hands-on training built around how your team actually works. The tools worth using and the ones to ignore. Prompting that produces consistent output, not lucky output. How to set up brand voice and context so the team isn't starting from scratch every time. Safe practice across data, accuracy, and approvals. How AI fits into how the team already produces, rather than running parallel to it. Not a theoretical overview, not a general introduction to AI.</p>
+        <div class="svc-right-for">
+          <span class="svc-right-for-label">Right for</span>
+          <p>Marketing and communications teams who have started using AI tools but haven't found a way to make them work consistently.</p>
+        </div>
+      </div>
+      <div class="svc-sidebar-cta">
+        <a href="contact.html#ai-training" class="pill pill-cobalt">Book a training session →</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ── TIER 2: HOW I WORK ALONGSIDE THE TEAM ── -->
+<section class="who-section" id="how-i-work" style="margin-top:48px;padding-top:32px;">
+<div class="wrap">
+  <div class="tier-head" style="border-top:none;padding-top:0;">
+    <h2 class="section-head" style="font-size:clamp(1.75rem,4vw,2.25rem);">How I work</h2>
+  </div>
+  <p class="tier-intro">Three engagement shapes. Any of the services above can be delivered inside one of them.</p>
+
+  <!-- SHAPE: FRACTIONAL -->
+  <section class="shape-block" id="fractional">
+    <div class="shape-block-header">
+      <div>
+        <h3 class="shape-title">Fractional</h3>
+        <p class="shape-copy">I hold the marketing and communications function from inside the team for a defined period. Not freelance support delivered from outside: fractional is strategic ownership. Most engagements start with a Communications audit that defines scope, priorities, and rhythm. Commitment is set at an agreed number of days per month, with a review point and a rescoping conversation if the work consistently exceeds scope. Suits organisations without a marketing and communications lead, those in a growth or change phase, or teams strong on delivery but needing strategic leadership above them.</p>
+      </div>
+      <div style="padding-top:8px;">
+        <a href="contact.html#fractional" class="pill pill-cobalt">Discuss fractional →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SHAPE: ADVISORY -->
+  <section class="shape-block" id="advisory">
+    <div class="shape-block-header">
+      <div>
+        <h3 class="shape-title">Advisory</h3>
+        <p class="shape-copy">Strategic input on a lighter-touch, ongoing basis. Monthly or quarterly rhythm, shaped around what the team needs: regular review of marketing and communications strategy, a sounding board for the team lead, support at key moments through the year, or input into trustee and board-level conversations about positioning, reputation, or change. Suits organisations with a capable team already running the function who want senior perspective rather than hands-on delivery. Often starts with a Communications audit.</p>
+      </div>
+      <div style="padding-top:8px;">
+        <a href="contact.html#advisory" class="pill pill-cobalt">Set up an advisory rhythm →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="svc-rule">
+
+  <!-- SHAPE: ONE-OFF STRATEGIC INPUT -->
+  <section class="shape-block" id="one-off-strategic-input">
+    <div class="shape-block-header">
+      <div>
+        <h3 class="shape-title">One-off strategic input</h3>
+        <p class="shape-copy">Strategic judgement on a defined piece of work, without ongoing commitment. A working session on a brand or messaging challenge. A consultation on a decision the team is working through. A piece of strategic thinking that needs experienced input before it lands. Scoped to what's in front of you, agreed in advance. The easiest way to start if you're not yet sure what shape of engagement is right.</p>
+      </div>
+      <div style="padding-top:8px;">
+        <a href="contact.html#one-off-strategic-input" class="pill pill-cobalt">Book a working session →</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</section>
+
+<!-- PROCESS + START — merged closing section -->
+<div class="wrap">
+  <section class="how-section" id="how-it-starts">
+    <div class="how-process-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:96px;align-items:start;">
+      <div>
+        <span class="label" style="margin-bottom:20px;">Process</span>
+        <h2 class="section-head" style="font-size:36px;margin-bottom:32px;">How an engagement starts.</h2>
+        <div class="how-body">
+          <p>You send a message through the form or by email. I reply within two working days. We book a 30 to 45 minute discovery call by video.</p>
+          <p>The call is a conversation about what the organisation is dealing with, what would actually move it forward, and whether I'm the right person for that. If I'm not, I'll say so and point you to whoever might be. If we're a match, you receive a written proposal within a week: a one-page summary to share with a board or leadership team, plus a short annex covering scope, approach, credentials, and fees.</p>
+          <p>Fees are scoped to the engagement and arrive in writing at proposal stage.</p>
+        </div>
+      </div>
+      <aside class="how-process-aside" style="border-left:3px solid var(--ochre);padding-left:32px;position:sticky;top:140px;">
+        <span class="label" style="margin-bottom:18px;">Start here</span>
+        <h3 style="font-family:'Chillax','Helvetica Neue',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.025em;line-height:1.15;color:var(--ink);margin-bottom:18px;">Tell me what you're working on.</h3>
+        <p style="font-size:14.5px;line-height:1.6;opacity:0.7;text-wrap:pretty;margin-bottom:24px;">You don't need to know which one yet. A rough sense of what's going on is enough.</p>
+        <a href="contact.html" class="pill pill-cobalt">Get in touch →</a>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--rule);">
+          <a href="mailto:hello@jasminaziz.co.uk" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.11em;text-transform:uppercase;color:var(--ink);opacity:0.6;text-decoration:none;">hello@jasminaziz.co.uk</a>
+          <a href="about.html" style="color:var(--cobalt);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Or read more about how I work →</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-wordmark">Jasmin Aziz</a>
+        <span class="footer-tagline">Strategic comms, AI built in.</span>
+        <a href="mailto:hello@jasminaziz.co.uk" class="footer-contact">hello@jasminaziz.co.uk</a>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigation</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-label">Elsewhere</span>
+        <ul class="footer-nav-list">
+          <li><a href="https://www.theeditai.co.uk/" target="_blank" rel="noopener">The Edit AI ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://jasminaziz.substack.com" target="_blank" rel="noopener">Substack ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">LinkedIn ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-meta">© 2026 Jasmin Aziz</span>
+      <div class="footer-legal">
+        <a href="legal.html#privacy" class="footer-legal-link">Privacy</a>
+        <a href="legal.html#cookies" class="footer-legal-link">Cookies</a>
+        <a href="legal.html#terms" class="footer-legal-link">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

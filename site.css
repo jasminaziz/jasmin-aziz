@@ -1,0 +1,750 @@
+/* ── JASMIN AZIZ — Shared site styles ── */
+/* =================================================================
+   MOBILE-FIRST TOKENS & SHARED COMPONENTS
+   All inner pages (about, services, contact, legal) load this file.
+   The hamburger nav, footer breakpoints, touch targets, and layout
+   tokens defined here apply site-wide automatically.
+   ================================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cobalt:     #2D35C9;
+  --periwinkle: #7B7FD4;
+  --ochre:      #C99A2C;
+  --ink:        #14110D;
+  --cream:      #FAF8F4;
+  --rule:       rgba(20,17,13,0.09);
+
+  /* ── A11Y TEXT TOKENS ───────────────────────────────────────────
+     Pre-blended hex values for every opacity-based colour variant.
+     WCAG ratios assume their named background context.
+     NEVER use CSS opacity to mute text colour — use these instead.
+     ─────────────────────────────────────────────────────────────── */
+  --periwinkle-text: #5255B5; /* 5.5:1 on cream  — replaces periwinkle @small sizes */
+  --ochre-text:      #7A5C0C; /* 5.4:1 on cream  — replaces ochre on pricing text   */
+  --ink-muted:       #706D68; /* 4.8:1 on cream  — replaces ink @45% opacity        */
+  --cream-muted:     #A5A09A; /* 7.4:1 on ink    — replaces cream @38% opacity      */
+
+  /* Layout tokens
+     --gutter: 20px at 390px viewport → 56px at 1120px+
+     --sv:     section vertical padding, 56px → 96px           */
+  --gutter: clamp(20px, 5vw, 56px); /* @kind spacing */
+  --sv:     clamp(56px, 9vw, 96px); /* @kind spacing */
+  --ochre-pct: 8; /* @kind other */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ── SKIP LINK ───────────────────────────────────────────────────
+   First focusable element in <body>. Hidden until keyboard focus.
+   WCAG 2.4.1 — Bypass Blocks (AA).
+   ─────────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 9999;
+  background: var(--cobalt);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+/* ── SCREEN-READER UTILITY ──────────────────────────────────────
+   Use for visually-hidden but announced text:
+   e.g. "(opens in new tab)" inside target="_blank" links.
+   ─────────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── CONTAINER ──────────────────────────────────────────────────── */
+/* Gutter scales: 20px (390px) → 56px (1120px+) via clamp          */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ── LABEL ──────────────────────────────────────────────────────── */
+/* Contrast fix: --periwinkle-text (#5255B5) = 5.5:1 on cream.
+   Was var(--periwinkle) at 3.4:1 — failed WCAG AA at 11px.        */
+.label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  display: block;
+  color: var(--periwinkle-text);
+}
+
+/* =================================================================
+   NAV — Desktop: 64px cobalt bar, inline pill links.
+   Mobile ≤640px: 56px height, inline links hidden, hamburger shown.
+   Hamburger toggles .nav-open on .site-nav (bars → ×) and .open
+   on #nav-drawer (max-height 0 → 240px). See nav.js for JS.
+   ================================================================= */
+.site-nav {
+  background: var(--cobalt);
+  padding: 0 var(--gutter);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.wordmark {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+}
+
+.nav-list a {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 8px 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+/* Hover + active — no outline: none here; focus-visible handles focus */
+.nav-list a:hover,
+.nav-list a:active,
+.nav-list a.active {
+  background: rgba(250,248,244,0.2);
+  border-color: rgba(250,248,244,0.35);
+}
+
+/* ── HAMBURGER BUTTON ────────────────────────────────────────────
+   Hidden desktop. Shown ≤640px. 44×44px tap target.
+   Bars animate to × via .site-nav.nav-open:
+     bar 1: translateY(7px) rotate(45deg)
+     bar 2: opacity 0 + scaleX 0
+     bar 3: translateY(-7px) rotate(-45deg)
+   ─────────────────────────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  color: var(--cream);
+  flex-shrink: 0;
+  border-radius: 6px;
+  padding: 0;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 280ms ease, opacity 280ms ease;
+  transform-origin: center;
+}
+
+.site-nav.nav-open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-nav.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.site-nav.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── NAV DRAWER ──────────────────────────────────────────────────
+   Mobile only (display:none desktop, display:block ≤640px).
+   Sticky at top:56px (below nav). Animated via max-height.
+   JS toggles .open → max-height 0 → 240px.
+   Each link: 52px min-height, full gutter padding.
+   ─────────────────────────────────────────────────────────────── */
+.nav-drawer {
+  display: none;
+  background: var(--cobalt);
+  position: sticky;
+  top: 56px;
+  z-index: 199;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid rgba(250,248,244,0.08);
+}
+
+.nav-drawer.open { max-height: 240px; }
+
+.nav-drawer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 16px;
+}
+
+.nav-drawer-list a {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 0 var(--gutter);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  transition: background 150ms ease;
+}
+
+.nav-drawer-list a:hover,
+.nav-drawer-list a:active {
+  background: rgba(250,248,244,0.1);
+}
+
+/* ── PILL ───────────────────────────────────────────────────────
+   min-height 44px: touch compliance on all viewports.
+   :active matches :hover for tap feedback on iOS/Android.
+   Border opacity raised to 0.5 for WCAG 1.4.11 UI contrast (3:1).
+   ─────────────────────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(20,17,13,0.5);
+  border-radius: 100px;
+  padding: 11px 26px;
+  min-height: 44px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.594rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.pill:hover, .pill:active {
+  background: var(--cobalt);
+  color: var(--cream);
+  border-color: var(--cobalt);
+}
+
+.pill-cobalt {
+  background: var(--cobalt);
+  color: var(--cream);
+  border-color: var(--cobalt);
+}
+
+.pill-cobalt:hover, .pill-cobalt:active {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ── SECTION HEAD ───────────────────────────────────────────────── */
+.section-head {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* ── PULL QUOTE ─────────────────────────────────────────────────── */
+/* Use <blockquote class="pull-quote"> in markup — not <div>.        */
+.pull-quote {
+  border-left: 2px solid var(--ochre);
+  padding: 4px 0 4px 28px;
+  margin-bottom: 36px;
+}
+
+.pull-quote p {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.375rem;
+  line-height: 1.48;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* ── WAVE SEPARATORS ────────────────────────────────────────────── */
+.wave-sep { display: block; width: 100%; line-height: 0; overflow: hidden; }
+.wave-sep svg { width: 100%; height: 48px; display: block; }
+.svc-wave { display: block; width: 100%; line-height: 0; overflow: hidden; }
+.svc-wave svg { width: 100%; height: 28px; display: block; }
+
+/* ── TINTED BANDS (who-section) ──────────────────────────────────
+   Editorial pull-out bands with feathered wave edges.
+   Ochre tint by default; --periwinkle variant available.
+   ─────────────────────────────────────────────────────────────── */
+.who-section {
+  padding: var(--sv) 0;
+  background: rgba(201,154,44,calc(var(--ochre-pct) * 0.01));
+  position: relative;
+  overflow: visible;
+}
+
+.who-section > .wrap { position: relative; z-index: 2; }
+
+.who-section::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -48px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: rgba(201,154,44,calc(var(--ochre-pct) * 0.01));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0,48 L0,24 C160,4 320,44 480,24 C640,4 800,44 960,24 C1120,4 1280,44 1440,24 L1440,48 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0,48 L0,24 C160,4 320,44 480,24 C640,4 800,44 960,24 C1120,4 1280,44 1440,24 L1440,48 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  pointer-events: none;
+}
+
+.who-section::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -48px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: rgba(201,154,44,calc(var(--ochre-pct) * 0.01));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L0,24 C160,44 320,4 480,24 C640,44 800,4 960,24 C1120,44 1280,4 1440,24 L1440,0 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L0,24 C160,44 320,4 480,24 C640,44 800,4 960,24 C1120,44 1280,4 1440,24 L1440,0 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.who-section--periwinkle {
+  background: rgba(123,127,212,0.10);
+}
+.who-section--periwinkle::before,
+.who-section--periwinkle::after {
+  background: rgba(123,127,212,0.10);
+}
+
+/* =================================================================
+   FOOTER
+   Grid: 2fr 1fr 1fr (brand | nav | external).
+   768px: brand full-width top (grid-column 1/-1), nav+external row.
+   480px: all single column.
+   footer-bottom: row → column ≤480px.
+   All links: min-height 44px.
+   ================================================================= */
+footer {
+  background: var(--ink);
+  padding: clamp(48px, 7vw, 72px) 0 clamp(36px, 5vw, 52px);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(250,248,244,0.07);
+}
+
+/* Use <a class="footer-wordmark" href="…"> in markup — links to homepage. */
+.footer-wordmark {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: opacity 150ms ease;
+}
+
+a.footer-wordmark:hover,
+a.footer-wordmark:active { opacity: 0.85; }
+
+/* Contrast fix: --cream-muted (#A5A09A) = 7.4:1 on ink.
+   Was cream @38% opacity → 3.9:1 — failed WCAG AA.              */
+.footer-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--cream-muted);
+  display: block;
+  margin-bottom: 28px;
+}
+
+/* cream @50% on ink = 5.8:1 — passes AA. No change to opacity.   */
+.footer-contact {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 150ms ease;
+}
+
+.footer-contact:hover, .footer-contact:active { opacity: 0.85; }
+
+/* Contrast fix: removed opacity: 0.7.
+   Full --periwinkle (#7B7FD4) on ink = 5.3:1 — passes AA.        */
+.footer-col-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.footer-nav-list { list-style: none; }
+.footer-nav-list li + li { margin-top: 4px; }
+
+/* cream @88% on ink = 14.2:1 — passes AAA. No change needed.     */
+.footer-nav-list a {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 150ms ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-nav-list a:hover, .footer-nav-list a:active { opacity: 1; }
+
+.footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal { display: flex; gap: 22px; align-items: center; }
+
+/* cream @50% on ink = 5.8:1 — passes AA.                         */
+.footer-legal-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-legal-link:hover, .footer-legal-link:active { opacity: 1; }
+
+/* Contrast fix: opacity raised from 0.3 → 0.5 = 4.75:1 on ink.  */
+.footer-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+}
+
+/* =================================================================
+   PAGE HERO (inner pages — about, services, contact)
+   Padding via --sv token. H1 fluids via clamp.
+   ================================================================= */
+.page-hero {
+  padding: var(--sv) 0 clamp(48px, 7vw, 64px);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(48px, 7vw, 80px);
+}
+
+.page-hero .label { margin-bottom: 20px; }
+
+.page-hero-h1 {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+.page-hero-lead {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.65;
+  opacity: 0.72;
+  text-wrap: pretty;
+  max-width: 640px;
+}
+
+/* =================================================================
+   CTA SECTION (shared across all pages)
+   2-col desk → 1-col ≤768px.
+   ================================================================= */
+.cta-section { padding: clamp(64px, 10vw, 96px) 0 clamp(64px, 10vw, 104px); }
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 88px;
+  align-items: center;
+}
+
+.cta-left .section-head { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+
+.cta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* Contrast fix: --ink-muted (#706D68) = 4.8:1 on cream.
+   Was ink @45% opacity → 2.7:1 — failed WCAG AA.                 */
+.cta-email {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 150ms ease;
+}
+
+.cta-email:hover, .cta-email:active { color: var(--ink); }
+
+
+/* =================================================================
+   FOCUS STATES — WCAG 2.4.7 (AA), 2.4.11 (WCAG 2.2 AA)
+   All interactive elements use :focus-visible (not :focus) to
+   suppress mouse-click rings while preserving keyboard rings.
+   Never write outline: none without a replacement indicator.
+   ================================================================= */
+
+/* Default ring — cream background contexts */
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+}
+
+/* Pill-shaped elements — inherit border-radius on ring */
+.pill:focus-visible,
+.nav-drawer-list a:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+  border-radius: 100px;
+}
+
+/* Cobalt pill — cream ring */
+.pill-cobalt:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+  border-radius: 100px;
+}
+
+/* Nav bar context — cream ring on cobalt background */
+.site-nav :focus-visible {
+  outline: 2px solid rgba(250, 248, 244, 0.9);
+  outline-offset: 2px;
+}
+
+.site-nav .nav-list a:focus-visible {
+  background: rgba(250,248,244,0.2);
+  border-color: rgba(250,248,244,0.35);
+  border-radius: 100px;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid rgba(250, 248, 244, 0.9);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Footer context — cream ring on ink background */
+footer :focus-visible {
+  outline: 2px solid rgba(250, 248, 244, 0.9);
+  outline-offset: 3px;
+}
+
+footer .footer-nav-list a:focus-visible,
+footer .footer-legal-link:focus-visible,
+footer .footer-contact:focus-visible {
+  border-radius: 2px;
+}
+
+
+/* =================================================================
+   RESPONSIVE BREAKPOINTS — SHARED
+   ================================================================= */
+
+/* ── 768px ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* CTA grid: 2-col → 1-col */
+  .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* Footer: 3-col → brand full-width, nav+external side-by-side */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
+
+  /* Pull quote: tighten */
+  .pull-quote p { font-size: 1.1875rem; }
+}
+
+/* ── 640px — Mobile nav + spacing ──────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Nav: 64px → 56px, inline links hidden, hamburger + drawer shown */
+  .site-nav { height: 56px; }
+  .nav-list  { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-drawer { display: block; }
+
+  /* Section head */
+  .section-head { font-size: clamp(1.5rem, 7vw, 2rem); }
+
+  /* Pull quote: tighten further */
+  .pull-quote p { font-size: 1.0625rem; }
+  .pull-quote   { padding-left: 18px; }
+}
+
+/* ── 480px — Footer single-col + footer-bottom stack ───────────── */
+@media (max-width: 480px) {
+
+  /* Footer: 2-col → 1-col */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-grid > div:first-child { grid-column: auto; }
+
+  /* footer-bottom: row → column */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+
+/* =================================================================
+   REDUCED MOTION — WCAG 2.3.3
+   Disables all transitions and animations for users who have
+   enabled "Reduce Motion" in their OS accessibility settings.
+   ================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Nav drawer: snap open/closed without max-height animation */
+  .nav-drawer { transition: none; }
+
+  /* Hamburger bars: skip rotation animation */
+  .nav-toggle-bar { transition: none; }
+}

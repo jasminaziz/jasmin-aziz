@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Jasmin Aziz</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+
+/* ── CONTACT-SPECIFIC ── */
+
+.contact-layout {
+  padding: var(--sv) 0;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 96px;
+  align-items: start;
+}
+
+.contact-intro .label { margin-bottom: 20px; }
+
+.contact-h1 {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 7vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.contact-opener {
+  font-size: 17px;
+  line-height: 1.68;
+  text-wrap: pretty;
+  margin-bottom: 20px;
+}
+
+.contact-opener-sub {
+  font-size: 15.5px;
+  line-height: 1.65;
+  opacity: 0.65;
+  text-wrap: pretty;
+}
+
+/* Footer bridge */
+.footer-bridge {
+  margin-top: 48px;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.footer-bridge .label { margin-bottom: 16px; }
+
+.bridge-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bridge-link {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--cobalt);
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.bridge-link:hover { opacity: 0.7; }
+
+/* Direct contact row */
+.contact-direct {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.contact-direct-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.contact-direct a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.6;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.contact-direct a:hover,
+.contact-direct a:active { opacity: 1; }
+
+/* Touch target on direct email link */
+.contact-direct a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bridge-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── FORM ── */
+.form-box {
+  background: var(--ink);
+  padding: 48px 44px 44px;
+  border-radius: 32px;
+}
+
+.form-box-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(250,248,244,0.7);
+  display: block;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(250,248,244,0.7);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-label .optional {
+  font-weight: 500;
+  opacity: 0.6;
+  font-size: 9px;
+  text-transform: none;
+  letter-spacing: 0.06em;
+  margin-left: 6px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  background: rgba(250,248,244,0.06);
+  border: 1px solid rgba(250,248,244,0.12);
+  color: var(--cream);
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 13px 16px;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 150ms ease, background 150ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: rgba(250,248,244,0.4);
+  background: rgba(250,248,244,0.09);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(250,248,244,0.22);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(250,248,244,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-select option {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--cobalt);
+  color: var(--cream);
+  border: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 200ms ease;
+  margin-top: 8px;
+}
+
+.form-submit:hover { background: #2029b0; }
+
+.form-note {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: rgba(250,248,244,0.5);
+  display: block;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+/* Confirmation message */
+.form-confirmation {
+  display: none;
+  background: var(--ink);
+  padding: 48px 44px;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.form-confirmation p {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--cream);
+  opacity: 0.85;
+}
+
+/* =================================================================
+   CONTACT — MOBILE BREAKPOINTS
+   ================================================================= */
+
+/* ── 768px: 2-col layout → 1-col. Form stacks below intro. ──────── */
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ── 640px: form padding + font-size fixes ───────────────────────
+   form-input/select/textarea at 16px: prevents iOS auto-zoom on focus.
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .contact-opener     { font-size: 16px; }
+  .contact-opener-sub { font-size: 15px; }
+
+  .form-box          { padding: 32px 24px 28px; border-radius: 24px; }
+  .form-confirmation { padding: 32px 24px; border-radius: 24px; }
+
+  /* 16px prevents iOS Safari auto-zoom on input focus */
+  .form-input,
+  .form-textarea,
+  .form-select {
+    font-size: 16px;
+    min-height: 48px;
+    padding: 13px 14px;
+  }
+
+  .form-textarea {
+    min-height: 120px;
+  }
+
+  /* Submit button: generous touch target */
+  .form-submit {
+    min-height: 52px;
+    font-size: 11px;
+    padding: 0 24px;
+  }
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Primary">
+  <a href="index.html" class="wordmark">Jasmin Aziz</a>
+  <ul class="nav-list">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</nav>
+<nav class="nav-drawer" id="nav-drawer" aria-hidden="true" aria-label="Mobile">
+  <ul class="nav-drawer-list">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main-content" tabindex="-1">
+
+<!-- MAIN LAYOUT -->
+<div class="wrap">
+  <div class="contact-layout">
+
+    <!-- LEFT: intro -->
+    <div class="contact-intro">
+      <h1 class="contact-h1">Tell me what you're working on.</h1>
+      <p class="contact-opener">Fill in the form below or email me directly at <a href="mailto:hello@jasminaziz.co.uk" style="color:var(--cobalt);text-decoration:none;">hello@jasminaziz.co.uk</a>. I reply within two working days. If it looks like a good fit, we'll book a discovery call from there.</p>
+      <p class="contact-opener-sub">You don't need to have it all worked out before you get in touch. A rough sense of what the organisation is dealing with is enough to start a conversation.</p>
+
+      <div class="contact-direct">
+        <span class="contact-direct-label">Prefer email?</span>
+        <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
+      </div>
+      <div class="contact-direct">
+        <span class="contact-direct-label">Connect on LinkedIn</span>
+        <a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">linkedin.com/in/jasmin-r-aziz</a>
+      </div>
+
+
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="contact-form-col">
+      <div class="form-box" id="form-box">
+        <span class="form-box-label">Enquiry form</span>
+        <form id="contact-form" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="name">Your name</label>
+            <input class="form-input" type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="org">Organisation</label>
+            <input class="form-input" type="text" id="org" name="organisation" autocomplete="organization" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email address</label>
+            <input class="form-input" type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="service">What are you working on?</label>
+            <select class="form-select" id="service" name="service" required>
+              <option value="" disabled selected></option>
+              <option value="audit">Communications audit</option>
+              <option value="brand">Brand and positioning</option>
+              <option value="campaign">Campaign strategy and plan</option>
+              <option value="content">Content and editorial system</option>
+              <option value="ai-training">AI fluency training</option>
+              <option value="senior-comms-capacity">Senior comms capacity</option>
+              <option value="advisory">Advisory</option>
+              <option value="one-off-strategic-input">One-off strategic input</option>
+              <option value="unsure">I'm not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Tell me a bit more <span class="optional">optional</span></label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="What's the organisation dealing with, and what kind of help are you looking for?" rows="5"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send message</button>
+          <span class="form-note">I reply within two working days. Your details are used only to respond to your enquiry and are never shared with third parties.</span>
+        </form>
+      </div>
+
+      <div class="form-confirmation" id="form-confirmation">
+        <p>Thank you. I'll be in touch within two working days.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-wordmark">Jasmin Aziz</a>
+        <span class="footer-tagline">Strategic comms, AI built in.</span>
+        <a href="mailto:hello@jasminaziz.co.uk" class="footer-contact">hello@jasminaziz.co.uk</a>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigation</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-label">Elsewhere</span>
+        <ul class="footer-nav-list">
+          <li><a href="https://www.theeditai.co.uk/" target="_blank" rel="noopener">The Edit AI ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://jasminaziz.substack.com" target="_blank" rel="noopener">Substack ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">LinkedIn ↗<span class="sr-only"> (opens in new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-meta">© 2026 Jasmin Aziz</span>
+      <div class="footer-legal">
+        <a href="legal.html#privacy" class="footer-legal-link">Privacy</a>
+        <a href="legal.html#cookies" class="footer-legal-link">Cookies</a>
+        <a href="legal.html#terms" class="footer-legal-link">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Pre-select the "What are you working on?" option from the URL hash, so deep links
+// from individual services on /services arrive with the right enquiry type already chosen.
+(function preselectFromHash() {
+  var hash = (window.location.hash || '').replace('#', '');
+  if (!hash) return;
+  var select = document.getElementById('service');
+  if (!select) return;
+  for (var i = 0; i < select.options.length; i++) {
+    if (select.options[i].value === hash) {
+      select.selectedIndex = i;
+      return;
+    }
+  }
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('form-box').style.display = 'none';
+  document.getElementById('form-confirmation').style.display = 'block';
+});
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>
