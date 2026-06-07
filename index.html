@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jasmin Aziz — Strategic Communications Consultancy</title>
+<title>Jasmin Aziz | Strategic Communications Consultant</title>
+<meta property="og:title" content="Jasmin Aziz | Strategic Communications Consultant">
+<meta property="og:description" content="Senior communications strategy for values-led organisations. AI fluency built into how I deliver. Brand, positioning, campaigns, and fractional leadership by project or retainer.">
+<meta property="og:image" content="https://jasminaziz.co.uk/assets/jasmin-headshot.png">
+<meta property="og:url" content="https://jasminaziz.co.uk/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jasmin Aziz | Strategic Communications Consultant">
+<meta name="twitter:description" content="Senior communications strategy for values-led organisations. AI fluency built into how I deliver. Brand, positioning, campaigns, and fractional leadership by project or retainer.">
+<meta name="twitter:image" content="https://jasminaziz.co.uk/assets/jasmin-headshot.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1077,14 +1086,18 @@ a.footer-wordmark:active { opacity: 0.85; }
   .nav-toggle { display: flex; }
   .nav-drawer { display: block; }
 
-  /* H1: fluid between 32px and 44px on phone */
+  /* H1: fluid between 32px and 44px on phone. Tighten bottom margin. */
   .hero-h1 {
     font-size: clamp(2rem, 9vw, 2.75rem);
     letter-spacing: -0.02em;
+    margin-bottom: 12px;
   }
 
-  /* Lead: 18px → 16px */
-  .hero-lead { font-size: 1rem; margin-bottom: 28px; }
+  /* Hero body: close the gap between H1 and lead text */
+  .hero-body { padding-top: 8px; }
+
+  /* Lead: keep at 18px on mobile — was reduced to 16px, too small */
+  .hero-lead { font-size: 1.125rem; margin-bottom: 28px; }
 
   /* Section head: scale down */
   .section-head { font-size: clamp(1.5rem, 7vw, 2.25rem); }
@@ -1100,8 +1113,14 @@ a.footer-wordmark:active { opacity: 0.85; }
   /* Proof section header: scale down */
   .proof-section .section-head { font-size: clamp(1.375rem, 6vw, 1.875rem); }
 
-  /* CTA head */
-  .cta-left .section-head { font-size: clamp(1.625rem, 7vw, 2.25rem); }
+  /* CTA head: 1.5rem so "what you're working on." fits one line at 390px */
+  .cta-left .section-head { font-size: 1.5rem; }
+
+  /* CTA grid: tighten gap between actions and "read the work first" */
+  .cta-grid { gap: 20px; }
+
+  /* Mobile-only line break — forces "Tell me" onto its own line */
+  .mobile-br { display: block; }
 }
 
 /* ── 480px — Footer + very small screen fixes ───────────────────── */
@@ -1123,8 +1142,11 @@ a.footer-wordmark:active { opacity: 0.85; }
     gap: 12px;
   }
 
-  /* Proof cards: tighter padding at smallest screens */
-  .proof-card { padding: 28px 20px 24px; }
+  /* Proof cards: more breathing room on sides and below body text */
+  .proof-card { padding: 36px 24px 32px; }
+
+  /* Restore gap before card-link button (was zeroed at 768px) */
+  .card-link { margin-top: 24px; }
 
   .card-tag {
     top: 16px;
@@ -1166,6 +1188,9 @@ a.footer-wordmark:active { opacity: 0.85; }
   outline: 2px solid var(--cream);
   outline-offset: 2px;
 }
+
+/* Mobile-only line break — hidden by default, shown ≤640px */
+.mobile-br { display: none; }
 
 /* =================================================================
    SCREEN-READER UTILITY
@@ -1307,7 +1332,7 @@ footer .footer-contact:focus-visible {
 <div class="wrap">
   <section class="hero">
 
-    <h1 class="hero-h1">Strategic marketing and communications for the work that matters.</h1>
+    <h1 class="hero-h1">Strategic marketing and&nbsp;communications for the work that matters.</h1>
 
     <!-- Full-width stack: lead + CTA, then diagnosis copy. -->
     <div class="hero-body">
@@ -1426,7 +1451,7 @@ footer .footer-contact:focus-visible {
     <div class="cta-grid">
       <div class="cta-left">
         <span class="label" style="margin-bottom:20px;">Get in touch</span>
-        <h2 class="section-head" style="font-size:2.5rem;">Tell me what you're working on.</h2>
+        <h2 class="section-head">Tell me<br class="mobile-br"> what you're working on.</h2>
         <div style="margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;">
           <a href="contact.html" class="pill pill-cobalt">Get in touch →</a>
           <a href="mailto:hello@jasminaziz.co.uk" class="cta-email">hello@jasminaziz.co.uk</a>
