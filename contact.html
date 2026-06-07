@@ -27,9 +27,15 @@
   padding: var(--sv) 0;
   display: grid;
   grid-template-columns: 1fr 480px;
-  gap: 96px;
+  grid-template-rows: auto auto;
+  column-gap: 96px;
+  row-gap: 40px;
   align-items: start;
 }
+
+.contact-intro      { grid-column: 1; grid-row: 1; }
+.contact-form-col   { grid-column: 2; grid-row: 1 / 3; }
+.contact-direct-links { grid-column: 1; grid-row: 2; }
 
 .contact-intro .label { margin-bottom: 20px; }
 
@@ -273,11 +279,23 @@
    CONTACT — MOBILE BREAKPOINTS
    ================================================================= */
 
-/* ── 768px: 2-col layout → 1-col. Form stacks below intro. ──────── */
+/* ── 768px: 2-col → 1-col. Order: intro → form → direct links. ──── */
 @media (max-width: 768px) {
   .contact-layout {
     grid-template-columns: 1fr;
-    gap: 48px;
+    grid-template-rows: auto;
+    row-gap: 40px;
+  }
+  .contact-intro        { grid-column: 1; grid-row: auto; }
+  .contact-form-col     { grid-column: 1; grid-row: auto; }
+  .contact-direct-links { grid-column: 1; grid-row: auto; }
+}
+
+/* ── 640px: tighten direct contact spacing ───────────────────── */
+@media (max-width: 640px) {
+  .contact-direct {
+    margin-top: 20px;
+    padding-top: 20px;
   }
 }
 
@@ -350,20 +368,9 @@
       <h1 class="contact-h1">Tell me what you're working on.</h1>
       <p class="contact-opener">Fill in the form below or email me directly at <a href="mailto:hello@jasminaziz.co.uk" style="color:var(--cobalt);text-decoration:none;">hello@jasminaziz.co.uk</a>. I reply within two working days. If it looks like a good fit, we'll book a discovery call from there.</p>
       <p class="contact-opener-sub">You don't need to have it all worked out before you get in touch. A rough sense of what the organisation is dealing with is enough to start a conversation.</p>
-
-      <div class="contact-direct">
-        <span class="contact-direct-label">Prefer email?</span>
-        <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
-      </div>
-      <div class="contact-direct">
-        <span class="contact-direct-label">Connect on LinkedIn</span>
-        <a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">linkedin.com/in/jasmin-r-aziz</a>
-      </div>
-
-
     </div>
 
-    <!-- RIGHT: form -->
+    <!-- RIGHT: form (col 2, spans both rows on desktop) -->
     <div class="contact-form-col">
       <div class="form-box" id="form-box">
         <span class="form-box-label">Enquiry form</span>
@@ -412,6 +419,18 @@
 
       <div class="form-confirmation" id="form-confirmation">
         <p>Thank you. I'll be in touch within two working days.</p>
+      </div>
+    </div>
+
+    <!-- LEFT row 2: direct contact links (below form on mobile) -->
+    <div class="contact-direct-links">
+      <div class="contact-direct">
+        <span class="contact-direct-label">Prefer email?</span>
+        <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
+      </div>
+      <div class="contact-direct">
+        <span class="contact-direct-label">Connect on LinkedIn</span>
+        <a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">linkedin.com/in/jasmin-r-aziz</a>
       </div>
     </div>
 

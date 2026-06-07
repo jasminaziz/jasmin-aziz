@@ -373,6 +373,21 @@
   .about-h1   { font-size: clamp(30px, 9vw, 44px); }
   .about-lede { font-size: 16px; }
 
+  /* Portrait: move above text, center it, smaller size */
+  .about-hero-grid { display: flex; flex-direction: column; }
+  .headshot-wrap {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .headshot-image {
+    max-width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    object-position: top;
+  }
+
   /* find-link-row: 160px 1fr auto → name+arrow row 1, desc row 2
      Avoids 160px fixed col eating half the 390px viewport.       */
   .find-link-row {

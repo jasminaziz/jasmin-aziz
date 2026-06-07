@@ -206,10 +206,10 @@ body::after {
 
 .nav-toggle-bar {
   display: block;
-  width: 22px;
-  height: 2px;
+  width: 20px;
+  height: 3px;
   background: currentColor;
-  border-radius: 1px;
+  border-radius: 100px;
   transition: transform 280ms ease, opacity 280ms ease;
   transform-origin: center;
 }
@@ -698,6 +698,9 @@ footer .footer-contact:focus-visible {
   .nav-list  { display: none; }
   .nav-toggle { display: flex; }
   .nav-drawer { display: block; }
+
+  /* Footer tagline: tighten gap to email below */
+  .footer-tagline { margin-bottom: 12px; }
 
   /* Section head */
   .section-head { font-size: clamp(1.5rem, 7vw, 2rem); }
