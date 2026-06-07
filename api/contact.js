@@ -21,15 +21,21 @@ const SERVICE_LABELS = {
 function brandedHtml(bodyHtml) {
   return `<!DOCTYPE html>
 <html lang="en-GB">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap');
+  </style>
+</head>
 <body style="margin:0;padding:0;background:#FAF8F4;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F4;">
-    <tr><td align="center" style="padding:48px 20px;">
+    <tr><td align="center" style="padding:48px 20px 0;">
       <table cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 
-        <!-- Wordmark -->
+        <!-- Header -->
         <tr><td style="padding-bottom:28px;">
-          <span style="font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#14110D;">Jasmin Aziz</span>
+          <p style="margin:0 0 4px;font-family:'Chillax',Arial,Helvetica,sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.02em;color:#14110D;">Jasmin Aziz</p>
+          <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#706D68;letter-spacing:0.04em;">Strategic comms, AI built in.</p>
         </td></tr>
 
         <!-- Cobalt rule + body -->
@@ -37,16 +43,18 @@ function brandedHtml(bodyHtml) {
           ${bodyHtml}
         </td></tr>
 
-        <!-- Footer -->
-        <tr><td style="padding-top:36px;border-top:1px solid #E0DDD8;">
-          <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#706D68;line-height:1.6;">
-            Strategic communications &amp; AI fluency &nbsp;&middot;&nbsp;
-            <a href="https://jasminaziz.co.uk" style="color:#706D68;text-decoration:none;">jasminaziz.co.uk</a>
-          </p>
-        </td></tr>
-
       </table>
     </td></tr>
+
+    <!-- Footer — full-width cobalt bar -->
+    <tr><td align="center" style="padding-top:40px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#2D35C9;">
+        <tr><td align="center" style="padding:16px 20px;">
+          <a href="https://jasminaziz.co.uk" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#FAF8F4;text-decoration:none;">jasminaziz.co.uk</a>
+        </td></tr>
+      </table>
+    </td></tr>
+
   </table>
 </body>
 </html>`;
@@ -89,7 +97,7 @@ function autoReplyHtml(name) {
     <p style="margin:0 0 20px;">Thank you for getting in touch.</p>
     <p style="margin:0 0 20px;">I&rsquo;ve received your message and will reply within two working days. If it looks like a good fit, we&rsquo;ll book a discovery call from there.</p>
     <p style="margin:0 0 20px;">In the meantime, you might enjoy
-      <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">reading my newsletter</a>
+      <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">reading my Substack newsletter</a>
       or
       <a href="https://www.theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">exploring The Edit AI</a>,
       my resource for AI fluency in the charity sector.</p>
@@ -172,7 +180,7 @@ module.exports = async function handler(req, res) {
       from: 'Jasmin Aziz <hello@jasminaziz.co.uk>',
       to: [em],
       subject: 'Thanks for getting in touch \u2014 Jasmin Aziz',
-      text: `Thank you for getting in touch.\n\nI've received your message and will reply within two working days. If it looks like a good fit, we'll book a discovery call from there.\n\nIn the meantime, you might enjoy reading my newsletter (https://jasminaziz.substack.com) or exploring The Edit AI (https://www.theeditai.co.uk), my resource for AI fluency in the charity sector.\n\nAnd if we're not already connected, let's connect on LinkedIn (https://www.linkedin.com/in/jasmin-r-aziz/).\n\nJasmin`,
+      text: `Thank you for getting in touch.\n\nI've received your message and will reply within two working days. If it looks like a good fit, we'll book a discovery call from there.\n\nIn the meantime, you might enjoy reading my Substack newsletter (https://jasminaziz.substack.com) or exploring The Edit AI (https://www.theeditai.co.uk), my resource for AI fluency in the charity sector.\n\nAnd if we're not already connected, let's connect on LinkedIn (https://www.linkedin.com/in/jasmin-r-aziz/).\n\nJasmin`,
       html: autoReplyHtml(n),
     });
   } catch (err) {
