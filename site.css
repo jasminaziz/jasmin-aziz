@@ -772,7 +772,7 @@ footer .footer-contact:focus-visible {
   pointer-events: none;
   transform: translateY(8px);
   transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 200;
+  z-index: 9001;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
