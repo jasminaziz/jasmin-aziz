@@ -318,7 +318,7 @@ body::after {
    Vertical padding via --sv. H1 is typographic anchor.
    hero-body: 2-col grid with ruled top border.
    ─────────────────────────────────────────────────────────────── */
-.hero { padding: var(--sv) 0; }
+.hero { padding: clamp(32px, 4vw, 52px) 0; }
 
 /* H1: Chillax Bold, tweakable size via --h1-size token.
    Fluid via clamp at breakpoints (see responsive section).
