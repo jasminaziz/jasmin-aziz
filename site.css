@@ -752,3 +752,41 @@ footer .footer-contact:focus-visible {
   /* Hamburger bars: skip rotation animation */
   .nav-toggle-bar { transition: none; }
 }
+
+/* ── SCROLL-TO-TOP BUTTON ─────────────────────────────────────── */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--cobalt-hover, #1a3fcf);
+}
+
+/* Hidden on desktop */
+@media (min-width: 901px) {
+  .scroll-top-btn { display: none; }
+}
