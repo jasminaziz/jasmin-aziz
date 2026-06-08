@@ -555,7 +555,7 @@ body::after {
    ─────────────────────────────────────────────────────────────── */
 /* diff-section sits between two wave-edged tinted bands;
    each wave intrudes 48px — compensate so visual rhythm matches other sections */
-.diff-section { padding: calc(var(--sv) + 48px) 0 calc(var(--sv) + 48px); }
+.diff-section { padding: var(--sv) 0; }
 
 .diff-body-grid {
   display: grid;
@@ -626,7 +626,7 @@ body::after {
    ─────────────────────────────────────────────────────────────── */
 /* about-section follows the ochre wave band — compensate for 48px wave intrusion at top */
 .about-section {
-  padding: calc(var(--sv) + 48px) 0 clamp(20px, 3vw, 36px);
+  padding: var(--sv) 0 clamp(20px, 3vw, 36px);
 }
 
 .about-bridge-grid {
