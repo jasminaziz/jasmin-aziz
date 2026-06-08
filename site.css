@@ -713,18 +713,19 @@ footer .footer-contact:focus-visible {
 /* ── 480px — Footer single-col + footer-bottom stack ───────────── */
 @media (max-width: 480px) {
 
-  /* Footer: 2-col → 1-col */
+  /* Footer: 2-col → 1-col, centred */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+    text-align: center;
   }
 
   .footer-grid > div:first-child { grid-column: auto; }
 
-  /* footer-bottom: row → column */
+  /* footer-bottom: row → column, centred */
   .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
   }
 }
