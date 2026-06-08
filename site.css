@@ -533,36 +533,6 @@ a.footer-wordmark:active { opacity: 0.85; }
   opacity: 0.5;
 }
 
-/* =================================================================
-   PAGE HERO (inner pages — about, services, contact)
-   Padding via --sv token. H1 fluids via clamp.
-   ================================================================= */
-.page-hero {
-  padding: var(--sv) 0 clamp(48px, 7vw, 64px);
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: clamp(48px, 7vw, 80px);
-}
-
-.page-hero .label { margin-bottom: 20px; }
-
-.page-hero-h1 {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.25rem, 6vw, 3.5rem);
-  letter-spacing: -0.03em;
-  line-height: 1.0;
-  color: var(--ink);
-  margin-bottom: 24px;
-  text-wrap: balance;
-}
-
-.page-hero-lead {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  line-height: 1.65;
-  opacity: 0.72;
-  text-wrap: pretty;
-  max-width: 640px;
-}
 
 /* =================================================================
    CTA SECTION (shared across all pages)

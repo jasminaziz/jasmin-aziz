@@ -376,8 +376,6 @@
   .proof-cards { grid-template-columns: 1fr; }
 
   .proof-card {
-    display: flex;
-    flex-direction: column;
     grid-row: auto;
     padding: 36px 28px 32px;
     min-height: unset;
