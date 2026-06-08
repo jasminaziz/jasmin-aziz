@@ -722,6 +722,14 @@ footer .footer-contact:focus-visible {
 
   .footer-grid > div:first-child { grid-column: auto; }
 
+  /* Centre block-level footer elements explicitly */
+  .footer-wordmark,
+  .footer-tagline,
+  .footer-col-label { text-align: center; }
+
+  /* Remove default ul left-padding so list items centre correctly */
+  .footer-nav-list { padding-left: 0; }
+
   /* footer-bottom: row → column, centred */
   .footer-bottom {
     flex-direction: column;
