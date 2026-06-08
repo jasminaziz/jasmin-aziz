@@ -1151,10 +1151,11 @@ a.footer-wordmark:active { opacity: 0.85; }
 /* ── 480px — Footer + very small screen fixes ───────────────────── */
 @media (max-width: 480px) {
 
-  /* FOOTER: 2-col → 1-col */
+  /* FOOTER: 2-col → 1-col, centred */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+    text-align: center;
   }
 
   /* Cancel the span-full override (only needed for 2-col state) */
@@ -1163,7 +1164,7 @@ a.footer-wordmark:active { opacity: 0.85; }
   /* FOOTER BOTTOM: row → column */
   .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
   }
 
