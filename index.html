@@ -821,6 +821,132 @@ body::after {
 
 .cta-email:hover, .cta-email:active { color: var(--ink); }
 
+/* ─────────────────────────────────────────────────────────────────
+   FOOTER
+   Ink background. Grid: 2fr 1fr 1fr (brand | nav | external).
+   ≤768px: brand full-width top row (grid-column 1/-1),
+           nav + external side by side below.
+   ≤480px: single column.
+   .footer-bottom: row on desktop, column ≤480px.
+   All footer links: min-height 44px.
+   ─────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  padding: clamp(48px, 7vw, 72px) 0 clamp(36px, 5vw, 52px);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(250,248,244,0.07);
+}
+
+.footer-wordmark {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: opacity 150ms ease;
+}
+
+a.footer-wordmark:hover,
+a.footer-wordmark:active { opacity: 0.85; }
+
+.footer-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--cream-muted); /* 7.4:1 on ink — was cream@38% = 3.9:1 ✗ */
+  display: block;
+  margin-bottom: 28px;
+}
+
+.footer-contact {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-col-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--periwinkle); /* full periwinkle on ink = 5.3:1 ✓ — was @70% = 3.3:1 ✗ */
+  display: block;
+  margin-bottom: 20px;
+}
+
+.footer-nav-list { list-style: none; }
+.footer-nav-list li + li { margin-top: 4px; }
+
+.footer-nav-list a {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 150ms ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-nav-list a:hover, .footer-nav-list a:active { opacity: 1; }
+
+.footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-legal { display: flex; gap: 22px; align-items: center; }
+
+.footer-legal-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-legal-link:hover, .footer-legal-link:active { opacity: 1; }
+
+.footer-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.5; /* raised from 0.3 → 0.5 = 4.75:1 on ink ✓ */
+}
 
 /* ─────────────────────────────────────────────────────────────────
    SECTION RULE
@@ -1025,11 +1151,10 @@ body::after {
 /* ── 480px — Footer + very small screen fixes ───────────────────── */
 @media (max-width: 480px) {
 
-  /* FOOTER: 2-col → 1-col, centred */
+  /* FOOTER: 2-col → 1-col */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-    text-align: center;
   }
 
   /* Cancel the span-full override (only needed for 2-col state) */
@@ -1038,7 +1163,7 @@ body::after {
   /* FOOTER BOTTOM: row → column */
   .footer-bottom {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
   }
 
