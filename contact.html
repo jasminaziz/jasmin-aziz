@@ -279,8 +279,8 @@
    CONTACT — MOBILE BREAKPOINTS
    ================================================================= */
 
-/* ── 768px: 2-col → 1-col. Order: intro → form → direct links. ──── */
-@media (max-width: 768px) {
+/* ── 900px: collapse to 1-col; direct links become 2-col ─────────── */
+@media (max-width: 900px) {
   .contact-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -288,15 +288,20 @@
   }
   .contact-intro        { grid-column: 1; grid-row: auto; }
   .contact-form-col     { grid-column: 1; grid-row: auto; }
-  .contact-direct-links { grid-column: 1; grid-row: auto; }
+  .contact-direct-links { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+
+  /* Email stays full width; LinkedIn and read-the-work sit side by side */
+  .contact-direct-links .contact-direct:first-child { grid-column: 1 / -1; }
 }
 
-/* ── 640px: tighten direct contact spacing ───────────────────── */
+/* ── 640px: tighten direct contact spacing; revert links to 1-col ── */
 @media (max-width: 640px) {
   .contact-direct {
     margin-top: 20px;
     padding-top: 20px;
   }
+  .contact-direct-links { grid-template-columns: 1fr; }
+  .contact-direct-links .contact-direct:first-child { grid-column: auto; }
 }
 
 /* ── 640px: form padding + font-size fixes ───────────────────────
