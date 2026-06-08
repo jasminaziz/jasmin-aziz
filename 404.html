@@ -16,7 +16,15 @@
 
 .error-content { max-width: 640px; }
 
-.error-content .label { margin-bottom: 28px; }
+.error-heading {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--periwinkle-text);
+  margin-bottom: 36px;
+}
 
 .error-body {
   font-size: 17px;
@@ -85,7 +93,7 @@
   <section class="error-section">
     <div class="error-content">
 
-      <span class="label">404 — Page not found</span>
+      <h1 class="error-heading">404 — Page not found</h1>
 
       <p class="error-body">This page doesn't exist. That's on me, not you.</p>
 
@@ -152,7 +160,7 @@
 
 <script>
 (function() {
-  var count = 10;
+  var count = 30;
   var noteEl = document.getElementById('redirect-note');
   var homeLink = document.getElementById('home-link');
   var cancelled = false;
