@@ -1087,6 +1087,10 @@ a.footer-wordmark:active { opacity: 0.85; }
 .diag-br { display: none; }
 @media (min-width: 769px) { .diag-br { display: block; } }
 
+/* H1 line break — shown only at 641–900px */
+.h1-br { display: none; }
+@media (min-width: 641px) and (max-width: 900px) { .h1-br { display: block; } }
+
 /* ── 640px — Mobile nav + spacing reductions ────────────────────── */
 @media (max-width: 640px) {
 
@@ -1342,7 +1346,7 @@ footer .footer-contact:focus-visible {
 <div class="wrap">
   <section class="hero">
 
-    <h1 class="hero-h1">Strategic&nbsp;marketing &amp;&nbsp;communications for the work that matters.</h1>
+    <h1 class="hero-h1">Strategic&nbsp;marketing &amp;&nbsp;communications for<br class="h1-br"> the work that matters.</h1>
 
     <!-- Full-width stack: lead + CTA, then diagnosis copy. -->
     <div class="hero-body">

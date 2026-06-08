@@ -290,14 +290,18 @@
    SERVICES — MOBILE BREAKPOINTS
    ================================================================= */
 
-/* ── 768px: grid collapses ──────────────────────────────────────── */
-@media (max-width: 768px) {
-
-  /* Page intro: 5fr 4fr → 1-col */
+/* ── 900px: intro grid collapses ───────────────────────────────── */
+@media (max-width: 900px) {
   .svc-intro-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+}
+
+/* ── 768px: grid collapses ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Page intro: already 1-col from 900px rule above */
 
   /* Service block body: 1fr 240px → 1-col. CTA pill full-width. */
   .svc-block-body {
