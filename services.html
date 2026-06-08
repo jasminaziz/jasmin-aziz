@@ -343,8 +343,13 @@
   /* Anchor bar tracks 56px mobile nav */
   .anchor-bar { top: 56px; }
 
-  /* Service block header: tighten big number */
+  /* Service block header: tighten number column + gap so title has more room */
+  .svc-block-header {
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+  }
   .svc-block-num { font-size: 44px; }
+  .svc-block-title { font-size: 24px; }
 
   /* Tier heading */
   .tier-title { font-size: clamp(24px, 6vw, 36px); }
