@@ -289,10 +289,11 @@
   .contact-intro        { grid-column: 1; grid-row: auto; }
   .contact-form-col     { grid-column: 1; grid-row: auto; }
   .contact-direct-links { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
-
-  /* Email stays full width; LinkedIn and read-the-work sit side by side */
-  .contact-direct-links .contact-direct:first-child { grid-column: 1 / -1; }
 }
+
+/* H1 line break — shown at 641–900px for balance */
+.contact-h1-br { display: none; }
+@media (min-width: 641px) and (max-width: 900px) { .contact-h1-br { display: block; } }
 
 /* ── 640px: tighten direct contact spacing; revert links to 1-col ── */
 @media (max-width: 640px) {
@@ -301,7 +302,6 @@
     padding-top: 20px;
   }
   .contact-direct-links { grid-template-columns: 1fr; }
-  .contact-direct-links .contact-direct:first-child { grid-column: auto; }
 }
 
 /* ── 640px: form padding + font-size fixes ───────────────────────
@@ -370,7 +370,7 @@
 
     <!-- LEFT: intro -->
     <div class="contact-intro">
-      <h1 class="contact-h1">Tell me what you're working on.</h1>
+      <h1 class="contact-h1">Tell me what you're<br class="contact-h1-br"> working on.</h1>
       <p class="contact-opener">Fill in the form below or email me directly at <a href="mailto:hello@jasminaziz.co.uk" style="color:var(--cobalt);text-decoration:none;">hello@jasminaziz.co.uk</a>. I reply within two working days. If it looks like a good fit, we'll book a discovery call from there.</p>
       <p class="contact-opener-sub">You don't need to have it all worked out before you get in touch. A rough sense of what the organisation is dealing with is enough to start a conversation.</p>
     </div>
@@ -430,10 +430,6 @@
     <!-- LEFT row 2: direct contact links (below form on mobile) -->
     <div class="contact-direct-links">
       <div class="contact-direct" style="margin-top:0;">
-        <span class="contact-direct-label">Prefer email?</span>
-        <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
-      </div>
-      <div class="contact-direct">
         <span class="contact-direct-label">Connect on LinkedIn</span>
         <a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">linkedin.com/in/jasmin-r-aziz</a>
       </div>

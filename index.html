@@ -1014,18 +1014,15 @@ a.footer-wordmark:active { opacity: 0.85; }
   /* Stack pills: full-width on mobile */
   .stack-pill { width: 100%; }
 
-  /* ABOUT BRIDGE: 2-col → 1-col.
-     Portrait stacks below text. Left-aligned portrait. Size: 200px. */
+  /* ABOUT BRIDGE: keep 2-col at 768px, smaller portrait */
   .about-bridge-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr 160px;
+    gap: 40px;
   }
 
-  .about-portrait-wrap { justify-content: flex-start; }
-
   .about-portrait {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
   }
 
   /* PROOF CARDS: 2-col → 1-col stacked.
@@ -1132,6 +1129,14 @@ a.footer-wordmark:active { opacity: 0.85; }
 
   /* CTA grid: tighten gap between actions and "read the work first" */
   .cta-grid { gap: 20px; }
+
+  /* ABOUT BRIDGE: collapse to 1-col at 640px */
+  .about-bridge-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .about-portrait-wrap { justify-content: flex-start; }
+  .about-portrait { width: 200px; height: 200px; }
 
   /* Mobile-only line break — forces "Tell me" onto its own line */
   .mobile-br { display: block; }
