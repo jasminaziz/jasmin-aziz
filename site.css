@@ -33,7 +33,7 @@
   --ochre-pct: 8; /* @kind other */
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--cream);
