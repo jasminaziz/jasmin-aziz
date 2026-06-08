@@ -1121,6 +1121,8 @@ a.footer-wordmark:active { opacity: 0.85; }
 
   /* Mobile-only line break — forces "Tell me" onto its own line */
   .mobile-br { display: block; }
+  .mobile-amp { display: inline; }
+  .mobile-and { display: none; }
 }
 
 /* ── 480px — Footer + very small screen fixes ───────────────────── */
@@ -1191,6 +1193,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 
 /* Mobile-only line break — hidden by default, shown ≤640px */
 .mobile-br { display: none; }
+.mobile-amp { display: none; }
 
 /* =================================================================
    SCREEN-READER UTILITY
@@ -1332,7 +1335,7 @@ footer .footer-contact:focus-visible {
 <div class="wrap">
   <section class="hero">
 
-    <h1 class="hero-h1">Strategic marketing and&nbsp;communications for the work that matters.</h1>
+    <h1 class="hero-h1">Strategic&nbsp;marketing <span class="mobile-and">and</span><span class="mobile-amp">&amp;</span>&nbsp;communications for the work that matters.</h1>
 
     <!-- Full-width stack: lead + CTA, then diagnosis copy. -->
     <div class="hero-body">

@@ -333,8 +333,13 @@
   }
 }
 
+.mobile-amp { display: none; }
+
 /* ── 640px: anchor bar + type scale ────────────────────────────── */
 @media (max-width: 640px) {
+  .mobile-amp { display: inline; }
+  .mobile-and { display: none; }
+
   /* Anchor bar tracks 56px mobile nav */
   .anchor-bar { top: 56px; }
 
@@ -405,7 +410,7 @@
   <div class="svc-page-intro">
     <div class="svc-intro-grid">
       <div>
-        <h1 class="svc-page-h1">Strategic marketing and communications, delivered in the shape that fits.</h1>
+        <h1 class="svc-page-h1">Strategic&nbsp;marketing <span class="mobile-and">and</span><span class="mobile-amp">&amp;</span>&nbsp;communications, delivered in the shape that fits.</h1>
       </div>
       <div class="svc-intro-right">
         <p>Some organisations need a defined piece of work: a brand built, a campaign planned, a function audited and put back on course. Others need senior capacity inside the team for a period, or ongoing strategic input alongside the team they have.</p>
