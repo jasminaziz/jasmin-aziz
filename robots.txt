@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.jasminaziz.co.uk/sitemap.xml
