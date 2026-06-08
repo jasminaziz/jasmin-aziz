@@ -713,21 +713,22 @@ footer .footer-contact:focus-visible {
 /* ── 480px — Footer single-col + footer-bottom stack ───────────── */
 @media (max-width: 480px) {
 
-  /* Footer: 2-col → 1-col, centred */
+  /* Footer: 2-col → 1-col */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-    text-align: center;
   }
 
   .footer-grid > div:first-child { grid-column: auto; }
 
-  /* Centre block-level footer elements explicitly */
-  .footer-wordmark,
-  .footer-tagline,
-  .footer-col-label { text-align: center; }
+  /* Each column div becomes a flex column — centres all children reliably */
+  .footer-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  /* Remove default ul left-padding so list items centre correctly */
+  /* Remove default ul left-padding so list items sit centred */
   .footer-nav-list { padding-left: 0; }
 
   /* footer-bottom: row → column, centred */
