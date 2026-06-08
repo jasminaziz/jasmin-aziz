@@ -1081,6 +1081,10 @@ a.footer-wordmark:active { opacity: 0.85; }
 .mobile-br  { display: none; }
 .mobile-amp { display: none; }
 
+/* Desktop-only line breaks — hidden by default, shown ≥769px */
+.diag-br { display: none; }
+@media (min-width: 769px) { .diag-br { display: block; } }
+
 /* ── 640px — Mobile nav + spacing reductions ────────────────────── */
 @media (max-width: 640px) {
 
@@ -1354,7 +1358,7 @@ footer .footer-contact:focus-visible {
 <section class="who-section who-section--periwinkle">
   <div class="wrap">
     <div class="hero-diagnosis">
-      <p>A pattern shows up across values-led organisations. Activity is full. Output is steady. But the strategy underneath has thinned, or never quite got named, and the gap between what marketing and communications is producing and what the organisation actually needs is now visible from the outside.</p>
+      <p>A pattern shows up across values-led organisations. Activity is full. Output is steady.<br class="diag-br"> But the strategy underneath has thinned, or never quite got named, and the gap between what marketing and communications is producing and what the organisation actually needs is now visible from the outside.</p>
       <p>A new campaign doesn't close that gap. Neither does a new brand. What closes it is strategic work that can read the whole picture and sharpen what is already there.</p>
       <p class="hero-diagnosis-close">That's the work I do.</p>
     </div>
