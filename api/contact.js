@@ -13,7 +13,7 @@ const SERVICE_LABELS = {
   'ai-training': 'AI fluency training',
   'senior-comms-capacity': 'Senior comms capacity',
   advisory: 'Advisory',
-  'one-off-strategic-input': 'One-off strategic input',
+  'per-project': 'Per project',
   unsure: "I'm not sure yet",
 };
 
