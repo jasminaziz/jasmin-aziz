@@ -30,7 +30,7 @@
      --sv:     section vertical padding, 56px → 96px           */
   --gutter: clamp(20px, 5vw, 56px); /* @kind spacing */
   --sv:     clamp(56px, 9vw, 96px); /* @kind spacing */
-  --ochre-pct: 8; /* @kind other */
+  --ochre-pct: 12; /* @kind other */
 }
 
 html { scroll-behavior: smooth; overflow-x: clip; }
