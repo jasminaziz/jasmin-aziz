@@ -428,7 +428,7 @@
 
   .hero-grid { display: flex; flex-direction: column; gap: 20px; }
   .hero-portrait-wrap { order: -1; }
-  .hero-portrait { aspect-ratio: 3/2; }
+  .hero-portrait { aspect-ratio: 3/2; object-position: center; }
 
   .hero-body { padding-top: 8px; }
   .hero-lead { font-size: 1.125rem; margin-bottom: 28px; }
