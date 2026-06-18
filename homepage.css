@@ -126,9 +126,8 @@
    DIFF SECTION (What I do / How I work)
    2-col: copy | capability pill stack. ≤768px: 1-col.
    ================================================================= */
-/* ── ENQUIRY NUDGE (after diagnosis band) ── */
-/* 48px clears the ::after wave cap on .who-section before the pill. */
-.diag-nudge { padding: 48px 0 0; }
+/* ── ENQUIRY NUDGE (inside diagnosis band, below last sentence) ── */
+.diag-nudge { margin-top: 28px; }
 
 .diff-section { padding: calc(var(--sv) + 24px) 0; }
 
