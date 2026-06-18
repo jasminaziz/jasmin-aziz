@@ -142,6 +142,22 @@
   max-width: 640px;
 }
 
+/* Entry CTA — sits between intro and services, exit ramp for already-sold buyer */
+.svc-entry-cta {
+  padding: 28px 0 40px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.svc-entry-cta-text {
+  font-size: 17px;
+  line-height: 1.5;
+  flex: 1;
+  min-width: 240px;
+}
+
 /* Service block */
 .service-block {
   padding: 56px 0;
@@ -231,6 +247,12 @@
 
 /* Illustration drop-in slot — no footprint until populated. */
 .svc-illus-slot {}
+
+/* Audit is the front door — periwinkle top accent, "Start here" label */
+.service-block--entry {
+  border-top: 3px solid var(--periwinkle);
+  padding-top: 40px;
+}
 
 /* Service hairline rule */
 .svc-rule {
@@ -380,6 +402,9 @@
 
   /* How-it-starts aside padding */
   .how-process-aside { padding: 28px 20px !important; }
+
+  /* Entry CTA: stack vertically on mobile */
+  .svc-entry-cta { flex-direction: column; align-items: flex-start; gap: 20px; }
 
   /* Tighten gap: intro paragraph → Services title */
   .svc-page-intro { padding-bottom: 20px; }
@@ -538,7 +563,9 @@
     <a href="#campaign" class="anchor-link">Campaign</a>
     <a href="#content" class="anchor-link">Content</a>
     <a href="#ai-training" class="anchor-link">AI training</a>
-    <a href="#how-i-work" class="anchor-link">How I work</a>
+    <a href="#fractional" class="anchor-link">Fractional</a>
+    <a href="#advisory" class="anchor-link">Advisory</a>
+    <a href="#per-project" class="anchor-link">Per project</a>
     <a href="#how-it-starts" class="anchor-link">Process</a>
   </div>
 </div>
@@ -559,6 +586,14 @@
 </div>
 
 
+<!-- ENTRY CTA — exit ramp for the already-sold buyer -->
+<div class="wrap">
+  <div class="svc-entry-cta">
+    <p class="svc-entry-cta-text">Tell me what you're working on. You don't need to know which one yet.</p>
+    <a href="/contact" class="pill pill-cobalt">Get in touch →</a>
+  </div>
+</div>
+
 <!-- ── TIER 1: SERVICES ── -->
 <div class="wrap" id="services-tier">
   <div class="tier-head">
@@ -567,7 +602,8 @@
   <p class="tier-intro">Each can run on its own or sit inside a longer engagement. Pricing is scoped per project and arrives at proposal stage.</p>
 
   <!-- SERVICE 01: COMMUNICATIONS AUDIT -->
-  <section class="service-block" id="audit">
+  <section class="service-block service-block--entry" id="audit">
+    <span class="tier-label-line">Start here</span>
     <div class="svc-block-header">
       <div class="svc-block-num">01</div>
       <div>
@@ -711,7 +747,7 @@
 <section class="who-section" id="how-i-work" style="margin-top:48px;padding-top:32px;padding-bottom:40px;">
 <div class="wrap">
   <div class="tier-head" style="border-top:none;padding-top:0;">
-    <h2 class="section-head" style="font-size:clamp(1.75rem,4vw,2.25rem);">How I work</h2>
+    <h2 class="tier-title">How I work</h2>
   </div>
   <p class="tier-intro">Three engagement shapes. Any of the services above can be delivered inside one of them.</p>
 
@@ -762,9 +798,9 @@
 
 </section>
 
-<!-- PROCESS + START — merged closing section -->
-<div class="wrap">
-  <section class="how-section" id="how-it-starts">
+<!-- PROCESS + START — periwinkle closing beat -->
+<section class="who-section who-section--periwinkle" id="how-it-starts" style="scroll-margin-top:128px;">
+  <div class="wrap">
     <div class="how-process-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:96px;align-items:start;">
       <div>
         <h2 class="section-head" style="margin-bottom:32px;font-size:clamp(1.75rem,4vw,2.25rem);color:var(--periwinkle);">How an engagement starts</h2>
@@ -784,8 +820,8 @@
         </div>
       </aside>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 
