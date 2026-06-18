@@ -179,9 +179,14 @@
 .svc-block-body {
   display: grid;
   grid-template-columns: 1fr 240px;
-  gap: 64px;
+  column-gap: 64px;
+  row-gap: 24px;
   align-items: start;
 }
+
+/* Main copy column spans both sidebar rows so pull-quote + CTA stack
+   independently on the right without pushing the copy column down. */
+.svc-main-col { grid-row: 1 / -1; }
 
 .svc-main-copy {
   font-size: 16px;
@@ -222,7 +227,7 @@
 
 /* Pull-quote in sidebar: uses .pull-quote base from site.css.
    Tighter margin-bottom to sit comfortably above the CTA pill. */
-.svc-pull-quote { margin-bottom: 24px; }
+.svc-pull-quote { margin-bottom: 0; }
 
 /* Illustration drop-in slot — no footprint until populated. */
 .svc-illus-slot {}
@@ -312,12 +317,15 @@
 
   /* Page intro: already 1-col from 900px rule above */
 
-  /* Service block body: 1fr 240px → 1-col. CTA pill full-width. */
+  /* Service block body: 1fr 240px → 1-col.
+     Pull-quote reorders above copy; grid-row reset so order works. */
   .svc-block-body {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
-  .svc-sidebar-cta { padding-top: 0; }
+  .svc-pull-quote { order: 1; }
+  .svc-main-col   { order: 2; grid-row: auto; }
+  .svc-sidebar-cta { padding-top: 0; order: 3; }
   .svc-sidebar-cta .pill { width: 100%; justify-content: center; }
 
   /* Shape block header: 1fr 240px → 1-col. */
@@ -567,18 +575,18 @@
       </div>
     </div>
     <div class="svc-block-body">
-      <div>
+      <div class="svc-main-col">
         <p class="svc-main-copy">A strategic review of your marketing and communications function. Audiences, channels, content output across the team, brand consistency, capacity, and whether the strategy underneath the activity is doing real work. The audit finds the gap between what is being produced and what the organisation actually needs. You receive a written assessment and prioritised recommendations, ready to take to a board, a leadership team, or straight into a plan.</p>
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations that sense something isn't working but haven't been able to name it. Also a starting point before a longer engagement.</p>
         </div>
       </div>
+      <blockquote class="pull-quote svc-pull-quote">
+        <p>There is a gap between what you produce and what the organisation needs. I find it.</p>
+      </blockquote>
       <div class="svc-sidebar-cta">
         <div class="svc-illus-slot"></div>
-        <blockquote class="pull-quote svc-pull-quote">
-          <p>There is a gap between what you produce and what the organisation needs. I find it.</p>
-        </blockquote>
         <a href="/contact#audit" class="pill pill-cobalt">Discuss an audit →</a>
       </div>
     </div>
@@ -595,18 +603,18 @@
       </div>
     </div>
     <div class="svc-block-body">
-      <div>
+      <div class="svc-main-col">
         <p class="svc-main-copy">The strategic clarity work underneath a brand: what the organisation stands for, who it's for, how it talks about itself, and what makes it distinct. I lead the thinking, facilitate the workshops with your leadership team, develop the positioning framework and messaging architecture, and write the brief for any design or creative work that follows. Where an agency is needed for the visual identity, I manage that relationship and process.</p>
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations building a brand for the first time, repositioning after a period of drift, or redeveloping their mission, vision, and values.</p>
         </div>
       </div>
+      <blockquote class="pull-quote svc-pull-quote">
+        <p>I do the strategic thinking underneath the brand before any design begins.</p>
+      </blockquote>
       <div class="svc-sidebar-cta">
         <div class="svc-illus-slot"></div>
-        <blockquote class="pull-quote svc-pull-quote">
-          <p>I do the strategic thinking underneath the brand before any design begins.</p>
-        </blockquote>
         <a href="/contact#brand" class="pill pill-cobalt">Talk about brand →</a>
       </div>
     </div>
@@ -623,18 +631,18 @@
       </div>
     </div>
     <div class="svc-block-body">
-      <div>
+      <div class="svc-main-col">
         <p class="svc-main-copy">The strategic foundation for a marketing or communications campaign, internal or external. Whether it's a fundraising push, a public awareness moment, an advocacy campaign, an internal change programme, or an organisational launch, I develop the strategy that holds the campaign together: the audiences, the positioning, the channel approach, the messaging, and the phased plan your team executes against.</p>
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations with a significant campaign moment ahead and a team ready to deliver it, who need the strategic architecture in place first.</p>
         </div>
       </div>
+      <blockquote class="pull-quote svc-pull-quote">
+        <p>I develop the strategy that holds the campaign together.</p>
+      </blockquote>
       <div class="svc-sidebar-cta">
         <div class="svc-illus-slot"></div>
-        <blockquote class="pull-quote svc-pull-quote">
-          <p>I develop the strategy that holds the campaign together.</p>
-        </blockquote>
         <a href="/contact#campaign" class="pill pill-cobalt">Plan a campaign →</a>
       </div>
     </div>
@@ -651,18 +659,18 @@
       </div>
     </div>
     <div class="svc-block-body">
-      <div>
+      <div class="svc-main-col">
         <p class="svc-main-copy">A working system for producing and delivering content consistently. The editorial calendar. The role of each channel: social media, newsletter, web. Formats the team builds from, rather than starts from each time. The scheduling workflow. AI-assisted production that keeps quality consistent without doubling the workload. Most teams produce content reactively because the system for doing it any other way isn't there. This is that system.</p>
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Marketing and communications teams whose content output is inconsistent or reactive, who want a system the team can run without senior input at every step.</p>
         </div>
       </div>
+      <blockquote class="pull-quote svc-pull-quote">
+        <p>Most teams produce content reactively because the system isn't there. This is that system.</p>
+      </blockquote>
       <div class="svc-sidebar-cta">
         <div class="svc-illus-slot"></div>
-        <blockquote class="pull-quote svc-pull-quote">
-          <p>Most teams produce content reactively because the system isn't there. This is that system.</p>
-        </blockquote>
         <a href="/contact#content" class="pill pill-cobalt">Build a content system →</a>
       </div>
     </div>
@@ -679,18 +687,18 @@
       </div>
     </div>
     <div class="svc-block-body">
-      <div>
+      <div class="svc-main-col">
         <p class="svc-main-copy">Practical, hands-on training built around how your team actually works. The tools worth using and the ones to ignore. Prompting that produces consistent output, not lucky output. How to set up brand voice and context so the team isn't starting from scratch every time. Safe practice across data, accuracy, and approvals. How AI fits into how the team already produces, rather than running parallel to it. Not a theoretical overview, not a general introduction to AI.</p>
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Marketing and communications teams who have started using AI tools but haven't found a way to make them work consistently.</p>
         </div>
       </div>
+      <blockquote class="pull-quote svc-pull-quote">
+        <p>Prompting that turns lucky output into reliable output.</p>
+      </blockquote>
       <div class="svc-sidebar-cta">
         <div class="svc-illus-slot"></div>
-        <blockquote class="pull-quote svc-pull-quote">
-          <p>Prompting that turns lucky output into reliable output.</p>
-        </blockquote>
         <a href="/contact#ai-training" class="pill pill-cobalt">Book a training session →</a>
       </div>
     </div>
