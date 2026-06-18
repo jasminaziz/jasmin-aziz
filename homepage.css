@@ -51,13 +51,11 @@
   font-size: 1.125rem;
   line-height: 1.68;
   text-wrap: pretty;
-  opacity: 0.78;
 }
 
 .hero-diagnosis p + p { margin-top: 22px; }
 
 .hero-diagnosis-close {
-  opacity: 1 !important;
   margin-top: 24px !important;
 }
 
@@ -145,7 +143,7 @@
 .who-grid .section-head { font-size: 1.875rem; }
 
 .who-body p          { font-size: 1.0625rem; line-height: 1.68; text-wrap: pretty; }
-.who-body p + p      { margin-top: 24px; opacity: 0.68; }
+.who-body p + p      { margin-top: 24px; }
 
 /* =================================================================
    DIFF SECTION (What I do / How I work)
@@ -163,7 +161,7 @@
   align-items: start;
 }
 
-.diff-paras p        { font-size: 1.0625rem; line-height: 1.68; opacity: 0.76; text-wrap: pretty; }
+.diff-paras p        { font-size: 1.0625rem; line-height: 1.68; text-wrap: pretty; }
 .diff-paras p + p    { margin-top: 22px; }
 
 /* =================================================================
@@ -291,9 +289,8 @@
 
 .proof-card-cobalt h3,
 .proof-card-cobalt p       { color: var(--cream); }
-.proof-card-cobalt p       { opacity: 0.78; }
 .proof-card-periwinkle h3  { color: var(--cream); }
-.proof-card-periwinkle p   { color: var(--cream); opacity: 0.82; }
+.proof-card-periwinkle p   { color: var(--cream); }
 
 .card-link {
   display: inline-flex;
