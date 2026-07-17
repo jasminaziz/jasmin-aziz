@@ -30,32 +30,35 @@
 /* Page header — H1 over a single readable lead column */
 .ai-intro { padding: var(--sv) 0 0; }
 
-/* Opening spread — big H1 left, lead right (mirrors the Services intro).
-   Gives the page asymmetry and presence instead of a flat prose stack. */
-.ai-intro-grid {
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-  gap: 72px;
-  align-items: start;
-}
-
 .ai-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(38px, 6.5vw, 62px);
+  font-size: clamp(40px, 7vw, 64px);
   letter-spacing: -0.03em;
-  line-height: 1.0;
+  line-height: 1.02;
   color: var(--ink);
-  margin-bottom: 0;
+  margin-bottom: 28px;
   text-wrap: balance;
 }
 
+/* Masthead rule under the H1 — gives the opener a defined edge without
+   a second column (which left an awkward void beneath the heading). */
+.ai-intro-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0 0 32px;
+}
+
+.ai-lead { max-width: 720px; }
+
 .ai-lead p {
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.68;
   color: var(--ink);
   text-wrap: pretty;
 }
+
+.ai-lead p:first-child { font-size: 19.5px; line-height: 1.6; }
 
 .ai-lead p + p { margin-top: 18px; }
 
@@ -137,6 +140,10 @@
 .ai-training-intro { max-width: 720px; margin-top: 22px; }
 .ai-training-close { max-width: 720px; margin-top: 44px; }
 
+/* Suppress this band's descending wave so the seam into the periwinkle
+   closing band shows a single clean wave, not two overlapping ones. */
+.ai-training-band::after { content: none; }
+
 /* Closing band — periwinkle who-section, ochre CTA aside.
    Mirrors the Services page closing beat. */
 .ai-close-grid {
@@ -198,7 +205,6 @@
 
 /* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
 @media (max-width: 768px) {
-  .ai-intro-grid,
   .ai-grid,
   .ai-close-grid {
     grid-template-columns: 1fr;
@@ -226,6 +232,7 @@
 /* ── 640px: type scale ───────────────────────────────────────── */
 @media (max-width: 640px) {
   .ai-lead p { font-size: 16px; }
+  .ai-lead p:first-child { font-size: 17.5px; }
   .ai-body p { font-size: 16px; }
   .ai-room-num { font-size: 30px; }
   .ai-room-desc { font-size: 15.5px; }
@@ -273,13 +280,12 @@
 <!-- PAGE HEADER -->
 <div class="wrap">
   <div class="ai-intro">
-    <div class="ai-intro-grid">
-      <h1 class="ai-h1">AI, trust and communications</h1>
-      <div class="ai-lead">
-        <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
-        <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
-        <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
-      </div>
+    <h1 class="ai-h1">AI, trust and communications</h1>
+    <hr class="ai-intro-rule">
+    <div class="ai-lead">
+      <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
+      <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
+      <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
     </div>
   </div>
 </div>
@@ -294,16 +300,13 @@
       <div class="ai-body">
         <p>I work with chief executives, senior teams and trustees on adopting AI responsibly and being able to answer for it. That starts with finding where AI is already in use, including the tools nobody approved, because you can't govern what you haven't found. From there: a policy short enough that people actually read it, data matched to the sensitivity of whatever tool touches it, and a plan for AI-enabled reputational harm decided before you need it, not drafted mid-incident.</p>
         <p>Most AI governance is written for organisations with in-house counsel and a technical team. You probably have neither. So I build governance a non-specialist can run: one page rather than forty, a named owner rather than a committee, and a board that can see what's in use, who owns it, and what would happen if it failed.</p>
-        <blockquote class="pull-quote">
-          <p>A policy that lives in a shared drive and shapes no behaviour is governance theatre. Communication is what makes it real, and communication is my trade.</p>
-        </blockquote>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SECTION TWO · TRAINING — ochre band set-piece -->
-<section class="who-section">
+<section class="who-section ai-training-band">
   <div class="wrap">
     <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
     <div class="ai-body ai-training-intro">
