@@ -166,6 +166,21 @@
 .ai-close-aside {
   border-left: 3px solid var(--ochre);
   padding-left: 32px;
+  position: sticky;
+  top: 140px;
+}
+
+.ai-close-aside .label { margin-bottom: 18px; }
+
+/* CTA heading in the aside — mirrors the Services closing aside. */
+.ai-close-cta-head {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 24px;
 }
 
 .ai-close-smallprint {
@@ -203,6 +218,19 @@
   color: var(--ink-muted);
 }
 
+.ai-close-more {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
 /* =================================================================
    AI PAGE — MOBILE BREAKPOINTS
    ================================================================= */
@@ -229,6 +257,8 @@
     border-top: 3px solid var(--ochre);
     padding-left: 0;
     padding-top: 28px;
+    position: static;
+    top: auto;
   }
 
   .ai-close-aside .pill { width: 100%; justify-content: center; }
@@ -365,10 +395,13 @@
         </div>
       </div>
       <aside class="ai-close-aside">
-        <a href="/contact" class="pill pill-cobalt">Tell me what you're working on →</a>
+        <span class="label">Start here</span>
+        <h3 class="ai-close-cta-head">Tell me what you're working on.</h3>
+        <a href="/contact" class="pill pill-cobalt">Get in touch →</a>
         <div class="ai-close-smallprint">
           <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
           <span>Replies within two working days</span>
+          <a href="/about" class="ai-close-more">Or read more about how I work →</a>
         </div>
       </aside>
     </div>
