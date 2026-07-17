@@ -27,29 +27,36 @@
    section-head, who-section bands, nav, footer, tokens). Only the
    layout below is page-local — no new colours, no new type styles. */
 
-/* Page header — H1 over a single readable lead column */
-.ai-intro { padding: var(--sv) 0 0; }
+/* Page header — asymmetric spread: H1 + CTA left, lead right. The CTA
+   anchors the foot of the left column so there is no void beneath the
+   heading, and gives the opener a cobalt accent. */
+.ai-intro { padding: var(--sv) 0; }
+
+.ai-intro-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 72px;
+  align-items: stretch;
+}
+
+.ai-intro-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
 
 .ai-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(40px, 7vw, 64px);
+  font-size: clamp(40px, 6vw, 62px);
   letter-spacing: -0.03em;
   line-height: 1.02;
   color: var(--ink);
-  margin-bottom: 28px;
+  margin: 0;
   text-wrap: balance;
 }
-
-/* Masthead rule under the H1 — gives the opener a defined edge without
-   a second column (which left an awkward void beneath the heading). */
-.ai-intro-rule {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 0 0 32px;
-}
-
-.ai-lead { max-width: 720px; }
 
 .ai-lead p {
   font-size: 17px;
@@ -58,7 +65,7 @@
   text-wrap: pretty;
 }
 
-.ai-lead p:first-child { font-size: 19.5px; line-height: 1.6; }
+.ai-lead p:first-child { font-size: 18px; }
 
 .ai-lead p + p { margin-top: 18px; }
 
@@ -133,16 +140,13 @@
   text-wrap: pretty;
 }
 
-/* Training band — full-width heading + numbered rooms as a set-piece,
-   set in an ochre .who-section so it reads distinct from the governance
-   section above (breaks the back-to-back two-column monotony). */
+/* Training section — full-width heading + numbered rooms as a set-piece.
+   Kept on cream (not a tinted band) so it never sits against the
+   periwinkle closing band, which was smearing the wave at that seam.
+   The periwinkle band is now the only tinted band on the page. */
 .ai-training-head { font-size: clamp(28px, 3.5vw, 34px); max-width: 760px; }
 .ai-training-intro { max-width: 720px; margin-top: 22px; }
 .ai-training-close { max-width: 720px; margin-top: 44px; }
-
-/* Suppress this band's descending wave so the seam into the periwinkle
-   closing band shows a single clean wave, not two overlapping ones. */
-.ai-training-band::after { content: none; }
 
 /* Closing band — periwinkle who-section, ochre CTA aside.
    Mirrors the Services page closing beat. */
@@ -205,6 +209,7 @@
 
 /* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
 @media (max-width: 768px) {
+  .ai-intro-grid,
   .ai-grid,
   .ai-close-grid {
     grid-template-columns: 1fr;
@@ -280,12 +285,16 @@
 <!-- PAGE HEADER -->
 <div class="wrap">
   <div class="ai-intro">
-    <h1 class="ai-h1">AI, trust and communications</h1>
-    <hr class="ai-intro-rule">
-    <div class="ai-lead">
-      <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
-      <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
-      <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+    <div class="ai-intro-grid">
+      <div class="ai-intro-head">
+        <h1 class="ai-h1">AI, trust and communications</h1>
+        <a href="/contact" class="pill pill-cobalt">Get in touch →</a>
+      </div>
+      <div class="ai-lead">
+        <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
+        <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
+        <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -305,8 +314,8 @@
   </div>
 </section>
 
-<!-- SECTION TWO · TRAINING — ochre band set-piece -->
-<section class="who-section ai-training-band">
+<!-- SECTION TWO · TRAINING — full-width set-piece on cream -->
+<section class="ai-section ai-training">
   <div class="wrap">
     <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
     <div class="ai-body ai-training-intro">
