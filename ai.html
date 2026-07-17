@@ -28,29 +28,36 @@
    layout below is page-local — no new colours, no new type styles. */
 
 /* Page header — H1 over a single readable lead column */
-.ai-intro { padding: var(--sv) 0 32px; }
+.ai-intro { padding: var(--sv) 0 0; }
+
+/* Opening spread — big H1 left, lead right (mirrors the Services intro).
+   Gives the page asymmetry and presence instead of a flat prose stack. */
+.ai-intro-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 72px;
+  align-items: start;
+}
 
 .ai-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(30px, 6vw, 52px);
+  font-size: clamp(38px, 6.5vw, 62px);
   letter-spacing: -0.03em;
   line-height: 1.0;
   color: var(--ink);
-  margin-bottom: 28px;
+  margin-bottom: 0;
   text-wrap: balance;
 }
 
-.ai-lead { max-width: 660px; }
-
 .ai-lead p {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.65;
   color: var(--ink);
   text-wrap: pretty;
 }
 
-.ai-lead p + p { margin-top: 20px; }
+.ai-lead p + p { margin-top: 18px; }
 
 /* Body sections — heading left (1fr) / body right (2fr), the site's
    native section pattern (About credibility, Services how-grid). */
@@ -83,13 +90,27 @@
 .ai-rooms {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 64px;
-  margin-top: 24px;
+  column-gap: 48px;
+  row-gap: 44px;
+  margin-top: 40px;
 }
 
 .ai-room {
   border-top: 1px solid var(--rule);
-  padding: 28px 0 4px;
+  padding-top: 24px;
+}
+
+/* Periwinkle numeral — the numbering device the Services blocks use,
+   scaled for the grid. Ties the rooms into the site's visual language. */
+.ai-room-num {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--periwinkle);
+  display: block;
+  margin-bottom: 14px;
 }
 
 .ai-room-label {
@@ -109,8 +130,12 @@
   text-wrap: pretty;
 }
 
-/* Section close — aligns under the body column via empty left cell. */
-.ai-grid--close { margin-top: 48px; }
+/* Training band — full-width heading + numbered rooms as a set-piece,
+   set in an ochre .who-section so it reads distinct from the governance
+   section above (breaks the back-to-back two-column monotony). */
+.ai-training-head { font-size: clamp(28px, 3.5vw, 34px); max-width: 760px; }
+.ai-training-intro { max-width: 720px; margin-top: 22px; }
+.ai-training-close { max-width: 720px; margin-top: 44px; }
 
 /* Closing band — periwinkle who-section, ochre CTA aside.
    Mirrors the Services page closing beat. */
@@ -173,6 +198,7 @@
 
 /* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
 @media (max-width: 768px) {
+  .ai-intro-grid,
   .ai-grid,
   .ai-close-grid {
     grid-template-columns: 1fr;
@@ -182,11 +208,10 @@
   .ai-rooms {
     grid-template-columns: 1fr;
     column-gap: 0;
+    row-gap: 32px;
   }
 
-  .ai-room { padding: 24px 0 4px; }
-
-  .ai-grid--close { margin-top: 32px; }
+  .ai-room { padding-top: 22px; }
 
   .ai-close-aside {
     border-left: none;
@@ -202,6 +227,7 @@
 @media (max-width: 640px) {
   .ai-lead p { font-size: 16px; }
   .ai-body p { font-size: 16px; }
+  .ai-room-num { font-size: 30px; }
   .ai-room-desc { font-size: 15.5px; }
 }
 </style>
@@ -247,11 +273,13 @@
 <!-- PAGE HEADER -->
 <div class="wrap">
   <div class="ai-intro">
-    <h1 class="ai-h1">AI, trust and communications</h1>
-    <div class="ai-lead">
-      <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
-      <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
-      <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+    <div class="ai-intro-grid">
+      <h1 class="ai-h1">AI, trust and communications</h1>
+      <div class="ai-lead">
+        <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
+        <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
+        <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -274,45 +302,41 @@
   </div>
 </section>
 
-<!-- SECTION TWO · TRAINING -->
-<section class="ai-section">
+<!-- SECTION TWO · TRAINING — ochre band set-piece -->
+<section class="who-section">
   <div class="wrap">
-    <div class="ai-grid">
-      <div>
-        <h2 class="section-head">Training built on your team's real work</h2>
-      </div>
-      <div class="ai-body">
-        <p>I train senior teams, whole staff, and boards. Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
-      </div>
+    <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
+    <div class="ai-body ai-training-intro">
+      <p>I train senior teams, whole staff, and boards. Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
     </div>
 
-    <!-- The four rooms — 2×2 editorial grid -->
+    <!-- The four rooms — numbered 2×2 set -->
     <div class="ai-rooms">
       <div class="ai-room">
+        <span class="ai-room-num">01</span>
         <h3 class="ai-room-label">For leadership teams.</h3>
         <p class="ai-room-desc">The working understanding leaders need to set direction and govern adoption, without touching a tutorial. A board version closes with a written summary for trustees.</p>
       </div>
       <div class="ai-room">
+        <span class="ai-room-num">02</span>
         <h3 class="ai-room-label">For the whole team.</h3>
         <p class="ai-room-desc">From a hands-on half day to a full day together. Prompts written as professional briefs on real tasks, tested live, and every person's setup configured before they leave.</p>
       </div>
       <div class="ai-room">
+        <span class="ai-room-num">03</span>
         <h3 class="ai-room-label">For chief executives, one to one.</h3>
         <p class="ai-room-desc">A short private series for leaders who would rather build fluency on their own work, confidentially, than in a room with their team.</p>
       </div>
       <div class="ai-room">
+        <span class="ai-room-num">04</span>
         <h3 class="ai-room-label">For the people who are accountable.</h3>
         <p class="ai-room-desc">Data handling matched to real sensitivity, the difficult scenarios argued out in the room, and a drafted AI-use policy in your hands at the end.</p>
       </div>
     </div>
 
-    <!-- Section close -->
-    <div class="ai-grid ai-grid--close">
-      <div></div>
-      <div class="ai-body">
-        <p>Every session ends with something configured, something committed to, and a check-in already in the diary. Sceptics are welcome in every room; most of their objections are right. The exact shape of a session gets worked out at proposal stage, once I've seen the diagnostic.</p>
-        <p>Recent rooms include a leadership session for a multi-site community organisation and a private fluency series with its chief executive.</p>
-      </div>
+    <div class="ai-body ai-training-close">
+      <p>Every session ends with something configured, something committed to, and a check-in already in the diary. Sceptics are welcome in every room; most of their objections are right. The exact shape of a session gets worked out at proposal stage, once I've seen the diagnostic.</p>
+      <p>Recent rooms include a leadership session for a multi-site community organisation and a private fluency series with its chief executive.</p>
     </div>
   </div>
 </section>
