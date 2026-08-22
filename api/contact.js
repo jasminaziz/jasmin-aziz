@@ -10,12 +10,24 @@ const SERVICE_LABELS = {
   brand: 'Brand and positioning',
   campaign: 'Campaign strategy and plan',
   content: 'Content and editorial system',
-  'ai-training': 'AI fluency training',
-  'senior-comms-capacity': 'Senior comms capacity',
+  ai: 'AI, trust and communications',
+  fractional: 'Fractional senior capacity',
   advisory: 'Advisory',
   'per-project': 'Per project',
   unsure: "I'm not sure yet",
 };
+
+// Escape user-supplied values before they are placed into an HTML email body.
+// Without this, a crafted name/organisation/message is delivered as live markup
+// into the notification email. The plain-text body needs no escaping.
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 // Shared HTML wrapper — cream background, cobalt accent bar, branded footer
 function brandedHtml(bodyHtml) {
@@ -60,7 +72,13 @@ function brandedHtml(bodyHtml) {
 </html>`;
 }
 
-function notificationHtml({ name, organisation, email, serviceLabel, message }) {
+function notificationHtml(fields) {
+  const name = escapeHtml(fields.name);
+  const organisation = escapeHtml(fields.organisation);
+  const email = escapeHtml(fields.email);
+  const serviceLabel = escapeHtml(fields.serviceLabel);
+  const message = escapeHtml(fields.message);
+
   const messageBlock = message
     ? `<tr><td style="padding-top:20px;">
         <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#706D68;">Message</p>

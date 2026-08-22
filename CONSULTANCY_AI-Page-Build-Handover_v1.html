@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Page — Claude Code Build Handover v1 — Jasmin Aziz</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --text: #2d2926;
+    --head: #1a1714;
+    --accent: #b5763a;
+    --line: #e0dbd4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+    padding: 48px 24px 96px;
+  }
+  main { max-width: 780px; margin: 0 auto; }
+  h1 { color: var(--head); font-weight: 600; font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+  h2 {
+    color: var(--head); font-weight: 600; font-size: 21px;
+    margin: 48px 0 4px; padding-top: 20px; border-top: 1px solid var(--line);
+  }
+  h3 { color: var(--head); font-weight: 600; font-size: 17px; margin: 28px 0 6px; }
+  p { margin: 0 0 14px; }
+  .sub { color: #6b645c; font-size: 15px; margin: 0 0 4px; }
+  .label {
+    text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px;
+    font-weight: 600; color: var(--accent); margin: 0 0 10px;
+  }
+  .callout {
+    background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    padding: 18px 20px; margin: 20px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .copyblock {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 24px 28px; margin: 16px 0;
+  }
+  .copyblock .cb-label {
+    text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px;
+    font-weight: 600; color: var(--accent); margin: 0 0 12px;
+  }
+  .copyblock h4 { color: var(--head); font-weight: 600; font-size: 16px; margin: 18px 0 6px; }
+  .copyblock h4:first-of-type { margin-top: 0; }
+  .copyblock p { margin: 0 0 12px; }
+  .copyblock p:last-child { margin-bottom: 0; }
+  .copyblock .room-label { font-weight: 600; color: var(--head); }
+  .prompt {
+    background: #2d2926; color: #f5f1ea; border-radius: 6px;
+    padding: 24px 28px; margin: 16px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13.5px; line-height: 1.75; white-space: pre-wrap;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px; background: #f1ede7; padding: 1px 5px; border-radius: 3px;
+  }
+  .guard li { margin-bottom: 10px; }
+  .dod {
+    font-size: 14px; background: #fff; border: 1px solid var(--line);
+    padding: 10px 14px; margin: 10px 0 0;
+  }
+  .dod strong { color: var(--head); }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14.5px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--head); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .foot { font-size: 13px; color: #8a837a; margin-top: 56px; }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="label">Build Handover · v1 · for Claude Code, preview mode</p>
+  <h1>The AI page: build handover for jasminaziz-site</h1>
+  <p class="sub">Signed-off copy, navigation plan, and the opening prompt. Claude Code leads on design.</p>
+
+  <div class="callout">
+    <p><strong>How to use this document.</strong> Open a Claude Code session in the <code>jasminaziz-site</code> project and paste the opening prompt from section 1. The copy in section 2 is final and goes into the build verbatim. The navigation plan in section 3 covers every link change across the site. Sections 4 and 5 are the guard rails and the definition of done.</p>
+    <p>The division of labour is deliberate: <strong>this document owns the words. Claude Code owns the design.</strong> No visual treatment is specified here beyond brand tokens, because the design decision belongs with the codebase. Claude Code reads the existing pages and components, proposes how this page should look so it sits naturally in the wider site, and shows it in preview before anything merges.</p>
+  </div>
+
+  <h2>1 · The opening prompt for Claude Code</h2>
+  <p>Paste this as the first message of the session. The project runs a plan-mode gate, so Claude Code will plan before touching anything; approve the plan once the design proposal makes sense.</p>
+
+  <div class="prompt">Read this handover in full before planning anything: it contains the final copy, the navigation plan, the guard rails, and the definition of done for a new page on this site.
+
+We are adding one new page to jasminaziz.co.uk: "AI, trust and communications", at /ai, nav label "AI". The copy is signed off and goes in verbatim from section 2 of the handover. Do not rewrite, tighten, or "improve" any sentence of it.
+
+You lead on design. Before building, study the existing pages and components: layout patterns, type scale, spacing rhythm, how Services structures its offer blocks, how section headings and pull-out text are treated, how the contact CTA appears elsewhere. Then propose a design for this page that a visitor would read as native to the site, and tell me where you are deliberately reusing existing components versus introducing anything new. Introduce as little new as possible. Where the copy implies structure (two main sections, four training rooms, one pull-out line, one CTA), fit that structure to the site's existing visual language rather than inventing a new one.
+
+Constraints: consultancy brand tokens only (cobalt #2D35C9, cream #FAF8F4, periwinkle #7B7FD4, ochre #C99A2C, ink #14110D, Source Serif 4 + Plus Jakarta Sans, Chillax 700 for the wordmark only). Never forest green. Grain texture only if the existing pages carry it. The homepage hero does not change in any way. No pricing appears anywhere. Meet the accessibility and contrast standard the existing pages meet, and check the page on mobile widths.
+
+Work on a preview branch. Build the page, then make the navigation changes from section 3 of the handover (header, footer, homepage "What I do" route, the Services item 05 replacement, and the one About sentence). Push the branch and give me the Vercel preview URL. Nothing merges to main until I have reviewed the preview and said so.</div>
+
+  <h2>2 · The page copy, final</h2>
+  <p>Verbatim into the build. Structure markers (H1, section, room) describe hierarchy, not visual treatment.</p>
+
+  <div class="copyblock">
+    <p class="cb-label">Page header</p>
+    <h4>H1</h4>
+    <p>AI, trust and communications</p>
+    <h4>Lead</h4>
+    <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Across the sector, adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, you run on trust, and there's no technical team to hand the problem to.</p>
+    <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs in the work and where it doesn't. That judgement is what I do.</p>
+    <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+  </div>
+
+  <div class="copyblock">
+    <p class="cb-label">Section one · Governance</p>
+    <h4>H2</h4>
+    <p>AI your organisation can answer for</p>
+    <h4>Body</h4>
+    <p>I work with chief executives, senior teams and trustees on adopting AI responsibly and being able to answer for it. That starts with finding where AI is already in use, including the tools nobody approved, because you can't govern what you haven't found. From there: a policy short enough that people actually read it, data matched to the sensitivity of whatever tool touches it, and a plan for AI-enabled reputational harm decided before you need it, not drafted mid-incident.</p>
+    <p>Most AI governance is written for organisations with in-house counsel and a technical team. You probably have neither. So I build governance a non-specialist can run: one page rather than forty, a named owner rather than a committee, and a board that can see what's in use, who owns it, and what would happen if it failed.</p>
+    <h4>Pull-out line</h4>
+    <p>A policy that lives in a shared drive and shapes no behaviour is governance theatre. Communication is what makes it real, and communication is my trade.</p>
+  </div>
+
+  <div class="copyblock">
+    <p class="cb-label">Section two · Training</p>
+    <h4>H2</h4>
+    <p>Training built on your team's real work</p>
+    <h4>Body</h4>
+    <p>I train senior teams, whole staff, and boards. Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
+    <h4>The four rooms</h4>
+    <p><span class="room-label">For leadership teams.</span> The working understanding leaders need to set direction and govern adoption, without touching a tutorial. A board version closes with a written summary for trustees.</p>
+    <p><span class="room-label">For the whole team.</span> From a hands-on half day to a full day together. Prompts written as professional briefs on real tasks, tested live, and every person's setup configured before they leave.</p>
+    <p><span class="room-label">For chief executives, one to one.</span> A short private series for leaders who would rather build fluency on their own work, confidentially, than in a room with their team.</p>
+    <p><span class="room-label">For the people who are accountable.</span> Data handling matched to real sensitivity, the difficult scenarios argued out in the room, and a drafted AI-use policy in your hands at the end.</p>
+    <h4>Section close</h4>
+    <p>Every session ends with something configured, something committed to, and a check-in already in the diary. Sceptics are welcome in every room; most of their objections are right. The exact shape of a session gets worked out at proposal stage, once I've seen the diagnostic.</p>
+    <p>Recent rooms include a leadership session for a multi-site community organisation and a private fluency series with its chief executive.</p>
+  </div>
+
+  <div class="copyblock">
+    <p class="cb-label">Closing CTA</p>
+    <h4>H2</h4>
+    <p>Where to start</p>
+    <h4>Body</h4>
+    <p>If you don't know which of these you need, that's normal. The discovery call exists to work it out: 30 to 45 minutes, no preparation needed. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage.</p>
+    <h4>Button</h4>
+    <p>Tell me what you're working on → /contact</p>
+    <h4>Small print</h4>
+    <p>hello@jasminaziz.co.uk · Replies within two working days</p>
+  </div>
+
+  <div class="copyblock">
+    <p class="cb-label">Metadata</p>
+    <p><strong>URL:</strong> /ai &nbsp;·&nbsp; <strong>Nav label:</strong> AI &nbsp;·&nbsp; <strong>Title tag:</strong> AI, Trust and Communications — Jasmin Aziz</p>
+    <p><strong>Meta description:</strong> AI governance and training for values-led organisations. Adoption your board can stand behind, and training built on your team's real work.</p>
+  </div>
+
+  <h2>3 · Navigation and linking plan</h2>
+  <p>Five changes wire the page into the site. All ship in the same preview branch as the page itself.</p>
+
+  <table>
+    <tr><th>Surface</th><th>Change</th></tr>
+    <tr><td>Header nav</td><td>Add <strong>AI</strong> between Services and About. Order becomes: Home · Services · AI · About · Contact.</td></tr>
+    <tr><td>Footer</td><td>Add the AI page link wherever the footer lists pages, matching the header order.</td></tr>
+    <tr><td>Homepage "What I do"</td><td>The list gains a route to /ai. Follow the existing pattern for how that list links to Services; the hero above it does not change.</td></tr>
+    <tr><td>Services page</td><td>Item 05 stops being a detailed line item. Replacement copy below. The other four services do not change.</td></tr>
+    <tr><td>About page</td><td>One sentence added, placement below. Nothing else on the page changes.</td></tr>
+  </table>
+
+  <h3>Services item 05 replacement copy</h3>
+  <div class="copyblock">
+    <p><strong>05 · AI, trust and communications</strong></p>
+    <p>AI has grown beyond a line on this list. Governance for the organisations accountable for it, and training for the teams using it, now have a page of their own.</p>
+    <p><em>Link:</em> See the AI work → /ai</p>
+  </div>
+
+  <h3>About page sentence</h3>
+  <div class="copyblock">
+    <p>Much of my career has run through UK Jewish communal life, alongside charity, heritage and cultural work.</p>
+    <p><em>Placement:</em> in the background section, following the sentence about eight years across charity, heritage and third sector roles. It extends that thought; it does not start a new paragraph.</p>
+  </div>
+
+  <h2>4 · Guard rails, do not breach</h2>
+  <ul class="guard">
+    <li><strong>The copy is final.</strong> Claude Code proposes design, never wording. Any copy problem found during build comes back to Jasmin, it does not get fixed in the editor.</li>
+    <li><strong>No pricing anywhere.</strong> The public line is in the CTA copy and goes no further.</li>
+    <li><strong>No employer named.</strong> The proof line's anonymisation ("a multi-site community organisation", "its chief executive") is locked wording.</li>
+    <li><strong>Sector-neutral.</strong> The About sentence is the only Jewish communal reference added anywhere in this build. The AI page itself stays sector-neutral.</li>
+    <li><strong>The homepage hero is untouchable.</strong> Headline, subline, layout, all of it.</li>
+    <li><strong>Named training products stay off the site.</strong> The four rooms are the public framing; product names surface at proposal stage.</li>
+    <li><strong>Preview only.</strong> Nothing merges to main without Jasmin's review of the preview URL.</li>
+  </ul>
+
+  <h2>5 · Definition of done</h2>
+  <div class="dod"><strong>The build is done when:</strong> the page is live on a Vercel preview URL with all five navigation changes in place; the design reads as native next to the existing pages; the page meets the accessibility and contrast standard the rest of the site meets; it holds up at mobile widths; every new link resolves; and Jasmin has reviewed the preview and approved the merge.</div>
+  <p style="margin-top:14px;">After merge, one verification pass on production: read the whole site through as a cold visitor for register consistency, and confirm the new links resolve on the live domain.</p>
+
+  <p class="foot">CONSULTANCY_AI-Page-Build-Handover · v1 · 17 July 2026 · copy supersedes CONSULTANCY_AI-Page-Draft_v1.html · Steps 3, 4 and 5 of the site catch-up plan are folded into this build</p>
+
+</main>
+</body>
+</html>

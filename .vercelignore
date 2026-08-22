@@ -1,0 +1,7 @@
+# Project and reference files.
+# Tracked in the repo so CLAUDE.md points at files that exist,
+# but never uploaded to a deployment and never served.
+*.md
+reports/
+tasks/
+CONSULTANCY_AI-Page-Build-Handover_v1.html

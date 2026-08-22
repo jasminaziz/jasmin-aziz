@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI, Trust and Communications — Jasmin Aziz</title>
+<meta name="description" content="AI governance and training for values-led organisations. Adoption your board can stand behind, and training built on your team's real work.">
+<link rel="canonical" href="https://www.jasminaziz.co.uk/ai">
+<meta property="og:title" content="AI, Trust and Communications — Jasmin Aziz">
+<meta property="og:description" content="AI governance and training for values-led organisations. Adoption your board can stand behind, and training built on your team's real work.">
+<meta property="og:image" content="https://jasminaziz.co.uk/assets/og-image.png">
+<meta property="og:url" content="https://www.jasminaziz.co.uk/ai">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI, Trust and Communications — Jasmin Aziz">
+<meta name="twitter:description" content="AI governance and training for values-led organisations. Adoption your board can stand behind, and training built on your team's real work.">
+<meta name="twitter:image" content="https://jasminaziz.co.uk/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+/* ── AI PAGE — page-specific styles ──
+   Reuses site.css shared components (wrap, label, pill, pull-quote,
+   section-head, who-section bands, nav, footer, tokens). Only the
+   layout below is page-local — no new colours, no new type styles. */
+
+/* Page header — asymmetric spread: H1 + CTA left, lead right. The CTA
+   anchors the foot of the left column so there is no void beneath the
+   heading, and gives the opener a cobalt accent. */
+.ai-intro { padding: var(--sv) 0; }
+
+.ai-intro-grid {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 80px;
+  align-items: stretch;
+}
+
+.ai-intro-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.ai-h1 {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 52px);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.ai-lead p {
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.ai-lead p:first-child { font-size: 18px; }
+
+.ai-lead p + p { margin-top: 18px; }
+
+/* Body sections — heading left (1fr) / body right (2fr), the site's
+   native section pattern (About credibility, Services how-grid). */
+.ai-section { padding: var(--sv) 0; }
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.ai-grid .section-head { font-size: 30px; }
+
+.ai-body p {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.ai-body p + p { margin-top: 24px; }
+
+/* Pull-quote sits inside the body column, after the governance copy.
+   Uses the .pull-quote base from site.css; add top spacing here. */
+.ai-body .pull-quote { margin-top: 32px; }
+
+/* The four rooms — 2×2 editorial grid, hairline-ruled.
+   The one new layout on this page; built from existing tokens. */
+.ai-rooms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  row-gap: 44px;
+  margin-top: 40px;
+}
+
+.ai-room {
+  border-top: 1px solid var(--rule);
+  padding-top: 24px;
+}
+
+/* Periwinkle numeral — the numbering device the Services blocks use,
+   scaled for the grid. Ties the rooms into the site's visual language. */
+.ai-room-num {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--periwinkle);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.ai-room-label {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.ai-room-desc {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* Training section — full-width heading + numbered rooms as a set-piece.
+   Kept on cream (not a tinted band) so it never sits against the
+   periwinkle closing band, which was smearing the wave at that seam.
+   The periwinkle band is now the only tinted band on the page. */
+.ai-training-head { font-size: clamp(28px, 3.5vw, 34px); max-width: 760px; }
+.ai-training-intro { max-width: 720px; margin-top: 22px; }
+.ai-training-close { max-width: 720px; margin-top: 44px; }
+
+/* Closing band — periwinkle who-section, ochre CTA aside.
+   Mirrors the Services page closing beat. */
+.ai-close-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
+.ai-close-head {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--periwinkle);
+  margin-bottom: 28px;
+}
+
+.ai-close-aside {
+  border-left: 3px solid var(--ochre);
+  padding-left: 32px;
+  position: sticky;
+  top: 140px;
+}
+
+.ai-close-aside .label { margin-bottom: 18px; }
+
+/* CTA heading in the aside — mirrors the Services closing aside. */
+.ai-close-cta-head {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.ai-close-smallprint {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ai-close-smallprint a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 150ms ease;
+}
+
+.ai-close-smallprint a:hover,
+.ai-close-smallprint a:active { color: var(--cobalt); }
+
+.ai-close-more {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* =================================================================
+   AI PAGE — MOBILE BREAKPOINTS
+   ================================================================= */
+
+/* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
+@media (max-width: 768px) {
+  .ai-intro-grid,
+  .ai-grid,
+  .ai-close-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ai-rooms {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 32px;
+  }
+
+  .ai-room { padding-top: 22px; }
+
+  .ai-close-aside {
+    position: static;
+    top: auto;
+  }
+
+  .ai-close-aside .pill { width: 100%; justify-content: center; }
+}
+
+/* ── 640px: type scale ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ai-lead p { font-size: 16px; }
+  .ai-lead p:first-child { font-size: 17.5px; }
+  .ai-body p { font-size: 16px; }
+  .ai-room-num { font-size: 30px; }
+  .ai-room-desc { font-size: 15.5px; }
+}
+</style>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Primary">
+  <a href="/" class="wordmark">Jasmin Aziz</a>
+  <ul class="nav-list">
+    <li><a href="/services">Services</a></li>
+    <li><a href="/ai" class="active">AI</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</nav>
+<nav class="nav-drawer" id="nav-drawer" aria-hidden="true" aria-label="Mobile">
+  <ul class="nav-drawer-list">
+    <li><a href="/services">Services</a></li>
+    <li><a href="/ai">AI</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main-content" tabindex="-1">
+
+<!-- PAGE HEADER -->
+<div class="wrap">
+  <div class="ai-intro">
+    <div class="ai-intro-grid">
+      <div class="ai-intro-head">
+        <h1 class="ai-h1">AI, trust and communications</h1>
+        <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
+      </div>
+      <div class="ai-lead">
+        <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Adoption moves at the speed of a free trial and governance hasn't kept up. For values-led organisations the stakes run higher than most: you hold sensitive data by definition, run on trust, and have no technical team to hand the problem to.</p>
+        <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs and where it doesn't. That judgement is what I do.</p>
+        <p>I use these tools every working day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION ONE · GOVERNANCE — beige band (separated from the periwinkle
+     closing band by the cream training section, so no waves collide) -->
+<section class="who-section">
+  <div class="wrap">
+    <div class="ai-grid">
+      <div>
+        <h2 class="section-head">AI governance</h2>
+      </div>
+      <div class="ai-body">
+        <p>I work with chief executives, senior teams and trustees on adopting AI responsibly and being able to answer for it. That starts with finding where AI is already in use, including the tools nobody approved, because you can't govern what you haven't found. From there: a policy short enough that people actually read it, data matched to the sensitivity of the tool, and a plan for AI-enabled reputational harm decided before you need it, not drafted mid-incident.</p>
+        <p>Most AI governance is written for organisations with in-house counsel and a technical team. You probably have neither. So I build governance a non-specialist can run: one page rather than forty, a named owner rather than a committee, and a board that can see what's in use and what would happen if it failed.</p>
+        <blockquote class="pull-quote">
+          <p>Fluency, not fear, decides which way this goes.</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION TWO · TRAINING — full-width set-piece on cream -->
+<section class="ai-section ai-training">
+  <div class="wrap">
+    <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
+    <div class="ai-body ai-training-intro">
+      <p>Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
+    </div>
+
+    <!-- The four rooms — numbered 2×2 set -->
+    <div class="ai-rooms">
+      <div class="ai-room">
+        <span class="ai-room-num">01</span>
+        <h3 class="ai-room-label">For leadership teams.</h3>
+        <p class="ai-room-desc">The working understanding leaders need to set direction and govern adoption, without touching a tutorial. A board version closes with a written summary for trustees.</p>
+      </div>
+      <div class="ai-room">
+        <span class="ai-room-num">02</span>
+        <h3 class="ai-room-label">For the whole team.</h3>
+        <p class="ai-room-desc">From a hands-on half day to a full day together. Prompts written as professional briefs on real tasks, tested live, and every person's setup configured before they leave.</p>
+      </div>
+      <div class="ai-room">
+        <span class="ai-room-num">03</span>
+        <h3 class="ai-room-label">For chief executives, one to one.</h3>
+        <p class="ai-room-desc">A short private series for leaders who would rather build fluency on their own work, confidentially, than in a room with their team.</p>
+      </div>
+      <div class="ai-room">
+        <span class="ai-room-num">04</span>
+        <h3 class="ai-room-label">For the people who are accountable.</h3>
+        <p class="ai-room-desc">Data handling matched to real sensitivity, the difficult scenarios argued out in the room, and a drafted AI-use policy in your hands at the end.</p>
+      </div>
+    </div>
+
+    <div class="ai-body ai-training-close">
+      <p>Every session ends with something configured, something committed to, and a check-in already in the diary. Sceptics are welcome in every room; most of their objections are right. The exact shape of a session gets worked out at proposal stage, once I've seen the diagnostic.</p>
+      <p>Recent rooms include a leadership session for a multi-site community organisation and private fluency work with its senior leadership.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA — periwinkle band -->
+<section class="who-section who-section--periwinkle" style="scroll-margin-top:128px;">
+  <div class="wrap">
+    <div class="ai-close-grid">
+      <div>
+        <h2 class="section-head ai-close-head">Where to start</h2>
+        <div class="ai-body">
+          <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes, no preparation needed. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage.</p>
+        </div>
+      </div>
+      <aside class="ai-close-aside">
+        <span class="label">Start here</span>
+        <h3 class="ai-close-cta-head">Tell me what you're working on.</h3>
+        <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
+        <div class="ai-close-smallprint">
+          <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
+          <a href="/about" class="ai-close-more">Or read more about how I work →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-wordmark">Jasmin Aziz</a>
+        <span class="footer-tagline">Strategic comms, AI built in.</span>
+        <a href="mailto:hello@jasminaziz.co.uk" class="footer-contact">hello@jasminaziz.co.uk</a>
+      </div>
+      <div>
+        <span class="footer-col-label">Navigation</span>
+        <ul class="footer-nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/ai">AI</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-label">Elsewhere</span>
+        <ul class="footer-nav-list">
+          <li><a href="https://www.theeditai.co.uk/" target="_blank" rel="noopener">The Edit AI ↗&#xFE0E;<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://jasminaziz.substack.com" target="_blank" rel="noopener">Substack ↗&#xFE0E;<span class="sr-only"> (opens in new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jasmin-r-aziz/" target="_blank" rel="noopener">LinkedIn ↗&#xFE0E;<span class="sr-only"> (opens in new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-meta">© 2026 Jasmin Aziz</span>
+      <div class="footer-legal">
+        <a href="/legal#privacy" class="footer-legal-link">Privacy</a>
+        <a href="/legal#cookies" class="footer-legal-link">Cookies</a>
+        <a href="/legal#terms" class="footer-legal-link">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top-btn" class="scroll-top-btn" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M10 15V5M5 10l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<script src="nav.js"></script>
+<script src="scroll-top.js"></script>
+</body>
+</html>
