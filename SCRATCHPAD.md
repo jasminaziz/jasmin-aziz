@@ -1,5 +1,66 @@
 # Jasmin Aziz Site — Scratchpad
 
+## Session — 2026-08-22 (AI page shipped, GA4 removed, security fixes)
+
+### Branch status
+- **main** (`871b53f`) — production, live. Carries everything below.
+- **services-descent** (`697e723`) — the ONLY remaining branch. Still unmerged,
+  still pending a separate assessment. The AI page no longer depends on it.
+- `ai-page`, `ai-launch-preview`, `remove-ga4`, `exposure-fix` — all merged or
+  redundant, deleted local and remote.
+- Backup tags kept: `backup/ai-page-prerebase` (pushed), `backup/main-preflight`.
+
+### What happened
+Merged as one merge commit after review. Six workstreams:
+
+1. **AI page shipped.** `ai-page` rebased off `services-descent` onto `main`
+   (one conflict, the Services anchor bar — kept main's "How I work", applied
+   only the `AI training` → `AI` label change). Services item 05 redone against
+   main's services.html. No services-descent code leaked across.
+2. **GA4 removed site-wide**, nothing installed in its place. Legal privacy and
+   cookie prose rewritten to match; last-updated bumped to August 2026.
+3. **Copy sign-off applied** to Home ("What I do" sentence, About-me recency
+   paragraph placed ahead of the About pointer), About (Background recency
+   sentence — the June cut was NOT reinstated), Services (intro recency
+   paragraph), AI page (pull-quote "Fluency, not fear, decides which way this
+   goes." + proof line).
+4. **Wiring completed.** The stranded "AI fluency training" set resolved across
+   six places. Contact option → `ai`; `senior-comms-capacity` → `fractional`,
+   which fixed a pre-existing broken anchor. All eight `/contact#…` anchors now
+   preselect (verified live).
+5. **Deploy hygiene.** Project files recovered from stash and committed;
+   `.vercelignore` added; `tweaks-panel.jsx` and `image-slot.js` deleted. Eleven
+   previously-or-potentially-exposed paths now 404 on production.
+6. **Security.** `escapeHtml` in api/contact.js (verified end-to-end with an
+   injection payload), CSP added, X-Frame-Options → DENY.
+
+### Design decisions
+- AI page H1 reduced to `clamp(36px, 6vw, 52px)` so About's 56px stays the
+  largest H1 on the site; intro grid gap 72px → 80px to match the Services
+  recipe; two dead CSS rules removed; the ochre closing accent stays a LEFT
+  border on mobile, matching Services.
+- The closing band is now hand-rolled three times (services, ai, homepage).
+  Extraction into site.css was deliberately deferred rather than refactor a
+  settled page without visual verification. **This is the next design debt.**
+
+### Outstanding
+- [ ] `services-descent` — assess and decide merge or abandon
+- [ ] Contact form honeypot + rate limiting (June security audit, only findings
+      still open besides headers now done)
+- [ ] Stranger audit, still live: fractional definition sits ~1,800 words into
+      Services; Fractional shape block has no "Right for" component; Campaign
+      copy names deliverables not outcomes. NOTE: the audit's proposed fix for
+      the fractional problem was to extend the homepage hero lead — ruled out,
+      the hero does not change. Surface the existing definition earlier instead.
+- [ ] Closing-band component extraction (see Design decisions)
+- [ ] `llms.txt` Services line still describes the old five-service shape
+- [ ] `favicon.png` is referenced in every page head but does not exist (404)
+
+### Next step
+Decide on `services-descent`. Everything else on the site is shipped and verified.
+
+---
+
 ## Session — 2026-07-17/18 (AI page build)
 
 ### Branch status

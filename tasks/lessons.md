@@ -330,3 +330,63 @@ permission wall (likely macOS TCC/Full Disk Access), not an absent-file situatio
 substitute assumed content or silently skip; flag it plainly to Jasmin so she can fix the
 permission (or grant it) for next session, and note in any wrap summary that global memory
 writes did not happen.
+
+## Vercel preview URLs are SSO-protected — external fetches verify nothing (2026-08-22)
+Fetching a preview URL with curl returned HTTP 200 and a page containing zero
+`gtag` hits, which looked like a clean verification. It was a Vercel SSO login
+page. Deployment Protection 302s unauthenticated requests to
+`vercel.com/sso-api`, so every page returns identical ~477kb of Vercel HTML.
+Fix: before trusting any preview fetch, check for the redirect —
+`curl -sI <url> | grep -i location` — and if it points at `sso-api`, say the
+check could not be run rather than reporting its result. Verify at source level
+instead and hand Jasmin a review checklist. Production (post-merge) is public
+and can be checked normally.
+
+## `.vercelignore` does apply to Git-based deploys (2026-08-22)
+The docs do not state this either way. Verified empirically after merge: all
+eleven excluded paths returned 404 on production. Safe to rely on for keeping
+project files out of a static deploy. Note it matches by pattern only — it will
+not catch a `.jsx`/`.js` dev file unless named, so deleting dead files is a
+separate action from adding the ignore rule.
+
+## This repo had NO deploy-exclusion mechanism (2026-08-22)
+Before this session, `STATUS.md`, `CLAUDE (1).md`, `jasminaziz-design-spec (1).md`,
+`tweaks-panel.jsx` and `image-slot.js` were all live and crawlable on production
+(HTTP 200), with robots.txt allowing all. Committing `reports/site-security-*.md`
+would have published a security audit of the site. Fix: `.vercelignore` covering
+`*.md`, `reports/`, `tasks/` and the handover `.html`. Always check what a static
+repo actually serves before committing reference material into it.
+
+## Contact form option values are a two-file contract (2026-08-22)
+`/contact#<value>` preselects via `preselectFromHash()` in contact.html, and
+`SERVICE_LABELS` in `api/contact.js` maps the same values to the enquiry-email
+label. Renaming an option requires changing both. Renaming only the form meant
+the notification email would have printed the raw value ("ai") instead of the
+label — caught by running the handler with a mocked `fetch` rather than by
+reading the diff. Also found `#fractional` had never matched an option
+(`senior-comms-capacity`), so that CTA silently failed to preselect since launch.
+Fix: after any option change, grep both files and re-run the anchor/option
+cross-check.
+
+## Fontshare CSP: font files come from a different host than the stylesheet (2026-08-22)
+The June security audit's draft CSP listed `api.fontshare.com` under `font-src`.
+That is the *stylesheet* host; the `@font-face` rules point at
+`cdn.fontshare.com`. Shipping the draft as written would have blocked Chillax
+sitewide — the wordmark and every heading. Fix: fetch the font CSS and read the
+actual `src:` URLs before writing any `font-src`. Verified post-deploy with
+`document.fonts.check()`.
+
+## Blank screenshots mean the Browser pane is hidden, not a layout bug (2026-08-22)
+Screenshots came back as empty cream while the DOM clearly held content. The
+cause was the Browser pane being hidden, which pauses painting; `computer` then
+times out with that message. Fix: don't diagnose layout from blank screenshots —
+use `javascript_tool` DOM queries (getBoundingClientRect, getComputedStyle,
+document.fonts) which stay reliable, and only reach for screenshots when the
+pane is confirmed visible.
+
+## Report-writing subagents: the 600s stall did NOT recur (2026-08-22)
+The site-design-check agent was asked to write a report to a scratchpad path
+*and* return its full findings in the final message. It completed in ~4 minutes
+with no stall. The belt-and-braces instruction ("write the file AND return the
+critique in your final message") appears to be the reliable pattern — better
+than instructing it not to write a file at all.
