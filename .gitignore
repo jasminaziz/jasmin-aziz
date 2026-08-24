@@ -7,8 +7,11 @@ design-download.tar.gz
 # Full design system source — reference only, not deployed
 jasmin-aziz-design-system/
 
-# Claude project files
-.claude/
+# Claude project files — settings stay local, CLAUDE.md is tracked so the
+# project context survives a clone. Keep commercially sensitive strategy OUT
+# of it: this repo is public. Strategy lives in ~/AI Work/memory/.
+.claude/*
+!.claude/CLAUDE.md
 
 # Local font files — fonts are loaded from CDN (Google Fonts + Fontshare)
 Fonts/
