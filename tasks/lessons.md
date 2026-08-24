@@ -390,3 +390,50 @@ The site-design-check agent was asked to write a report to a scratchpad path
 with no stall. The belt-and-braces instruction ("write the file AND return the
 critique in your final message") appears to be the reliable pattern — better
 than instructing it not to write a file at all.
+
+## Vercel preview SSO recurred — a 200 is not verification (2026-08-24)
+The 2026-08-22 lesson above repeated exactly. Both preview URLs for
+`preview/buyer-definition` returned **HTTP 200 with ~478KB of Vercel login
+page**. A status-code check reads as a clean pass. Only a body check catches it.
+The working test, used this session:
+```
+grep -qi "vercel.com/sso\|Authentication Required\|_vercel/sso" page.html
+```
+Rule: never report a URL as verified on status code alone. Grep the body for a
+string that only the real page contains — a known heading, the `<title>`, the
+specific copy you changed. Applies to production too, not just previews.
+
+## Correcting a shared sentence must not force an unrelated decision (2026-08-24)
+Two of the three "eight years" instances had the number and the sector wording
+in the same sentence. I first wrote that fixing the number "forces" the
+sector decision — it does not. Change the token you were asked to change and
+leave the rest byte-identical, then say the other decision is still open.
+When an edit could pre-empt a decision that is Jasmin's, make the smaller edit.
+
+## `npx vercel ls` triggers an interactive OAuth login (2026-08-24)
+Expected a read-only list. The CLI found no credentials and started a device
+login flow, which completed — the machine now holds Vercel CLI credentials it
+did not have at session start. Treat any `npx vercel` invocation as potentially
+state-changing on first use in a session, and say so before running it.
+
+## Hard-coded career-year counts drift silently (2026-08-24)
+"Eight years" was written in the initial commit on 2026-06-06, was accurate
+then, and went stale by one year across fourteen months and three agent audits
+— none of which check facts about Jasmin, only code and copy quality. Any
+self-updating claim (years of experience, number of clients, "most recently")
+needs a revalidation note in the project CLAUDE.md, or it inherits forever.
+
+## Ask when a short instruction does not parse (2026-08-24)
+"Commit Unmean." matched nothing in the repo or her project list, and the tree
+was already clean. One plausible reading was "push to main" — the exact action
+she had fenced off. Asking cost one turn. Guessing risked an unreviewed
+production deploy. When a terse instruction is ambiguous AND one reading is
+outward-facing, always ask.
+
+## Instruction-layer files re-narrow the site even after the site is fixed (2026-08-24)
+`.claude/CLAUDE.md` and `.impeccable.md` both defined the audience as "charity
+and purpose-led organisations". Left alone, every future copy pass would have
+walked back any widening. Fixing them was the highest-compounding item in the
+whole plan and cost two paragraphs in files that never deploy. When positioning
+changes, audit the agent instructions before the site copy — and note that
+`.claude/` is gitignored, so changes there are local-only and unbacked-up.

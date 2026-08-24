@@ -1,5 +1,82 @@
 # Jasmin Aziz Site — Scratchpad
 
+## Session — 2026-08-24 (buyer definition widened, year corrected)
+
+### Branch status
+- **main** (`5843f50`) — production, live, carries both commits below.
+- **preview/buyer-definition** — same commit, fast-forwarded into main.
+  Now redundant but kept; Tier 2 copy work would continue here.
+- **services-descent** — still unmerged, now flagged as a TRAP. See below.
+
+### What happened
+Full inventory of every place a sector is named or implied across the repo,
+each instance classified CREDENTIAL (proof she has done the work — keep) or
+GATE (present-tense scoping that costs non-charity buyers), plus structural
+vs cosmetic and a cost-of-delay ordering. Plan delivered, then two commits
+shipped from it.
+
+- `e276dc3` — career length eight → nine in `about.html:7`, `about.html:476`,
+  `llms.txt:10`. Number only; sector wording in those same sentences left
+  byte-identical so the About meta-description question stayed open.
+- `5843f50` — Tier 0, docs only. `.claude/CLAUDE.md` and `.impeccable.md`
+  Users blocks rewritten to the widened buyer definition, plus a CREDENTIAL vs
+  GATE rule so future sessions cannot silently re-narrow. `services-descent`
+  merge warning added. Stranger audit marked superseded in part.
+
+Both verified live on production by fetching page bodies (not status codes).
+
+### Findings worth keeping
+- **No structural sector debt anywhere.** No route, slug, redirect, form field,
+  content model, CMS or analytics event encodes a sector. Every instance is a
+  string in a file. The contact form has no organisation-type constraint.
+- **"values-led" is the dominant term (14), not "charity" (11).** It is a
+  partial gate — it does not exclude mutuals, housing associations, membership
+  bodies, NHS trusts or most of HE.
+- **The hardest gate is not a sector noun.** `ai.html:321` — "Most AI
+  governance is written for organisations with in-house counsel and a technical
+  team. You probably have neither." FS, healthcare, law and HE have both.
+- **The Services page body is already almost entirely neutral.** Its gate lives
+  in invisible JSON-LD: the FAQPage "Who do you work with?" answer at
+  `services.html:420`.
+- **Worst placement on the site:** `api/contact.js:121` and `:201` tell every
+  enquirer The Edit AI is "my resource for AI fluency in the charity sector" —
+  in the auto-reply they receive after making contact.
+
+### services-descent is a trap, not just unmerged
+Merging as-is (a) deletes `ai.html` entirely and (b) re-narrows
+`index.html:153` to "across hospitality, fundraising, early years, wellness,
+events, and cultural programming, inside charity, heritage, and third-sector
+organisations" — narrower than what is live. Rebase onto main and take only
+the four services moves. Never fast-forward the whole branch.
+
+### Outstanding
+- **Open question, not yet ruled on:** `about.html:7` meta description —
+  credential words ("Nine years across charity, heritage, and the third
+  sector") sitting on a gate surface, read in SERPs before anyone reaches the
+  page. Genuinely two-sided.
+- **Tier 1:** `api/contact.js:121`/`:201` charity-sector string — blocked on
+  whether The Edit AI stays charity-scoped under its own repositioning. Legal
+  and Contact OG descriptions (lowest-risk place to test a neutral register).
+- **Tier 2, all under copy embargo:** `services.html:420` FAQPage answer;
+  `index.html:32` and `:51` Person JSON-LD; `index.html:153` ("What I do");
+  `index.html:135`; `about.html:436`; the shared OG string last, after the body
+  copy settles.
+- **Tier 3, strategy not copy:** `ai.html:303` and `:321`. Re-scope on
+  resourcing rather than sector, or leave narrow. Decide before writing.
+- **Leave alone (recommended):** `knowsAbout` array, `llms.txt:10`,
+  `about.html:448` fact strip, `about.html:475–477`, `index.html:195–196`,
+  `services.html:550`, `ai.html:364`.
+- **Unshipped from the plan:** a revalidation trigger for the career-year
+  count. It went stale for fourteen months across three agent audits with
+  nothing to catch it.
+- `.claude/CLAUDE.md` is gitignored, so the Users rewrite, the CREDENTIAL/GATE
+  rule and the services-descent warning exist only on this machine.
+
+### Next step
+Jasmin's call on the About meta description and on The Edit AI's scope, since
+both block Tier 1. Tier 2 needs copy signed off block by block.
+
+
 ## Session — 2026-08-22 (AI page shipped, GA4 removed, security fixes)
 
 ### Branch status
