@@ -1,4 +1,16 @@
 # Site Stranger Audit — jasminaziz.co.uk
+
+> **SUPERSEDED IN PART — 2026-08-24.** This audit was run against the previous
+> buyer definition ("charity and purpose-led organisations"). That definition was
+> widened on 2026-08-24 to any organisation holding sensitive data and answerable
+> to a board. Findings that turn on audience qualification are no longer valid as
+> written — in particular the homepage five-second-test finding, which recommends
+> adding audience qualification to the hero lead. That recommendation now points
+> the wrong way, and the hero is out of scope regardless. Findings that do not
+> turn on sector (the fractional definition sitting ~1,800 words into Services,
+> the missing "Right for" on the Fractional shape block, Campaign copy naming
+> deliverables rather than outcomes) still stand. Re-read with that filter.
+
 **Date:** 2026-06-15
 **Agent:** site-stranger (Claude Sonnet 4.6)
 **URL audited:** https://jasminaziz.co.uk
