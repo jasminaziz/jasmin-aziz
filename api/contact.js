@@ -117,7 +117,7 @@ function autoReplyHtml(name) {
     <p style="margin:0 0 20px;">In the meantime, you might enjoy
       <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">reading my Substack newsletter</a>
       or
-      <a href="https://www.theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">exploring The Edit AI</a>,
+      <a href="https://theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">exploring The Edit AI</a>,
       my resource for AI fluency in the charity sector.</p>
     <p style="margin:0 0 32px;">And if we&rsquo;re not already connected,
       <a href="https://www.linkedin.com/in/jasmin-r-aziz/" style="color:#2D35C9;text-decoration:none;">let&rsquo;s connect on LinkedIn</a>.</p>
@@ -198,7 +198,7 @@ module.exports = async function handler(req, res) {
       from: 'Jasmin Aziz <hello@jasminaziz.co.uk>',
       to: [em],
       subject: 'Thanks for getting in touch \u2014 Jasmin Aziz',
-      text: `Thank you for getting in touch.\n\nI've received your message and will reply within two working days. If it looks like a good fit, we'll book a discovery call from there.\n\nIn the meantime, you might enjoy reading my Substack newsletter (https://jasminaziz.substack.com) or exploring The Edit AI (https://www.theeditai.co.uk), my resource for AI fluency in the charity sector.\n\nAnd if we're not already connected, let's connect on LinkedIn (https://www.linkedin.com/in/jasmin-r-aziz/).\n\nJasmin`,
+      text: `Thank you for getting in touch.\n\nI've received your message and will reply within two working days. If it looks like a good fit, we'll book a discovery call from there.\n\nIn the meantime, you might enjoy reading my Substack newsletter (https://jasminaziz.substack.com) or exploring The Edit AI (https://theeditai.co.uk), my resource for AI fluency in the charity sector.\n\nAnd if we're not already connected, let's connect on LinkedIn (https://www.linkedin.com/in/jasmin-r-aziz/).\n\nJasmin`,
       html: autoReplyHtml(n),
     });
   } catch (err) {
