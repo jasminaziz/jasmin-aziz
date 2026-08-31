@@ -14,9 +14,8 @@ error. Do not close this again without grepping the tree for `values-led`.
 | D14 | `index.html:7` meta description, plus Person `:32` and hasOccupation `:51` JSON-LD. All "values-led organisations". Machine-readable, re-crawl lead time. | 3 strings | OPEN |
 | D15 | `index.html:135` "A pattern shows up across values-led organisations" and `index.html:153` "inside charity, heritage, cultural and community organisations". The latter was called the sharpest visible gate on the site. | homepage body | OPEN |
 | D16 | `about.html:436` About lede, "working with values-led organisations". Present-tense scoping of the practice. | 1 string | OPEN |
-| D17 | `services.html:420` FAQPage "Who do you work with?" Called the highest-value single string on the site: it is the machine-readable answer to the buyer's literal question and what an LLM quotes. | 1 string | OPEN |
-| D18 | `llms.txt:3` and `:9`. `:9` now describes the AI page as "for values-led organisations", which is factually wrong since D4 re-scoped that page today. | 2 lines | OPEN |
-| D19 | Em dashes in four `services.html` JSON-LD description strings (`:412`, `:420`, `:473`, `:489`). Prose, not delimiters, so unlike the llms.txt separator ruled on in D10. | 4 strings | OPEN |
+| D18 | `llms.txt:3` only. `:9` fixed 2026-08-31. `:3` is the site-level summary and mirrors `index.html:7`, so it must move with D14 or the two disagree. | 1 line | OPEN, folded into D14 |
+| D19 | Em dashes in `services.html` JSON-LD prose: `:412`, `:473`, `:489`. `:420` cleared by D17. Prose, not delimiters, so unlike the llms.txt separator ruled on in D10. | 3 strings | OPEN |
 
 **Live inconsistency to resolve:** `ai.html` is now scoped by resourcing while the
 homepage, About lede and Services FAQ still scope by sector. `llms.txt:9`
@@ -40,6 +39,7 @@ contradicts the live AI page outright.
 - **D5 block 04 — DONE 2026-08-31.** "a drafted AI-use policy in your hands at the end" became "your own AI-use policy decided, not just drafted, before you leave", so the paid room is not selling what the free template already gives.
 - **D12 DPIA — DONE 2026-08-31.** Used once, on `ai.html`, glossed in place rather than hyperlinked: "That's the data protection assessment your organisation carries out, not something a tool can do for you." Keeps the reader on the page and lands The Edit's locked rule.
 - **D6 About meta description — DECIDED 2026-08-31, no edit.** Left as credential. "Nine years across charity, heritage, and the third sector" stays in the snippet: it is the only sector claim on a surface search actually reads, and charity/heritage are the terms this site can realistically win. Accepted cost: a reader outside those sectors sees three sector nouns before reaching the page.
+- **D17 FAQPage "Who do you work with?" — DONE 2026-08-31.** Now answers by problem shape first ("Organisations that hold sensitive data and answer to a board"), with the sector placed as past-facing credential ("My experience is in") rather than present-tense scoping ("primarily in"). Names no sector it cannot evidence: a draft listing membership bodies, housing associations and professional services was cut, because widening where the site names who she has worked for is unsupported. Also cleared an em dash, closing part of D19.
 - **D8 push — DONE 2026-08-31.** All five commits pushed to main and deployed. Verified on production by fetching page bodies: proof card, both About strings and `llms.txt` all serving the new copy; zero old-framing hits across all six pages; zero residual `www.theeditai` links.
 - **D2 fifth string — DECIDED 2026-08-31.** `api/contact.js:121` and `:201` are in scope. Draft all five together.
 - **The Edit's scope — RESOLVED 2026-08-31.** Repositioned to charity, cultural and heritage comms, launched 30 Aug 2026. This unblocks the `api/contact.js` string held since 2026-08-24.
