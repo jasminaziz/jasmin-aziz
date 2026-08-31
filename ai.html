@@ -71,6 +71,12 @@
 
 .ai-lead p + p { margin-top: 18px; }
 
+/* Intro body — the opening argument continues below the header grid at a
+   readable measure. These paragraphs lived inside .ai-lead until 2026-08-31,
+   where four of them against a two-item header column left a ~600px void
+   beside the H1. The header keeps one true lead; the rest reads full width. */
+.ai-intro-body { max-width: 760px; margin-top: 48px; }
+
 /* Body sections — heading left (1fr) / body right (2fr), the site's
    native section pattern (About credibility, Services how-grid). */
 .ai-section { padding: var(--sv) 0; }
@@ -255,6 +261,7 @@
 
 /* ── 640px: type scale ───────────────────────────────────────── */
 @media (max-width: 640px) {
+  .ai-intro-body { margin-top: 28px; }
   .ai-lead p { font-size: 16px; }
   .ai-lead p:first-child { font-size: 17.5px; }
   .ai-body p { font-size: 16px; }
@@ -303,10 +310,12 @@
       </div>
       <div class="ai-lead">
         <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Adoption moves at the speed of a free trial and governance hasn't kept up. If you hold sensitive data and answer to a board, the stakes run higher than most: you run on trust, and there's no technical team to hand the problem to.</p>
-        <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs and where it doesn't. That judgement is what I do.</p>
-        <p>I use these tools every day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
-        <p>That judgement is public. I built and run <a href="https://theeditai.co.uk/" style="color:var(--cobalt);text-decoration:none;" target="_blank" rel="noopener">The Edit<span class="sr-only"> (opens in new tab)</span></a>, an AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks on where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. That's the data protection assessment your organisation carries out, not something a tool can do for you. The ones that didn't hold up are published too.</p>
       </div>
+    </div>
+    <div class="ai-body ai-intro-body">
+      <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs and where it doesn't. That judgement is what I do.</p>
+      <p>I use these tools every day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
+      <p>That judgement is public. I built and run <a href="https://theeditai.co.uk/" style="color:var(--cobalt);text-decoration:none;" target="_blank" rel="noopener">The Edit<span class="sr-only"> (opens in new tab)</span></a>, an AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks on where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. That's the data protection assessment your organisation carries out, not something a tool can do for you. The ones that didn't hold up are published too.</p>
     </div>
   </div>
 </div>
