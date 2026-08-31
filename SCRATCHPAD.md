@@ -1,5 +1,53 @@
 # Jasmin Aziz Site — Scratchpad
 
+# ═══ OPEN REGISTER — decisions pending and edits queued ═══
+Opened 2026-08-31. Keep current. Move items down as they resolve.
+
+## Decisions pending (Jasmin's call)
+
+| # | Decision | Blocks | Status |
+|---|---|---|---|
+| D2 | Is `api/contact.js:121` / `:201` in scope as the fifth Edit string? It fails twice: old personal-resource framing, and "charity" alone. First thing every enquirer reads. | E2 | OPEN |
+| D3 | Does `ai.html` come into scope: The Edit in the body as proof of judgement, plus the free policy template as a second CTA? | E3 | OPEN, argued for |
+| D4 | **Tier 3.** `ai.html:303` and `:321` re-scope on *resourcing* rather than sector, or stay narrow. Carried from 2026-08-24. | E3 cleanest form | OPEN |
+| D5 | Training block 04 says "a drafted AI-use policy in your hands at the end". Once the template is free, "drafted" is the wrong word for the paid deliverable. | E4 | OPEN, new |
+| D6 | `about.html:7` meta description: credential words on a gate surface. Carried from 2026-08-24. | — | OPEN |
+| D7 | Replace "trustee" with "board" at `ai.html:320`, `ai.html:343`, `services.html:723`? Only charities have trustees; housing associations, universities, NHS trusts and foundations all have boards. Less gating at no cost. | E5 | OPEN, new |
+| D8 | Push `b0c3665` (Job Two URLs) to main? | — | OPEN |
+
+## Decided
+
+- **D1 proof card framing — DECIDED 2026-08-31.** Reframe from "evidence of how I work" to the builder's claim, grounded as "the resource I wanted to hand them", not "the directory the sector uses". The latter is an adoption claim with nothing behind it.
+- **`about.html:478` is a whole/part fix, not a reframe.** Only three of the four Job One strings need the full reframe. That paragraph is about Jasmin's own discipline and My Stack is the right referent; the error is labelling the link "The Edit AI" and then describing one tab.
+- **The Edit's scope — RESOLVED 2026-08-31.** Repositioned to charity, cultural and heritage comms, launched 30 Aug 2026. This unblocks the `api/contact.js` string held since 2026-08-24.
+
+## Edits queued
+
+| # | Edit | Gate |
+|---|---|---|
+| E1 | Job One: four Edit strings (`index.html:214`, `about.html:478`, `about.html:516`, `llms.txt:16`) | drafts written, approved by Jasmin |
+| E2 | Fifth string, `api/contact.js` x2 | D2 |
+| E3 | `ai.html` body: The Edit as proof, template as second CTA | D3, D4 |
+| E4 | Block 04 "drafted" wording | D5 |
+| E5 | "trustee" to "board" x3 | D7 |
+| E6 | Add to `.claude/CLAUDE.md`: the no-counts rule, and The Edit check-date dependency once `ai.html` cites it | after E3 |
+
+## Locked constraints for all Edit copy
+
+- "**been through the checks**", never "passed the checks". It is what lets the published failures stay honest.
+- "**board**", never "trustee", as the one-sentence test. Live copy says board three times; `trustee_note` is a schema field name, never a rendered label.
+- **"I recommend, you decide."** The Edit does recommend: "The directory is what I'd recommend for your organisation." What it refuses is deciding for you: "the final call is yours." Copy denying either half contradicts the live site.
+- **No counts.** "23 tools", "11 in my stack", "2 judged not recommended", "106 updates" are all live Sheet data, public the moment a row changes, with no deploy and no review. This site is static and cannot track them. Describe the practice, not the tally: "every tool carries the date it was last checked" survives, "23 tools" does not.
+- **Audience phrase, never shortened to "charity" alone.** Nominal "charities, cultural organisations and heritage" where the audience is the object; adjectival "charity, cultural and heritage" where it modifies a noun.
+- **CREDENTIAL not GATE.** "The AI tools directory I built for charity, cultural and heritage comms teams" names who she has served and is credential. "I help charities govern AI" is a gate.
+- **No em dashes. UK English. Contractions.**
+
+## Card labels, verified live 2026-08-31
+`THE CHECKS` / `Where your data sits` / `Trains on your content` / `Nonprofit pricing` / `Honest verdict` / `Say this to a trustee` / `Checked <date>` / `IN MY STACK` / `JUDGED, NOT RECOMMENDED`. The trustee note renders publicly and models the DPIA rule: "We ran a DPIA before switching on HubSpot's AI features..." A DPIA is something an organisation does, never something a tool has.
+
+# ═══ END REGISTER ═══
+
+
 ## Session — 2026-08-24 (buyer definition widened, year corrected)
 
 ### Branch status
