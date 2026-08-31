@@ -7,18 +7,20 @@ Opened 2026-08-31. Keep current. Move items down as they resolve.
 
 | # | Decision | Blocks | Status |
 |---|---|---|---|
-| D3 | Does `ai.html` come into scope: The Edit in the body as proof of judgement, plus the free policy template as a second CTA? | E3 | OPEN, argued for |
-| D4 | **Tier 3.** `ai.html:303` and `:321` re-scope on *resourcing* rather than sector, or stay narrow. Carried from 2026-08-24. | E3 cleanest form | OPEN |
-| D5 | Training block 04 says "a drafted AI-use policy in your hands at the end". Once the template is free, "drafted" is the wrong word for the paid deliverable. | E4 | OPEN, new |
 | D6 | `about.html:7` meta description: credential words on a gate surface. Carried from 2026-08-24. | — | OPEN |
-| D7 | Replace "trustee" with "board" at `ai.html:320`, `ai.html:343`, `services.html:723`? Only charities have trustees; housing associations, universities, NHS trusts and foundations all have boards. Less gating at no cost. | E5 | OPEN, new |
-| D9 | **Naming.** The property calls itself **The Edit** (title and og:title). This site says "The Edit AI" in 13 places and "The Edit" in 2 (`llms.txt:16`, `legal.html:474`). Align, and if so which way? | a 13-place edit | OPEN, new |
-| D10 | `llms.txt` uses " — " as its structural separator on every line. The no-em-dash rule is a voice rule; this is file formatting. Keep, or convert the whole file? | E1 | OPEN, new |
 
 ## Decided
 
 - **D1 proof card framing — DECIDED 2026-08-31.** Reframe from "evidence of how I work" to the builder's claim, grounded as "the resource I wanted to hand them", not "the directory the sector uses". The latter is an adoption claim with nothing behind it.
 - **`about.html:478` is a whole/part fix, not a reframe.** Only three of the four Job One strings need the full reframe. That paragraph is about Jasmin's own discipline and My Stack is the right referent; the error is labelling the link "The Edit AI" and then describing one tab.
+- **D7 trustee to board — DONE 2026-08-31.** All three. Two were deletions, not swaps: a literal swap gave "A board version ... for the board" and "trustee and board-level".
+- **D9 naming — DONE 2026-08-31.** Seven body instances renamed to "The Edit"; the six footer "Elsewhere" entries keep "The Edit AI" on Jasmin's call, because there the "AI" is the descriptor.
+- **D10 llms.txt separator — CLOSED 2026-08-31.** Keep it. Field delimiter, not voice. No action.
+- **D11 "two years" — DONE 2026-08-31.** Replaced with "the part I keep working at". Cannot drift.
+- **D4 Tier 3 — DECIDED AND DONE 2026-08-31.** Re-scoped on resourcing, not sector. `ai.html:303` qualifier now states the buyer definition; the shared description in `:7/:10/:16` names the resourcing condition; `:321` untouched. Deliberately does NOT reach financial services, healthcare, law or higher education, which have both counsel and a technical team. Serving them is an offer question, still open, not a copy question.
+- **D3 The Edit on the AI page — DONE 2026-08-31.** Proof paragraph after the honesty line at `ai.html:305`, introduced as credential ("I built and run ... for charity, cultural and heritage comms teams") on a page that no longer scopes itself to that sector. Policy template added as a second path in the closing body plus an `ai-close-more` smallprint link to `/policy-template`, not to the .docx. No new pill: the site has one variant, `.pill-cobalt`, and the design rules say solve with type or space.
+- **D5 block 04 — DONE 2026-08-31.** "a drafted AI-use policy in your hands at the end" became "your own AI-use policy decided, not just drafted, before you leave", so the paid room is not selling what the free template already gives.
+- **D12 DPIA — DONE 2026-08-31.** Used once, on `ai.html`, glossed in place rather than hyperlinked: "That's the data protection assessment your organisation carries out, not something a tool can do for you." Keeps the reader on the page and lands The Edit's locked rule.
 - **D8 push — DONE 2026-08-31.** All five commits pushed to main and deployed. Verified on production by fetching page bodies: proof card, both About strings and `llms.txt` all serving the new copy; zero old-framing hits across all six pages; zero residual `www.theeditai` links.
 - **D2 fifth string — DECIDED 2026-08-31.** `api/contact.js:121` and `:201` are in scope. Draft all five together.
 - **The Edit's scope — RESOLVED 2026-08-31.** Repositioned to charity, cultural and heritage comms, launched 30 Aug 2026. This unblocks the `api/contact.js` string held since 2026-08-24.
