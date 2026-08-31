@@ -27,22 +27,24 @@
    section-head, who-section bands, nav, footer, tokens). Only the
    layout below is page-local — no new colours, no new type styles. */
 
-/* Page header — asymmetric spread: H1 + CTA left, lead right. The CTA
-   anchors the foot of the left column so there is no void beneath the
-   heading, and gives the opener a cobalt accent. */
+/* Page header — asymmetric spread: H1 + CTA left, lead right. Both columns
+   are start-aligned deliberately: the left column must NOT stretch to match
+   the right, or surplus height collects as a void between the H1 and its own
+   CTA. That happened on 2026-08-31 when the lead column gained a paragraph.
+   The pill gives the opener a cobalt accent. */
 .ai-intro { padding: var(--sv) 0; }
 
 .ai-intro-grid {
   display: grid;
   grid-template-columns: 5fr 4fr;
   gap: 80px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .ai-intro-head {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 32px;
 }
@@ -159,7 +161,7 @@
 
 .ai-close-head {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
-  color: var(--periwinkle);
+  color: var(--periwinkle-text);
   margin-bottom: 28px;
 }
 
@@ -303,7 +305,7 @@
         <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Adoption moves at the speed of a free trial and governance hasn't kept up. If you hold sensitive data and answer to a board, the stakes run higher than most: you run on trust, and there's no technical team to hand the problem to.</p>
         <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs and where it doesn't. That judgement is what I do.</p>
         <p>I use these tools every day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
-        <p>That judgement is public. I built and run <a href="https://theeditai.co.uk/" target="_blank" rel="noopener">The Edit<span class="sr-only"> (opens in new tab)</span></a>, an AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks on where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. That's the data protection assessment your organisation carries out, not something a tool can do for you. The ones that didn't hold up are published too.</p>
+        <p>That judgement is public. I built and run <a href="https://theeditai.co.uk/" style="color:var(--cobalt);text-decoration:none;" target="_blank" rel="noopener">The Edit<span class="sr-only"> (opens in new tab)</span></a>, an AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks on where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. That's the data protection assessment your organisation carries out, not something a tool can do for you. The ones that didn't hold up are published too.</p>
       </div>
     </div>
   </div>
@@ -382,9 +384,9 @@
         <h3 class="ai-close-cta-head">Tell me what you're working on.</h3>
         <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
         <div class="ai-close-smallprint">
+          <a href="https://theeditai.co.uk/policy-template" class="ai-close-more" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
           <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
           <a href="/about" class="ai-close-more">Or read more about how I work →</a>
-          <a href="https://theeditai.co.uk/policy-template" class="ai-close-more" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
         </div>
       </aside>
     </div>
