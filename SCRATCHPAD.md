@@ -1,7 +1,26 @@
 # Jasmin Aziz Site — Scratchpad
 
-# ═══ REGISTER — CLOSED 2026-08-31 ═══
-Opened and fully resolved 2026-08-31. No decisions outstanding. Reopen by adding rows.
+# ═══ OPEN REGISTER ═══
+REOPENED 2026-08-31. D1-D12 are resolved (below). The Tier 2 gate strings
+identified on 2026-08-24 were never migrated into this table and are still
+live; they are D13-D19. Closing the register while they sat outside it was an
+error. Do not close this again without grepping the tree for `values-led`.
+
+## Decisions pending — Tier 2, carried from 2026-08-24
+
+| # | Decision | Scope | Status |
+|---|---|---|---|
+| D13 | The shared OG/Twitter description, "Strategic communications for values-led organisations...", identical in 10 tags across index, services, about, contact and legal. Ruled on 2026-08-24 as the thing to change LAST, after body copy settles. Body copy has now settled. | 10 tags, 5 files | OPEN |
+| D14 | `index.html:7` meta description, plus Person `:32` and hasOccupation `:51` JSON-LD. All "values-led organisations". Machine-readable, re-crawl lead time. | 3 strings | OPEN |
+| D15 | `index.html:135` "A pattern shows up across values-led organisations" and `index.html:153` "inside charity, heritage, cultural and community organisations". The latter was called the sharpest visible gate on the site. | homepage body | OPEN |
+| D16 | `about.html:436` About lede, "working with values-led organisations". Present-tense scoping of the practice. | 1 string | OPEN |
+| D17 | `services.html:420` FAQPage "Who do you work with?" Called the highest-value single string on the site: it is the machine-readable answer to the buyer's literal question and what an LLM quotes. | 1 string | OPEN |
+| D18 | `llms.txt:3` and `:9`. `:9` now describes the AI page as "for values-led organisations", which is factually wrong since D4 re-scoped that page today. | 2 lines | OPEN |
+| D19 | Em dashes in four `services.html` JSON-LD description strings (`:412`, `:420`, `:473`, `:489`). Prose, not delimiters, so unlike the llms.txt separator ruled on in D10. | 4 strings | OPEN |
+
+**Live inconsistency to resolve:** `ai.html` is now scoped by resourcing while the
+homepage, About lede and Services FAQ still scope by sector. `llms.txt:9`
+contradicts the live AI page outright.
 
 ## Decisions pending (Jasmin's call)
 
