@@ -7,18 +7,20 @@ Opened 2026-08-31. Keep current. Move items down as they resolve.
 
 | # | Decision | Blocks | Status |
 |---|---|---|---|
-| D2 | Is `api/contact.js:121` / `:201` in scope as the fifth Edit string? It fails twice: old personal-resource framing, and "charity" alone. First thing every enquirer reads. | E2 | OPEN |
 | D3 | Does `ai.html` come into scope: The Edit in the body as proof of judgement, plus the free policy template as a second CTA? | E3 | OPEN, argued for |
 | D4 | **Tier 3.** `ai.html:303` and `:321` re-scope on *resourcing* rather than sector, or stay narrow. Carried from 2026-08-24. | E3 cleanest form | OPEN |
 | D5 | Training block 04 says "a drafted AI-use policy in your hands at the end". Once the template is free, "drafted" is the wrong word for the paid deliverable. | E4 | OPEN, new |
 | D6 | `about.html:7` meta description: credential words on a gate surface. Carried from 2026-08-24. | — | OPEN |
 | D7 | Replace "trustee" with "board" at `ai.html:320`, `ai.html:343`, `services.html:723`? Only charities have trustees; housing associations, universities, NHS trusts and foundations all have boards. Less gating at no cost. | E5 | OPEN, new |
 | D8 | Push `b0c3665` (Job Two URLs) to main? | — | OPEN |
+| D9 | **Naming.** The property calls itself **The Edit** (title and og:title). This site says "The Edit AI" in 13 places and "The Edit" in 2 (`llms.txt:16`, `legal.html:474`). Align, and if so which way? | a 13-place edit | OPEN, new |
+| D10 | `llms.txt` uses " — " as its structural separator on every line. The no-em-dash rule is a voice rule; this is file formatting. Keep, or convert the whole file? | E1 | OPEN, new |
 
 ## Decided
 
 - **D1 proof card framing — DECIDED 2026-08-31.** Reframe from "evidence of how I work" to the builder's claim, grounded as "the resource I wanted to hand them", not "the directory the sector uses". The latter is an adoption claim with nothing behind it.
 - **`about.html:478` is a whole/part fix, not a reframe.** Only three of the four Job One strings need the full reframe. That paragraph is about Jasmin's own discipline and My Stack is the right referent; the error is labelling the link "The Edit AI" and then describing one tab.
+- **D2 fifth string — DECIDED 2026-08-31.** `api/contact.js:121` and `:201` are in scope. Draft all five together.
 - **The Edit's scope — RESOLVED 2026-08-31.** Repositioned to charity, cultural and heritage comms, launched 30 Aug 2026. This unblocks the `api/contact.js` string held since 2026-08-24.
 
 ## Edits queued
