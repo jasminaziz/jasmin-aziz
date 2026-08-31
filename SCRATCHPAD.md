@@ -72,6 +72,61 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session — 2026-08-31 (The Edit reframed, AI page re-scoped and rebuilt)
+
+### Branch status
+- **main** — production, live, 21 commits this session, all pushed and verified.
+- **preview/buyer-definition**, **services-descent** — both still unmerged.
+  services-descent remains a TRAP; see the merge warning in `.claude/CLAUDE.md`.
+
+### What happened
+Two briefed jobs plus a design pass, and twelve decisions closed.
+
+- The Edit relaunched 30 Aug as a directory for charity, cultural and heritage
+  comms teams. Five strings on this site described the old personal-inventory
+  version; all five reframed. The fifth, `api/contact.js`, was not in the brief
+  and was the worst placed: the enquiry auto-reply told every enquirer The Edit
+  was "my resource for AI fluency in the charity sector".
+- All 14 outbound Edit links moved to the bare canonical domain. The brief said
+  15; its own per-file numbers summed to 14.
+- D1-D12 closed, including **Tier 3**, open since 2026-08-24. The AI page is now
+  scoped by resourcing, carries The Edit as proof, and offers the free policy
+  template as a second path for a buyer not ready to book a call.
+- Design audit run (`reports/ai-page-design-2026-08-31.md`), fixes 1-4 applied,
+  then the header restructured properly.
+
+### Two things I got wrong, both corrected
+1. **Closed the register while a whole tier sat outside it.** The Tier 2 gate
+   strings from 2026-08-24 were in the session log, never the decision table.
+   Reopened as D13-D19 with a closing condition: never close this register
+   again without grepping the tree for `values-led`.
+2. **Reported a header fix that had not worked.** The design agent diagnosed the
+   mechanism correctly and prescribed an alignment change; I applied it,
+   measured the one property I had changed, and called it fixed. Jasmin looked
+   and said "still a massive gap". `align-items` decides where surplus height
+   goes, never whether there is any. Real cause: four paragraphs in the header's
+   right column against a 182px H1-and-pill column. Fixed by moving three
+   paragraphs into `.ai-intro-body` below the grid. Void 599px -> 60px,
+   screenshotted at 1440 and 375 before pushing. See `tasks/lessons.md`.
+
+### Tooling
+- `~/.claude/agents/site-design-check.md` updated globally: it must now state a
+  predicted post-fix state per fix, and label every finding OBSERVED IN CODE vs
+  INFERRED ABOUT RENDERING. It has no browser, so all look-and-feel claims are
+  inference. Deliberately NOT given browser tools.
+- `.claude/launch.json` added (gitignored) so `preview_start` serves the static
+  site locally. A `file://` open renders unstyled: relative stylesheets do not
+  load.
+
+### Next step
+Five positioning decisions open (D13, D14+D18, D15, D16, D19), all one job: the
+homepage, About lede and `llms.txt:3` still scope by sector while the AI page
+and Services FAQ no longer do. `index.html:153` is the sharpest remaining gate.
+Then two design items: heading scale, and the stronger `.find-link-row`
+treatment for The Edit. The offer question (FS, healthcare, law, HE) is separate
+and is not a copy question.
+
+
 
 ## Session — 2026-08-24 (buyer definition widened, year corrected)
 
