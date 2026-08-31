@@ -27,8 +27,8 @@ Opened 2026-08-31. Keep current. Move items down as they resolve.
 
 | # | Edit | Gate |
 |---|---|---|
-| E1 | Job One: four Edit strings (`index.html:214`, `about.html:478`, `about.html:516`, `llms.txt:16`) | drafts written, approved by Jasmin |
-| E2 | Fifth string, `api/contact.js` x2 | D2 |
+| ~~E1~~ | Job One Edit strings | **DONE 2026-08-31** |
+| ~~E2~~ | Fifth string, `api/contact.js` x2 | **DONE 2026-08-31** |
 | E3 | `ai.html` body: The Edit as proof, template as second CTA | D3, D4 |
 | E4 | Block 04 "drafted" wording | D5 |
 | E5 | "trustee" to "board" x3 | D7 |
@@ -41,6 +41,8 @@ Opened 2026-08-31. Keep current. Move items down as they resolve.
 - **"I recommend, you decide."** The Edit does recommend: "The directory is what I'd recommend for your organisation." What it refuses is deciding for you: "the final call is yours." Copy denying either half contradicts the live site.
 - **No counts.** "23 tools", "11 in my stack", "2 judged not recommended", "106 updates" are all live Sheet data, public the moment a row changes, with no deploy and no review. This site is static and cannot track them. Describe the practice, not the tally: "every tool carries the date it was last checked" survives, "23 tools" does not.
 - **Audience phrase, never shortened to "charity" alone.** Nominal "charities, cultural organisations and heritage" where the audience is the object; adjectival "charity, cultural and heritage" where it modifies a noun.
+- **Compression precedent, verified against The Edit's JS bundle 2026-08-31.** Of 12 audience statements on The Edit, 11 carry all three words. The one that compresses is the `/tools` page title, and the word it drops is **cultural**: "AI Tools Directory for Charity & Heritage Comms". "Charity and cultural" is the one pair The Edit never uses anywhere. If a headline must compress, drop *cultural* and keep *heritage*, which is the word carrying the cathedral, the archive and the local-authority museum service. Never compress in body copy. Separately, `/policy-template` shortens to "charities" in its title and H1 only, and expands to all three in the adjacent body: compress in headlines, expand in body.
+- **Vary the grammar rather than the list to avoid repetition.** `about.html` now carries adjectival at :478 and nominal at :515 for exactly this reason.
 - **CREDENTIAL not GATE.** "The AI tools directory I built for charity, cultural and heritage comms teams" names who she has served and is credential. "I help charities govern AI" is a gate.
 - **No em dashes. UK English. Contractions.**
 
