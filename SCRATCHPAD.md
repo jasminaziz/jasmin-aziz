@@ -1,13 +1,12 @@
 # Jasmin Aziz Site — Scratchpad
 
-# ═══ OPEN REGISTER — decisions pending and edits queued ═══
-Opened 2026-08-31. Keep current. Move items down as they resolve.
+# ═══ REGISTER — CLOSED 2026-08-31 ═══
+Opened and fully resolved 2026-08-31. No decisions outstanding. Reopen by adding rows.
 
 ## Decisions pending (Jasmin's call)
 
 | # | Decision | Blocks | Status |
 |---|---|---|---|
-| D6 | `about.html:7` meta description: credential words on a gate surface. Carried from 2026-08-24. | — | OPEN |
 
 ## Decided
 
@@ -21,6 +20,7 @@ Opened 2026-08-31. Keep current. Move items down as they resolve.
 - **D3 The Edit on the AI page — DONE 2026-08-31.** Proof paragraph after the honesty line at `ai.html:305`, introduced as credential ("I built and run ... for charity, cultural and heritage comms teams") on a page that no longer scopes itself to that sector. Policy template added as a second path in the closing body plus an `ai-close-more` smallprint link to `/policy-template`, not to the .docx. No new pill: the site has one variant, `.pill-cobalt`, and the design rules say solve with type or space.
 - **D5 block 04 — DONE 2026-08-31.** "a drafted AI-use policy in your hands at the end" became "your own AI-use policy decided, not just drafted, before you leave", so the paid room is not selling what the free template already gives.
 - **D12 DPIA — DONE 2026-08-31.** Used once, on `ai.html`, glossed in place rather than hyperlinked: "That's the data protection assessment your organisation carries out, not something a tool can do for you." Keeps the reader on the page and lands The Edit's locked rule.
+- **D6 About meta description — DECIDED 2026-08-31, no edit.** Left as credential. "Nine years across charity, heritage, and the third sector" stays in the snippet: it is the only sector claim on a surface search actually reads, and charity/heritage are the terms this site can realistically win. Accepted cost: a reader outside those sectors sees three sector nouns before reaching the page.
 - **D8 push — DONE 2026-08-31.** All five commits pushed to main and deployed. Verified on production by fetching page bodies: proof card, both About strings and `llms.txt` all serving the new copy; zero old-framing hits across all six pages; zero residual `www.theeditai` links.
 - **D2 fifth string — DECIDED 2026-08-31.** `api/contact.js:121` and `:201` are in scope. Draft all five together.
 - **The Edit's scope — RESOLVED 2026-08-31.** Repositioned to charity, cultural and heritage comms, launched 30 Aug 2026. This unblocks the `api/contact.js` string held since 2026-08-24.

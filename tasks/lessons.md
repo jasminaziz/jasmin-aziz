@@ -437,3 +437,21 @@ walked back any widening. Fixing them was the highest-compounding item in the
 whole plan and cost two paragraphs in files that never deploy. When positioning
 changes, audit the agent instructions before the site copy — and note that
 `.claude/` is gitignored, so changes there are local-only and unbacked-up.
+
+## During deploy propagation, a single body fetch is not verification either (2026-08-31)
+A wait-loop confirmed new copy live on `/ai`, then the very next `curl` of the
+same URL returned the OLD paragraph. Not a failed deploy: a stale CDN edge
+served mid-propagation. Three immediate refetches all showed the new copy.
+The 2026-08-22 lesson says a status code is never verification. This extends it:
+during the propagation window a single body fetch is not either. Fetch the page
+2-3 times and require agreement before reporting, and if one disagrees, check
+whether it also still contains the string you replaced. If it does, it is a
+stale edge, not a failure.
+
+## Scope constraint checks to the files you changed (2026-08-31)
+Ran the no-em-dash / no-counts checks with a bare `git diff` while SCRATCHPAD.md
+was also modified. The register's own prose contains dates, em dashes and the
+phrase "The Edit AI", so the check reported 5 em dashes and a naming violation
+in copy that had none. Always scope the guard to the files under review
+(`git diff -- ai.html`), or a docs file will fail a copy rule it was never
+subject to.
