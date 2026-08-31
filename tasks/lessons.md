@@ -455,3 +455,39 @@ phrase "The Edit AI", so the check reported 5 em dashes and a naming violation
 in copy that had none. Always scope the guard to the files under review
 (`git diff -- ai.html`), or a docs file will fail a copy rule it was never
 subject to.
+
+## Never report a visual fix without looking at the page (2026-08-31)
+The AI page header had a ~600px void beside the H1. site-design-check
+diagnosed the mechanism correctly (`align-items: stretch` plus
+`justify-content: space-between`) and prescribed changing them. I applied it,
+measured the gap between H1 and pill as 32px, and reported it fixed. Jasmin
+looked and said "still a massive gap" — correctly. The alignment property only
+decides WHERE surplus height goes, never whether there is any. The real cause
+was a 599px content imbalance: four paragraphs in the header's right column
+against an H1-and-pill column. `start` moved the void below the pill instead of
+above it.
+
+Two rules from this:
+1. Measuring the property you changed only proves you changed it. Before
+   reporting any visual fix, render the page and look, at desktop and mobile.
+   A `file://` open will not do: relative stylesheets do not load and you get
+   the unstyled fallback. Start a local server (`.claude/launch.json` +
+   preview_start) and screenshot.
+2. The disproof is often already in your own output. The same call that told me
+   the gap was 32px also returned `headColHeight: 149`; comparing that to the
+   grid height would have shown the 599px immediately. Read every number you
+   asked for, not just the one you were hoping about.
+
+## An advisory agent's fix is a hypothesis, not a result (2026-08-31)
+site-design-check has tools Read, Glob, Grep, Write and no browser. It reviews
+"look and feel" by reading CSS, so any claim about what the page LOOKS like is
+inference, not observation. Its diagnoses verified 4/4 against the tree and it
+caught a real live bug (an inline link rendering browser-default #0000EE
+because no `<a>` rule exists anywhere). But it prescribed a remedy without
+predicting the resulting state, and its own report contained the disproof: it
+noted that services.html has no CTA in the header column "so nothing gets
+stretched", which is exactly why the comparison did not hold.
+Rule: verify an advisory agent's DIAGNOSIS against the tree, and verify its
+REMEDY against the rendered page. They are two different checks and passing the
+first says nothing about the second. Agent definition updated the same day to
+require a predicted post-fix state and an observed/inferred label per finding.
