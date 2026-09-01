@@ -1,21 +1,24 @@
 # Jasmin Aziz Site — Scratchpad
 
-# ═══ OPEN REGISTER ═══
-REOPENED 2026-08-31. D1-D12 are resolved (below). The Tier 2 gate strings
-identified on 2026-08-24 were never migrated into this table and are still
-live; they are D13-D19. Closing the register while they sat outside it was an
-error. Do not close this again without grepping the tree for `values-led`.
+# ═══ REGISTER — CLOSED 2026-08-31 ═══
+All nineteen decisions resolved. D13-D19 closed in the same session they were
+reopened. Before reopening or 'fixing' anything here, read the two-register
+rule in `.claude/CLAUDE.md`: roughly thirteen `values-led` instances are
+deliberate, not unfinished work.
 
-## Decisions pending — Tier 2, carried from 2026-08-24
+## Decisions resolved 2026-08-31, second pass
+
+- **D13 shared OG/Twitter description — DECIDED, no change.** Stays "values-led organisations" in all ten tags. It is a human-facing social preview and must match the page a reader lands on.
+- **D14 machine-readable — SPLIT.** Person `index.html:32` and hasOccupation `:51` now carry "organisations that hold sensitive data and answer to a board". `index.html:7` meta description stays "values-led": it is a SERP snippet read by humans and the charity/heritage terms are the winnable search niche. `knowsAbout` untouched, it is credential.
+- **D15a `index.html:135` — DECIDED, no change.** Jasmin: "I like values-led."
+- **D15b `index.html:153` — DONE.** Recast as credential. The practice is defined unscoped ("functions from inside the team"); the sector list moved to past tense ("I've done that across..."). All operations detail kept. Second colon dropped: two in a paragraph is the AI tell.
+- **D16 `about.html:436` — DECIDED, no change.** Same ruling as D15a.
+- **D18 `llms.txt:3` — DONE.** Now carries the buyer definition, matching the JSON-LD.
+- **D19 services.html JSON-LD em dashes — DONE.** `:412` full stop, `:473` colon, `:489` full stop. Punctuation only. No prose em dashes remain anywhere; the only ones left are llms.txt separators (D10) and code comments.
+
 
 | # | Decision | Scope | Status |
 |---|---|---|---|
-| D13 | The shared OG/Twitter description, "Strategic communications for values-led organisations...", identical in 10 tags across index, services, about, contact and legal. Ruled on 2026-08-24 as the thing to change LAST, after body copy settles. Body copy has now settled. | 10 tags, 5 files | OPEN |
-| D14 | `index.html:7` meta description, plus Person `:32` and hasOccupation `:51` JSON-LD. All "values-led organisations". Machine-readable, re-crawl lead time. | 3 strings | OPEN |
-| D15 | `index.html:135` "A pattern shows up across values-led organisations" and `index.html:153` "inside charity, heritage, cultural and community organisations". The latter was called the sharpest visible gate on the site. | homepage body | OPEN |
-| D16 | `about.html:436` About lede, "working with values-led organisations". Present-tense scoping of the practice. | 1 string | OPEN |
-| D18 | `llms.txt:3` only. `:9` fixed 2026-08-31. `:3` is the site-level summary and mirrors `index.html:7`, so it must move with D14 or the two disagree. | 1 line | OPEN, folded into D14 |
-| D19 | Em dashes in `services.html` JSON-LD prose: `:412`, `:473`, `:489`. `:420` cleared by D17. Prose, not delimiters, so unlike the llms.txt separator ruled on in D10. | 3 strings | OPEN |
 
 **Live inconsistency to resolve:** `ai.html` is now scoped by resourcing while the
 homepage, About lede and Services FAQ still scope by sector. `llms.txt:9`
@@ -199,6 +202,61 @@ the four services moves. Never fast-forward the whole branch.
   nothing to catch it.
 - `.claude/CLAUDE.md` is gitignored, so the Users rewrite, the CREDENTIAL/GATE
   rule and the services-descent warning exist only on this machine.
+
+
+## Session — 2026-08-31 continued (four UX items, positioning closed)
+
+### What happened
+Four items raised by Jasmin, all closed, plus the last seven positioning decisions.
+
+1. **Services to AI signposting.** Block 05 (`#ai-training`) was a half-built
+   instance of a five-times component: it declared the same 724/240 grid as its
+   siblings but had ONE child, so a 240px sidebar column rendered empty at every
+   width >= 769px. It was also the only block reached by a plain text link
+   rather than a pill, at 30 words against a 55-68 sibling band. Now complete:
+   pill in a real `.svc-sidebar-cta`, expanded main copy (62 words),
+   `.svc-right-for` and a pull-quote. Matches siblings at 273px, 3 children.
+2. **Sitewide left-column audit.** Ran site-design-check for candidates, then
+   measured every one in a browser at 1440px. Most of my own detector's hits
+   were false positives (multi-row grids, row spanning, deliberately centred
+   rows). The repeated short-heading-beside-body device (About x2, AI x1) is
+   sound, consistently built, `align-items: start` throughout. Block 05 was the
+   only genuinely empty column on the site.
+3. **Eyebrows.** Six bare `class="label"` instances. Two retired on the homepage:
+   `:204` "Read the work" sat directly above `<h2>Two places to read the work.</h2>`,
+   and `:230` "Get in touch" had nothing to categorise while `about.html`'s
+   identical `.cta-left` carries none. The four survivors label pill lists or
+   mark a sticky aside, which is real work.
+4. **Positioning, D13-D19.** See the closed register above. The outcome is a
+   deliberate TWO-REGISTER site, recorded in `.claude/CLAUDE.md`.
+
+### The copywriter pass, and my error in briefing it
+site-copywriter drafted the three block 05 strings against the Voice Application
+Spec. I briefed it with a 95-115 word target for `.svc-main-copy`, taken from
+whole-block `innerText` which included the Right For line, pull-quote and CTA.
+The real band is 55-68. The agent hit my target faithfully and the target was
+nearly double. Jasmin caught it from the other end by asking whether the opening
+sentence was needed: it was the only line on the services page describing the
+website's own structure rather than the work, and a survivor of the stub it was
+apologising for. Cutting it plus trimming to sibling length landed at 62.
+
+### Outstanding
+- **Design, two items.** AI page heading scale (30px / clamp 28-34 / clamp 28-36
+  across three co-equal sections, no stated rule). The stronger `.find-link-row`
+  treatment for The Edit on `ai.html`, which needs a copy-structure decision.
+- **`.svc-illus-slot` still has no sizing contract**, now SIX instances after
+  block 05 gained one. Zero footprint today; nothing constrains its height the
+  moment an illustration lands in one block. Live instance of the ratified
+  18 June learning.
+- **The offer question**, unchanged and not a copy question: what Jasmin would
+  sell to a buyer who has both in-house counsel and a technical team. Until
+  that is answered `ai.html` correctly does not address financial services,
+  healthcare, law or higher education.
+
+### Next step
+Nothing blocking. The three items above are all discretionary.
+
+## Session — 2026-08-31 (buyer definition widened, year corrected) [earlier]
 
 ### Next step
 Jasmin's call on the About meta description and on The Edit AI's scope, since

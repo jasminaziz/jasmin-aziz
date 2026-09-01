@@ -491,3 +491,24 @@ Rule: verify an advisory agent's DIAGNOSIS against the tree, and verify its
 REMEDY against the rendered page. They are two different checks and passing the
 first says nothing about the second. Agent definition updated the same day to
 require a predicted post-fix state and an observed/inferred label per finding.
+
+## Take a length target from the element, not the block (2026-08-31)
+Briefed site-copywriter to draft `.svc-main-copy` for services block 05 at
+"95 to 115 words, matching siblings". That figure came from whole-block
+`innerText`, which included the `.svc-right-for` line, the pull-quote and the
+CTA. The actual `.svc-main-copy` band is 55 to 68 words. The agent hit my target
+faithfully and produced copy nearly double the right length. Jasmin caught it
+from the other end.
+Rule: when giving an agent a length target, measure the exact element you are
+asking it to write, not the container. `querySelector('.the-actual-class')`,
+not the block's innerText. And when an agent's output feels long, re-check the
+brief before re-briefing the agent.
+
+## Grep the class token, not the attribute string (2026-08-31)
+Predicted one `.label` would remain on the homepage after retiring two; the DOM
+reported two. The extra was `class="label stack-label"`, which
+`grep 'class="label"'` cannot match. Nothing was wrong with the page; the
+prediction was wrong.
+Rule: to count elements by class, query the DOM (`querySelectorAll('.label')`)
+or grep for the token with a boundary, never the exact attribute string. A class
+attribute with a second class is invisible to an exact-string grep.
