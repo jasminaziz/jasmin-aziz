@@ -14,4 +14,4 @@ Jasmin Aziz is a Strategic Marketing and Communications Consultant based in the 
 ## Published work
 
 - https://theeditai.co.uk — The Edit: an opinionated AI tools directory for charity, cultural and heritage comms teams, built and run by Jasmin Aziz. Every tool goes through checks on where the data sits, whether it trains on your content, nonprofit pricing and DPIA likelihood, and the tools that didn't hold up are published alongside the ones that did.
-- https://jasminaziz.substack.com — Substack: weekly writing on strategy, communications, and AI
+- https://jasminaziz.substack.com — Substack: writing on strategy, communications, and AI
