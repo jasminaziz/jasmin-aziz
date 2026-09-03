@@ -512,3 +512,26 @@ prediction was wrong.
 Rule: to count elements by class, query the DOM (`querySelectorAll('.label')`)
 or grep for the token with a boundary, never the exact attribute string. A class
 attribute with a second class is invisible to an exact-string grep.
+
+## A deploy marker must be absent from the OLD version (2026-09-03)
+After reordering the services blocks, polled production for
+`svc-block-num">02</div>` and got an instant "DEPLOYED". That string existed in
+the old page too, where 02 was Brand and positioning. The three verification
+fetches underneath then showed the OLD order, contradicting the claim I had just
+made. Caught only because the fetches disagreed with the poll.
+Rule: a deploy-detection marker must be something ONLY the new version contains,
+and the strongest form is a string the old version had that the new one does not
+(here, `AI Fluency Training`). Poll for the disappearance of the old, not the
+appearance of something both share. Then verify across three fetches anyway.
+
+## Verify an audit's claims about your own tree before acting on them (2026-09-03)
+An external brand audit made three checkable claims about the site. Two held
+(the Substack cadence line, the AI service sitting fifth) and one was false: it
+said the UK Jewish communal sector appears nowhere on the site, when it is at
+`about.html:476` and live. A recommendation was built on the false one. The
+cadence claim was true but undercounted, at three places rather than two, and
+the independent check (14 posts, 1 on a Tuesday, last 48 days earlier) was
+sharper than the audit's assertion and made the fix obvious.
+Rule: an audit is a source document. Check every claim it makes about the tree
+you own, count the instances yourself rather than trusting its count, and verify
+its factual premises independently where you can reach them.

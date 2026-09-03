@@ -204,6 +204,46 @@ the four services moves. Never fast-forward the whole branch.
   rule and the services-descent warning exist only on this machine.
 
 
+## Session — 2026-09-03 (brand architecture audit reviewed)
+
+### What happened
+Reviewed `BRAND_Architecture-Positioning-Audit_v1` (Cowork CLAUDE OUTPUTS/BRAND).
+Verified its checkable claims about this site before acting on any of them.
+
+**Shipped, four commits:**
+- Substack cadence claim removed from THREE places (`index.html:218`,
+  `about.html:520`, `llms.txt:17`), not the two the audit found. Verified
+  independently against the Substack archive API: 14 posts, most recent
+  17 July 2026, 1 of 14 on a Tuesday. Fixed by deletion, not replacement.
+- AI line moved from 05 to 02 across all six ordered surfaces.
+- Two stale JSON-LD fields on the AI service: the name still read "AI Fluency
+  Training", the description still covered training only.
+
+**Ruled and recorded in `.claude/CLAUDE.md`:** the 24 August buyer widening
+STANDS. The audit recommended reversing it; Jasmin declined because The Edit is
+the niche surface and the consultancy site need not follow. Watch condition
+kept: revisit only if a commercial enquiry arrives.
+
+**The audit was wrong on one point.** It states the UK Jewish communal sector
+appears nowhere on the site. It is at `about.html:476`, live. The underlying
+point stands; the flat claim does not.
+
+### Open from the audit, all Jasmin's calls
+- The site carries two buyers. Four comms lines address a comms lead; the AI
+  line addresses a chair with a governance problem. Moving it to 02 sharpens
+  this and does not resolve it.
+- The communal sector gets one sentence, and it is the named first market.
+- The AI Service entity's `url` points at `/services#ai-training`; `/ai` would
+  be more accurate now the service has its own page.
+- **`ai.html` carries NO structured data at all.** Zero JSON-LD blocks, on the
+  page selling the growth product, while the homepage and Services both have
+  some. An addition rather than a change, so nothing existing is disturbed.
+- The audit's own biggest assumption, untested: that the UK Jewish communal
+  sector will pay for AI governance. n=1 in the files.
+
+### Next step
+Nothing blocking. All four open items are decisions, not fixes.
+
 ## Session — 2026-08-31 continued (four UX items, positioning closed)
 
 ### What happened
