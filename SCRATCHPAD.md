@@ -241,6 +241,12 @@ body markers across three fetches.
 Nothing blocking. Before 12 November: decide the llms.txt question, and send one
 test enquiry from `/contact#geo-audit`.
 
+### Correction, 2026-09-10
+The 2026-08-24 entry below says the years count "went stale for fourteen months". It was
+79 days, and "eight" was an understatement from the start: career began winter 2016.
+See the correction in `tasks/lessons.md`. Whether "nine" is right today depends on
+which end of 2016; open with Jasmin.
+
 ## Session — 2026-09-03 (brand architecture audit reviewed)
 
 ### What happened

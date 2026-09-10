@@ -581,3 +581,17 @@ of its GitHub copy, so `-d` refused ("not fully merged to its upstream, even tho
 merged to HEAD"). Deleting the remote first removed the upstream, and `-d` then
 succeeded against `main`. Verify zero commits outside `main` first; never reach for
 `-D` to get past a safe refusal.
+
+## CORRECTION to "Hard-coded career-year counts drift silently" (2026-09-10)
+That entry (2026-08-24) is wrong on two counts, both mine. "Eight years" was written
+on 2026-06-06 and corrected on 2026-08-24: 79 days, not "fourteen months". And it was
+not "accurate then": Jasmin's career began in winter 2016, so in June 2026 she had at
+least 9.5 years whichever end of 2016 is meant. The figure was an understatement from
+the day it was written, not a true fact that aged.
+The real lesson is sharper than the one recorded: a number about the author was never
+checked against a start date, and three audits passed it because none of them verify
+facts about Jasmin, only code and copy. Rule: any figure describing Jasmin is checked
+against a dated fact she has given (here, career start winter 2016), never against a
+previous document or an earlier session's figure. The error then propagated because
+the invented "fourteen months" was restated in CLAUDE.md, SCRATCHPAD and memory
+without being recomputed. Recompute arithmetic in a record before repeating it.
