@@ -2,7 +2,7 @@
 
 ## Deployment
 - GitHub: https://github.com/jasminaziz/jasmin-aziz (public)
-- Production: https://jasminaziz.co.uk (custom domain, live 2026-06-07)
+- Production: https://www.jasminaziz.co.uk. **`www` is the canonical host** on every surface: canonical tags, og:url, og:image, sitemap, robots.txt, llms.txt and JSON-LD. The bare domain redirects to it in one hop via `vercel.json` (a 308, because `permanent: true`; set `statusCode: 301` instead if a 301 is ever required). Custom domain live 2026-06-07. Any new absolute URL uses `www`.
 - Vercel alias: https://jasmin-aziz.vercel.app (also works)
 - Static HTML/CSS/JS — no build step, no framework
 - Push to main → automatic Vercel redeploy
