@@ -8,6 +8,7 @@ const RESEND_API = 'https://api.resend.com/emails';
 const SERVICE_LABELS = {
   audit: 'Communications audit',
   ai: 'AI, trust and communications',
+  'geo-audit': 'GEO audit',
   brand: 'Brand and positioning',
   campaign: 'Campaign strategy and plan',
   content: 'Content and editorial system',
