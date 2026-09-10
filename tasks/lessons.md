@@ -535,3 +535,49 @@ sharper than the audit's assertion and made the fix obvious.
 Rule: an audit is a source document. Check every claim it makes about the tree
 you own, count the instances yourself rather than trusting its count, and verify
 its factual premises independently where you can reach them.
+
+## Measure layout parity in rendered lines, not words (2026-09-10)
+A training-copy brief proposed 49 words for a card in a 2x2 grid whose siblings run
+23 to 28. Word count flagged the risk; it did not settle it. The test that did was
+the rendered result against production: block 02 went from 3 lines to 5 and stranded
+53px under its row partner. A 32-word trim held 3 lines and matched production
+geometry exactly, measured at 1440px. Rule: set the target as a line count (or row
+height) measured on the live page, then test the candidate against it.
+
+## A local static server caches; the old value present is the tell (2026-09-10)
+After editing ai.html, a measurement still showed the previous copy. Python's
+`http.server` sends no cache headers, so the browser served its stored copy. The
+file on disk was correct. Because the OLD value was present (not merely the new one
+missing), it was a cache, not a failed edit. Rule: reload local previews with a
+query-string cache-buster (`ai.html?v=n`), and confirm served content with curl.
+
+## A hidden pane will not scroll; use a tall viewport to see below the fold (2026-09-10)
+`scrollIntoView` and `window.scrollTo` left `scrollY` at 0 while the pane reported
+`document.hidden`, so screenshots only ever showed the top of the page. Resizing the
+viewport to 1440x2400 put the target section inside the first viewport without
+scrolling or mutating the DOM, and the screenshot showed it. Assert the section's
+`getBoundingClientRect().top` sits inside `innerHeight` before trusting the image.
+
+## The easy placement is not the right one (2026-09-10)
+First GEO draft put the new service at 06 purely to avoid renumbering anything, and
+dropped the AI page sentence into the governance section. Both were wrong on repo
+grounds the brief could not know: last place repeated the "fifth on a list" problem
+the brand audit raised, and the governance insertion broke that section's single
+argument and left its pull-quote capping an unrelated line. Renumbering blocks is
+not a copy change. Before inserting into an argued section, read what its closing
+element answers, and check what it would answer after the insertion.
+
+## Every service with a contact CTA needs a matching form option (2026-09-10)
+This site has no analytics. The enquiry notification's "Enquiry type", from the
+contact select via `SERVICE_LABELS`, is the only way to know which service prompted
+an enquiry. A new service line whose button goes to plain `/contact` arrives
+labelled "I'm not sure yet" and its demand is invisible. Add the option in
+`contact.html` and the label in `api/contact.js`, same value, same position, and
+point the CTA at `/contact#<value>`.
+
+## `git branch -d` refuses a merged branch that is ahead of its upstream (2026-09-10)
+Deleting `preview/buyer-definition`: the local tip was merged into `main` but ahead
+of its GitHub copy, so `-d` refused ("not fully merged to its upstream, even though
+merged to HEAD"). Deleting the remote first removed the upstream, and `-d` then
+succeeded against `main`. Verify zero commits outside `main` first; never reach for
+`-D` to get past a safe refusal.

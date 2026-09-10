@@ -204,6 +204,43 @@ the four services moves. Never fast-forward the whole branch.
   rule and the services-descent warning exist only on this machine.
 
 
+## Session — 2026-09-10 (AI training copy, GEO audit line, host consistency)
+
+### What happened
+Seven commits since the 3 September wrap, all live and verified on production by
+body markers across three fetches.
+
+- **AI page structured data** (`790ce69`, 3 Sept after the wrap). `ai.html` had no
+  JSON-LD. Added a `Service` block sharing its `@id` with the `services.html` entry
+  so they read as one entity; both point at `/ai`. The description must stay
+  identical in both files.
+- **Training copy reconciled** (`2a6ba68`), from the 5 Sept suite audit. Block 04:
+  "drafted, with a named owner" (reverses D5). Block 02: half day configures, full
+  day plans. The audit's 49 words measured at 5 lines, stranding 53px beside block
+  01; trimmed to 32 words, 3 lines, identical geometry to production. Template: no
+  edit, not this repo's file, already standalone.
+- **GEO audit, service line 03.** First draft placed it 06, left the button
+  unlabelled and put the AI sentence in the governance section. Audited on Jasmin's
+  request against repo knowledge and revised: moved to 03 beside AI, contact option
+  `geo-audit` (the only attribution signal on a site with no analytics), homepage
+  pill, AI sentence moved to "Where to start", Media Trust's vocabulary ("AI search").
+  Not in JSON-LD or llms.txt, by ruling.
+- **Host consistency.** Brief assumed robots.txt was the odd one out; it is
+  correct. `www` is canonical everywhere. Fixed the 12 bare og:image/twitter:image
+  URLs. Redirect is one hop but a 308.
+- **Branches deleted**: `preview/buyer-definition`, `geo-audit-service-line`.
+
+### Open, all Jasmin's calls
+- The site's own `llms.txt`, which the GEO product calls "a file nobody reads".
+- "Every session ends with something configured" on `/ai` may overstate the full day.
+- The "GEO audit" label in the enquiry email is unverified until a real submission.
+- Honeypot and rate limiting on `api/contact.js`, open since the June report.
+- AI page heading scale; `.svc-illus-slot` sizing (six instances).
+
+### Next step
+Nothing blocking. Before 12 November: decide the llms.txt question, and send one
+test enquiry from `/contact#geo-audit`.
+
 ## Session — 2026-09-03 (brand architecture audit reviewed)
 
 ### What happened
