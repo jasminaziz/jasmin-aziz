@@ -39,11 +39,11 @@
    section-head, who-section bands, nav, footer, tokens). Only the
    layout below is page-local — no new colours, no new type styles. */
 
-/* Page header — asymmetric spread: H1 + CTA left, lead right. Both columns
-   are start-aligned deliberately: the left column must NOT stretch to match
-   the right, or surplus height collects as a void between the H1 and its own
-   CTA. That happened on 2026-08-31 when the lead column gained a paragraph.
-   The pill gives the opener a cobalt accent. */
+/* Page header: the site's heading-left, body-right pattern. The H1 stands
+   alone on the left; the lead, one short paragraph and the CTA read on the
+   right, so the CTA follows the argument instead of floating beside it.
+   Start-aligned: a stretched column turns surplus height into a void
+   (2026-08-31). */
 .ai-intro { padding: var(--sv) 0; }
 
 .ai-intro-grid {
@@ -83,11 +83,59 @@
 
 .ai-lead p + p { margin-top: 18px; }
 
-/* Intro body — the opening argument continues below the header grid at a
-   readable measure. These paragraphs lived inside .ai-lead until 2026-08-31,
-   where four of them against a two-item header column left a ~600px void
-   beside the H1. The header keeps one true lead; the rest reads full width. */
-.ai-intro-body { max-width: 760px; margin-top: 48px; }
+.ai-lead { max-width: 44rem; }
+.ai-lead-cta { margin-top: 28px; }
+
+/* The Edit panel: The Edit lifted out of the prose as proof. Cobalt, like
+   the homepage card, contained in the column grid. Cream on cobalt 8.0:1. */
+.ai-edit {
+  margin-top: 64px;
+  background: var(--cobalt);
+  color: var(--cream);
+  border-radius: 24px;
+  padding: clamp(32px, 4vw, 52px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 48px;
+  align-items: end;
+}
+
+.ai-edit-head {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.ai-edit-desc {
+  margin-top: 16px;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  max-width: 40rem;
+  text-wrap: pretty;
+}
+
+.ai-edit-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 22px;
+  border-radius: 100px;
+  background: var(--cream);
+  color: var(--cobalt);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-small);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 200ms ease;
+}
+
+.ai-edit-link { justify-self: start; }
+.ai-edit-link:hover, .ai-edit-link:active { background: rgba(250,248,244,0.85); }
+.ai-edit-link:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; border-radius: 100px; }
 
 /* Body sections — heading left (1fr) / body right (2fr), the site's
    native section pattern (About credibility, Services how-grid). */
@@ -182,6 +230,11 @@
    AI PAGE — MOBILE BREAKPOINTS
    ================================================================= */
 
+/* ── 900px: the header stacks (a two-column header runs tall here) ── */
+@media (max-width: 900px) {
+  .ai-intro-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
 /* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
 @media (max-width: 768px) {
   .ai-intro-grid,
@@ -190,6 +243,8 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  .ai-edit { grid-template-columns: 1fr; gap: 28px; align-items: start; }
 
   .ai-rooms {
     grid-template-columns: 1fr;
@@ -202,7 +257,6 @@
 
 /* ── 640px: type scale ───────────────────────────────────────── */
 @media (max-width: 640px) {
-  .ai-intro-body { margin-top: 28px; }
   .ai-lead p { font-size: 16px; }
   .ai-lead p:first-child { font-size: 17.5px; }
   .ai-body p { font-size: 16px; }
@@ -247,16 +301,21 @@
     <div class="ai-intro-grid">
       <div class="ai-intro-head">
         <h1 class="ai-h1">AI, trust and communications</h1>
-        <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
       </div>
       <div class="ai-lead">
         <p>Your organisation is already using AI, whether or not the board has decided to. Someone on your team pasted something into a chatbot this week. Adoption moves at the speed of a free trial and governance hasn't kept up. If you hold sensitive data and answer to a board, the stakes run higher than most: you run on trust, and there's no technical team to hand the problem to.</p>
+        <p>None of this needs to be alarming. It needs to be governed, and that's a judgement I make daily, using these tools myself: excited by what they make possible, clear-eyed about what they cost.</p>
+        <a href="/contact#ai" class="pill pill-cobalt ai-lead-cta">Get in touch →</a>
       </div>
     </div>
-    <div class="ai-body ai-intro-body">
-      <p>None of this needs to be alarming. It needs to be governed. The organisations that do this well get more from the tools, with less risk, because someone has made a real judgement about where AI belongs and where it doesn't. That judgement is what I do.</p>
-      <p>I use these tools every day, and I'm honest about them: excited by what they make possible, clear-eyed about what they cost.</p>
-      <p>That judgement is public. I built and run <a href="https://theeditai.co.uk/" style="color:var(--cobalt);text-decoration:none;" target="_blank" rel="noopener">The Edit<span class="sr-only"> (opens in new tab)</span></a>, an AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks on where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. That's the data protection assessment your organisation carries out, not something a tool can do for you. The ones that didn't hold up are published too.</p>
+
+    <!-- The Edit, platformed as proof: built from the homepage cobalt card. -->
+    <div class="ai-edit">
+      <div class="ai-edit-text">
+        <p class="ai-edit-head">That judgement is public. I built and run The Edit.</p>
+        <p class="ai-edit-desc">An AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks: where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA. The ones that didn't hold up are published too.</p>
+      </div>
+      <a href="https://theeditai.co.uk/" class="ai-edit-link" target="_blank" rel="noopener">The Edit ↗&#xFE0E;<span class="sr-only"> (opens in new tab)</span></a>
     </div>
   </div>
 </div>
@@ -311,7 +370,6 @@
 
     <div class="ai-body ai-training-close">
       <p>Every session ends with something configured, something committed to, and a check-in already in the diary. Sceptics are welcome in every room; most of their objections are right. The exact shape of a session gets worked out at proposal stage, once I've seen the diagnostic.</p>
-      <p>Recent rooms include a leadership session for a multi-site community organisation and private fluency work with its senior leadership.</p>
     </div>
   </div>
 </section>
@@ -323,7 +381,7 @@
       <div>
         <h2 class="section-head section-head--accent ai-close-head">Where to start</h2>
         <div class="ai-body">
-          <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes, no preparation needed. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
+          <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
         </div>
         <a href="https://theeditai.co.uk/policy-template" class="pill ai-template-pill" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
       </div>

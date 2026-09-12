@@ -36,19 +36,40 @@
 .hero-body   { padding-top: 0; }
 .hero-intro  { margin-bottom: clamp(44px, 6vw, 68px); }
 
-.hero-diagnosis { max-width: 720px; }
+/* =================================================================
+   DIAGNOSIS BAND
+   Words verbatim. The three short opening sentences are the lead, set
+   large on the left; the argument runs on the right (the site's
+   heading-left, body-right pattern). This fills the band's width with
+   type: the old single column left a 364px empty strip at 1440. The
+   band's own CTA was removed 2026-09-12 (the hero has one and the next
+   section is the offer).
+   ================================================================= */
+.diag-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 72px;
+  align-items: start;
+}
 
 .hero-diagnosis p {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.68;
   text-wrap: pretty;
 }
 
-.hero-diagnosis p + p { margin-top: 22px; }
+.diag-lead {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.hero-diagnosis p + p { margin-top: 18px; }
 
 .hero-diagnosis-close {
-  margin-top: 24px !important;
+  margin-top: 22px !important;
 }
+
 
 /* =================================================================
    HERO GRID (portrait in hero)
@@ -141,9 +162,6 @@
    DIFF SECTION (What I do / How I work)
    2-col: copy | capability pill stack. ≤768px: 1-col.
    ================================================================= */
-/* ── ENQUIRY NUDGE (inside diagnosis band, below last sentence) ── */
-.diag-nudge { margin-top: 28px; }
-
 .diff-section { padding: calc(var(--sv) + 24px) 0; }
 
 .diff-body-grid {
@@ -193,6 +211,61 @@
 
 .stack-pill:hover, .stack-pill:active { color: var(--cobalt); }
 .stack-pill:hover::after { transform: translateX(3px); }
+
+/* =================================================================
+   HOW I WORK: ENGAGEMENT SHAPES (ochre band)
+   Three terms across one row, each a link to its Services block, each
+   with its definition beneath. Replaced a paragraph plus a duplicate
+   list of the same three terms (2026-09-12).
+   ================================================================= */
+.shapes-lead { font-size: var(--fs-body); line-height: 1.68; }
+
+.shapes-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 32px;
+}
+
+.shape-def {
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+
+.shape-def-term {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.shape-def-term::after {
+  content: '→';
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cobalt);
+  transition: transform 150ms ease;
+}
+
+.shape-def-term:hover, .shape-def-term:active { color: var(--cobalt); }
+.shape-def-term:hover::after { transform: translateX(3px); }
+
+.shape-def p {
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.shapes-close { margin-top: 32px; font-size: var(--fs-body); line-height: 1.68; }
 
 /* =================================================================
    ABOUT BRIDGE (copy | portrait)
@@ -354,9 +427,7 @@
    ================================================================= */
 .mobile-br  { display: none; }
 .mobile-amp { display: none; }
-.diag-br    { display: none; }
 
-@media (min-width: 769px) { .diag-br { display: block; } }
 
 /* =================================================================
    FOCUS STATES (homepage-specific additions)
@@ -394,9 +465,14 @@
   .hero-intro      { margin-bottom: 36px; }
   .hero-diagnosis p { font-size: 1rem; }
 
+  /* Band: lead stacks above the argument */
+  .diag-grid { grid-template-columns: 1fr; gap: 20px; }
+  .diag-lead { font-size: 1.375rem; }
+
   .svc-pill { width: 100%; white-space: normal; }
 
   .who-grid          { grid-template-columns: 1fr; gap: 16px; }
+  .shapes-row        { grid-template-columns: 1fr; gap: 24px; }
   .diff-body-grid    { grid-template-columns: 1fr; gap: 40px; }
 
   .about-bridge-grid { grid-template-columns: 1fr 160px; gap: 40px; }
