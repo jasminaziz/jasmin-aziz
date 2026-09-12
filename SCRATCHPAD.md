@@ -78,9 +78,14 @@ contradicts the live AI page outright.
 ## Session: 2026-09-12 (look-and-feel pass)
 
 ### Branch status
-- **design/look-and-feel**: all work, pushed; Jasmin reviews on the Vercel preview
-  (SSO-gated) and merges herself. **main is untouched at 5cab8bd.**
-- Nothing from this pass is on production.
+- **MERGED to production, 12 Sept.** Jasmin reviewed the preview and asked me to
+  merge: fast-forward of main from 5cab8bd to 5e12936, pushed as HEAD:main. The
+  production deploy was READY and the live pages were checked by body strings (new
+  copy present, old copy gone, .md files and reports/ return 404) and rendered at
+  1440 and 500. Branch design/look-and-feel deleted locally and on GitHub.
+- Same day, by her rulings: the unused 2.3MB `assets/jasmin-headshot.png` deleted;
+  the two site-geo 2026-09-11 reports on this site committed; the Abi Aldridge peer
+  read left untracked on purpose (a named-peer report does not go in a public repo).
 
 ### What happened
 Audit first, rendered before audited: `reports/look-and-feel-audit-2026-09-12.md`
@@ -139,13 +144,15 @@ with evidence images. Plan signed off, then built in phases:
   `/ai`, `/about`, `/contact`, `/legal`, `/404`.
 
 ### Next step
-Jasmin reviews the preview and merges. Preview (Vercel SSO, sign in as jasminaziz):
-https://jasmin-aziz-git-design-look-and-feel-jasminazizs-projects.vercel.app
-After merge: run site-steward in change mode (claims register surfaces updated in
-claude-config, uncommitted there), record a PageSpeed mobile score for Gate 2, and run
-the manual accessibility checks.
+- site-steward ran in change mode after the merge (report in ~/.claude/steward/reports/).
+- PageSpeed mobile score: NOT recorded. The keyless PageSpeed API returned a daily
+  quota error and Lighthouse is not installed locally (not downloaded without asking).
+  Jasmin runs it at pagespeed.web.dev for /, /services and /ai.
+- Manual accessibility checks still hers: axe, VoiceOver, keyboard pass on /,
+  /services, /ai, /about, /contact, /legal, /404.
 
-Then, offered and not started: a proper services benchmark. Render Abi Aldridge's and
+Then, not started, and a prompt for a new thread written and handed to Jasmin on 12 Sept
+(kept out of this public repo): a proper services benchmark. Render Abi Aldridge's and
 Frankie Brand's services pages beside ours and compare how each structures a service
 (who it suits, what you get, how it runs, CTA, length). That becomes the brief for the
 parked Services content pass (1,069 words against 650 to 700). The 2026-09-11 Abi

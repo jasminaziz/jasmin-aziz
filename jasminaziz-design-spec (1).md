@@ -40,7 +40,7 @@
 
 Scripts: `nav.js` (mobile drawer, on every page except the homepage and Legal), `scroll-top.js` (every page), the inline homepage nav script, and the contact form script (hash preselect plus submit). No third-party scripts. No analytics.
 
-Assets: `assets/jasmin-headshot.jpg` (portrait, 640 by 853, 74KB; served on Home above 900px and on About), `assets/jasmin-headshot-landscape.jpg` (landscape, 1400 by 933; Home at 900px and below), `assets/og-image.png`, `favicon.svg` and `favicon.png`. `assets/jasmin-headshot.png` (2.3MB, the source) is no longer referenced by any page.
+Assets: `assets/jasmin-headshot.jpg` (portrait, 640 by 853, 74KB; served on Home above 900px and on About), `assets/jasmin-headshot-landscape.jpg` (landscape, 1400 by 933; Home at 900px and below), `assets/og-image.png`, `favicon.svg` and `favicon.png`. The 2.3MB source PNG, `assets/jasmin-headshot.png`, was deleted on 12 September 2026 once no page used it (it is in git history if the JPEG ever needs re-exporting).
 
 ---
 
