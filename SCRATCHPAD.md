@@ -75,6 +75,27 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-09-12 (icons and share cards)
+
+### Branch status
+- **design/icons**, cut from main at c8e302d, pushed; Jasmin reviews and merges.
+  main untouched. The new og:image URLs are absolute www, so the cards only resolve
+  once merged; the preview cannot show a link preview anyway (SSO).
+
+### What happened
+- Judgement: the look-and-feel brief was already complete and merged, so this ran now.
+- The brief's premises checked first: the favicon had no embedded font (outlined since
+  7 June, 0b8859a); `favicon.png` was linked on all seven pages and 404 since then.
+- Six favicon redesigns rendered at 16px beside The Edit's cobalt square; Jasmin kept
+  the current icon. Added favicon.ico (16/32/48) and apple-touch-icon.png (180).
+- Cards: brand (H1 + portrait, cream) and AI (pale periwinkle, "AI governance and
+  training for organisations without a technical team."), both with a name-only band.
+  Her rulings on the way: icon beside the name looked wrong, ink too harsh, the first
+  AI line too pessimistic. Old og-image.png deleted. Spec 7.13 records it all.
+
+### After merge (hers)
+- LinkedIn Post Inspector on / and /ai to refresh the cached card.
+
 ## Session: 2026-09-12 (look-and-feel pass)
 
 ### Branch status

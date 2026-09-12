@@ -5,3 +5,6 @@
 reports/
 tasks/
 CONSULTANCY_AI-Page-Build-Handover_v1.html
+
+# Source files for the share cards and touch icon (rendered, never served).
+assets-src/

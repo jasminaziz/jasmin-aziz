@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Source for the two share cards (1200x630 PNG). Never deployed (.vercelignore).
+     Render: see the design spec, section 7.13. ?card=brand or ?card=ai.
+     Uses the local Chillax file only to render; the site itself loads fonts from the CDN. -->
+<html><head><meta charset="utf-8"><style>
+@font-face{font-family:Chillax;font-weight:700;src:url("../Fonts/CHILLAX/OTF/Chillax-Bold.otf")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{font-family:Chillax;font-weight:700;background:#FAF8F4;color:#14110D;position:relative}
+body.ai{background:#EDECF1} /* the AI page's closing band: periwinkle at 10% over cream */
+.band{height:96px;background:#2D35C9;color:#FAF8F4;display:flex;align-items:center;justify-content:space-between;padding:0 64px}
+.name{font-size:34px;letter-spacing:-0.02em}
+.url{font-size:24px;letter-spacing:-0.01em}
+.body{position:absolute;left:64px;right:64px;top:96px;bottom:0;display:flex;align-items:center;gap:56px}
+.copy{flex:1}
+h1{font-size:74px;line-height:1.02;letter-spacing:-0.03em}
+.ai h1{font-size:70px;line-height:1.05;text-wrap:balance}
+.kicker{font-size:26px;letter-spacing:0.12em;text-transform:uppercase;color:#5255B5;margin-bottom:26px}
+.portrait{width:300px;height:400px;border-radius:999px;object-fit:cover;object-position:center 30%;display:block;flex:none;margin-top:14px}
+</style></head><body>
+<div class="band"><div class="name">Jasmin Aziz</div><div class="url">jasminaziz.co.uk</div></div>
+<div class="body" id="b"></div>
+<script>
+const card = new URLSearchParams(location.search).get('card') || 'brand';
+const b = document.getElementById('b');
+if (card === 'ai') {
+  document.body.classList.add('ai');
+  b.innerHTML = '<div class="copy"><div class="kicker">AI, trust and communications</div><h1>AI governance and training for organisations without a technical team.</h1></div>';
+} else {
+  b.innerHTML = '<div class="copy"><h1>Strategic&nbsp;marketing<br>&amp;&nbsp;communications for the work that matters.</h1></div><img class="portrait" src="../assets/jasmin-headshot.jpg" alt="">';
+}
+</script></body></html>

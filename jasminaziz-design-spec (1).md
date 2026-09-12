@@ -40,7 +40,7 @@
 
 Scripts: `nav.js` (mobile drawer, on every page except the homepage and Legal), `scroll-top.js` (every page), the inline homepage nav script, and the contact form script (hash preselect plus submit). No third-party scripts. No analytics.
 
-Assets: `assets/jasmin-headshot.jpg` (portrait, 640 by 853, 74KB; served on Home above 900px and on About), `assets/jasmin-headshot-landscape.jpg` (landscape, 1400 by 933; Home at 900px and below), `assets/og-image.png`, `favicon.svg` and `favicon.png`. The 2.3MB source PNG, `assets/jasmin-headshot.png`, was deleted on 12 September 2026 once no page used it (it is in git history if the JPEG ever needs re-exporting).
+Assets: `assets/jasmin-headshot.jpg` (portrait, 640 by 853, 74KB; served on Home above 900px and on About), `assets/jasmin-headshot-landscape.jpg` (landscape, 1400 by 933; Home at 900px and below), the share cards `assets/og-brand-2026-09.png` and `assets/og-ai-2026-09.png`, and at the root `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` (section 7.13). Card and touch-icon sources live in `assets-src/`, which never deploys. The 2.3MB source PNG, `assets/jasmin-headshot.png`, was deleted on 12 September 2026 once no page used it (it is in git history if the JPEG ever needs re-exporting).
 
 ---
 
@@ -256,6 +256,17 @@ Top hairline, 24px padding, sticky at 140px on desktop (static at ≤768). Conte
 - Contact form: ink card, radius 32px (24px at ≤640), labels in cream at 70% at `--fs-label`, inputs 16px at ≤640 (avoids the iOS zoom), cobalt submit in sentence case at `--fs-small` (hover ink, as `.pill-cobalt`).
 - Footer: ink ground, three columns, Chillax links in cream at 88% (solid rgba, not opacity), column labels in periwinkle at `--fs-label`, legal links and meta in cream at 50%.
 - `.scroll-top-btn`: 48px cobalt circle with a cream arrow, ink on hover, shown after 300px of scroll, hidden above 900px.
+
+### 7.13 Icons and share cards (set 12 September 2026)
+- **Favicon, kept by Jasmin's choice:** `favicon.svg`, a periwinkle circle with "JA" in cream, the Chillax 700 glyphs as outlined paths clipped to the circle (no font dependency since 7 June). Six redesigns were rendered at 16px on light and dark tab strips (ochre, periwinkle and ink rounded squares, a two-tone ink square, periwinkle and ochre circles with ink letters) and declined. If it is ever redesigned: never a cobalt square, which is The Edit's icon, often open in the next tab.
+- **`favicon.ico`** (root): 16, 32 and 48px frames rendered from `favicon.svg`, transparent outside the circle. Linked with `sizes="32x32"` so browsers that read SVG prefer the SVG.
+- **`apple-touch-icon.png`** (root, 180 by 180): the same periwinkle and cream JA on a full square, letters unclipped at 78% so they clear the iOS corner mask. iOS masks the corners itself and fills transparency with black, so it is never a circle on transparency. Source: `assets-src/apple-touch-icon.svg`.
+- **Head links, every page (404 included):** `/favicon.ico` (sizes 32x32), `/favicon.svg`, `/apple-touch-icon.png`, all root-absolute so the 404 page finds them at any depth. No web manifest: nobody installs a consultancy site to a home screen, and Android's shortcut falls back to these icons.
+- **Share cards, 1200 by 630 PNG, under 600KB, never SVG:** `assets/og-brand-2026-09.png` (Home, Services, About, Contact, Legal) and `assets/og-ai-2026-09.png` (AI). Both have a cobalt band with "Jasmin Aziz" and the domain in cream Chillax 700, name only (the icon beside the name was tried and declined). Brand: the homepage H1 in ink on cream beside the portrait oval. AI: the label "AI, trust and communications" in `--periwinkle-text`, then "AI governance and training for organisations without a technical team." in ink, on the AI page's closing-band tint (`#EDECF1`, periwinkle at 10% over cream). Chillax 700 only; no italics.
+- **Why two cards, not six or one:** AI is a separate offer, linked on its own. Services shares the brand card: its H1 nearly repeats the homepage's, and its copy is due to change in the content pass.
+- **Tags:** `og:image`, `og:image:width` 1200, `og:image:height` 630, `og:image:alt`, `twitter:image` and `twitter:image:alt` on every page with a card, absolute `www` URLs.
+- **Changing a card means a new filename** (`og-<card>-YYYY-MM.png`), because platforms cache by URL; overwriting leaves the old card live for weeks. After a change, refresh the cache with LinkedIn's Post Inspector.
+- **Regenerating:** `assets-src/og-cards.html?card=brand` or `?card=ai`, rendered by headless Chrome at exactly 1200 by 630: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=4000 --window-size=1200,630 --screenshot=assets/og-<card>-YYYY-MM.png "file://$PWD/assets-src/og-cards.html?card=<card>"`. The source loads the local Chillax file only to render; the site never does.
 
 ---
 
