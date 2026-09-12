@@ -595,3 +595,61 @@ against a dated fact she has given (here, career start winter 2016), never again
 previous document or an earlier session's figure. The error then propagated because
 the invented "fourteen months" was restated in CLAUDE.md, SCRATCHPAD and memory
 without being recomputed. Recompute arithmetic in a record before repeating it.
+
+## Headless Chrome cannot lay out below 500px (2026-09-12)
+Asked for `--window-size=390,…`, Chrome 152 headless lays the page out at 500px and
+crops the screenshot to 390. A whole capture set showed clipped text and no hamburger,
+which read as a mobile defect and was fiction. Proved with a page that prints its own
+`innerWidth` (390 requested, 500 reported). Rule: use headless for 500px and up; use
+the browser pane for 390, with the viewport asserted inside the measurement.
+
+## `grid-row: 1 / -1` spans nothing in a grid with no explicit rows (2026-09-12)
+Services declared `.svc-main-col { grid-row: 1/-1 }` so the copy would span two
+sidebar rows. With no `grid-template-rows`, `-1` is line 1, the item spans one row,
+and every CTA auto-placed under the copy instead of in the sidebar. It shipped that
+way for months and the project notes described the intended layout, not the real one.
+Rule: verify grid placement by measuring each child's position in the browser, not by
+reading the CSS; prefer explicit placement or fewer children over spanning.
+
+## `1fr` beside a fixed column plus a non-breaking heading clips the fixed column (2026-09-12)
+The hero H1 joins "Strategic&nbsp;marketing". In a `1fr 300px` grid that run set the
+text track's minimum width, pushed the portrait off-screen from 641px to ~1128px, and
+`html { overflow-x: clip }` hid it: no scrollbar, no console error. Checks at 390 and
+1440 never saw it. Rule: a text track beside a fixed track is `minmax(0, 1fr)`, and
+hero changes are checked at 641, 768, 900, 1024 and 1130.
+
+## impeccable's context loader renames `.impeccable.md` without saying so (2026-09-12)
+Running `load-context.mjs` reported `"migrated": true` and silently moved the tracked
+`.impeccable.md` to an untracked `PRODUCT.md`. Caught only because an agent reported
+the file missing. Restored byte-identical before any commit. Rule: do not run the
+loader in this repo; read `.impeccable.md` directly. After running any skill script,
+check `git status` for files it moved.
+
+## Agents can see rendered pages if you give them captures (2026-09-12)
+site-design-check and site-stranger have Read, and Read opens PNGs. Given full-page
+captures, their reviews moved from inference to observation, and site-design-check
+caught the policy-template specificity bug. They still misread: one said the hero was
+fine at 700px when it was measured clipped. Rule: hand agents captures plus measured
+facts, and check their visual claims against measurements before relaying.
+
+## Self-drawn abstract marks were rejected on sight (2026-09-12)
+Three in-repo SVG idioms ("the gap": line diagram, tinted fields, capsule rhythm),
+rendered in the real homepage band, all rejected. Consistent with Ask Gran and Why Did
+It Flop: warmth from real artefacts and typographic craft, not ornament. Rule: do not
+propose home-drawn illustration for this site; illustration is Jasmin's to source.
+Also measured: the mark placed above the text on phones made the band 145px taller,
+the opposite of the brief. Measure section height before and after any added image.
+
+## An img `height` attribute beats CSS that only sets width (2026-09-12)
+Adding `width="640" height="853"` to the portrait (to reserve space before load)
+turned it into an 853px capsule, because the CSS set `width: 100%` and an
+`aspect-ratio` but no height: the attribute's height applied. Caught only because the
+page heights jumped by exactly 424px in the capture log. Rule: when adding size
+attributes to an img, add `height: auto` to its CSS in the same change, and compare
+page heights before and after.
+
+## A browser cached stylesheet looks exactly like a failed edit (2026-09-12)
+After changing site.css, the pane still reported the old `opacity: 0.5` on the
+footer. `curl` showed the server serving the new rule; the page's query-string
+cache-buster only busts the HTML, not the stylesheets it loads. Rule: after a CSS
+edit, `fetch(url, {cache: 'reload'})` each stylesheet, reload, then measure.

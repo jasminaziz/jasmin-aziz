@@ -75,6 +75,59 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-09-12 (look-and-feel pass)
+
+### Branch status
+- **design/look-and-feel**: all work, pushed; Jasmin reviews on the Vercel preview
+  (SSO-gated) and merges herself. **main is untouched at 5cab8bd.**
+- Nothing from this pass is on production.
+
+### What happened
+Audit first, rendered before audited: `reports/look-and-feel-audit-2026-09-12.md`
+with evidence images. Plan signed off, then built in phases:
+- Homepage hero no longer clips the portrait at 641 to ~1128px; subline cut; the
+  "hero does not change" rule reversed with its reason in `.claude/CLAUDE.md`.
+- Diagnosis band rebuilt (words verbatim, lead left, argument right, no CTA).
+  How I work is a three-shape definition row; the duplicate Engagement list is gone.
+- Services: one explicit block grid (the old `grid-row: 1/-1` put every CTA under
+  the copy); pull quotes gone; H2 outranks numerals; intro names and defines the
+  three shapes in the first scroll (word 50, was 768); block 02 covers training.
+- AI: header heading-left, body-right; intro cut to one paragraph; The Edit in its
+  own cobalt panel; policy template gets an outline pill; GEO line cut.
+- Sitewide: type-scale tokens; no italics, no side stripes; sentence-case buttons at
+  15px; Legal headings in Chillax; two AA fixes (Substack card, Contact hint).
+- About: communal sentence removed (Jasmin's decision).
+- Illustration marks drafted in three idioms and **rejected by Jasmin**. Dropped with
+  their motion. She is exploring sourced illustration herself.
+- Design spec rewritten to describe what ships.
+
+### Open, Jasmin's calls
+- DPIA gloss: the approved Edit panel text drops "the data protection assessment
+  your organisation carries out", reversing D12 (31 Aug). Keep dropped, or restore?
+- Services is 1,069 words against the 650-700 benchmark: the content pass (with the
+  peer-benchmark items) is parked, not done.
+- Illustration: hers to source; rules for it are in the spec, section 8.
+- Dead CSS left in place (.svc-price, .card-tag, .card-year, .headshot-placeholder*,
+  .who-grid, .how-grid, .tier-head-grid); the unused Source Serif italic font request.
+- site-copywriter appended an unratified voice learning to the Cowork LEARNINGS.md.
+
+### Gates run on the branch (reports kept in the session scratchpad, not the repo)
+- site-design-check against the new spec: "a real point of view... undercut by a
+  handful of invented colours on the buttons". All its verified findings fixed.
+- site-gates: heading semantics fixed (The Edit panel h2, How I work h3s); its claim
+  about Contact's links was wrong (measured cobalt, 44px). Portrait now a 74KB JPEG.
+- Still open, none blocking: no Fontshare preconnect; the form's coral error colour
+  (#ff7f6e, 7.63:1) is the one off-palette colour, Jasmin's call; input placeholder
+  text is 1.94:1 on the ink card (pre-existing, labels are real so not a hard fail);
+  services.html How I work band carries an inline padding override; no recorded
+  Lighthouse, axe, VoiceOver or PageSpeed run: manual checks on `/`, `/services`,
+  `/ai`, `/about`, `/contact`, `/legal`, `/404`.
+
+### Next step
+Jasmin reviews the preview and merges. After merge: run site-steward in change mode
+(claims register surfaces updated in claude-config, uncommitted there), and record a
+PageSpeed mobile score for Gate 2.
+
 ## Session — 2026-08-31 (The Edit reframed, AI page re-scoped and rebuilt)
 
 ### Branch status
