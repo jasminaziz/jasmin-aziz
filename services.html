@@ -139,7 +139,8 @@
   color: var(--ink);
   text-wrap: pretty;
   padding: 20px 0 0;
-  max-width: 640px;
+  /* Ends where the block copy column ends (240px side + 64px gap). */
+  max-width: calc(100% - 304px);
 }
 
 /* Service block */
@@ -176,30 +177,36 @@
   margin-bottom: 0;
 }
 
+/* Service and engagement-shape blocks share one structure: exactly two
+   children, copy in the main column, .svc-side in the 240px column
+   ("Right for" then the CTA). No spanning, no implicit rows: the old
+   grid-row: 1 / -1 collapsed to one row and dropped every CTA under
+   the copy (audit 2026-09-12). */
 .svc-block-body {
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: minmax(0, 1fr) 240px;
   column-gap: 64px;
-  row-gap: 24px;
   align-items: start;
 }
-
-/* Main copy column spans both sidebar rows so pull-quote + CTA stack
-   independently on the right without pushing the copy column down. */
-.svc-main-col { grid-row: 1 / -1; }
 
 .svc-main-copy {
   font-size: 16px;
   line-height: 1.68;
   color: var(--ink);
   text-wrap: pretty;
-  margin-bottom: 20px;
 }
 
+.svc-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* "Right for" is marginalia: a hairline and a label, no side stripe. */
 .svc-right-for {
-  margin-top: 20px;
-  border-left: 2px solid var(--ochre);
-  padding-left: 20px;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
 }
 
 .svc-right-for-label {
@@ -220,18 +227,6 @@
   text-wrap: pretty;
 }
 
-/* Sidebar */
-.svc-sidebar-cta {
-  padding-top: 8px;
-}
-
-/* Pull-quote in sidebar: uses .pull-quote base from site.css.
-   Tighter margin-bottom to sit comfortably above the CTA pill. */
-.svc-pull-quote { margin-bottom: 0; }
-
-/* Illustration drop-in slot — no footprint until populated. */
-.svc-illus-slot {}
-
 /* Service hairline rule */
 .svc-rule {
   border: none;
@@ -247,7 +242,7 @@
 
 .shape-block-header {
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: minmax(0, 1fr) 240px;
   gap: 64px;
   align-items: start;
 }
@@ -317,23 +312,21 @@
 
   /* Page intro: already 1-col from 900px rule above */
 
-  /* Service block body: 1fr 240px → 1-col.
-     Pull-quote reorders above copy; grid-row reset so order works. */
+  /* Block bodies: 2-col → 1-col. DOM order already reads
+     copy → Right for → CTA, so no reordering is needed. */
   .svc-block-body {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  .svc-pull-quote { order: 1; }
-  .svc-main-col   { order: 2; grid-row: auto; }
-  .svc-sidebar-cta { padding-top: 0; order: 3; }
-  .svc-sidebar-cta .pill { width: 100%; justify-content: center; }
+  .svc-side .pill { width: 100%; justify-content: center; }
 
-  /* Shape block header: 1fr 240px → 1-col. */
+  /* Shape block header: 2-col → 1-col. */
   .shape-block-header {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .shape-block-header > div:last-child .pill { width: 100%; justify-content: center; }
+
+  .tier-intro { max-width: none; }
 
   /* How-it-starts grid: 2fr 1fr → 1-col.
      Aside: sticky → static (no viewport to pin to on mobile). */
@@ -574,16 +567,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">A strategic review of your marketing and communications function. Audiences, channels, content output across the team, brand consistency, capacity, and whether the strategy underneath the activity is doing real work. The audit finds the gap between what is being produced and what the organisation actually needs. You receive a written assessment and prioritised recommendations, ready to take to a board, a leadership team, or straight into a plan.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations that sense something isn't working but haven't been able to name it. Also a starting point before a longer engagement.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>There is a gap between what you produce and what the organisation needs. I find it.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/contact#audit" class="pill pill-cobalt">Discuss an audit →</a>
       </div>
     </div>
@@ -598,16 +587,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">Governance starts with finding where AI is already in use, including the tools nobody signed off, and builds towards a policy short enough for a non-specialist to run, with data handling matched to how sensitive each tool is. Training runs the other way: it starts from a diagnostic of your team's real work, not a generic outline. Two different problems, solved differently.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations that hold sensitive data and answer to a board, with no in-house counsel or technical team to hand the AI question to.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>You can't govern what you haven't found.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/ai" class="pill pill-cobalt">See the AI work →</a>
       </div>
     </div>
@@ -622,16 +607,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">A fixed-scope audit of how visible, and how accurately, your organisation appears in AI search and answer engines such as ChatGPT, Perplexity and Google's AI Overviews. I run the questions your audience asks, compare how often you and your peers are named, and check what the engines say against your own facts. You receive a report with the evidence behind each recommendation, in priority order.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations whose audience now asks an AI assistant before visiting their website, and who want to know whether it names them and gets them right.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>Being cited starts with being mentioned.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/contact#geo-audit" class="pill pill-cobalt">Discuss a GEO audit →</a>
       </div>
     </div>
@@ -646,16 +627,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">The strategic clarity work underneath a brand: what the organisation stands for, who it's for, how it talks about itself, and what makes it distinct. I lead the thinking, facilitate the workshops with your leadership team, develop the positioning framework and messaging architecture, and write the brief for any design or creative work that follows.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations building a brand for the first time, repositioning after a period of drift, or redeveloping their mission, vision, and values.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>I do the strategic thinking underneath the brand before any design begins.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/contact#brand" class="pill pill-cobalt">Talk about brand →</a>
       </div>
     </div>
@@ -670,16 +647,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">The strategic foundation for a marketing or communications campaign, internal or external. Whether it's a fundraising push, a public awareness moment, an advocacy campaign, an internal change programme, or an organisational launch, I develop the strategy that holds the campaign together: the audiences, the positioning, the channel approach, the messaging, and the phased plan your team executes against.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Organisations with a significant campaign moment ahead and a team ready to deliver it, who need the strategic architecture in place first.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>I develop the strategy that holds the campaign together.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/contact#campaign" class="pill pill-cobalt">Plan a campaign →</a>
       </div>
     </div>
@@ -694,16 +667,12 @@
     <div class="svc-block-body">
       <div class="svc-main-col">
         <p class="svc-main-copy">A working system for producing and delivering content consistently. The editorial calendar. The role of each channel: social media, newsletter, web. Formats the team builds from, rather than starts from each time. The scheduling workflow. AI-assisted production that keeps quality consistent without doubling the workload. Most teams produce content reactively because the system for doing it any other way isn't there. This is that system.</p>
+      </div>
+      <div class="svc-side">
         <div class="svc-right-for">
           <span class="svc-right-for-label">Right for</span>
           <p>Marketing and communications teams whose content output is inconsistent or reactive, who want a system the team can run without senior input at every step.</p>
         </div>
-      </div>
-      <blockquote class="pull-quote svc-pull-quote">
-        <p>Most teams produce content reactively because the system isn't there. This is that system.</p>
-      </blockquote>
-      <div class="svc-sidebar-cta">
-        <div class="svc-illus-slot"></div>
         <a href="/contact#content" class="pill pill-cobalt">Build a content system →</a>
       </div>
     </div>
@@ -727,7 +696,7 @@
         <h3 class="shape-title">Fractional</h3>
         <p class="shape-copy">I hold the marketing and communications function from inside the team for a defined period. Not freelance support delivered from outside: fractional is strategic ownership. Most engagements start with a Communications audit that defines scope, priorities, and rhythm. Commitment is set at an agreed number of days per month. Suits organisations without a marketing and communications lead, those in a growth or change phase, or teams strong on delivery but needing strategic leadership above them.</p>
       </div>
-      <div style="padding-top:8px;">
+      <div class="svc-side">
         <a href="/contact#fractional" class="pill pill-cobalt">Discuss fractional →</a>
       </div>
     </div>
@@ -742,7 +711,7 @@
         <h3 class="shape-title">Advisory</h3>
         <p class="shape-copy">Strategic input on a lighter-touch, ongoing basis. Monthly or quarterly rhythm, shaped around what the team needs: regular review of marketing and communications strategy, a sounding board for the team lead, or input into board-level conversations about positioning, reputation, or change. Suits organisations with a capable team already running the function who want senior perspective rather than hands-on delivery. Often starts with a Communications audit.</p>
       </div>
-      <div style="padding-top:8px;">
+      <div class="svc-side">
         <a href="/contact#advisory" class="pill pill-cobalt">Set up an advisory rhythm →</a>
       </div>
     </div>
@@ -757,7 +726,7 @@
         <h3 class="shape-title">Per project</h3>
         <p class="shape-copy">Strategic judgement on a defined piece of work, without ongoing commitment. A working session on a brand or messaging challenge. A consultation on a decision the team is working through. Scoped to what's in front of you, agreed in advance. This can be strategic thinking or hands-on delivery: a website rebuild, a content calendar, a signage plan, a campaign brief. If you have a defined job and need someone to do it well, this is the shape.</p>
       </div>
-      <div style="padding-top:8px;">
+      <div class="svc-side">
         <a href="/contact#per-project" class="pill pill-cobalt">Book a working session →</a>
       </div>
     </div>

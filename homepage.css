@@ -18,10 +18,13 @@
    ================================================================= */
 .hero { padding: var(--sv) 0 clamp(32px, 4vw, 64px); }
 
+/* H1 size tracks the viewport above 900px so the unbreakable run
+   "Strategic marketing" always fits its column. A fixed 68px pushed the
+   portrait off-screen from 901px to ~1128px (audit 2026-09-12). */
 .hero-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: var(--h1-size);
+  font-size: clamp(2.75rem, 5vw, var(--h1-size));
   letter-spacing: -0.03em;
   line-height: 1.05;
   color: var(--ink);
@@ -61,16 +64,17 @@
 
 /* =================================================================
    HERO GRID (portrait in hero)
-   Desktop: 2-col (content 1fr | portrait 300px), centre-aligned.
-   ≤768px: narrow portrait column to 240px.
-   ≤640px: stacked, portrait above H1 via order:-1, 3/2 crop to
-   limit height and keep H1 + lead + CTA in the first viewport.
+   Above 900px: 2-col (content | portrait 300px), centre-aligned.
+   The text track is minmax(0, 1fr) so it can never grow past its
+   share and push the portrait off-screen.
+   ≤900px: stacked, portrait above H1 via order:-1, as a horizontal
+   capsule (2/1, then 3/2 at ≤640px) using the landscape photo.
    border-radius: 999px gives a tall oval at desktop (300×400px) and
-   a horizontal capsule at mobile (335×223px) — same shape as About.
+   a horizontal capsule when stacked, the same shape as About.
    ================================================================= */
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: minmax(0, 1fr) 300px;
   gap: 64px;
   align-items: center;
 }
@@ -287,16 +291,17 @@
 .proof-card p + p         { margin-top: 0; }
 .proof-card p:last-of-type { margin-bottom: 0; }
 
+/* Cream on cobalt = 8.0:1. Cream on periwinkle was 3.40:1 and failed AA
+   for body copy, so the periwinkle card sets ink (5.22:1). */
 .proof-card-cobalt h3,
 .proof-card-cobalt p       { color: var(--cream); }
-.proof-card-periwinkle h3  { color: var(--cream); }
-.proof-card-periwinkle p   { color: var(--cream); }
+.proof-card-periwinkle h3,
+.proof-card-periwinkle p   { color: var(--ink); }
 
 .card-link {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  width: 13rem;
   border-radius: 100px;
   padding: 11px 22px;
   min-height: 44px;
@@ -354,10 +359,8 @@
 .mobile-br  { display: none; }
 .mobile-amp { display: none; }
 .diag-br    { display: none; }
-.h1-br      { display: none; }
 
 @media (min-width: 769px) { .diag-br { display: block; } }
-@media (min-width: 641px) and (max-width: 900px) { .h1-br { display: block; } }
 
 /* =================================================================
    FOCUS STATES (homepage-specific additions)
@@ -382,12 +385,16 @@
 
 @media (max-width: 900px) {
   .hero-h1 { font-size: clamp(2.25rem, 7vw, 3.5rem); }
+
+  /* Stack from 900px down: portrait above the H1, landscape crop */
+  .hero-grid { display: flex; flex-direction: column; gap: 28px; }
+  .hero-portrait-wrap { order: -1; }
+  /* 2/1 trims the 3/2 photo top and bottom; bias the crop to the face */
+  .hero-portrait { aspect-ratio: 2/1; object-position: center 22%; }
 }
 
 @media (max-width: 768px) {
-  .hero-grid { grid-template-columns: 1fr 240px; gap: 40px; }
-
-  .hero-body       { padding-top: 28px; }
+  .hero-body      { padding-top: 28px; }
   .hero-intro      { margin-bottom: 36px; }
   .hero-diagnosis p { font-size: 1rem; }
 
@@ -432,9 +439,6 @@
 
   .who-body p   { font-size: 1rem; }
   .diff-paras p { font-size: 1rem; }
-
-  .pull-quote p { font-size: 1.125rem; }
-  .pull-quote   { padding-left: 20px; }
 
   .proof-section .section-head { font-size: clamp(1.375rem, 6vw, 1.875rem); }
   .cta-left .section-head      { font-size: 1.5rem; }

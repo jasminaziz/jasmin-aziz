@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* ── AI PAGE — page-specific styles ──
-   Reuses site.css shared components (wrap, label, pill, pull-quote,
+   Reuses site.css shared components (wrap, label, pill,
    section-head, who-section bands, nav, footer, tokens). Only the
    layout below is page-local — no new colours, no new type styles. */
 
@@ -110,10 +110,6 @@
 }
 
 .ai-body p + p { margin-top: 24px; }
-
-/* Pull-quote sits inside the body column, after the governance copy.
-   Uses the .pull-quote base from site.css; add top spacing here. */
-.ai-body .pull-quote { margin-top: 32px; }
 
 /* The four rooms — 2×2 editorial grid, hairline-ruled.
    The one new layout on this page; built from existing tokens. */
@@ -229,6 +225,12 @@
 .ai-close-smallprint a:hover,
 .ai-close-smallprint a:active { color: var(--cobalt); }
 
+/* The free policy template is the second path, so it gets a real button
+   beside the sentence that offers it: the outline .pill, as on About. */
+.ai-template-pill { margin-top: 28px; }
+
+/* Qualified so it outranks .ai-close-smallprint a, which was forcing ink. */
+.ai-close-smallprint a.ai-close-more,
 .ai-close-more {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
@@ -343,9 +345,6 @@
       <div class="ai-body">
         <p>I work with chief executives, senior teams and boards on adopting AI responsibly and being able to answer for it. That starts with finding where AI is already in use, including the tools nobody approved, because you can't govern what you haven't found. From there: a policy short enough that people actually read it, data matched to the sensitivity of the tool, and a plan for AI-enabled reputational harm decided before you need it, not drafted mid-incident.</p>
         <p>Most AI governance is written for organisations with in-house counsel and a technical team. You probably have neither. So I build governance a non-specialist can run: one page rather than forty, a named owner rather than a committee, and a board that can see what's in use and what would happen if it failed.</p>
-        <blockquote class="pull-quote">
-          <p>Fluency, not fear, decides which way this goes.</p>
-        </blockquote>
       </div>
     </div>
   </div>
@@ -400,13 +399,13 @@
           <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes, no preparation needed. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
           <p>If your question is what AI answers already say about your organisation, that's the <a href="/services#geo-audit" style="color:var(--cobalt);text-decoration:none;">GEO audit</a>.</p>
         </div>
+        <a href="https://theeditai.co.uk/policy-template" class="pill ai-template-pill" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
       </div>
       <aside class="ai-close-aside">
         <span class="label">Start here</span>
         <h3 class="ai-close-cta-head">Tell me what you're working on.</h3>
         <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
         <div class="ai-close-smallprint">
-          <a href="https://theeditai.co.uk/policy-template" class="ai-close-more" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
           <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
           <a href="/about" class="ai-close-more">Or read more about how I work →</a>
         </div>

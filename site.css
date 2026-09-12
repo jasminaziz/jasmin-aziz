@@ -317,24 +317,6 @@ body::after {
   text-wrap: pretty;
 }
 
-/* ── PULL QUOTE ─────────────────────────────────────────────────── */
-/* Use <blockquote class="pull-quote"> in markup — not <div>.        */
-.pull-quote {
-  border-left: 2px solid var(--ochre);
-  padding: 4px 0 4px 28px;
-  margin-bottom: 36px;
-}
-
-.pull-quote p {
-  font-family: 'Source Serif 4', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.375rem;
-  line-height: 1.48;
-  color: var(--ink);
-  text-wrap: pretty;
-}
-
 /* ── WAVE SEPARATORS ────────────────────────────────────────────── */
 .wave-sep { display: block; width: 100%; line-height: 0; overflow: hidden; }
 .wave-sep svg { width: 100%; height: 48px; display: block; }
@@ -386,6 +368,10 @@ body::after {
   pointer-events: none;
   z-index: 1;
 }
+
+/* A band that is the last section before the footer has no bottom
+   wave: it would paint a tinted scallop onto the ink footer. */
+main > .who-section:last-child::after { display: none; }
 
 .who-section--periwinkle {
   background: rgba(123,127,212,0.10);
@@ -655,9 +641,6 @@ footer .footer-contact:focus-visible {
   }
 
   .footer-grid > div:first-child { grid-column: 1 / -1; }
-
-  /* Pull quote: tighten */
-  .pull-quote p { font-size: 1.1875rem; }
 }
 
 /* ── 640px — Mobile nav + spacing ──────────────────────────────── */
@@ -674,10 +657,6 @@ footer .footer-contact:focus-visible {
 
   /* Section head */
   .section-head { font-size: clamp(1.5rem, 7vw, 2rem); }
-
-  /* Pull quote: tighten further */
-  .pull-quote p { font-size: 1.0625rem; }
-  .pull-quote   { padding-left: 18px; }
 }
 
 /* ── 480px — Footer single-col + footer-bottom stack ───────────── */
