@@ -653,3 +653,17 @@ After changing site.css, the pane still reported the old `opacity: 0.5` on the
 footer. `curl` showed the server serving the new rule; the page's query-string
 cache-buster only busts the HTML, not the stylesheets it loads. Rule: after a CSS
 edit, `fetch(url, {cache: 'reload'})` each stylesheet, reload, then measure.
+
+## Approved copy can silently undo an earlier decision (2026-09-12)
+The recommended Edit panel description, drafted by site-copywriter and approved by
+Jasmin, dropped the DPIA gloss that decision D12 (31 Aug) had put in place. Neither
+the draft nor the approval sheet said so; it surfaced only while building. She chose
+to restore it. Rule: before putting copy options to Jasmin, check each against the
+decisions register in SCRATCHPAD for anything it removes, and name that in the option.
+
+## Say what was not done, in the summary, before she has to ask (2026-09-12)
+The brief called abialdridge.com a benchmark; the only material was a GEO report, so
+no services or visual benchmark happened. The end-of-session summary listed the
+Services length gap but not that the benchmark itself was never run, and Jasmin had to
+ask. Rule: when a source or benchmark named in a brief was only partly used, say so
+plainly in the closing summary's "not done" list.

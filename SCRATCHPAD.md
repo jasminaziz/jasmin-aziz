@@ -123,9 +123,17 @@ with evidence images. Plan signed off, then built in phases:
   `/ai`, `/about`, `/contact`, `/legal`, `/404`.
 
 ### Next step
-Jasmin reviews the preview and merges. After merge: run site-steward in change mode
-(claims register surfaces updated in claude-config, uncommitted there), and record a
-PageSpeed mobile score for Gate 2.
+Jasmin reviews the preview and merges. Preview (Vercel SSO, sign in as jasminaziz):
+https://jasmin-aziz-git-design-look-and-feel-jasminazizs-projects.vercel.app
+After merge: run site-steward in change mode (claims register surfaces updated in
+claude-config, uncommitted there), record a PageSpeed mobile score for Gate 2, and run
+the manual accessibility checks.
+
+Then, offered and not started: a proper services benchmark. Render Abi Aldridge's and
+Frankie Brand's services pages beside ours and compare how each structures a service
+(who it suits, what you get, how it runs, CTA, length). That becomes the brief for the
+parked Services content pass (1,069 words against 650 to 700). The 2026-09-11 Abi
+report is a GEO read only: it is NOT a services or visual benchmark.
 
 ## Session — 2026-08-31 (The Edit reframed, AI page re-scoped and rebuilt)
 
