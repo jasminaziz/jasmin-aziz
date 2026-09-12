@@ -667,3 +667,47 @@ no services or visual benchmark happened. The end-of-session summary listed the
 Services length gap but not that the benchmark itself was never run, and Jasmin had to
 ask. Rule: when a source or benchmark named in a brief was only partly used, say so
 plainly in the closing summary's "not done" list.
+
+## A deleted file's links outlive it, silently (2026-09-12)
+`favicon.png` was deleted on 7 June when the favicon went to outlined SVG, but every
+page kept `<link rel="icon" href="favicon.png">` for three months: a 404 on every page
+load that nobody saw, because browsers fall back to the SVG without a word. The icon
+brief then described the favicon as it was before 7 June (an embedded base64 font),
+which was also no longer true. Rule: when deleting an asset, grep for its name across
+every page in the same commit; and before designing to a brief's description of a
+file, open the file and curl every URL a head tag names.
+
+## Relative paths break a 404 page at depth two (2026-09-12)
+404.html links `site.css` and its scripts relatively. Vercel serves it for any
+unknown path, so at /no/such/page the stylesheet resolves to /no/such/site.css, which
+is itself the 404 HTML: an unstyled page. One level deep it works, which is why it
+survived. Rule: anything a 404 page loads is root-absolute, and a 404 change is
+rendered at a nested path, not only at /nosuchpage.
+
+## A clean-URL 308 is not "served" (2026-09-12)
+Checking that `assets-src/og-cards.html` was not deployed returned 308, not 404:
+`cleanUrls` redirects any .html path before the file lookup. Following the redirect
+gave the site's 404 page. Rule: follow redirects (`curl -L`) and grep the final body
+before calling a path served or hidden.
+
+## Share cards cannot be tested on the preview (2026-09-12)
+og:image URLs are absolute www, so on a preview they point at production files that
+do not exist until the merge, and the SSO wall stops platforms fetching the preview
+anyway. Vercel's MCP fetch also gets a 302 to sso-api on this project, with or without
+a share token. Rule: on the preview, check the deployment is READY for the right SHA
+and render the cards locally; test real link previews only after the merge, then run
+LinkedIn's Post Inspector.
+
+## Rendering icons and cards with headless Chrome (2026-09-12)
+Transparent PNGs need `--default-background-color=00000000`. Small sizes lay out at
+the 500px floor, so place the image at 0,0 and crop the top-left NxN. Pillow's ICO
+writer accepts `append_images` for exact frames; reopen the .ico and diff each frame
+against its render, since a resized 48px frame looks plausible at 16. Card fonts load
+from a local @font-face with `--virtual-time-budget`, or the first frame is fallback type.
+
+## Show a design question both ways instead of executing it literally (2026-09-12)
+"Should the training intro stretch to fit the section below?" was a question inside a
+change list. Built literally, the lines ran about 125 characters. Rendering both the
+recommendation (aligned to the grid's columns) and the literal stretch side by side got
+a decision in one look. Rule: when a change request is phrased as "should it", answer
+with a recommendation and a capture of each option.

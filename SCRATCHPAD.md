@@ -78,9 +78,17 @@ contradicts the live AI page outright.
 ## Session: 2026-09-12 (icons and share cards)
 
 ### Branch status
-- **design/icons**, cut from main at c8e302d, pushed; Jasmin reviews and merges.
-  main untouched. The new og:image URLs are absolute www, so the cards only resolve
-  once merged; the preview cannot show a link preview anyway (SSO).
+- **MERGED to production at her request**: main fast-forwarded to 36b6b30, pushed as
+  HEAD:main. Verified live: all three icons and both cards 200 with the right types,
+  every page's og and twitter tags point at the new cards with alt text, the old
+  og-image.png and favicon.png 404, assets-src/ not served (a .html path 308s to its
+  clean URL, then 404). Branch design/icons still on GitHub: delete on her word.
+
+### Open: nested 404 renders unstyled (found 12 Sept, not fixed)
+404.html loads `site.css`, `nav.js` and `scroll-top.js` by relative path. At
+/nosuchpage they resolve; at /no/such/page they resolve to /no/such/site.css, which is
+itself a 404 HTML page, so the page renders as browser-default text (rendered and
+confirmed). Fix: make those three hrefs root-absolute. Since launch; awaiting her yes.
 
 ### What happened
 - Judgement: the look-and-feel brief was already complete and merged, so this ran now.
