@@ -217,13 +217,15 @@
    HOW I WORK: ENGAGEMENT SHAPES (ochre band)
    Three terms across one row, each a link to its Services block, each
    with its definition beneath. Replaced a paragraph plus a duplicate
-   list of the same three terms (2026-09-12).
+   list of the same three terms (2026-09-12). The Fractional definition
+   is three times the length of the other two, so its column is wider:
+   equal thirds left it five lines deep beside two short ones.
    ================================================================= */
 .shapes-lead { font-size: var(--fs-body); line-height: 1.68; }
 
 .shapes-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 48px;
   margin-top: 32px;
 }
@@ -265,8 +267,6 @@
   line-height: 1.62;
   text-wrap: pretty;
 }
-
-.shapes-close { margin-top: 32px; font-size: var(--fs-body); line-height: 1.68; }
 
 /* =================================================================
    ABOUT BRIDGE (copy | portrait)
@@ -319,6 +319,17 @@
 
 .proof-card-cobalt     { background: var(--cobalt); }
 .proof-card-periwinkle { background: var(--periwinkle); }
+
+/* Each property's own mark, top right, level with the heading. The Edit
+   keeps its favicon lime (#C8F04A), the one colour here from outside the
+   site palette, because it is The Edit's logo; Substack's mark is cream.
+   Decorative: the heading and the link already name each one. */
+.card-mark {
+  position: absolute;
+  top: 52px;
+  right: 52px;
+  display: block;
+}
 
 .card-tag {
   position: absolute;
@@ -491,6 +502,7 @@
 
   .proof-card h3 { margin-bottom: 16px; }
   .proof-card p  { margin-bottom: 28px; flex: 1; }
+  .card-mark     { top: 36px; right: 28px; }
 
   .card-link { align-self: flex-start; margin-top: 0; }
 }
@@ -525,6 +537,7 @@
 @media (max-width: 480px) {
   .proof-card { padding: 36px 24px 32px; }
   .card-link  { margin-top: 24px; }
+  .card-mark  { right: 24px; }
 
   .card-tag {
     top: 16px;

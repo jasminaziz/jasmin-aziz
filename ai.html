@@ -98,6 +98,17 @@
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 48px;
   align-items: end;
+  position: relative;
+}
+
+/* The Edit's own mark, top right, level with the heading. Its favicon
+   lime (#C8F04A) is the one colour here from outside the site palette,
+   because it is The Edit's logo. Decorative: the heading and link name it. */
+.ai-edit-mark {
+  position: absolute;
+  top: clamp(32px, 4vw, 52px);
+  right: clamp(32px, 4vw, 52px);
+  display: block;
 }
 
 .ai-edit-head {
@@ -207,8 +218,15 @@
    Kept on cream (not a tinted band) so it never sits against the
    periwinkle closing band, which was smearing the wave at that seam.
    The periwinkle band is now the only tinted band on the page. */
-.ai-training-head { max-width: 760px; }
-.ai-training-intro { max-width: 720px; margin-top: 22px; }
+/* Heading and intro sit on the rooms' two columns, so the top of the
+   section spans the same width as the grid below. The intro used to stop
+   at 720px, a width that lined up with nothing. */
+.ai-training-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  align-items: start;
+}
 .ai-training-close { max-width: 720px; margin-top: 44px; }
 
 /* Closing band: periwinkle who-section, shared .close-aside (site.css).
@@ -233,6 +251,9 @@
 /* ── 900px: the header stacks (a two-column header runs tall here) ── */
 @media (max-width: 900px) {
   .ai-intro-grid { grid-template-columns: 1fr; gap: 24px; }
+  /* Half a column is too narrow for the training intro here */
+  .ai-training-top { grid-template-columns: 1fr; row-gap: 22px; }
+  .ai-training-intro { max-width: 720px; }
 }
 
 /* ── 768px: all 2-col grids → 1-col ──────────────────────────── */
@@ -245,6 +266,8 @@
   }
 
   .ai-edit { grid-template-columns: 1fr; gap: 28px; align-items: start; }
+  /* One column: keep the heading clear of the mark */
+  .ai-edit-head { padding-right: 52px; }
 
   .ai-rooms {
     grid-template-columns: 1fr;
@@ -311,9 +334,10 @@
 
     <!-- The Edit, platformed as proof: built from the homepage cobalt card. -->
     <div class="ai-edit">
+      <svg class="ai-edit-mark" viewBox="4 5 24 22" width="37" height="34" aria-hidden="true" focusable="false"><rect x="4" y="5" width="24" height="6" rx="3" fill="#C8F04A"/><rect x="9" y="13" width="19" height="6" rx="3" fill="#C8F04A"/><rect x="4" y="21" width="24" height="6" rx="3" fill="#C8F04A"/></svg>
       <div class="ai-edit-text">
-        <h2 class="ai-edit-head">That judgement is public. I built and run The Edit.</h2>
-        <p class="ai-edit-desc">An AI tools directory for charity, cultural and heritage comms teams. Every tool has been through the same checks: where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA, the data protection assessment your organisation carries out. The ones that didn't hold up are published too.</p>
+        <h2 class="ai-edit-head">Exploring AI tools for your team? Start with The Edit.</h2>
+        <p class="ai-edit-desc">An AI tools directory I built and run for charity, cultural and heritage comms teams. Every tool has been through the same checks: where the data sits, whether it trains on your content, and how likely typical use is to trigger a DPIA, the data protection assessment your organisation carries out. The ones that didn't hold up are published too.</p>
       </div>
       <a href="https://theeditai.co.uk/" class="ai-edit-link" target="_blank" rel="noopener">The Edit ↗&#xFE0E;<span class="sr-only"> (opens in new tab)</span></a>
     </div>
@@ -339,9 +363,11 @@
 <!-- SECTION TWO · TRAINING — full-width set-piece on cream -->
 <section class="ai-section ai-training">
   <div class="wrap">
-    <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
-    <div class="ai-body ai-training-intro">
-      <p>Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
+    <div class="ai-training-top">
+      <h2 class="section-head ai-training-head">Training built on your team's real work</h2>
+      <div class="ai-body ai-training-intro">
+        <p>Most AI training makes a room feel busy for a day and changes nothing by Friday. Mine is built on your team's actual tasks, gathered through a short diagnostic before anyone walks in, and it carries the honest version: what these tools do brilliantly, what they cost, and where they don't belong.</p>
+      </div>
     </div>
 
     <!-- The four rooms — numbered 2×2 set -->
@@ -381,7 +407,7 @@
       <div>
         <h2 class="section-head section-head--accent ai-close-head">Where to start</h2>
         <div class="ai-body">
-          <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
+          <p>You don't need to know which of these fits before we talk. Working that out together is what the discovery call is for: 30 to 45 minutes, and a rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
         </div>
         <a href="https://theeditai.co.uk/policy-template" class="pill ai-template-pill" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
       </div>

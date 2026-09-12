@@ -90,8 +90,9 @@ with evidence images. Plan signed off, then built in phases:
 - Diagnosis band rebuilt (words verbatim, lead left, argument right, no CTA).
   How I work is a three-shape definition row; the duplicate Engagement list is gone.
 - Services: one explicit block grid (the old `grid-row: 1/-1` put every CTA under
-  the copy); pull quotes gone; H2 outranks numerals; intro names and defines the
-  three shapes in the first scroll (word 50, was 768); block 02 covers training.
+  the copy); pull quotes gone; H2 outranks numerals; intro names the three shapes
+  in the first scroll (word 50, was 768), each linked to its block (the definition
+  sentence was cut in the review round below); block 02 covers training.
 - AI: header heading-left, body-right; intro cut to one paragraph; The Edit in its
   own cobalt panel; policy template gets an outline pill; GEO line cut.
 - Sitewide: type-scale tokens; no italics, no side stripes; sentence-case buttons at
@@ -100,6 +101,21 @@ with evidence images. Plan signed off, then built in phases:
 - Illustration marks drafted in three idioms and **rejected by Jasmin**. Dropped with
   their motion. She is exploring sourced illustration herself.
 - Design spec rewritten to describe what ships.
+
+### Review round (Jasmin's changes from the preview, same day)
+- Homepage How I work: "Services lays out how each one runs." joined to the lead
+  line; columns sized to their definitions (1.75fr 1fr 1fr). Band 536 to 423px at 1440.
+- Logos top right: The Edit's favicon capsules (its own lime #C8F04A, documented as a
+  logo colour) on the homepage card and the AI Edit panel; Substack's mark in cream.
+- Services: "Services" tier heading in --periwinkle-text. The "How I work" tier heading
+  on Services is still ink; not asked, so not changed.
+- Services intro: fractional definition sentence cut; the three shape names link to
+  their blocks. Ruled by Jasmin: do not add the definition back.
+- AI: Edit panel heading "Exploring AI tools for your team? Start with The Edit.";
+  "I built and run" moved into the description (keeps the register claim). "Where to
+  start" opens "You don't need to know which of these fits before we talk." Training
+  heading and intro sit on the rooms' two columns (stacked at 900 and below); the
+  literal full-width stretch was shown and declined (about 125 characters a line).
 
 ### Open, Jasmin's calls
 - Services is 1,069 words against the 650-700 benchmark: the content pass (with the

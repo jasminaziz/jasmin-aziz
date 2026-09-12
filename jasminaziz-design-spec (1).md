@@ -123,7 +123,7 @@ The secondary face was reviewed on 12 September 2026 and kept: the italics came 
 | Inner H1s (`.svc-page-h1`, `.ai-h1`, `.about-h1`, `.error-heading`, Legal `.page-subtitle`) | Chillax | 700 | `--fs-h1` | 1.0 to 1.05 | -0.03em | ink (404 heading in `--periwinkle-text`) |
 | `.contact-h1` | Chillax | 700 | `min(var(--fs-h1), 3rem)`, capped so it holds two lines in its narrower column | 1.0 | -0.03em | ink |
 | `.section-head` | Chillax | 700 | `--fs-h2` | 1.1 | -0.025em | ink; `.section-head--accent` uses `--periwinkle-text` |
-| Services `.tier-title` | Chillax | 700 | `--fs-h2` | 1.1 | -0.025em | ink |
+| Services `.tier-title` | Chillax | 700 | `--fs-h2` | 1.1 | -0.025em | `--periwinkle-text` (5.95:1) |
 | Legal `h2` | Chillax | 700 | 1.625rem | 1.15 | -0.02em | ink |
 | `.svc-block-title`, `.shape-title` | Chillax | 700 | `--fs-h3` | 1.1 | -0.025em | ink |
 | `.svc-block-num` | Chillax | 700 | 2.25rem; ≤640 1.75rem | 1 | -0.03em | raw periwinkle (large, decorative) |
@@ -171,7 +171,7 @@ Measure: body copy stays at or under about 75 characters a line. Services block 
 | Periwinkle on ink (footer column labels) | 5.22:1 | AA |
 | Raw periwinkle on cream | 3.40:1 | Large bold text only (numerals at 28px and up). Never body text or small labels |
 
-One colour sits outside the palette: the contact form's error message is `#ff7f6e` (7.63:1 on the ink card), set by the form script in `contact.html`. It is functional, not decorative, and Jasmin kept it as the one documented exception (ruling 12 September 2026). Do not add others.
+One colour sits outside the palette: the contact form's error message is `#ff7f6e` (7.63:1 on the ink card), set by the form script in `contact.html`. It is functional, not decorative, and Jasmin kept it as the one documented exception (ruling 12 September 2026). The Edit's logo mark (section 7.8) keeps The Edit's own lime `#C8F04A`: it is another property's logo, drawn in its own colours, not a site colour, and is never used for text or any other element. Do not add others.
 
 Cream on periwinkle is 3.40:1 and is not used for any text below large-bold size. It was the Substack card's body colour until 12 September 2026, and the old spec wrongly listed it as 5.5:1.
 
@@ -185,13 +185,14 @@ Desktop-first `max-width` queries at **900, 768, 640 and 480px**.
 |---|---|---|
 | Homepage hero `.hero-grid` | `minmax(0, 1fr) 300px`, gap 64, centred | ≤900: flex column, portrait first as a 2/1 landscape capsule; ≤640: 3/2 |
 | Diagnosis band `.diag-grid` | `minmax(0, 5fr) minmax(0, 6fr)`, gap 72: the lead left, the argument right | ≤768: one column, lead above |
-| Homepage How I work `.shapes-row` | `repeat(3, minmax(0, 1fr))`, gap 48 | ≤768: one column |
+| Homepage How I work `.shapes-row` | `minmax(0, 1.75fr) minmax(0, 1fr) minmax(0, 1fr)`, gap 48: Fractional's definition is three times the others' length | ≤768: one column |
 | Homepage `.diff-body-grid` | `1fr 1fr`, gap 72 | ≤768: one column |
 | Services intro `.svc-intro-grid` | `5fr 4fr`, gap 80 | ≤900: one column |
 | Service and shape blocks | `minmax(0, 38rem) minmax(240px, 1fr)`, gap 64, two children placed in order | ≤768: one column, DOM order copy, Right for, CTA |
 | Closing grids (`.how-process-grid`, `.ai-close-grid`) | `2fr 1fr`, gap 96 | ≤768: one column |
 | AI header `.ai-intro-grid` | `5fr 4fr`, gap 80, start-aligned: H1 alone left; lead, one paragraph and CTA right | ≤900: one column |
 | AI Edit panel `.ai-edit` | `minmax(0, 1fr) auto`, gap 48, end-aligned | ≤768: one column |
+| AI training top `.ai-training-top` | `1fr 1fr`, column gap 48: the same tracks as the rooms grid below, heading left, intro right | ≤900: one column, intro capped at 720px |
 | Heading-left, body-right (About, AI governance) | `1fr 2fr`, gap 80, start-aligned | ≤768: one column |
 | About hero | `minmax(0, 1fr) 320px`, gap 72 | ≤768: `1fr 200px`; ≤640: column, portrait first |
 | Contact `.contact-layout` | `minmax(0, 1fr) 480px`, form spans two rows | ≤900: one column |
@@ -231,10 +232,10 @@ A hairline-ruled list in the `.find-link-row` idiom: each item a flex row, Chill
 
 ### 7.7a Diagnosis band and How I work (homepage)
 - The diagnosis band's three opening sentences are `.diag-lead` (Source Serif 4, `clamp(1.5rem, 2.4vw, 2rem)`, line-height 1.3) on the left; the rest of the argument runs on the right at body size. Words are verbatim from the voice spec's worked example; do not rewrite them without updating that spec. The band has no CTA of its own.
-- How I work is a lead-in line, then `.shapes-row`: three `.shape-def` columns, each a top hairline, a `.shape-def-term` link (Chillax at `--fs-h3`, cobalt arrow, 44px target) to its Services block, and the definition beneath. Then the closing "Services lays out how each one runs."
+- How I work is one lead-in line ("Three engagement shapes, depending on what you need. Services lays out how each one runs.", with Services a link), then `.shapes-row`: three `.shape-def` columns, each a top hairline, a `.shape-def-term` link (Chillax at `--fs-h3`, cobalt arrow, 44px target) to its Services block, and the definition beneath. The columns are sized to their definitions so the row is as deep as its longest one, not five lines beside two.
 
 ### 7.8 Proof cards (homepage)
-Full-bleed two-column grid (one column at ≤768). The Edit card: cobalt ground, cream text. The Substack card: periwinkle ground, **ink** text. Each ends in a `.card-link` (cream ground, cobalt text, `--fs-small`, sized to its label).
+Full-bleed two-column grid (one column at ≤768). The Edit card: cobalt ground, cream text. The Substack card: periwinkle ground, **ink** text. Each ends in a `.card-link` (cream ground, cobalt text, `--fs-small`, sized to its label). Each carries its property's own logo, `.card-mark`, top right and level with the heading (52px in from the top and right; 36px and 28px at ≤768, right 24px at ≤480), 34px tall, inline SVG, `aria-hidden`: The Edit's is its favicon's three stacked capsules in its own lime (the favicon's cobalt square is the card's own cobalt, so it is omitted); Substack's is its mark in cream. The AI page's Edit panel carries the same Edit mark.
 
 ### 7.9 `.find-link-row` (About)
 Three columns (name 160px, description, arrow) between hairlines; at ≤640 the name and arrow share a row and the description drops below. The arrow is Plus Jakarta Sans 0.875rem cobalt, sentence case ("Visit ↗").
@@ -244,7 +245,7 @@ Header: numeral beside title (`auto 1fr`, gap 18, baseline). Body: `.svc-main-co
 `.svc-right-for` is marginalia: a top hairline, the label "Right for" in `--ochre-text` at `--fs-label`, then 14.5px body text. No side stripe.
 
 ### 7.10a The Edit panel (`.ai-edit`, AI page)
-Cobalt ground, cream text (8.0:1), 24px radius, padding `clamp(32px, 4vw, 52px)`, contained in the column grid. Opens with `.ai-edit-head` (Chillax `clamp(1.5rem, 2.4vw, 2rem)`: "That judgement is public. I built and run The Edit."), then `.ai-edit-desc` (the approved description, max 40rem), then `.ai-edit-link` (cream pill, cobalt text, "The Edit ↗"). The panel sits inside the intro's wrap so the governance band's top wave lands on cream, not on cobalt.
+Cobalt ground, cream text (8.0:1), 24px radius, padding `clamp(32px, 4vw, 52px)`, contained in the column grid. The Edit's logo mark, `.ai-edit-mark`, sits top right at the panel's padding (section 7.8); at ≤768 the heading takes 52px right padding to clear it. Opens with `.ai-edit-head` (Chillax `clamp(1.5rem, 2.4vw, 2rem)`: "Exploring AI tools for your team? Start with The Edit."), then `.ai-edit-desc` (the approved description, opening "An AI tools directory I built and run", which carries the ownership claim; max 40rem), then `.ai-edit-link` (cream pill, cobalt text, "The Edit ↗"). The panel sits inside the intro's wrap so the governance band's top wave lands on cream, not on cobalt.
 
 ### 7.11 Closing aside (`.close-aside`, Services and AI)
 Top hairline, 24px padding, sticky at 140px on desktop (static at ≤768). Contents: `.label` "Start here", `.close-aside-head`, an optional `.close-aside-note`, the primary `.pill-cobalt` (full width at ≤768), then `.close-aside-links` (a hairline, then cobalt `--fs-small` links, 44px targets).
@@ -260,7 +261,7 @@ Top hairline, 24px padding, sticky at 140px on desktop (static at ≤768). Conte
 
 ## 8. The visual layer
 
-**There is no illustration layer.** The visual layer is the portrait, the grain overlay, the wave-edged tinted bands, the ruled lists and the cobalt panels (the homepage proof cards and the AI page's Edit panel). Type and space do the rest.
+**There is no illustration layer.** The visual layer is the portrait, the grain overlay, the wave-edged tinted bands, the ruled lists and the cobalt panels (the homepage proof cards and the AI page's Edit panel). Type and space do the rest. The Edit and Substack logos on those panels (section 7.8) are logos, added at Jasmin's request on 12 September 2026, not illustration.
 
 **Marks were tried and rejected, 12 September 2026.** In-repo SVG "abstract editorial marks" built from the site's own motifs were drafted in three idioms (a line diagram, tinted fields, capsule rhythm), rendered in the real homepage band, and rejected by Jasmin. The marks, the six Services placements and the draw-on motion planned for them were all dropped. She is exploring sourced illustration separately; that decision is hers and has not been made.
 
@@ -297,7 +298,7 @@ Top hairline, 24px padding, sticky at 140px on desktop (static at ≤768). Conte
 
 - **Home** (wordmark links to `/`): hero (H1, one CTA, portrait); diagnosis band (lead left, argument right); What I do (copy plus the ruled services list); How I work (ochre band: lead-in, three-shape definition row, closing line); About me; Two places to read the work (heading, then full-bleed proof cards); closing CTA; footer.
 - **Services**: sticky anchor bar; intro (H1 left, intro right); Services (tier heading, intro, six blocks 01 to 06 in the settled order); How I work (ochre band, three shapes); How an engagement starts (body plus `.close-aside`); footer.
-- **AI**: header (H1 left; lead, one short paragraph and the CTA right; stacked at ≤900); The Edit panel; AI governance (ochre band, heading left, body right); Training (heading, intro, four numbered rooms, close); Where to start (periwinkle band: body plus the policy-template outline pill, `.close-aside`); footer.
+- **AI**: header (H1 left; lead, one short paragraph and the CTA right; stacked at ≤900); The Edit panel; AI governance (ochre band, heading left, body right); Training (heading left and intro right on the rooms' two columns, four numbered rooms, close); Where to start (periwinkle band: body plus the policy-template outline pill, `.close-aside`); footer.
 - **About**: hero (H1, lede, facts, pills, portrait); rule; Background (heading left, body right); The work, in practice (ochre band); closing CTA with `.find-link-row`s; footer.
 - **Contact**: intro and direct links left, form right; footer.
 - **Legal**: isolated page, Chillax H1 and H2s, anchor pills, three policies.
