@@ -90,6 +90,7 @@
 
 .hero-portrait {
   width: 100%;
+  height: auto; /* the img's height attribute would otherwise fix it at 853px */
   aspect-ratio: 3/4;
   object-fit: cover;
   object-position: top;
@@ -299,6 +300,7 @@
    ================================================================= */
 .proof-section          { padding: 20px 0 clamp(24px, 3vw, 36px); }
 .proof-section .label   { margin-bottom: 40px; }
+.proof-intro { font-size: 1rem; line-height: 1.6; margin: 14px 0 40px; max-width: 520px; text-wrap: pretty; }
 
 .proof-cards {
   display: grid;
@@ -403,6 +405,7 @@
    site.css uses clamp padding; homepage uses --sv for tighter spacing.
    ================================================================= */
 .cta-section                { padding: var(--sv) 0; }
+.cta-right-note             { font-size: var(--fs-small); line-height: 1.65; text-wrap: pretty; }
 
 /* =================================================================
    SECTION RULE

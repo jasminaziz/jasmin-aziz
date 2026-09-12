@@ -20,8 +20,8 @@
      WCAG ratios assume their named background context.
      NEVER use CSS opacity to mute text colour — use these instead.
      ─────────────────────────────────────────────────────────────── */
-  --periwinkle-text: #5255B5; /* 5.5:1 on cream  — replaces periwinkle @small sizes */
-  --ochre-text:      #7A5C0C; /* 5.4:1 on cream  — replaces ochre on pricing text   */
+  --periwinkle-text: #5255B5; /* 5.95:1 on cream: periwinkle for text */
+  --ochre-text:      #7A5C0C; /* 5.89:1 on cream: ochre for text */
   --ink-muted:       #706D68; /* 4.8:1 on cream  — replaces ink @45% opacity        */
   --cream-muted:     #A5A09A; /* 7.4:1 on ink    — replaces cream @38% opacity      */
 
@@ -121,8 +121,8 @@ body::after {
 .wrap { max-width: 1140px; margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ── LABEL ──────────────────────────────────────────────────────── */
-/* Contrast fix: --periwinkle-text (#5255B5) = 5.5:1 on cream.
-   Was var(--periwinkle) at 3.4:1 — failed WCAG AA at 11px.        */
+/* --periwinkle-text (#5255B5) = 5.95:1 on cream. Raw periwinkle is
+   3.40:1 and fails AA at 11px. */
 .label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
@@ -509,21 +509,21 @@ a.footer-wordmark:active { opacity: 0.85; }
   margin-bottom: 28px;
 }
 
-/* cream @50% on ink = 5.8:1 — passes AA. No change to opacity.   */
+/* Footer text uses solid rgba colours, not opacity (opacity also dims
+   focus rings). Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-contact {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
-  color: var(--cream);
-  opacity: 0.5;
+  color: rgba(250,248,244,0.5);
   text-decoration: none;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: opacity 150ms ease;
+  transition: color 150ms ease;
 }
 
-.footer-contact:hover, .footer-contact:active { opacity: 0.85; }
+.footer-contact:hover, .footer-contact:active { color: rgba(250,248,244,0.85); }
 
 /* Contrast fix: removed opacity: 0.7.
    Full --periwinkle (#7B7FD4) on ink = 5.3:1 — passes AA.        */
@@ -541,22 +541,21 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-nav-list { list-style: none; }
 .footer-nav-list li + li { margin-top: 4px; }
 
-/* cream @88% on ink = 14.2:1 — passes AAA. No change needed.     */
+/* Cream at 88% on ink, passes AAA. */
 .footer-nav-list a {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
-  color: var(--cream);
+  color: rgba(250,248,244,0.88);
   text-decoration: none;
-  opacity: 0.88;
-  transition: opacity 150ms ease;
+  transition: color 150ms ease;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
 
-.footer-nav-list a:hover, .footer-nav-list a:active { opacity: 1; }
+.footer-nav-list a:hover, .footer-nav-list a:active { color: var(--cream); }
 
 .footer-bottom {
   padding-top: 28px;
@@ -567,29 +566,27 @@ a.footer-wordmark:active { opacity: 0.85; }
 
 .footer-legal { display: flex; gap: 22px; align-items: center; }
 
-/* cream @50% on ink = 5.8:1 — passes AA.                         */
+/* Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-legal-link {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.8125rem;
-  color: var(--cream);
-  opacity: 0.5;
+  color: rgba(250,248,244,0.5);
   text-decoration: none;
-  transition: opacity 150ms ease;
+  transition: color 150ms ease;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
 }
 
-.footer-legal-link:hover, .footer-legal-link:active { opacity: 1; }
+.footer-legal-link:hover, .footer-legal-link:active { color: var(--cream); }
 
-/* Contrast fix: opacity raised from 0.3 → 0.5 = 4.75:1 on ink.  */
+/* Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-meta {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.8125rem;
-  color: var(--cream);
-  opacity: 0.5;
+  color: rgba(250,248,244,0.5);
 }
 
 
@@ -777,7 +774,7 @@ footer .footer-contact:focus-visible {
   height: 48px;
   border-radius: 50%;
   background: var(--cobalt);
-  color: #fff;
+  color: var(--cream);
   border: none;
   cursor: pointer;
   display: flex;
@@ -797,8 +794,9 @@ footer .footer-contact:focus-visible {
   transform: translateY(0);
 }
 
-.scroll-top-btn:hover {
-  background: var(--cobalt-hover, #1a3fcf);
+.scroll-top-btn:hover,
+.scroll-top-btn:active {
+  background: var(--ink);
 }
 
 /* Hidden on desktop */
