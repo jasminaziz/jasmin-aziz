@@ -44,7 +44,9 @@
 .contact-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(30px, 7vw, 48px);
+  /* Capped at 48px: the intro column is narrower than other pages', and
+     at the full 52px "on." falls to a third line on its own. */
+  font-size: min(var(--fs-h1), 3rem);
   letter-spacing: -0.03em;
   line-height: 1.0;
   color: var(--ink);
@@ -79,18 +81,6 @@
   gap: 8px;
 }
 
-.bridge-link {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  color: var(--cobalt);
-  text-decoration: none;
-  transition: opacity 150ms ease;
-}
-
-.bridge-link:hover { opacity: 0.7; }
-
 /* Direct contact row */
 .contact-direct {
   margin-top: 40px;
@@ -101,37 +91,30 @@
 .contact-direct-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
+  font-size: var(--fs-label);
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--periwinkle-text); /* #5255B5, 5.5:1 on cream — was --periwinkle 3.4:1 ✗ */
+  color: var(--periwinkle-text); /* #5255B5, 5.5:1 on cream */
   display: block;
   margin-bottom: 12px;
 }
 
+/* Links, so cobalt and sentence case. They were grey tracked capitals,
+   overriding the Chillax .bridge-link style meant for two of them. */
 .contact-direct a {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--ink);
-  opacity: 0.6;
+  font-size: var(--fs-small);
+  color: var(--cobalt);
   text-decoration: none;
-  transition: opacity 150ms ease;
+  transition: color 150ms ease;
 }
 
 .contact-direct a:hover,
-.contact-direct a:active { opacity: 1; }
+.contact-direct a:active { color: var(--ink); }
 
 /* Touch target on direct email link */
 .contact-direct a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.bridge-link {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -147,7 +130,7 @@
 .form-box-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
+  font-size: var(--fs-label);
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: rgba(250,248,244,0.7);
@@ -162,7 +145,7 @@
 .form-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
+  font-size: var(--fs-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(250,248,244,0.7);
@@ -170,10 +153,12 @@
   margin-bottom: 8px;
 }
 
+/* Solid colour, not opacity: 0.6 opacity on the 70% label came out
+   near 42% cream and failed AA. Cream at 62% on ink passes. */
 .form-label .optional {
   font-weight: 500;
-  opacity: 0.6;
-  font-size: 9px;
+  color: rgba(250,248,244,0.62);
+  font-size: var(--fs-label);
   text-transform: none;
   letter-spacing: 0.06em;
   margin-left: 6px;
@@ -234,9 +219,7 @@
   border: none;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: var(--fs-small);
   padding: 16px 24px;
   border-radius: 100px;
   cursor: pointer;
@@ -249,8 +232,7 @@
 .form-note {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
-  font-size: 9.5px;
-  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
   color: rgba(250,248,244,0.5);
   display: block;
   margin-top: 14px;
@@ -269,7 +251,6 @@
 .form-confirmation p {
   font-family: 'Source Serif 4', serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 20px;
   line-height: 1.5;
   color: var(--cream);
@@ -331,7 +312,6 @@
   /* Submit button: generous touch target */
   .form-submit {
     min-height: 52px;
-    font-size: 11px;
     padding: 0 24px;
   }
 }

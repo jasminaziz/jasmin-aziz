@@ -39,7 +39,6 @@
 .hero-lead {
   font-family: 'Source Serif 4', Georgia, serif;
   font-weight: 400;
-  font-style: italic;
   font-size: clamp(1.25rem, 2.4vw, 1.625rem);
   line-height: 1.4;
   color: var(--periwinkle-text);
@@ -169,39 +168,50 @@
 .diff-paras p + p    { margin-top: 22px; }
 
 /* =================================================================
-   CAPABILITY PILL STACK
+   SERVICES / ENGAGEMENT LIST
+   A hairline-ruled list in the .find-link-row idiom (About), not a
+   column of outlined tag capsules: Chillax names, a cobalt arrow.
+   Class name kept as .stack-pill so every link keeps working.
    ================================================================= */
 .stack-label { margin-bottom: 18px; }
 
 .stack-pill {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(123,127,212,0.3);
-  border-radius: 100px;
-  padding: 12px 20px;
-  min-height: 44px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--periwinkle-text);
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  min-height: 52px;
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.015em;
+  color: var(--ink);
   text-decoration: none;
-  margin-bottom: 8px;
-  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
-  cursor: pointer;
+  transition: color 150ms ease;
 }
 
-.stack-pill:hover, .stack-pill:active, .stack-pill-active {
-  background: var(--cobalt);
-  color: var(--cream);
-  border-color: var(--cobalt);
+.label + .stack-pill { border-top: 1px solid var(--rule); }
+
+.stack-pill::after {
+  content: '→';
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  color: var(--cobalt);
+  transition: transform 150ms ease;
 }
+
+.stack-pill:hover, .stack-pill:active { color: var(--cobalt); }
+.stack-pill:hover::after { transform: translateX(3px); }
 
 /* =================================================================
    ABOUT BRIDGE (copy | portrait)
    ================================================================= */
 .about-section { padding: var(--sv) 0 20px; }
+
+/* Full-width prose keeps a readable measure (it ran ~1,010px at 1440). */
+.about-section .diff-paras { max-width: 42rem; }
 
 .about-bridge-grid {
   display: grid;
@@ -307,9 +317,7 @@
   min-height: 44px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.625rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-size: var(--fs-small);
   text-decoration: none;
   margin-top: 40px;
   transition: background 200ms ease, color 200ms ease;
@@ -333,7 +341,6 @@
    site.css uses clamp padding; homepage uses --sv for tighter spacing.
    ================================================================= */
 .cta-section                { padding: var(--sv) 0; }
-.cta-left .section-head     { font-size: 2.5rem; }
 
 /* =================================================================
    SECTION RULE
@@ -402,7 +409,6 @@
 
   .who-grid          { grid-template-columns: 1fr; gap: 16px; }
   .diff-body-grid    { grid-template-columns: 1fr; gap: 40px; }
-  .stack-pill        { width: 100%; }
 
   .about-bridge-grid { grid-template-columns: 1fr 160px; gap: 40px; }
   .about-portrait    { width: 160px; height: 160px; }
@@ -419,8 +425,6 @@
   .proof-card p  { margin-bottom: 28px; flex: 1; }
 
   .card-link { align-self: flex-start; margin-top: 0; }
-
-  .cta-left .section-head { font-size: clamp(1.75rem, 6vw, 2.5rem); }
 }
 
 @media (max-width: 640px) {
@@ -440,8 +444,6 @@
   .who-body p   { font-size: 1rem; }
   .diff-paras p { font-size: 1rem; }
 
-  .proof-section .section-head { font-size: clamp(1.375rem, 6vw, 1.875rem); }
-  .cta-left .section-head      { font-size: 1.5rem; }
   .cta-grid                    { gap: 20px; }
 
   .about-bridge-grid   { grid-template-columns: 1fr; gap: 36px; }

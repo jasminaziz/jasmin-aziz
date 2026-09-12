@@ -49,7 +49,7 @@
 .about-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(36px, 8vw, 56px);
+  font-size: var(--fs-h1);
   letter-spacing: -0.03em;
   line-height: 1.0;
   color: var(--ink);
@@ -86,10 +86,10 @@
 .about-fact-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
+  font-size: var(--fs-label);
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--periwinkle-text); /* #5255B5, 5.5:1 on cream — passes WCAG AA at 10px */
+  color: var(--periwinkle-text); /* #5255B5, 5.5:1 on cream */
 }
 
 .about-fact-value {
@@ -163,8 +163,6 @@
   padding: 48px 0 80px;
 }
 
-.credibility-grid .section-head { font-size: 30px; }
-.personal-inner .section-head  { font-size: 30px; }
 
 .credibility-grid {
   display: grid;
@@ -174,7 +172,6 @@
 }
 
 .credibility-grid .label { margin-bottom: 20px; }
-.credibility-grid .section-head { font-size: 30px; }
 
 .credibility-body p {
   font-size: 17px;
@@ -243,7 +240,6 @@
 }
 
 .personal-inner .label { margin-bottom: 20px; }
-.personal-inner .section-head { font-size: 30px; }
 
 .personal-body p {
   font-size: 17px;
@@ -313,10 +309,9 @@
 .find-link-arrow {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
   color: var(--cobalt);
+  white-space: nowrap;
 }
 
 /* =================================================================
@@ -364,7 +359,6 @@
 /* ── 640px: type scale + find-link-row restructure ──────────── */
 @media (max-width: 640px) {
 
-  .about-h1   { font-size: clamp(30px, 9vw, 44px); }
   .about-lede { font-size: 16px; }
 
   /* Portrait: move above text, center it, smaller size */

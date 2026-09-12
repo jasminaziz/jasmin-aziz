@@ -31,6 +31,19 @@
   --gutter: clamp(20px, 5vw, 56px); /* @kind spacing */
   --sv:     clamp(56px, 9vw, 96px); /* @kind spacing */
   --ochre-pct: 12; /* @kind other */
+
+  /* ── TYPE SCALE (2026-09-12) ─────────────────────────────────────
+     One scale for every page. Steps are at least 1.25x apart at every
+     width. The homepage H1 is the one display size above --fs-h1 and
+     lives in homepage.css. Tracked capitals are for true labels only,
+     never smaller than --fs-label. No italic display styles.
+     ─────────────────────────────────────────────────────────────── */
+  --fs-h1:    clamp(2.25rem, 5vw, 3.25rem);    /* 36 → 52px  inner-page H1 */
+  --fs-h2:    clamp(1.75rem, 3.2vw, 2.5rem);   /* 28 → 40px  section heads */
+  --fs-h3:    clamp(1.375rem, 2vw, 1.625rem);  /* 22 → 26px  block titles */
+  --fs-body:  1.0625rem;                       /* 17px       body copy */
+  --fs-small: 0.9375rem;                       /* 15px       buttons, links, asides */
+  --fs-label: 0.6875rem;                       /* 11px       uppercase labels */
 }
 
 html { scroll-behavior: smooth; overflow-x: clip; }
@@ -268,6 +281,9 @@ body::after {
    min-height 44px: touch compliance on all viewports.
    :active matches :hover for tap feedback on iOS/Android.
    Border opacity raised to 0.5 for WCAG 1.4.11 UI contrast (3:1).
+   Labels are sentence case at --fs-small: the button asking for the
+   sale was 9.5px tracked capitals until 2026-09-12, the quietest text
+   on the page.
    ─────────────────────────────────────────────────────────────── */
 .pill {
   display: inline-flex;
@@ -275,13 +291,12 @@ body::after {
   justify-content: center;
   border: 1px solid rgba(20,17,13,0.5);
   border-radius: 100px;
-  padding: 11px 26px;
+  padding: 11px 22px;
   min-height: 44px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.594rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: var(--fs-small);
+  line-height: 1.25;
   text-decoration: none;
   color: var(--ink);
   background: transparent;
@@ -307,14 +322,79 @@ body::after {
 }
 
 /* ── SECTION HEAD ───────────────────────────────────────────────── */
+/* Every section head on every page is this size. Do not override it
+   per section: 30, 34 and 36px co-existed on one page until 2026-09-12. */
 .section-head {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: 2.25rem;
+  font-size: var(--fs-h2);
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--ink);
   text-wrap: pretty;
+}
+
+/* Closing-section heads ("How an engagement starts", "Where to start").
+   --periwinkle-text, never raw --periwinkle, for heading text. */
+.section-head--accent { color: var(--periwinkle-text); }
+
+/* ── CLOSING ASIDE (Services and AI closing sections) ──────────────
+   Label, heading, primary pill, then a hairline and two quiet links.
+   Separated from the body by space and a top rule, no side stripe.
+   ─────────────────────────────────────────────────────────────── */
+.close-aside {
+  border-top: 1px solid var(--rule);
+  padding-top: 24px;
+  position: sticky;
+  top: 140px;
+}
+
+.close-aside .label { margin-bottom: 18px; }
+
+.close-aside-head {
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+.close-aside-note {
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+  margin-bottom: 24px;
+}
+
+.close-aside-links {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+}
+
+.close-aside-links a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--cobalt);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 150ms ease;
+}
+
+.close-aside-links a:hover,
+.close-aside-links a:active { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .close-aside { position: static; }
+  .close-aside .pill { width: 100%; }
 }
 
 /* ── WAVE SEPARATORS ────────────────────────────────────────────── */
@@ -423,7 +503,6 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-tagline {
   font-family: 'Source Serif 4', serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 0.9375rem;
   color: var(--cream-muted);
   display: block;
@@ -434,9 +513,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-contact {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
   color: var(--cream);
   opacity: 0.5;
   text-decoration: none;
@@ -453,7 +530,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-col-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.625rem;
+  font-size: var(--fs-label);
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--periwinkle);
@@ -494,9 +571,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-legal-link {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
   color: var(--cream);
   opacity: 0.5;
   text-decoration: none;
@@ -512,9 +587,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 .footer-meta {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
   color: var(--cream);
   opacity: 0.5;
 }
@@ -533,8 +606,6 @@ a.footer-wordmark:active { opacity: 0.85; }
   align-items: center;
 }
 
-.cta-left .section-head { font-size: clamp(1.75rem, 5vw, 2.5rem); }
-
 .cta-right {
   display: flex;
   flex-direction: column;
@@ -547,9 +618,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 .cta-email {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  font-size: var(--fs-small);
   color: var(--ink-muted);
   text-decoration: none;
   min-height: 44px;
@@ -654,9 +723,6 @@ footer .footer-contact:focus-visible {
 
   /* Footer tagline: tighten gap to email below */
   .footer-tagline { margin-bottom: 12px; }
-
-  /* Section head */
-  .section-head { font-size: clamp(1.5rem, 7vw, 2rem); }
 }
 
 /* ── 480px — Footer single-col + footer-bottom stack ───────────── */

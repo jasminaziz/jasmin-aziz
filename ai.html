@@ -64,7 +64,7 @@
 .ai-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(36px, 6vw, 52px);
+  font-size: var(--fs-h1);
   letter-spacing: -0.03em;
   line-height: 1.02;
   color: var(--ink);
@@ -100,7 +100,6 @@
   align-items: start;
 }
 
-.ai-grid .section-head { font-size: 30px; }
 
 .ai-body p {
   font-size: 17px;
@@ -160,11 +159,11 @@
    Kept on cream (not a tinted band) so it never sits against the
    periwinkle closing band, which was smearing the wave at that seam.
    The periwinkle band is now the only tinted band on the page. */
-.ai-training-head { font-size: clamp(28px, 3.5vw, 34px); max-width: 760px; }
+.ai-training-head { max-width: 760px; }
 .ai-training-intro { max-width: 720px; margin-top: 22px; }
 .ai-training-close { max-width: 720px; margin-top: 44px; }
 
-/* Closing band — periwinkle who-section, ochre CTA aside.
+/* Closing band: periwinkle who-section, shared .close-aside (site.css).
    Mirrors the Services page closing beat. */
 .ai-close-grid {
   display: grid;
@@ -173,76 +172,11 @@
   align-items: start;
 }
 
-.ai-close-head {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  color: var(--periwinkle-text);
-  margin-bottom: 28px;
-}
-
-.ai-close-aside {
-  border-left: 3px solid var(--ochre);
-  padding-left: 32px;
-  position: sticky;
-  top: 140px;
-}
-
-.ai-close-aside .label { margin-bottom: 18px; }
-
-/* CTA heading in the aside — mirrors the Services closing aside. */
-.ai-close-cta-head {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  color: var(--ink);
-  margin: 0 0 24px;
-}
-
-.ai-close-smallprint {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--rule);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ai-close-smallprint a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  transition: color 150ms ease;
-}
-
-.ai-close-smallprint a:hover,
-.ai-close-smallprint a:active { color: var(--cobalt); }
+.ai-close-head { margin-bottom: 28px; }
 
 /* The free policy template is the second path, so it gets a real button
    beside the sentence that offers it: the outline .pill, as on About. */
 .ai-template-pill { margin-top: 28px; }
-
-/* Qualified so it outranks .ai-close-smallprint a, which was forcing ink. */
-.ai-close-smallprint a.ai-close-more,
-.ai-close-more {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cobalt);
-  text-decoration: none;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
 
 /* =================================================================
    AI PAGE — MOBILE BREAKPOINTS
@@ -264,13 +198,6 @@
   }
 
   .ai-room { padding-top: 22px; }
-
-  .ai-close-aside {
-    position: static;
-    top: auto;
-  }
-
-  .ai-close-aside .pill { width: 100%; justify-content: center; }
 }
 
 /* ── 640px: type scale ───────────────────────────────────────── */
@@ -394,20 +321,20 @@
   <div class="wrap">
     <div class="ai-close-grid">
       <div>
-        <h2 class="section-head ai-close-head">Where to start</h2>
+        <h2 class="section-head section-head--accent ai-close-head">Where to start</h2>
         <div class="ai-body">
           <p>You don't know which of these you need beforehand. The discovery call exists to work it out: 30 to 45 minutes, no preparation needed. A rough sense of what the organisation is dealing with is enough. Pricing is scoped per engagement and arrives at proposal stage. If a call feels early, start with the AI-use policy template instead. It's free, it downloads straight away, and it's the document I use as a starting point with clients.</p>
           <p>If your question is what AI answers already say about your organisation, that's the <a href="/services#geo-audit" style="color:var(--cobalt);text-decoration:none;">GEO audit</a>.</p>
         </div>
         <a href="https://theeditai.co.uk/policy-template" class="pill ai-template-pill" target="_blank" rel="noopener">Get the AI-use policy template →<span class="sr-only"> (opens in new tab)</span></a>
       </div>
-      <aside class="ai-close-aside">
+      <aside class="close-aside">
         <span class="label">Start here</span>
-        <h3 class="ai-close-cta-head">Tell me what you're working on.</h3>
+        <h3 class="close-aside-head">Tell me what you're working on.</h3>
         <a href="/contact#ai" class="pill pill-cobalt">Get in touch →</a>
-        <div class="ai-close-smallprint">
+        <div class="close-aside-links">
           <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
-          <a href="/about" class="ai-close-more">Or read more about how I work →</a>
+          <a href="/about">Or read more about how I work →</a>
         </div>
       </aside>
     </div>

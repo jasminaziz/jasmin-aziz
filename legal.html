@@ -128,11 +128,15 @@ body::after {
   display: inline-block;
 }
 
+/* Legal's H1 and H2 use the site's heading voice (Chillax), not italic
+   serif. Legal does not load site.css, so the scale values are repeated
+   here: 36 to 52px for the H1, 26px for section heads. */
 .page-subtitle {
-  font-family: 'Source Serif 4', serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 1.75rem;
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: var(--ink);
   margin-top: 0;
 }
@@ -157,10 +161,8 @@ body::after {
 
 .anchor-pill {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.875rem;
   color: var(--periwinkle-text);
   text-decoration: none;
   background: var(--cream);
@@ -190,10 +192,11 @@ body::after {
 }
 
 h2 {
-  font-family: 'Source Serif 4', serif;
-  font-weight: 500;
-  font-style: italic;
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
   font-size: 1.625rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--ink);
   margin-bottom: 22px;
 }
@@ -230,12 +233,6 @@ h3 {
   margin-top: 14px;
 }
 
-/* Placeholders — cobalt, Source Serif italic */
-.placeholder {
-  color: var(--cobalt);
-  font-style: italic;
-}
-
 /* ── FOOTER ── */
 footer {
   background: var(--ink);
@@ -255,9 +252,7 @@ footer {
 .footer-inner a {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
-  font-size: 0.6875rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
   color: var(--cream);
   text-decoration: none;
 }
@@ -342,7 +337,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .page-subtitle { font-size: 1.375rem; }
   .site-nav-inner { padding: 0 20px; }
 }
 

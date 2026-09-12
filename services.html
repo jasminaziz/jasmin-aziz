@@ -46,12 +46,10 @@
 .anchor-link {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
   color: var(--ink);
   text-decoration: none;
-  padding: 16px 20px;
+  padding: 14px 16px;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition: opacity 150ms ease, border-color 150ms ease;
@@ -81,7 +79,7 @@
 .svc-page-h1 {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: clamp(30px, 6vw, 52px);
+  font-size: var(--fs-h1);
   letter-spacing: -0.03em;
   line-height: 1.0;
   color: var(--ink);
@@ -113,24 +111,13 @@
   margin-bottom: 8px;
 }
 
-.tier-label-line {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--periwinkle-text);
-  display: block;
-  margin-bottom: 16px;
-}
-
 .tier-title {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: 36px;
+  font-size: var(--fs-h2);
   letter-spacing: -0.025em;
   line-height: 1.1;
-  color: var(--periwinkle);
+  color: var(--ink);
 }
 
 .tier-intro {
@@ -139,8 +126,8 @@
   color: var(--ink);
   text-wrap: pretty;
   padding: 20px 0 0;
-  /* Ends where the block copy column ends (240px side + 64px gap). */
-  max-width: calc(100% - 304px);
+  /* Same measure as the block copy column below it. */
+  max-width: 38rem;
 }
 
 /* Service block */
@@ -149,20 +136,22 @@
   scroll-margin-top: 128px;
 }
 
+/* Numeral sits beside the title, smaller than the section head above
+   it: at 72px it outranked "Services" and made the H2 read small. */
 .svc-block-header {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 64px;
-  align-items: center;
-  margin-bottom: 40px;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: baseline;
+  margin-bottom: 28px;
 }
 
 .svc-block-num {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: 72px;
-  letter-spacing: -0.04em;
-  line-height: 0.9;
+  font-size: 2.25rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
   color: var(--periwinkle);
   user-select: none;
 }
@@ -170,7 +159,7 @@
 .svc-block-title {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: var(--fs-h3);
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--ink);
@@ -178,13 +167,13 @@
 }
 
 /* Service and engagement-shape blocks share one structure: exactly two
-   children, copy in the main column, .svc-side in the 240px column
-   ("Right for" then the CTA). No spanning, no implicit rows: the old
-   grid-row: 1 / -1 collapsed to one row and dropped every CTA under
-   the copy (audit 2026-09-12). */
+   children, copy at a readable measure (38rem), then .svc-side taking
+   the rest ("Right for", then the CTA). No spanning, no implicit rows:
+   the old grid-row: 1 / -1 collapsed to one row and dropped every CTA
+   under the copy (audit 2026-09-12). */
 .svc-block-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-columns: minmax(0, 38rem) minmax(240px, 1fr);
   column-gap: 64px;
   align-items: start;
 }
@@ -201,6 +190,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  max-width: 300px;
 }
 
 /* "Right for" is marginalia: a hairline and a label, no side stripe. */
@@ -212,7 +202,7 @@
 .svc-right-for-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 10px;
+  font-size: var(--fs-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ochre-text);
@@ -242,7 +232,7 @@
 
 .shape-block-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-columns: minmax(0, 38rem) minmax(240px, 1fr);
   gap: 64px;
   align-items: start;
 }
@@ -250,7 +240,7 @@
 .shape-title {
   font-family: 'Chillax', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: var(--fs-h3);
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--ink);
@@ -295,6 +285,13 @@
   color: var(--ink);
 }
 
+.how-process-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
 /* =================================================================
    SERVICES — MOBILE BREAKPOINTS
    ================================================================= */
@@ -318,6 +315,7 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .svc-side { max-width: none; }
   .svc-side .pill { width: 100%; justify-content: center; }
 
   /* Shape block header: 2-col → 1-col. */
@@ -328,16 +326,10 @@
 
   .tier-intro { max-width: none; }
 
-  /* How-it-starts grid: 2fr 1fr → 1-col.
-     Aside: sticky → static (no viewport to pin to on mobile). */
+  /* How-it-starts grid: 2fr 1fr → 1-col. */
   .how-process-grid {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-  .how-process-aside {
-    position: static !important;
-    top: auto !important;
-    border-radius: 16px !important;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   /* How grid: 1fr 2fr → 1-col */
@@ -357,22 +349,12 @@
   /* Anchor bar tracks 56px mobile nav */
   .anchor-bar { top: 56px; }
 
-  /* Service block header: tighten number column + gap so title has more room */
-  .svc-block-header {
-    grid-template-columns: 52px 1fr;
-    gap: 16px;
-  }
-  .svc-block-num { font-size: 44px; }
-  .svc-block-title { font-size: 24px; }
-
-  /* Tier heading */
-  .tier-title { font-size: clamp(24px, 6vw, 36px); }
+  /* Service block header: numeral steps down with the title */
+  .svc-block-header { gap: 14px; }
+  .svc-block-num { font-size: 1.75rem; }
 
   /* Service + shape copy */
   .svc-main-copy, .shape-copy { font-size: 15.5px; }
-
-  /* How-it-starts aside padding */
-  .how-process-aside { padding: 28px 20px !important; }
 
   /* Tighten gap: intro paragraph → Services title */
   .svc-page-intro { padding-bottom: 20px; }
@@ -685,7 +667,7 @@
 <section class="who-section" id="how-i-work" style="margin-top:48px;padding-top:32px;padding-bottom:40px;">
 <div class="wrap">
   <div class="tier-head" style="border-top:none;padding-top:0;">
-    <h2 class="section-head" style="font-size:clamp(1.75rem,4vw,2.25rem);">How I work</h2>
+    <h2 class="section-head">How I work</h2>
   </div>
   <p class="tier-intro">Three engagement shapes. Any of the services above can be delivered inside one of them.</p>
 
@@ -739,22 +721,22 @@
 <!-- PROCESS + START — merged closing section -->
 <div class="wrap">
   <section class="how-section" id="how-it-starts">
-    <div class="how-process-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:96px;align-items:start;">
+    <div class="how-process-grid">
       <div>
-        <h2 class="section-head" style="margin-bottom:32px;font-size:clamp(1.75rem,4vw,2.25rem);color:var(--periwinkle);">How an engagement starts</h2>
+        <h2 class="section-head section-head--accent" style="margin-bottom:32px;">How an engagement starts</h2>
         <div class="how-body">
           <p>You send a message through the form or by email. I reply within two working days. We book a 30 to 45 minute discovery call by video.</p>
           <p>The call is a conversation about what the organisation is dealing with, what would actually move it forward, and whether I'm the right person for that. If I'm not, I'll say so and point you to whoever might be. If we're a match, you receive a written proposal within a week: a one-page summary to share with a board or leadership team, plus a short annex covering scope, approach, credentials, and fees.</p>
         </div>
       </div>
-      <aside class="how-process-aside" style="border-left:3px solid var(--ochre);padding-left:32px;position:sticky;top:140px;">
-        <span class="label" style="margin-bottom:18px;">Start here</span>
-        <h3 style="font-family:'Chillax','Helvetica Neue',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.025em;line-height:1.15;color:var(--ink);margin-bottom:18px;">Tell me what you're working on.</h3>
-        <p style="font-size:14.5px;line-height:1.6;color:var(--ink);text-wrap:pretty;margin-bottom:24px;">You don't need to know which one yet. A rough sense of what's going on is enough.</p>
+      <aside class="close-aside">
+        <span class="label">Start here</span>
+        <h3 class="close-aside-head">Tell me what you're working on.</h3>
+        <p class="close-aside-note">You don't need to know which one yet. A rough sense of what's going on is enough.</p>
         <a href="/contact" class="pill pill-cobalt">Get in touch →</a>
-        <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--rule);">
-          <a href="mailto:hello@jasminaziz.co.uk" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.11em;text-transform:uppercase;color:var(--ink);opacity:0.6;text-decoration:none;">hello@jasminaziz.co.uk</a>
-          <a href="/about" style="color:var(--cobalt);text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Or read more about how I work →</a>
+        <div class="close-aside-links">
+          <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>
+          <a href="/about">Or read more about how I work →</a>
         </div>
       </aside>
     </div>
