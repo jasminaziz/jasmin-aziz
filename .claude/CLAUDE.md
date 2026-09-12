@@ -50,6 +50,7 @@
 - Design rule: never stack two tinted `.who-section` bands directly adjacent — their wave pseudo-elements smear at the shared seam. Always separate tinted bands with a cream section (see ai.html: cream → beige → cream → periwinkle).
 - See SCRATCHPAD.md for current status and next steps
 - See tasks/lessons.md for corrections from previous sessions
+- Claims register: kept privately at `~/.claude/steward/claims-jasmin-aziz.md` (claude-config), not in this public repo. It lists every claim that lives on more than one surface, depends on another property or the code, or can go stale by itself, with Jasmin's exceptions and parked findings. The site-steward agent checks it on the 1st and 15th and at /wrap. Changing a claim means changing every surface its `Lives on:` line names, or the register.
 
 ## Design Context
 
