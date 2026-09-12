@@ -171,7 +171,7 @@ Measure: body copy stays at or under about 75 characters a line. Services block 
 | Periwinkle on ink (footer column labels) | 5.22:1 | AA |
 | Raw periwinkle on cream | 3.40:1 | Large bold text only (numerals at 28px and up). Never body text or small labels |
 
-One colour sits outside the palette: the contact form's error message is `#ff7f6e` (7.63:1 on the ink card), set by the form script in `contact.html`. It is functional, not decorative, and whether to keep it or move it into the palette is Jasmin's call.
+One colour sits outside the palette: the contact form's error message is `#ff7f6e` (7.63:1 on the ink card), set by the form script in `contact.html`. It is functional, not decorative, and Jasmin kept it as the one documented exception (ruling 12 September 2026). Do not add others.
 
 Cream on periwinkle is 3.40:1 and is not used for any text below large-bold size. It was the Substack card's body colour until 12 September 2026, and the old spec wrongly listed it as 5.5:1.
 

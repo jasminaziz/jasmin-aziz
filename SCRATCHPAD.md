@@ -102,10 +102,9 @@ with evidence images. Plan signed off, then built in phases:
 - Design spec rewritten to describe what ships.
 
 ### Open, Jasmin's calls
-- DPIA gloss: the approved Edit panel text drops "the data protection assessment
-  your organisation carries out", reversing D12 (31 Aug). Keep dropped, or restore?
 - Services is 1,069 words against the 650-700 benchmark: the content pass (with the
   peer-benchmark items) is parked, not done.
+- DPIA gloss restored in The Edit panel (ruled 12 Sept), keeping D12.
 - Illustration: hers to source; rules for it are in the spec, section 8.
 - Dead CSS left in place (.svc-price, .card-tag, .card-year, .headshot-placeholder*,
   .who-grid, .how-grid, .tier-head-grid); the unused Source Serif italic font request.
@@ -117,7 +116,7 @@ with evidence images. Plan signed off, then built in phases:
 - site-gates: heading semantics fixed (The Edit panel h2, How I work h3s); its claim
   about Contact's links was wrong (measured cobalt, 44px). Portrait now a 74KB JPEG.
 - Still open, none blocking: no Fontshare preconnect; the form's coral error colour
-  (#ff7f6e, 7.63:1) is the one off-palette colour, Jasmin's call; input placeholder
+  (#ff7f6e, 7.63:1) stays as the one documented off-palette exception (ruled 12 Sept); input placeholder
   text is 1.94:1 on the ink card (pre-existing, labels are real so not a hard fail);
   services.html How I work band carries an inline padding override; no recorded
   Lighthouse, axe, VoiceOver or PageSpeed run: manual checks on `/`, `/services`,
