@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
 
@@ -175,8 +175,11 @@
   background: rgba(250,248,244,0.06);
   border: 1px solid rgba(250,248,244,0.12);
   color: var(--cream);
-  font-family: 'Source Serif 4', serif;
-  font-size: 15px;
+  /* Chillax medium for what the enquirer types (Jasmin's call, 13 Sept): friendlier
+     than the serif. 16px at every width, so iPads do not zoom on focus either. */
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 1.5;
   padding: 13px 16px;
   border-radius: 6px;
@@ -253,11 +256,12 @@
 }
 
 .form-confirmation p {
-  font-family: 'Source Serif 4', serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.5;
-  color: rgba(250,248,244,0.85);
+  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--cream);
 }
 
 /* =================================================================
@@ -374,8 +378,8 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="org">Organisation</label>
-            <input class="form-input" type="text" id="org" name="organisation" autocomplete="organization" required>
+            <label class="form-label" for="org">Organisation <span class="optional">optional</span></label>
+            <input class="form-input" type="text" id="org" name="organisation" autocomplete="organization">
           </div>
 
           <div class="form-group">
@@ -500,9 +504,14 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   var prev = form.querySelector('.form-error-msg');
   if (prev) prev.remove();
 
-  // Disable button while sending
-  btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
+  // Inline error above the button; the form data is preserved
+  function showError(text) {
+    var errorEl = document.createElement('p');
+    errorEl.className = 'form-error-msg';
+    errorEl.textContent = text;
+    errorEl.style.cssText = 'font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;line-height:1.5;color:#ff7f6e;margin-bottom:12px;';
+    btn.parentNode.insertBefore(errorEl, btn);
+  }
 
   var data = {
     name: document.getElementById('name').value.trim(),
@@ -511,6 +520,21 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     service: document.getElementById('service').value,
     message: document.getElementById('message').value.trim()
   };
+
+  // The form is novalidate, so say what is missing here rather than letting the
+  // server reject it and showing a message that reads as if the site is broken.
+  var missing = [];
+  if (!data.name) missing.push('your name');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) missing.push('a valid email address');
+  if (!data.service) missing.push("what you're working on");
+  if (missing.length) {
+    showError('Please add ' + missing.join(', ').replace(/, ([^,]*)$/, ' and $1') + '.');
+    return;
+  }
+
+  // Disable button while sending
+  btn.disabled = true;
+  btn.textContent = 'Sending\u2026';
 
   try {
     var res = await fetch('/api/contact', {
@@ -526,12 +550,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       throw new Error('non-ok response');
     }
   } catch (err) {
-    // Show inline error above the button — form data is preserved
-    var errorEl = document.createElement('p');
-    errorEl.className = 'form-error-msg';
-    errorEl.textContent = 'Something went wrong \u2014 please try again or email hello@jasminaziz.co.uk directly.';
-    errorEl.style.cssText = 'font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;line-height:1.5;color:#ff7f6e;margin-bottom:12px;';
-    btn.parentNode.insertBefore(errorEl, btn);
+    showError('Something went wrong. Please try again, or email hello@jasminaziz.co.uk directly.');
     btn.disabled = false;
     btn.textContent = 'Send message';
   }

@@ -253,7 +253,7 @@ Top hairline, 24px padding, sticky at 140px on desktop (static at ≤768). Conte
 ### 7.12 About facts, CTA section, contact form, footer, scroll-top
 - `.about-facts`: three columns between hairlines, label plus value; one column at ≤760.
 - `.cta-section` / `.cta-grid`: `1fr 1fr`, gap 88, centred; one column at ≤768.
-- Contact form: ink card, radius 32px (24px at ≤640), labels in cream at 70% at `--fs-label`, inputs 16px at ≤640 (avoids the iOS zoom), cobalt submit in sentence case at `--fs-small` (hover ink, as `.pill-cobalt`).
+- Contact form: ink card, radius 32px (24px at ≤640), labels in cream at 70% at `--fs-label`, typed text in Chillax 500 at 16px at every width (friendlier than the serif, Jasmin's call on 13 September 2026; 16px avoids the iOS zoom), cobalt submit in sentence case at `--fs-small` (hover ink, as `.pill-cobalt`). The thank-you message is Chillax 700 at 26px in cream. Contact is the only page that loads Chillax 500. Organisation is optional; name, a valid email and the enquiry type are checked in the browser before sending, with a message naming what is missing, because the form is `novalidate`.
 - Footer: ink ground, three columns, Chillax links in cream at 88% (solid rgba, not opacity), column labels in periwinkle at `--fs-label`, legal links and meta in cream at 50%.
 - `.scroll-top-btn`: 48px cobalt circle with a cream arrow, ink on hover, shown after 300px of scroll, hidden above 900px.
 

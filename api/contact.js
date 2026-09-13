@@ -177,8 +177,8 @@ module.exports = async function handler(req, res) {
 
   const { name, organisation, email, service, message } = req.body || {};
 
-  // Validate required fields
-  const missing = ['name', 'organisation', 'email', 'service'].filter(
+  // Validate required fields (organisation is optional)
+  const missing = ['name', 'email', 'service'].filter(
     (f) => !req.body[f] || !String(req.body[f]).trim()
   );
   if (missing.length) {
@@ -191,7 +191,7 @@ module.exports = async function handler(req, res) {
   }
 
   const n = name.trim();
-  const org = organisation.trim();
+  const org = organisation ? String(organisation).trim() : '';
   const em = email.trim();
   const msg = message ? message.trim() : '';
   const serviceLabel = SERVICE_LABELS[service] || service;
@@ -199,7 +199,7 @@ module.exports = async function handler(req, res) {
   // Plain-text fallback for the notification
   const plainText = [
     `Name: ${n}`,
-    `Organisation: ${org}`,
+    `Organisation: ${org || 'Not given'}`,
     `Email: ${em}`,
     `Enquiry type: ${serviceLabel}`,
     msg ? `\nMessage:\n${msg}` : '',
@@ -211,9 +211,9 @@ module.exports = async function handler(req, res) {
       from: 'Jasmin Aziz Site <contact@jasminaziz.co.uk>',
       to: ['hello@jasminaziz.co.uk'],
       reply_to: em,
-      subject: `New enquiry \u2014 ${n}, ${org}`,
+      subject: `New enquiry \u2014 ${n}${org ? `, ${org}` : ''}`,
       text: plainText,
-      html: notificationHtml({ name: n, organisation: org, email: em, serviceLabel, message: msg }),
+      html: notificationHtml({ name: n, organisation: org || 'Not given', email: em, serviceLabel, message: msg }),
     });
   } catch (err) {
     console.error('Notification send failed:', err.status, err.body);
