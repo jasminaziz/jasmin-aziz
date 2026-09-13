@@ -134,8 +134,9 @@ contradicts the live AI page outright.
   blank) returned 200 on `branch=main`, and the new auto-reply arrived in her Gmail
   with the signature. Her two earlier old-copy emails were one sent before the change
   and one from a stale `design/icons` preview tab. **Hers:** check hello@ for the
-  notification; decide whether to delete the merged `design/icons` branch and its
-  previews (they still send real email with old copy).
+  notification. The `design/icons` branch is already deleted (GitHub and local, checked
+  13 Sept); its old preview deployments remain in Vercel and still send real email with
+  old copy until she deletes them there.
 
 ### Next step
 The Services content pass stays parked until decisions 1 to 3 are ruled. Brief and
