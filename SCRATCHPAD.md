@@ -75,6 +75,72 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-09-12 (services benchmark, audit only)
+
+### Branch status
+- No code or copy changed. `main` = `origin/main` = 5c6d47d throughout.
+- `reports/services-benchmark-2026-09-12.md` written and **left untracked by Jasmin's
+  ruling**, like the GEO peer read: a named-peer report does not go in a public repo.
+  Both untracked reports: do not commit them, and do not let a sweep commit them.
+
+### What happened
+- Benchmarked Services, Home and AI against two peer consultants' sites (named
+  only in the untracked report), fetched live 12 Sept, rendered at 1440 and 500 in
+  headless Chrome and measured at 390 in the pane.
+- Our Services measured fresh: 1,037 words in `<main>`, 9.6 screens at 390, 5.8 at
+  1440, first CTA at 1.4 screens. **The 650 to 700 benchmark was wrong**: the peer page
+  is about 620 words, 7.0 screens at 390, and less dense per service than ours.
+- At 1440 the Services side column sets every block's height (376px), so copy cuts only
+  shorten the page on phones.
+- Proof is the widest gap: no testimonials, named clients or case studies anywhere on
+  the site. Our contact routing is the strongest of the three.
+
+### Open, Jasmin's calls (she answered "no preference" to all three: not ruled)
+1. Length aim: cut to line budgets then spend the room on proof (recommended, about
+   8.6 screens at 390), shorter as the goal (about 8.2, needs a How I work layout
+   change), or parity with the peer page (not reachable without cutting a section).
+2. Template: fixed sentence order inside the existing block (recommended), a labelled
+   "You get" line, the peer's full labelled pattern, or trim only.
+3. Proof asks, hers to gather: attributed testimonials, named past clients, dated
+   outcomes, typical durations. **Conflict to rule first:** testimonials are
+   quotations, and pull quotes were ruled out sitewide on 12 Sept.
+4. Agents: none run. site-copywriter after 1 and 2 are ruled; site-stranger on the
+   rendered drafts; site-geo only once proof exists.
+
+### Auto-reply rewritten (13 Sept, LIVE, 28aaf4b)
+- Enquiry auto-reply: "Hi [first name],", "Thank you for your message. I'll reply
+  within two working days.", the discovery call framed as mutual ("whether I'm the
+  right person to help"), an invitation to send anything else, The Edit then the
+  Substack, LinkedIn dropped, "Speak soon," sign-off. Subject is now "Thanks for
+  getting in touch" (its escaped em dash was missed by the D19 sweep).
+- Contact page line now "From there, we'll usually book a discovery call." ("If it
+  looks like a good fit" read as condescending: Jasmin's call.)
+- Greeting guard: first word of the name only if purely letters (hyphen and
+  apostrophe allowed, 30 max, titles excluded), else "Hi,". Tested both ways with the
+  handler and a stubbed fetch. Verified live on the Contact page by three fetches.
+- **Hers:** one real enquiry to see the delivered email.
+- **Email signature (13 Sept, LIVE, 82e6405):** Chillax name and Source Serif 4 italic
+  subline as a 2x PNG, links as live text (spec 7.14). White PNG for the Gmail
+  signature on hello@, cream for the auto-reply, which now drops its header name.
+  Both images verified live byte for byte. **Hers:** paste the signature into Gmail
+  (file and steps sent in the session).
+- **Contact form (13 Sept, LIVE, 0c1be6b):** organisation optional (form and handler;
+  the notification reads "Not given"); name, valid email and enquiry type checked in
+  the browser with a message naming what is missing (the form is novalidate, so a
+  blank organisation used to reach the server and show "Something went wrong"); typed
+  text Chillax 500 16px and the thank-you in Chillax 700 (her call). One name box kept
+  (her call).
+- **Verified end to end 13 Sept:** a real enquiry through the live form (organisation
+  blank) returned 200 on `branch=main`, and the new auto-reply arrived in her Gmail
+  with the signature. Her two earlier old-copy emails were one sent before the change
+  and one from a stale `design/icons` preview tab. **Hers:** check hello@ for the
+  notification; decide whether to delete the merged `design/icons` branch and its
+  previews (they still send real email with old copy).
+
+### Next step
+The Services content pass stays parked until decisions 1 to 3 are ruled. Brief and
+targets are in the untracked report.
+
 ## Session: 2026-09-12 (icons and share cards)
 
 ### Branch status
@@ -152,7 +218,8 @@ with evidence images. Plan signed off, then built in phases:
   literal full-width stretch was shown and declined (about 125 characters a line).
 
 ### Open, Jasmin's calls
-- Services is 1,069 words against the 650-700 benchmark: the content pass (with the
+- (Superseded 12 Sept by the services benchmark session above: measured 1,037 words,
+  and the 650-700 figure was wrong.) Services is 1,069 words against the 650-700 benchmark: the content pass (with the
   peer-benchmark items) is parked, not done.
 - DPIA gloss restored in The Edit panel (ruled 12 Sept), keeping D12.
 - Illustration: hers to source; rules for it are in the spec, section 8.

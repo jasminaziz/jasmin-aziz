@@ -711,3 +711,60 @@ change list. Built literally, the lines ran about 125 characters. Rendering both
 recommendation (aligned to the grid's columns) and the literal stretch side by side got
 a decision in one look. Rule: when a change request is phrased as "should it", answer
 with a recommendation and a capture of each option.
+
+## Find which column sets a block's height before cutting its copy (2026-09-12)
+At 1440 every Services block measured exactly 376px whatever its word count. The side
+column ("Right for" plus CTA) is 200px and the copy column 134 to 161px, so the side
+column sets the height and a copy-only trim saves nothing on desktop. At 390 everything
+stacks and every line costs 26px. Rule: before setting a length target for a
+multi-column block, measure each child's height at each width and name the one that
+governs. Cut that one, or say the cut only helps at the widths where it stacks.
+
+## Compare a peer page per unit, not per page (2026-09-12)
+A peer's services page is shorter than ours (7.0 phone screens against 9.6) but
+less dense: each of her services takes 1.2 to 1.7 screens at 390, each of ours 0.7 to
+0.8. Her page is short because it has fewer services and no process section. The parked
+650 to 700 word target was her page total, and it was also wrong: about 620 words when
+measured. Rule: when benchmarking length, compare the repeated unit (a service block)
+and account for sections the peer does not have, before adopting any page total.
+
+## A peer site can change between two reads a day apart (2026-09-12)
+The 11 September GEO peer read scored a peer's `/services-1` as her Services
+page. By the 12th her nav pointed at a new three-card hub and `/services-1` was no longer
+linked from her header, homepage or Services page. Rule: date every peer read, and
+recheck the live nav before reusing an earlier report's page map.
+
+## innerText counts off-screen carousel slides (2026-09-12)
+One peer's Services page read 778 rendered words, of which 534 were one testimonial carousel
+showing one or two slides at a time. Rule: on any page with a carousel or slider, count
+its words separately before comparing lengths. Same family as the animated-counter rule.
+
+## Recheck your own report against the tree before handing it over (2026-09-12)
+The services benchmark said six service CTAs preselect a form option. Checking the form
+values showed five do: AI's CTA points to `/ai`. Its estimate that trimming the shape
+blocks would save 240px at 1440 was also wrong: measuring the blocks (6 to 7 lines, not
+the assumed 8) gave 215px and moved a target from 5.3 screens to 5.4. Both came from
+writing a figure from memory of the page rather than from a reading. Rule: after writing
+a report, grep or measure every count and estimate it makes about this site before it
+goes to Jasmin, the same standard applied to a peer's claims.
+
+## A test on a stale preview tab runs old code and sends real email (2026-09-13)
+After the auto-reply was rewritten and verified live, Jasmin's test enquiry returned
+the old email word for word. Vercel's runtime logs showed that test handled by the
+`design/icons` preview deployment (commit 5c6d47d), not production: the form was
+submitted from a preview tab left open since the icon review. (I first reported this as
+"the only call in seven days". The logs keep about an hour, so that was never evidence;
+see the next entry.) Previews carry the Resend key, so they send real emails with whatever copy they
+were built with. Rule: when a live test contradicts a verified deploy, check which
+deployment served the request (`get_runtime_logs`, grouped by deploymentId) before
+touching the code, and ask for tests on the www address typed fresh.
+
+## Vercel runtime logs last about an hour; an empty log proves nothing (2026-09-13)
+A seven-day log query returned one request and was reported as "the only call in seven
+days". Three hours later the same entry had gone: the project keeps runtime logs for
+roughly an hour. Absence in the logs cannot show a request did not happen. The evidence
+that settled it was the inbox: every auto-reply in Gmail with its timestamp and subject
+(old and new subjects differ), then one real enquiry sent through the live form in
+headless Chrome, its log line read within minutes (`branch=main`), and the delivered
+email read back through the Gmail connector. Rule: a log window is only evidence while
+it is inside retention; for email, the delivered message is the proof.
