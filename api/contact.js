@@ -111,18 +111,28 @@ function notificationHtml(fields) {
   return brandedHtml(body);
 }
 
+// The greeting uses the first word of the name only when it is purely letters
+// (hyphens and apostrophes allowed), so the form cannot be used to put a link or
+// other text into an email sent from this domain to a stranger. Anything else,
+// including a title such as "Dr", falls back to a plain "Hi,".
+const TITLES = ['dr', 'mr', 'mrs', 'ms', 'miss', 'mx', 'prof', 'rev', 'sir'];
+function greeting(name) {
+  const first = String(name || '').trim().split(/\s+/)[0] || '';
+  const isName = /^[\p{L}'’-]{1,30}$/u.test(first) && !TITLES.includes(first.toLowerCase());
+  return isName ? `Hi ${first.charAt(0).toUpperCase()}${first.slice(1)},` : 'Hi,';
+}
+
 function autoReplyHtml(name) {
   const body = `
-    <p style="margin:0 0 20px;">Thank you for getting in touch.</p>
-    <p style="margin:0 0 20px;">I&rsquo;ve received your message and will reply within two working days. If it looks like a good fit, we&rsquo;ll book a discovery call from there.</p>
-    <p style="margin:0 0 20px;">In the meantime, you might enjoy
-      <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">reading my Substack newsletter</a>
-      or
-      <a href="https://theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">exploring The Edit</a>,
-      the AI tools directory I built for charity, cultural and heritage comms teams.</p>
-    <p style="margin:0 0 32px;">And if we&rsquo;re not already connected,
-      <a href="https://www.linkedin.com/in/jasmin-r-aziz/" style="color:#2D35C9;text-decoration:none;">let&rsquo;s connect on LinkedIn</a>.</p>
-    <p style="margin:0;">Jasmin</p>`;
+    <p style="margin:0 0 20px;">${escapeHtml(greeting(name))}</p>
+    <p style="margin:0 0 20px;">Thank you for your message. I&rsquo;ll reply within two working days.</p>
+    <p style="margin:0 0 20px;">From there, we&rsquo;ll usually book a discovery call. It&rsquo;s a chance to talk through what you&rsquo;re working on and whether I&rsquo;m the right person to help. If there&rsquo;s anything else I should know, just send it my way.</p>
+    <p style="margin:0 0 32px;">In the meantime, feel free to explore
+      <a href="https://theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">The Edit</a>,
+      the AI tools directory I built for charity, cultural and heritage comms teams. I also write on
+      <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">my Substack</a>
+      about strategy, communications and where AI fits.</p>
+    <p style="margin:0;">Speak soon,<br>Jasmin</p>`;
 
   return brandedHtml(body);
 }
@@ -198,8 +208,8 @@ module.exports = async function handler(req, res) {
     await send({
       from: 'Jasmin Aziz <hello@jasminaziz.co.uk>',
       to: [em],
-      subject: 'Thanks for getting in touch \u2014 Jasmin Aziz',
-      text: `Thank you for getting in touch.\n\nI've received your message and will reply within two working days. If it looks like a good fit, we'll book a discovery call from there.\n\nIn the meantime, you might enjoy reading my Substack newsletter (https://jasminaziz.substack.com) or exploring The Edit (https://theeditai.co.uk), the AI tools directory I built for charity, cultural and heritage comms teams.\n\nAnd if we're not already connected, let's connect on LinkedIn (https://www.linkedin.com/in/jasmin-r-aziz/).\n\nJasmin`,
+      subject: 'Thanks for getting in touch',
+      text: `${greeting(n)}\n\nThank you for your message. I'll reply within two working days.\n\nFrom there, we'll usually book a discovery call. It's a chance to talk through what you're working on and whether I'm the right person to help. If there's anything else I should know, just send it my way.\n\nIn the meantime, feel free to explore The Edit (https://theeditai.co.uk), the AI tools directory I built for charity, cultural and heritage comms teams. I also write on my Substack (https://jasminaziz.substack.com) about strategy, communications and where AI fits.\n\nSpeak soon,\nJasmin`,
       html: autoReplyHtml(n),
     });
   } catch (err) {
