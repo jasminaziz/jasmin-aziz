@@ -74,7 +74,9 @@
 
 .svc-intro-grid {
   display: grid;
-  grid-template-columns: 5fr 4fr;
+  /* minmax(0, …): without it an auto minimum lets a long word push the
+     column past the gutter and the copy is clipped off-screen. */
+  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
   gap: 80px;
   align-items: start;
   margin-bottom: 32px;
@@ -89,7 +91,13 @@
   color: var(--ink);
   margin-bottom: 0;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
+
+/* Holds "Strategic marketing" and "& communications" on single lines where
+   there is room. Released below 768px, where either phrase is wider than
+   the column and would otherwise be clipped. */
+.h1-nb { white-space: nowrap; }
 
 .svc-intro-right p {
   font-size: 17px;
@@ -303,7 +311,7 @@
 /* ── 900px: intro grid collapses ───────────────────────────────── */
 @media (max-width: 900px) {
   .svc-intro-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 }
@@ -312,6 +320,7 @@
 @media (max-width: 768px) {
 
   /* Page intro: already 1-col from 900px rule above */
+  .h1-nb { white-space: normal; }
 
   /* Block bodies: 2-col → 1-col. DOM order already reads
      copy → Right for → CTA, so no reordering is needed. */
@@ -523,7 +532,7 @@
   <div class="svc-page-intro">
     <div class="svc-intro-grid">
       <div>
-        <h1 class="svc-page-h1">Strategic&nbsp;marketing &amp;&nbsp;communications, delivered in the shape that fits.</h1>
+        <h1 class="svc-page-h1"><span class="h1-nb">Strategic marketing</span> <span class="h1-nb">&amp; communications</span>, delivered in the shape that fits.</h1>
       </div>
       <div class="svc-intro-right">
         <p>Some organisations need a defined piece of work. Others need capacity inside the team for a period, or strategic input alongside the team they already have. Three shapes cover it: <a href="#fractional" style="color:var(--cobalt);text-decoration:none;">fractional</a>, <a href="#advisory" style="color:var(--cobalt);text-decoration:none;">advisory</a>, and <a href="#per-project" style="color:var(--cobalt);text-decoration:none;">per project</a>.</p>

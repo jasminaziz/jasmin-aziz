@@ -187,7 +187,7 @@ Desktop-first `max-width` queries at **900, 768, 640 and 480px**.
 | Diagnosis band `.diag-grid` | `minmax(0, 5fr) minmax(0, 6fr)`, gap 72: the lead left, the argument right | ≤768: one column, lead above |
 | Homepage How I work `.shapes-row` | `minmax(0, 1.75fr) minmax(0, 1fr) minmax(0, 1fr)`, gap 48: Fractional's definition is three times the others' length | ≤768: one column |
 | Homepage `.diff-body-grid` | `1fr 1fr`, gap 72 | ≤768: one column |
-| Services intro `.svc-intro-grid` | `5fr 4fr`, gap 80 | ≤900: one column |
+| Services intro `.svc-intro-grid` | `minmax(0, 5fr) minmax(0, 4fr)`, gap 80 | ≤900: one column |
 | Service and shape blocks | `minmax(0, 38rem) minmax(240px, 1fr)`, gap 64, two children placed in order | ≤768: one column, DOM order copy, Right for, CTA |
 | Closing grids (`.how-process-grid`, `.ai-close-grid`) | `2fr 1fr`, gap 96 | ≤768: one column |
 | AI header `.ai-intro-grid` | `5fr 4fr`, gap 80, start-aligned: H1 alone left; lead, one paragraph and CTA right | ≤900: one column |
