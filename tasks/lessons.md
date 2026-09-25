@@ -768,3 +768,27 @@ that settled it was the inbox: every auto-reply in Gmail with its timestamp and 
 headless Chrome, its log line read within minutes (`branch=main`), and the delivered
 email read back through the Gmail connector. Rule: a log window is only evidence while
 it is inside retention; for email, the delivered message is the proof.
+
+## A glued heading plus a bare `fr` track crops copy with no scrollbar (2026-09-14)
+The Services H1 joined its first two phrases with non-breaking spaces
+(`Strategic&nbsp;marketing`, `&amp;&nbsp;communications`). Each is about 316px wide at
+the 36px mobile size and neither can break, so on a phone each exceeded the 280 to
+350px column. `.svc-intro-grid` was a bare `5fr 4fr`: an `fr` track's automatic minimum
+is min-content, so the column grew to fit the unbreakable word and pushed past the
+gutter, dragging the intro paragraph with it. Nothing announced the problem, because
+`html` sets `overflow-x: clip` and `body` sets `overflow-x: hidden`: the page cannot
+scroll sideways, so the overspill is sliced off instead of producing a scrollbar. Both
+the heading and the body copy looked cropped at the edge. Rule: a heading glued with
+`&nbsp;` needs a released breakpoint (`<span>` with `white-space: nowrap`, set back to
+`normal` below 768px), every grid track that holds text needs `minmax(0, …)`, and a
+clipping page never warns you, so measure `documentElement.scrollWidth` against
+`innerWidth` at 320, 360, 390 and 430 rather than trusting the eye.
+
+## Blocked webfonts make a measurement approximate, not wrong (2026-09-14)
+The container could not reach Fontshare or Google Fonts, so every measurement of the
+Services H1 ran in Helvetica, not Chillax. Text widths in a fallback face are the wrong
+numbers. The fix still held because it was geometric rather than numeric: releasing the
+unbreakable phrases and capping the track removes the overflow whatever the font is,
+and `overflow-wrap: break-word` catches the case where the real face is wider than the
+substitute. Rule: when the webfonts will not load, fix the structure rather than tuning
+to a measured width, and say in the summary which face the numbers came from.

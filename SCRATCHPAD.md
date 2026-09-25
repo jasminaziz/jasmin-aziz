@@ -75,6 +75,38 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-09-14 (services mobile crop fixed)
+
+### What happened
+- Services H1 and the intro paragraph were cropping at both edges on mobile. Cause:
+  the H1 glued "Strategic marketing" and "& communications" with `&nbsp;`, each about
+  316px at the 36px mobile size and unbreakable, inside a bare `5fr 4fr` grid whose
+  `fr` track takes min-content as its automatic minimum. The column grew past the
+  gutter and took the intro paragraph with it. No scrollbar appeared because `html`
+  clips and `body` hides horizontal overflow, so the copy was sliced instead.
+- Fix: `.h1-nb` nowrap spans released below 768px (desktop line breaks unchanged),
+  `minmax(0, …)` on the intro tracks at both widths, `overflow-wrap: break-word` on
+  the H1 as a floor. Design spec grid row updated in the same commit.
+- Verified in headless Chromium at 320, 360, 375, 390, 414, 430, 480, 540, 641, 700,
+  768, 800, 900, 1024, 1130, 1280 and 1440: nothing exceeds the viewport. All six
+  pages plus 404 swept clean. **Caveat:** the container could not reach Fontshare or
+  Google Fonts, so the measurements ran in Helvetica, not Chillax. The fix is
+  geometric, so it holds regardless, but no number here is a true Chillax width.
+
+### Decided
+- `ai.html`'s `.ai-intro-grid` carries the same bare `5fr 4fr` but no glued heading,
+  so it measured clean and was left alone. Deliberate, not missed. Same for
+  `.tier-head-grid`. Capping either is optional tidying, not a fix.
+
+### Open
+- **Hers:** which device and width showed the crop. My sweep covers the geometry, not
+  her actual screen, and the fallback-font caveat above means a real-device check on
+  www is still worth one look.
+- STATUS.md is stale to 2026-06-06: it lists the homepage as `jasminaziz-homepage
+  v2.html`, the portrait as `.png`, no AI page, and a "Next Session" naming three
+  contrast failures fixed in June. Not touched this session. Decide whether to update
+  it or retire it with a pointer here.
+
 ## Session: 2026-09-12 (services benchmark, audit only)
 
 ### Branch status
