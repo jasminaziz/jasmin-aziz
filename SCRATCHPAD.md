@@ -75,6 +75,54 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-09-25 (GEO assessment on crawler access, sitemap stripped)
+
+### Asked
+Whether robots.txt and sitemap.xml need optimising for AI crawler access, with
+site-geo to assess if it is a need.
+
+### Answer: not a need
+- **site-geo could not be run.** This was a Claude Code web session in a cloud
+  container built from a fresh clone of the public repo. The site agents live in
+  `~/.claude/agents/` in claude-config, which is not in this repo, and the repo's
+  own `.claude/` holds only CLAUDE.md. Assessment used the agent's two existing
+  reports (`reports/site-geo-2026-09-11.md` and the same-day rerun), whose Check 1
+  is exactly this question, plus a live fetch of robots.txt on 25 Sept.
+- **Crawler access is already unrestricted.** One wildcard group, `Allow: /`, no
+  disallow, no per-bot group. site-geo tested Googlebot, OAI-SearchBot, ChatGPT-User,
+  PerplexityBot and Bingbot against every page on 11 Sept: all pass, 200 with no
+  redirect, no `X-Robots-Tag`, no meta robots. Live robots.txt on 25 Sept is
+  byte-identical. Nothing to unblock.
+- **Per-bot Allow groups were rejected, deliberately.** robots.txt matching uses the
+  most specific group naming the bot, so adding `User-agent: GPTBot / Allow: /`
+  grants access that already exists AND removes that bot from the wildcard group
+  permanently. Every later rule added to `*` then silently skips every bot named.
+  Same access, new failure mode. Do not "optimise" this file for AI crawlers.
+- It would also sit badly with the GEO product, which argues schema and llms.txt are
+  not GEO levers. Bulking robots.txt for AI crawlers is the same category of move.
+
+### Done: sitemap stripped to bare `<loc>` (908de54)
+All six `lastmod` values were three months stale (five said 2026-06-08, `/ai` said
+2026-07-17; the pages last changed 12 to 14 Sept). Google discounts a `lastmod` that
+does not match what it observes, and the field goes stale again on the next page
+change. Removed rather than corrected, on the same principle as the cadence and count
+claims: a self-updating fact this site cannot track should not be asserted.
+`changefreq` and `priority` went with it, both ignored by Google for years. `<loc>` is
+the only required child of `<url>`, so the file stays valid; the six URLs are
+unchanged. No effect on answer-engine access.
+
+### Correction to site-geo's own headline recommendation
+Both 11 Sept reports name "attribute the six Services pull quotes to Jasmin by name"
+as the single highest-value edit. **That recommendation is dead.** Pull quotes were
+removed sitewide on 12 Sept, the day after the reports, and a grep confirms none
+remain on any page. Do not action it; do not let a future run re-inherit it.
+
+### Open: the real GEO gap, unactioned since 11 Sept
+The four priority pages score 0 on statistics with a stated source, 0 on cited
+sources, and 0 or 1 on quotations. Every outbound link goes to Jasmin's own
+properties or the policy template, nothing third-party or citable. That is where AI
+search visibility moves, and it needs material she has to gather, not config.
+
 ## Session: 2026-09-14 (services mobile crop fixed)
 
 ### What happened
