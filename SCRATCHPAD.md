@@ -75,6 +75,33 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-10-07/08 (email deliverability audit, contact form bot checks)
+
+### Done
+- **Honeypot and fill-time check** on the contact form, live on main (`002efb5`).
+  Details and the two-file contract in `.claude/CLAUDE.md`.
+- **Rate limit** via a Vercel Firewall rule, created in the dashboard by Jasmin:
+  5 POSTs per IP per 10 minutes on `/api/contact`. Verified 200 ×5 then 429 ×2.
+  Every finding in the June security report is now closed.
+
+### Deliverability findings (DNS read live 7 Oct 2026)
+- SPF, Workspace DKIM (`google`) and Resend DKIM (`resend`, bounce domain
+  `send.`) all pass and align. SPF uses 2 of 10 lookups.
+- **DMARC reports go to GoDaddy** (`rua=mailto:dmarc_rua@onsecureserver.net`), so
+  Jasmin has never seen one. **Policy slipped** from `p=quarantine` (Gmail header,
+  8 June) to `p=none` (13 Sept); cause unknown.
+- The contact form's auto-reply sends as hello@ through Resend, so form spam is
+  mail from the main domain. Moving it to a subdomain was discussed, not done.
+
+### Open
+- [ ] DMARC: point `rua` at a Postmark digest, keep `p=none` two weeks, then
+      quarantine. Handed to a local Claude Code thread with the GoDaddy API, using
+      a prompt written this session. Not yet confirmed done.
+- [ ] Decide: move the site's Resend sending to a subdomain (needs Resend
+      dashboard, DNS and a code change, in that order).
+- [ ] Postmaster Tools: add the domain (may verify instantly via the existing
+      `google-site-verification` record).
+
 ## Session: 2026-09-25 (GEO assessment on crawler access, sitemap stripped)
 
 ### Asked
