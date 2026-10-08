@@ -5,6 +5,9 @@
 
 const RESEND_API = 'https://api.resend.com/emails';
 
+// Fastest a person can plausibly fill the form, in milliseconds (see the bot checks in the handler).
+const MIN_FILL_MS = 2000;
+
 const SERVICE_LABELS = {
   audit: 'Communications audit',
   ai: 'AI, trust and communications',
@@ -175,7 +178,23 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, organisation, email, service, message } = req.body || {};
+  const { name, organisation, email, service, message, reference, elapsed } = req.body || {};
+
+  // Bot checks, run before anything is sent. A filled honeypot, or no timing value
+  // (a script posting here directly, not the form), gets a normal-looking 200 and
+  // no email, so the bot learns nothing. Too fast to be a person gets a 400: the
+  // form shows its error and a real person's second try passes. This matters for
+  // deliverability as well as the inbox: the auto-reply goes out as hello@ to
+  // whatever address was typed, so every bot submission is mail from this domain.
+  const ms = Number(elapsed);
+  if ((reference && String(reference).trim()) || elapsed == null || !Number.isFinite(ms)) {
+    console.warn('Contact form: dropped likely bot submission');
+    return res.status(200).json({ ok: true });
+  }
+  if (ms < MIN_FILL_MS) {
+    console.warn('Contact form: rejected submission made in', Math.round(ms), 'ms');
+    return res.status(400).json({ error: 'Please try again' });
+  }
 
   // Validate required fields (organisation is optional)
   const missing = ['name', 'email', 'service'].filter(

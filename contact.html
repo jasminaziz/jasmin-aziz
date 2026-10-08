@@ -146,6 +146,16 @@
   margin-bottom: 20px;
 }
 
+/* Honeypot: off-screen rather than display:none, which some bots skip.
+   People never see or reach it; anything that fills it is dropped by api/contact.js. */
+.form-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
@@ -409,6 +419,11 @@
             <textarea class="form-textarea" id="message" name="message" placeholder="What's the organisation dealing with, and what kind of help are you looking for?" rows="5"></textarea>
           </div>
 
+          <div class="form-hp" aria-hidden="true">
+            <label for="reference">Leave this field empty</label>
+            <input type="text" id="reference" name="reference" tabindex="-1" autocomplete="off">
+          </div>
+
           <button type="submit" class="form-submit">Send message</button>
           <span class="form-note">I reply within two working days. Your details are used only to respond to your enquiry and are never shared with third parties.</span>
         </form>
@@ -494,6 +509,9 @@
   }
 })();
 
+// Sent with the form so api/contact.js can drop submissions made faster than a person types.
+var formShownAt = Date.now();
+
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
 
@@ -518,7 +536,9 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     organisation: document.getElementById('org').value.trim(),
     email: document.getElementById('email').value.trim(),
     service: document.getElementById('service').value,
-    message: document.getElementById('message').value.trim()
+    message: document.getElementById('message').value.trim(),
+    reference: document.getElementById('reference').value,
+    elapsed: Date.now() - formShownAt
   };
 
   // The form is novalidate, so say what is missing here rather than letting the
