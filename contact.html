@@ -566,6 +566,12 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     if (res.ok) {
       document.getElementById('form-box').style.display = 'none';
       document.getElementById('form-confirmation').style.display = 'block';
+    } else if (res.status === 429) {
+      // The Vercel Firewall rate limit (5 per IP per 10 minutes). People on a shared
+      // office network can hit it, so tell them to wait rather than that it broke.
+      showError('Too many attempts. Please wait a few minutes, or email hello@jasminaziz.co.uk directly.');
+      btn.disabled = false;
+      btn.textContent = 'Send message';
     } else {
       throw new Error('non-ok response');
     }
