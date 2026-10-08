@@ -94,9 +94,18 @@ contradicts the live AI page outright.
   mail from the main domain. Moving it to a subdomain was discussed, not done.
 
 ### Open
-- [ ] DMARC: point `rua` at a Postmark digest, keep `p=none` two weeks, then
-      quarantine. Handed to a local Claude Code thread with the GoDaddy API, using
-      a prompt written this session. Not yet confirmed done.
+- [x] DMARC: `rua` now points at a Postmark weekly digest
+      (`re+86dc33d29129@inbound.dmarcdigests.com`), `p=none` kept. Done 8 Oct
+      2026 19:51 UTC by a local thread through GoDaddy's `gddy` CLI; live on
+      GoDaddy's nameservers, 8.8.8.8 and 1.1.1.1 within three minutes; the rest
+      of the zone diffed unchanged. Log: `reports/email-deliverability-dns-2026-10.md`.
+- [ ] 15 Oct: first Postmark digest arrived? Re-read `_dmarc`; if the rua has
+      changed back, a GoDaddy account feature is rewriting it.
+- [ ] Jasmin, GoDaddy dashboard: is a DMARC / email-authentication feature
+      switched on? The API cannot show it. Note it; switch nothing off yet.
+- [ ] 22 Oct at the earliest: `p=quarantine`, only after two clean digests.
+      Confirm whether "two weeks" means two digests (22 Oct) or two weeks after
+      the first (about 29 Oct). Needs a fresh `gddy auth login`.
 - [ ] Decide: move the site's Resend sending to a subdomain (needs Resend
       dashboard, DNS and a code change, in that order).
 - [ ] Postmaster Tools: add the domain (may verify instantly via the existing

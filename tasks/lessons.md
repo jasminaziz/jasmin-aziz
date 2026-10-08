@@ -792,3 +792,22 @@ unbreakable phrases and capping the track removes the overflow whatever the font
 and `overflow-wrap: break-word` catches the case where the real face is wider than the
 substitute. Rule: when the webfonts will not load, fix the structure rather than tuning
 to a measured width, and say in the summary which face the numbers came from.
+
+## zsh does not split an unquoted variable, and `=` at the start of a word expands (2026-10-08)
+A dig loop built queries as `q="TXT _dmarc.example"` and ran `dig $q`. In bash that
+splits into type and name; in zsh it does not, so dig received one malformed name and
+returned an empty answer for every query, NS included. Nine empty answers read like an
+empty zone. The tell was the NS row: a live domain cannot have no nameservers. Use
+`${=q}` (or separate variables) in zsh, and check dig's own `status:` line before trusting
+an empty `+short`. Same session, twice: an unquoted `echo ===` separator is a zsh
+`=command` expansion, fails with "== not found", and under `&&` or `set -e` silently stops
+everything after it. Quote separators: `echo "----"`.
+
+## Committing from a shared tree that is behind and has someone else's edits (2026-10-08)
+The tree was 8 commits behind `origin/main`, and `SCRATCHPAD.md` carried an uncommitted
+line from a parallel session that upstream also changed, so a pull would be refused and a
+stash would be touching work that is not mine. Instead: `git worktree add --detach <tmp>
+origin/main`, copy the new file in, commit there, `git push origin HEAD:main`, compare
+`git rev-parse HEAD` with `origin/main`. Then delete the untracked copy in the shared tree
+only after `git hash-object` matches the committed blob, or the shared tree's next pull is
+blocked by "untracked working tree file would be overwritten". Remove the worktree after.
