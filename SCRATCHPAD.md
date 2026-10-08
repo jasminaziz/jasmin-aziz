@@ -83,6 +83,11 @@ contradicts the live AI page outright.
 - **Rate limit** via a Vercel Firewall rule, created in the dashboard by Jasmin:
   5 POSTs per IP per 10 minutes on `/api/contact`. Verified 200 ×5 then 429 ×2.
   Every finding in the June security report is now closed.
+- **429 message** (`ff487bc`): a rate-limited enquirer now sees "Too many attempts.
+  Please wait a few minutes, or email hello@jasminaziz.co.uk directly", not
+  "Something went wrong".
+- **End-to-end test passed** 8 Oct, after the lockout cleared: confirmation screen
+  and both emails, confirmed by Jasmin.
 
 ### Deliverability findings (DNS read live 7 Oct 2026)
 - SPF, Workspace DKIM (`google`) and Resend DKIM (`resend`, bounce domain
@@ -93,12 +98,18 @@ contradicts the live AI page outright.
 - The contact form's auto-reply sends as hello@ through Resend, so form spam is
   mail from the main domain. Moving it to a subdomain was discussed, not done.
 
+### Re-confirmed at wrap (8 Oct 2026, by Jasmin)
+- Career length still ten years; multi-site engagement still six years.
+
 ### Open
 - [ ] DMARC: point `rua` at a Postmark digest, keep `p=none` two weeks, then
       quarantine. Handed to a local Claude Code thread with the GoDaddy API, using
       a prompt written this session. Not yet confirmed done.
 - [ ] Decide: move the site's Resend sending to a subdomain (needs Resend
       dashboard, DNS and a code change, in that order).
+- [ ] Vercel plan: the project is on **Hobby** (the logs API said so), and Hobby
+      terms are personal, non-commercial use. Pro is $20 a month per seat.
+      Jasmin's call; not decided.
 - [ ] Postmaster Tools: add the domain (may verify instantly via the existing
       `google-site-verification` record).
 

@@ -792,3 +792,27 @@ unbreakable phrases and capping the track removes the overflow whatever the font
 and `overflow-wrap: break-word` catches the case where the real face is wider than the
 substitute. Rule: when the webfonts will not load, fix the structure rather than tuning
 to a measured width, and say in the summary which face the numbers came from.
+
+## A rate-limit test locks out the tester; work out "clear at" before saying it (2026-10-08)
+The 7-request check on the firewall rule (5 per IP per 10 minutes) locked Jasmin's own
+IP out of the form. Her real test enquiry then failed twice: once before the new 429
+message shipped, once after Claude told her the lockout "ended at 21:20" in a message
+sent at about 21:13. The window opens at the first counted request (21:09:41 in the
+logs), so it was clear only from 21:20. Rule: take the first request's timestamp from
+the logs, add the window, and compare it with the current time before telling anyone
+they can retry. Better still, run the real test enquiry before the rate-limit test.
+
+## Prove a rate limit with honeypot-filled requests, not real ones (2026-10-08)
+A POST with `reference` filled counts against the firewall limit but is dropped by
+api/contact.js before Resend, so the test sends no email. Expect 200 ×5 then 429.
+The Vercel API cannot do this check: every firewall call for this project, reads
+included, returns "Seawall Config not found", even with the dashboard rule live.
+Behaviour is the only verification.
+
+## The cloud container can still read DNS and mail headers (2026-10-08)
+dig and DNS-over-HTTPS are blocked by the egress proxy, but plain UDP to 8.8.8.8:53
+works, so a short Python query script reads TXT, MX and NS records. The Gmail
+connector (Jasmin's personal Gmail) returns RAW messages, and the
+`Authentication-Results` header of anything hello@ sent there proves SPF, DKIM and
+DMARC alignment, including the policy Gmail saw at the time. That is how the slip
+from p=quarantine (June) to p=none (September) was found.
