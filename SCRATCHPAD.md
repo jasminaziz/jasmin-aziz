@@ -1118,3 +1118,4 @@ Security audit follow-ups (2026-06-10), none are launch blockers but all should 
 
 - Contact form wired to Resend via `api/contact.js`. Sends to hello@jasminaziz.co.uk with reply-to set to the enquirer's email.
 - `Jasmin Aziz Favicon Preview.html` is in project root but not committed to git.
+web-build-guide stale: §7 Analytics row (GA4 gone, verified live 4 Oct 2026) and §8 #1, #6, #13 are done in code; contact form notice, processor, auto-reply and address gaps found (see reports/site-compliance-2026-10-04.md)
