@@ -75,6 +75,68 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-10-09 (geo/sourced-claims, second pass; NOT merged)
+
+Branch `geo/sourced-claims`, built on 372927b. Jasmin merges to production herself.
+Preview: https://jasmin-aziz-git-geo-sourced-claims-jasminazizs-projects.vercel.app
+
+### Commits
+- `310c7d8` G2-2: portraits as AVIF then WebP, JPEG fallback; fetchpriority and a
+  media-scoped AVIF preload per crop. Landscape 306KB to 81KB (AVIF) / 73KB (WebP).
+  Hero measured at 390, 641, 768, 900, 1024, 1130, 1440 on Home and About before
+  and after: identical boxes, H1 sizes, page heights and CLS; "Strategic marketing"
+  on one line inside its column at every width.
+- `4e96044` Dead CSS: .svc-price, .card-tag (+ modifiers), .card-year in
+  homepage.css; .headshot-placeholder-label in about.html. None was in site.css.
+- `8fb25ca` The /ai DPIA link (added in 372927b) was cobalt on the cobalt Edit
+  panel, 1:1, rendering as a gap. Now cream and underlined, 8.03:1.
+- Apex http redirect: not changed. The first hop is Vercel's CDN HTTP-to-HTTPS
+  upgrade, before vercel.json is read, so one rule cannot make it one hop.
+
+### Checks recorded 9 Oct 2026 (Lighthouse 12.8.2 mobile, local, simulated throttling)
+PageSpeed Insights itself was not obtained: the keyless API quota was exhausted and
+the web UI would not render in a hidden pane. These are local Lighthouse runs, the
+same mobile emulation PSI uses, median of 3, preview at 8fb25ca vs production (main).
+
+| Page | Perf preview / prod | LCP preview / prod | A11y preview / prod |
+|---|---|---|---|
+| / | 86 / 80 | 3.2s / 4.2s | 96 / 92 |
+| /services | 99 / 99 | 1.8s / 1.7s | 96 / 91 |
+| /ai | 99 / 99 | 1.8s / 1.8s | 96 / 95 |
+| /about | 86 / 86 | 3.2s / 3.2s | 96 / 92 |
+| /contact | 99 / 99 | 1.8s / 1.7s | 96 / 92 |
+| /legal (1 run) | 85 / 98 | 3.3s / 1.9s | 100 / 100 |
+| 404 (local /404.html; Lighthouse refuses 404 status) | n/a | n/a | 96 |
+
+CLS 0 to 0.034 everywhere. Home and About remain under the 90 target, LCP over 2.5s.
+The only accessibility deduction left on the branch is `link-in-text-block` (prose
+links distinguished by colour alone); production also fails `aria-hidden-focus`
+(drawer), fixed on the branch.
+
+- **axe 4.13 (WCAG 2.2 AA tags), 7 templates at 390 and 1440, branch code at
+  8fb25ca on the local server:** only `link-in-text-block`. Legal clean.
+- **Keyboard pass, drawer at 390 (Home, Services, Contact):** pass. No drawer link
+  reachable while closed; Enter opens and focuses the first link; 2px outline on
+  every link; Escape closes and returns focus to the toggle.
+- **Focus visible:** pass on every tab stop checked. Contact fields show focus by
+  border (3.67:1 against the card) after a 150ms transition, no outline.
+- **404 timing (WCAG 2.2.1): FAIL.** There is no cancel control: the only thing that
+  stops the 30-second redirect is "Go to homepage", which goes home. Jasmin's call.
+- **site:www.jasminaziz.co.uk: NOT RUN.** Google served its CAPTCHA page; Bing ignored
+  the operator. Jasmin to run by hand.
+- Not run: VoiceOver, opengraph previews, Rich Results, Search Console.
+
+### Waiting on Jasmin
+- AVIF smooths some of the photo grain; WebP keeps it. Keep AVIF, or drop the two
+  AVIF sources and preloads so everyone gets WebP?
+- G4-1 alert path, G3-2 Organization node or exemption, J1 sharing wording
+  (three paired candidates from site-copywriter), quotations to source.
+- link-in-text-block: the inline-link rule (cobalt, no underline) is what axe fails.
+- 404 redirect with no cancel (above).
+- `.claude/CLAUDE.md` says the side column sets every Services block's height at
+  1440. On this branch the GEO block's copy column (242px) is taller than its side
+  column (200px), so that line is no longer true for GEO.
+
 ## Session: 2026-10-07/08 (email deliverability audit, contact form bot checks)
 
 ### Done
