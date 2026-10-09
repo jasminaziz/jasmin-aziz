@@ -25,6 +25,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<!-- Hero portrait: preload the AVIF for whichever crop this width shows (media must match the <picture> sources) -->
+<link rel="preload" as="image" href="assets/jasmin-headshot-landscape.avif" type="image/avif" media="(max-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/jasmin-headshot.avif" type="image/avif" media="(min-width: 901px)" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
@@ -125,8 +128,12 @@
 
       <div class="hero-portrait-wrap">
         <picture>
-          <source media="(max-width: 900px)" srcset="assets/jasmin-headshot-landscape.jpg">
-          <img class="hero-portrait" src="assets/jasmin-headshot.jpg" width="640" height="853" alt="Jasmin Aziz" loading="eager">
+          <source media="(max-width: 900px)" type="image/avif" srcset="assets/jasmin-headshot-landscape.avif" width="1400" height="933">
+          <source media="(max-width: 900px)" type="image/webp" srcset="assets/jasmin-headshot-landscape.webp" width="1400" height="933">
+          <source media="(max-width: 900px)" srcset="assets/jasmin-headshot-landscape.jpg" width="1400" height="933">
+          <source type="image/avif" srcset="assets/jasmin-headshot.avif">
+          <source type="image/webp" srcset="assets/jasmin-headshot.webp">
+          <img class="hero-portrait" src="assets/jasmin-headshot.jpg" width="640" height="853" alt="Jasmin Aziz" loading="eager" fetchpriority="high">
         </picture>
       </div>
 
