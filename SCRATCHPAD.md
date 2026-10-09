@@ -129,8 +129,30 @@ links distinguished by colour alone); production also fails `aria-hidden-focus`
 ### Waiting on Jasmin
 - AVIF smooths some of the photo grain; WebP keeps it. Keep AVIF, or drop the two
   AVIF sources and preloads so everyone gets WebP?
-- G4-1 alert path, G3-2 Organization node or exemption, J1 sharing wording
-  (three paired candidates from site-copywriter), quotations to source.
+- Quotations to source (slot word counts in the session reply, 9 Oct).
+- Training-crawler decision in robots.txt, still open from 372927b.
+
+### Ruled 9 Oct 2026 and built (on this branch)
+- **G4-1 Postmark alert** (`61decdb`): a failed notification sends type + UTC time
+  to hello@ through Postmark. Tested with fetch mocked, six cases. Before it works
+  live, Jasmin in dashboards:
+  1. Postmark: a Server (the DMARC digest is a separate product and may not have
+     one), its Server API token, and hello@jasminaziz.co.uk as a confirmed Sender
+     Signature. Unconfirmed: while the account is pending approval, Postmark may
+     only send to the sender's own domain (hello@ to hello@ fits).
+  2. Vercel: `POSTMARK_SERVER_TOKEN` for Production (and Preview for the test).
+  3. Before DMARC goes to p=quarantine (22 Oct at the earliest): verify the domain
+     in Postmark (DKIM TXT at `<selector>._domainkey`, never TXT @), or the alert,
+     sent as hello@, fails DMARC alignment and may land in spam.
+  4. Test: preview with a deliberately bad RESEND_API_KEY, submit once, read the
+     alert back from the inbox. Never break the live key.
+- **J1 Pair B** (`4fe1bd7`): form note and legal paragraph name Vercel and Resend;
+  legal "Last updated" October 2026. Claims register updated in claude-config
+  (`5745f52`, committed, not pushed).
+- **G3-2** (`bb8c5ce`): Person `@id` `#person`, Organization `#organization` with
+  founder; providers on /services and /ai point at `#person`. Organization, not
+  ProfessionalService, because Google requires an address on LocalBusiness types.
+  Rich Results Test on / and /services is hers after merge.
 - link-in-text-block: the inline-link rule (cobalt, no underline) is what axe fails.
 - 404 redirect with no cancel (above).
 - `.claude/CLAUDE.md` says the side column sets every Services block's height at
