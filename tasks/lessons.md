@@ -834,3 +834,49 @@ connector (Jasmin's personal Gmail) returns RAW messages, and the
 `Authentication-Results` header of anything hello@ sent there proves SPF, DKIM and
 DMARC alignment, including the policy Gmail saw at the time. That is how the slip
 from p=quarantine (June) to p=none (September) was found.
+
+## A Vercel share token dies when the branch alias moves; assert identity on every fetch (2026-10-09)
+A `_vercel_share` link worked, then sent every request to vercel.com/login once a newer
+push moved the branch alias to a new deployment. A Lighthouse batch scored four login
+pages as if they were /contact, /legal and the 404, and axe audited the login wall 13
+times, reporting the same Tailwind selectors and `meta-viewport` on every "page". Both
+looked like findings. Rule: put the token on every URL, and inside every iteration assert
+the final URL is the site's host and the title is not Vercel's login, aborting the run
+if not. A check that passed on the first page says nothing about the thirteenth. Request
+a new token after each push.
+
+## `pgrep -f <name>` matches the loop that is waiting for it (2026-10-09)
+`until ! pgrep -f "lh2.mjs"; do sleep 5; done` never ended: the waiting shell's own
+command line contains "lh2.mjs", so it found itself. Three wait loops hung for over ten
+minutes after the job had finished. Rule: wait on a PID (`wait`, or `kill -0 $pid`) or
+on a file the job writes last, never on a pattern the waiter itself contains.
+
+## Render the change, not just the diff: a correct inline style was invisible (2026-10-09)
+The first pass linked "DPIA" with the site's standard inline cobalt style. Correct by the
+house rule, and invisible: the link sits inside the cobalt Edit panel, cobalt on cobalt,
+1:1. Only the 1440 capture showed it, as a gap mid-sentence. Rule: any link added inside
+a coloured panel is checked against the panel's computed background, and on cobalt it
+takes cream with an underline (spec, prose links).
+
+## Look at a format change at 1:1 before choosing quality (2026-10-09)
+At the 80KB budget, AVIF smoothed the portrait's film grain visibly; WebP at 73KB kept it.
+File size alone would have hidden that. Rule: for any re-encode, compare a 1:1 crop of the
+face against the source before committing, and say what changed.
+
+## Check a vendor's required fields before offering an option that depends on them (2026-10-09)
+G3-2 option A was offered as a ProfessionalService node. Google requires an address on
+every LocalBusiness type and the site publishes none, so the option as described would
+have failed the Rich Results Test. Caught after she chose it, fixed with one question
+(Organization). Rule: verify the type's required properties on the vendor's own page
+before describing an option, not after it is picked.
+
+## A report's premise about a control is a claim to check (2026-10-09)
+The gates report asked to "confirm the cancel is keyboard-reachable" on the 404 page.
+There is no cancel: the only thing that stops the 30-second redirect is "Go to homepage",
+which goes home. Rule: before testing a control a report names, find it in the markup.
+
+## Never chain an unrelated side effect onto a measurement command (2026-10-09)
+A stray `cp ... /Users/jasminaziz/Developer/jasmin-aziz/..` rode along at the end of an
+encode command and dropped a 1.3MB PNG into ~/Developer. Removed after `cmp` matched the
+scratchpad copy. Rule: one purpose per command; anything that writes outside the
+scratchpad gets its own step.

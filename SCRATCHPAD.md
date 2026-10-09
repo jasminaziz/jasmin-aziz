@@ -132,6 +132,12 @@ links distinguished by colour alone); production also fails `aria-hidden-focus`
 - Quotations to source (slot word counts in the session reply, 9 Oct).
 - Training-crawler decision in robots.txt, still open from 372927b.
 
+### Next step
+Jasmin merges `geo/sourced-claims`, sets up Postmark and the Vercel token, then runs
+the paste prompt for the next code thread (written 9 Oct): live alert test, Home and
+About performance, the open rulings, the Services height line in CLAUDE.md, and the
+after-merge checks (Rich Results, opengraph, PageSpeed, site-steward).
+
 ### Ruled 9 Oct 2026 and built (on this branch)
 - **G4-1 Postmark alert** (`61decdb`): a failed notification sends type + UTC time
   to hello@ through Postmark. Tested with fetch mocked, six cases. Before it works
