@@ -142,7 +142,7 @@ The secondary face was reviewed on 12 September 2026 and kept: the italics came 
 | `.label`, `.svc-right-for-label`, `.about-fact-label`, `.contact-direct-label`, `.footer-col-label`, form labels | Plus Jakarta Sans | 600 | `--fs-label` | | 0.12 to 0.13em, uppercase | `--periwinkle-text`, `--ochre-text`, or cream on ink |
 | Footer contact, legal links, meta | Plus Jakarta Sans | 600 | 0.8125 to 0.875rem | | | `rgba(250,248,244,0.5)` on ink (solid colour, not opacity) |
 
-Prose links inside paragraphs have no CSS rule: they carry `style="color:var(--cobalt);text-decoration:none;"`. Omit it and the link renders browser-default blue.
+Prose links inside paragraphs have no CSS rule: they carry `style="color:var(--cobalt);text-decoration:none;"`. Omit it and the link renders browser-default blue. On a cobalt ground (the AI page's Edit panel) cobalt is invisible, so a prose link there carries `style="color:var(--cream);text-decoration:underline;text-underline-offset:3px;"` instead: cream like the text around it, with the underline marking it as a link (9 October 2026).
 
 Measure: body copy stays at or under about 75 characters a line. Services block copy is held to `38rem`; the homepage About me prose to `42rem`; section bodies in the heading-left, body-right pattern are narrow enough by their grid.
 
