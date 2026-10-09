@@ -70,7 +70,7 @@ function brandedHtml(bodyHtml, showHeader = true) {
     <tr><td align="center" style="padding-top:40px;">
       <table width="100%" cellpadding="0" cellspacing="0" style="background:#2D35C9;">
         <tr><td align="center" style="padding:16px 20px;">
-          <a href="https://jasminaziz.co.uk" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#FAF8F4;text-decoration:none;">jasminaziz.co.uk</a>
+          <a href="https://www.jasminaziz.co.uk" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#FAF8F4;text-decoration:none;">jasminaziz.co.uk</a>
         </td></tr>
       </table>
     </td></tr>

@@ -22,6 +22,8 @@
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close navigation');
     drawer.setAttribute('aria-hidden', 'false');
+    var first = drawer.querySelector('a');
+    if (first) first.focus();
   }
 
   function closeNav() {
@@ -38,7 +40,7 @@
 
   /* Close on Escape */
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) closeNav();
+    if (e.key === 'Escape' && drawer.classList.contains('open')) { closeNav(); toggle.focus(); }
   });
 
   /* Close when a drawer link is tapped */

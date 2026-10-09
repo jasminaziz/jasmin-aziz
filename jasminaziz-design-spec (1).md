@@ -214,7 +214,7 @@ Rules learned the hard way:
 `body::after`: fixed, full-viewport SVG `feTurbulence` noise (baseFrequency 0.72, 4 octaves) at `opacity: 0.035`, `pointer-events: none`, `z-index: 9000`. It sits over every element, which is what gives flat colour a printed surface. Never remove it.
 
 ### 7.3 Navigation
-`.site-nav`: sticky cobalt bar, 64px (56px at ≤640). Wordmark left in Chillax 1.375rem cream. Desktop links are Chillax 1.125rem cream in pill-shaped hit areas; the current page carries `.active` (cream at 20% fill, 35% border). At ≤640 the links hide and `.nav-toggle` (44px, three bars that animate to a cross) opens `.nav-drawer`, sticky at 56px, `max-height` 0 to 240px. Order everywhere: Home, Services, AI, About, Contact.
+`.site-nav`: sticky cobalt bar, 64px (56px at ≤640). Wordmark left in Chillax 1.375rem cream. Desktop links are Chillax 1.125rem cream in pill-shaped hit areas; the current page carries `.active` (cream at 20% fill, 35% border). At ≤640 the links hide and `.nav-toggle` (44px, three bars that animate to a cross) opens `.nav-drawer`, sticky at 56px, `max-height` 0 to 240px, `visibility` hidden while closed so its links leave the tab order; focus moves to the first link on open and back to the toggle on Escape (9 Oct 2026). Order everywhere: Home, Services, AI, About, Contact.
 
 ### 7.4 Pills (buttons)
 `.pill`: inline-flex, `min-height: 44px`, `padding: 11px 22px`, radius 100px, Plus Jakarta Sans 600 at `--fs-small`, sentence case, 1px border at ink 50% (3:1 against cream). Hover and active fill cobalt with cream text.

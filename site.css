@@ -245,11 +245,12 @@ body::after {
   z-index: 199;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden; /* closed links leave the tab order; aria-hidden alone did not do that */
+  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 300ms;
   border-top: 1px solid rgba(250,248,244,0.08);
 }
 
-.nav-drawer.open { max-height: 240px; }
+.nav-drawer.open { max-height: 240px; visibility: visible; transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s; }
 
 .nav-drawer-list {
   list-style: none;

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Jasmin Aziz</title>
+<meta name="author" content="Jasmin Aziz">
 <meta name="description" content="Tell me what you're working on. Strategic marketing and communications support. Fill in the form or email. Two working day reply.">
 <link rel="canonical" href="https://www.jasminaziz.co.uk/contact">
 <meta property="og:title" content="Contact | Jasmin Aziz">
@@ -22,6 +23,8 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=chillax@500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
@@ -208,7 +211,7 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(250,248,244,0.22);
+  color: var(--cream-muted); /* 6.6:1 on the input fill; cream at 22% was 2.0:1 */
 }
 
 .form-textarea {
@@ -429,7 +432,7 @@
         </form>
       </div>
 
-      <div class="form-confirmation" id="form-confirmation">
+      <div class="form-confirmation" id="form-confirmation" role="status" tabindex="-1">
         <p>Thank you. I'll be in touch within two working days.</p>
       </div>
     </div>
@@ -526,6 +529,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   function showError(text) {
     var errorEl = document.createElement('p');
     errorEl.className = 'form-error-msg';
+    errorEl.setAttribute('role', 'alert');
     errorEl.textContent = text;
     errorEl.style.cssText = 'font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;line-height:1.5;color:#ff7f6e;margin-bottom:12px;';
     btn.parentNode.insertBefore(errorEl, btn);
@@ -565,7 +569,9 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
     if (res.ok) {
       document.getElementById('form-box').style.display = 'none';
-      document.getElementById('form-confirmation').style.display = 'block';
+      var done = document.getElementById('form-confirmation');
+      done.style.display = 'block';
+      done.focus();
     } else if (res.status === 429) {
       // The Vercel Firewall rate limit (5 per IP per 10 minutes). People on a shared
       // office network can hit it, so tell them to wait rather than that it broke.
