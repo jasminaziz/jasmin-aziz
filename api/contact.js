@@ -5,6 +5,12 @@
 
 const RESEND_API = 'https://api.resend.com/emails';
 
+// Failure alert (9 Oct 2026): if the notification to Jasmin fails, a second email goes
+// through Postmark, a different provider, so the alert does not share the failed call.
+// Requires POSTMARK_SERVER_TOKEN in Vercel. Carries the enquiry type and time only.
+const POSTMARK_API = 'https://api.postmarkapp.com/email';
+const ALERT_ADDRESS = 'hello@jasminaziz.co.uk';
+
 // Fastest a person can plausibly fill the form, in milliseconds (see the bot checks in the handler).
 const MIN_FILL_MS = 2000;
 
@@ -173,6 +179,42 @@ async function send(payload) {
   return res;
 }
 
+// Tell Jasmin an enquiry was lost. Only the enquiry type (from the fixed list, never
+// the raw form value) and the time leave this function: no name, email or message,
+// in the alert or in the log. The Vercel log lasts about an hour; the alert does not.
+async function alertFailedEnquiry(service, status) {
+  const enquiryType = SERVICE_LABELS[service] || 'Unrecognised value';
+  const at = new Date().toISOString();
+  console.error('Notification send failed:', { status, enquiryType, at });
+
+  const token = process.env.POSTMARK_SERVER_TOKEN;
+  if (!token) {
+    console.error('Failure alert not sent: POSTMARK_SERVER_TOKEN is not set');
+    return;
+  }
+  try {
+    const r = await fetch(POSTMARK_API, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'X-Postmark-Server-Token': token,
+      },
+      body: JSON.stringify({
+        From: ALERT_ADDRESS,
+        To: ALERT_ADDRESS,
+        Subject: 'Site alert: an enquiry failed to reach you',
+        TextBody: `An enquiry from the contact form on jasminaziz.co.uk failed to send, so it did not reach your inbox.\n\nEnquiry type: ${enquiryType}\nTime: ${at} (UTC)\n\nNothing else about the enquiry was kept. The visitor was asked to try again or to email hello@jasminaziz.co.uk directly.`,
+        MessageStream: 'outbound',
+      }),
+      signal: AbortSignal.timeout(5000), // never hold the visitor's error page for long
+    });
+    if (!r.ok) console.error('Failure alert send failed:', r.status);
+  } catch (e) {
+    console.error('Failure alert send failed:', e.name);
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -235,7 +277,7 @@ module.exports = async function handler(req, res) {
       html: notificationHtml({ name: n, organisation: org || 'Not given', email: em, serviceLabel, message: msg }),
     });
   } catch (err) {
-    console.error('Notification send failed:', err.status, err.body);
+    await alertFailedEnquiry(service, err.status);
     return res.status(502).json({ error: 'Failed to send message. Please try again.' });
   }
 
