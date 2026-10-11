@@ -36,7 +36,7 @@
 | `/about` | `about.html` | `site.css` + page `<style>` | `.find-link-row` lives here |
 | `/contact` | `contact.html` | `site.css` + page `<style>` | Form posts to `api/contact.js` |
 | `/legal` | `legal.html` | own `<style>` only | Isolated: own nav (no hamburger) and footer |
-| 404 | `404.html` | `site.css` + page `<style>` | 30-second redirect to `/` |
+| 404 | `404.html` | `site.css` + page `<style>` | No redirect: a "Go to homepage" pill only (timed redirect removed 11 Oct 2026, WCAG 2.2.1) |
 
 Scripts: `nav.js` (mobile drawer, on every page except the homepage and Legal), `scroll-top.js` (every page), the inline homepage nav script, and the contact form script (hash preselect plus submit). No third-party scripts. No analytics.
 

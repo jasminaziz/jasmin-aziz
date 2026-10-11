@@ -44,15 +44,6 @@
 
 .error-cta { margin-top: 36px; }
 
-.redirect-note {
-  margin-top: 20px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--ink-muted);
-}
-
 </style>
 
 </head>
@@ -98,8 +89,7 @@
       <p class="error-body">The rest of the site is here and working. If you were looking for something specific and can't find it, you can reach me at <a href="mailto:hello@jasminaziz.co.uk">hello@jasminaziz.co.uk</a>.</p>
 
       <div class="error-cta">
-        <a id="home-link" href="/" class="pill pill-cobalt">Go to homepage</a>
-        <p class="redirect-note" id="redirect-note"></p>
+        <a href="/" class="pill pill-cobalt">Go to homepage</a>
       </div>
 
     </div>
@@ -155,35 +145,6 @@
 <script src="nav.js"></script>
 <script src="scroll-top.js"></script>
 
-<script>
-(function() {
-  var count = 30;
-  var noteEl = document.getElementById('redirect-note');
-  var homeLink = document.getElementById('home-link');
-  var cancelled = false;
-
-  function update() {
-    noteEl.textContent = 'Taking you home in ' + count + ' second' + (count === 1 ? '' : 's') + '\u2026';
-  }
-  update();
-
-  var interval = setInterval(function() {
-    count--;
-    if (count <= 0) {
-      clearInterval(interval);
-      if (!cancelled) window.location.href = '/';
-    } else {
-      update();
-    }
-  }, 1000);
-
-  homeLink.addEventListener('click', function() {
-    cancelled = true;
-    clearInterval(interval);
-    noteEl.textContent = '';
-  });
-})();
-</script>
 
 </body>
 </html>
