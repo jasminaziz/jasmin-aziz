@@ -26,8 +26,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<!-- Fonts load without blocking first paint (11 Oct 2026); noscript keeps them for visitors without JavaScript -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600&display=swap"></noscript>
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -49,7 +52,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--cream);
   color: var(--ink);
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Source Serif 4', 'Source Serif 4 Fallback', Georgia, serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -86,7 +89,7 @@ body::after {
 }
 
 .nav-wordmark {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.025em;
@@ -101,7 +104,7 @@ body::after {
 }
 
 .nav-list a {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
@@ -126,7 +129,7 @@ body::after {
 
 /* ── HEADER ── */
 .wordmark {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 2.25rem;
   letter-spacing: -0.025em;
@@ -139,7 +142,7 @@ body::after {
    serif. Legal does not load site.css, so the scale values are repeated
    here: 36 to 52px for the H1, 26px for section heads. */
 .page-subtitle {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: clamp(2.25rem, 5vw, 3.25rem);
   letter-spacing: -0.03em;
@@ -149,7 +152,7 @@ body::after {
 }
 
 .meta {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 500;
   font-size: 0.6875rem;
   letter-spacing: 0.13em;
@@ -167,7 +170,7 @@ body::after {
 }
 
 .anchor-pill {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 500; /* Legal loads Plus Jakarta Sans 500 only */
   font-size: 0.875rem;
   color: var(--periwinkle-text);
@@ -199,7 +202,7 @@ body::after {
 }
 
 h2 {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.625rem;
   letter-spacing: -0.02em;
@@ -209,7 +212,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Source Serif 4', serif;
+  font-family: 'Source Serif 4', 'Source Serif 4 Fallback', serif;
   font-weight: 600;
   font-style: normal;
   font-size: 1.125rem;
@@ -219,7 +222,7 @@ h3 {
 }
 
 .policy p {
-  font-family: 'Source Serif 4', serif;
+  font-family: 'Source Serif 4', 'Source Serif 4 Fallback', serif;
   font-weight: 400;
   font-size: 1.03125rem;
   line-height: 1.6;
@@ -257,7 +260,7 @@ footer {
 
 .footer-inner span,
 .footer-inner a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 500;
   font-size: 0.8125rem;
   color: var(--cream);
@@ -290,7 +293,7 @@ footer {
   color: var(--cream);
   padding: 12px 20px;
   border-radius: 4px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 0.04em;

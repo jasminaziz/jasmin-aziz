@@ -54,11 +54,28 @@ Encode: WebP quality 78, libwebp effort 6, resized with Lanczos from the JPEG (t
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="(the same Google URL)"></noscript>
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=chillax@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="(the same Fontshare URL)"></noscript>
 ```
 
-No italic cuts are requested (removed 12 September 2026 with the italic styles). Legal's own request loads Plus Jakarta Sans 500 only, so Legal uses weight 500 throughout. Fontshare has no `preconnect`; adding one for `api.fontshare.com` and `cdn.fontshare.com` is an open performance item.
+**The font stylesheets do not block first paint** (11 October 2026, Jasmin's ruling, performance option A). Each is preloaded at high priority and turns itself into a stylesheet when it arrives; the `<noscript>` copy keeps the fonts for visitors without JavaScript. Every face uses `font-display: swap`, Chillax included: text paints at once in a fallback and the web font swaps in. Before this, each stylesheet held first paint back by about 775ms on Lighthouse mobile, and far longer when either server was slow. The inline `onload` needs `'unsafe-inline'` in the CSP's `script-src`, which it already has.
+
+**Each web font has a width-matched fallback face** in `site.css`, named in every stack straight after it, so lines break on the same words in the fallback and nothing moves when the web font swaps in. Values measured 11 October 2026 against the local faces:
+
+| Fallback family | Local face | `size-adjust` |
+|---|---|---|
+| `'Chillax Fallback'` (700) | Arial Bold, else Helvetica Neue Bold | 108% |
+| `'Plus Jakarta Sans Fallback'` (500) | Arial | 106% |
+| `'Plus Jakarta Sans Fallback'` (600) | Arial Bold | 99% |
+| `'Source Serif 4 Fallback'` (400) | Georgia | 104% |
+
+Without them, the Services H1 re-wrapped when Chillax arrived and moved the page by CLS 0.317 at 768px. Measured on page text at the sizes the site sets; Source Serif 4 has an optical-size axis and sets far narrower at display sizes, so measuring it at 100px gave 92% and made the shifts worse. Remeasure if a weight or family changes. Chillax must stay on Fontshare's servers: its licence (Fontshare free EULA, section 02) bars uploading the files to a public server or serving them without the foundry's written consent.
+
+No italic cuts are requested (removed 12 September 2026 with the italic styles). Legal's own request loads Plus Jakarta Sans 500 only, so Legal uses weight 500 throughout.
 
 The Content-Security-Policy in `vercel.json` allows styles from `fonts.googleapis.com` and `api.fontshare.com`, fonts from `fonts.gstatic.com` and **`cdn.fontshare.com`** (Fontshare serves its font files from a different host from its stylesheet), and images from `'self'` and `data:`. Inline SVG needs nothing further.
 

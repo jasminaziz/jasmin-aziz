@@ -22,7 +22,7 @@
    "Strategic marketing" always fits its column. A fixed 68px pushed the
    portrait off-screen from 901px to ~1128px (audit 2026-09-12). */
 .hero-h1 {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: clamp(2.75rem, 5vw, var(--h1-size));
   letter-spacing: -0.03em;
@@ -111,7 +111,7 @@
   border-radius: 100px;
   padding: 12px 18px 12px 20px;
   min-height: 48px;
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: -0.01em;
@@ -176,7 +176,7 @@
   border-bottom: 1px solid var(--rule);
   padding: 12px 0;
   min-height: 52px;
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.015em;
@@ -189,7 +189,7 @@
 
 .stack-pill::after {
   content: '→';
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   color: var(--cobalt);
   transition: transform 150ms ease;
@@ -225,7 +225,7 @@
   align-items: center;
   gap: 10px;
   min-height: 44px;
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: var(--fs-h3);
   letter-spacing: -0.02em;
@@ -236,7 +236,7 @@
 
 .shape-def-term::after {
   content: '→';
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--cobalt);
@@ -317,7 +317,7 @@
 }
 
 .proof-card h3 {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 2rem;
   letter-spacing: -0.03em;
@@ -343,7 +343,7 @@
   border-radius: 100px;
   padding: 11px 22px;
   min-height: 44px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   text-decoration: none;

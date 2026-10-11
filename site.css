@@ -7,6 +7,39 @@
    ================================================================= */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Chillax's stand-in until the webfont arrives: Arial or Helvetica Neue Bold widened to
+   Chillax's measured width (108%), so headings break on the same words and nothing jumps
+   when Chillax swaps in (Services H1 at 768px shifted the page by CLS 0.317 without it). */
+@font-face {
+  font-family: 'Chillax Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('HelveticaNeue-Bold');
+  font-weight: 700;
+  size-adjust: 108%;
+}
+
+/* The same for the Google fonts, measured 11 Oct 2026 on page text at the sizes the
+   site sets (12 to 17px): Plus Jakarta Sans 500 sets 106% of Arial, its 600 99% of
+   Arial Bold, and Source Serif 4 104% of Georgia. Measure Source Serif at text size:
+   it has an optical-size axis and sets far narrower at display sizes. */
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial'), local('ArialMT');
+  font-weight: 500;
+  size-adjust: 106%;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 600;
+  size-adjust: 99%;
+}
+@font-face {
+  font-family: 'Source Serif 4 Fallback';
+  src: local('Georgia');
+  font-weight: 400;
+  size-adjust: 104%;
+}
+
 :root {
   --cobalt:     #2D35C9;
   --periwinkle: #7B7FD4;
@@ -51,7 +84,7 @@ html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   background: var(--cream);
   color: var(--ink);
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Source Serif 4', 'Source Serif 4 Fallback', Georgia, serif;
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -91,7 +124,7 @@ body::after {
   color: var(--cream);
   padding: 12px 20px;
   border-radius: 4px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 0.04em;
@@ -124,7 +157,7 @@ body::after {
 /* --periwinkle-text (#5255B5) = 5.95:1 on cream. Raw periwinkle is
    3.40:1 and fails AA at 11px. */
 .label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: 0.6875rem;
   letter-spacing: 0.13em;
@@ -152,7 +185,7 @@ body::after {
 }
 
 .wordmark {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.375rem;
   letter-spacing: -0.025em;
@@ -170,7 +203,7 @@ body::after {
 }
 
 .nav-list a {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.01em;
@@ -260,7 +293,7 @@ body::after {
 }
 
 .nav-drawer-list a {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
@@ -294,7 +327,7 @@ body::after {
   border-radius: 100px;
   padding: 11px 22px;
   min-height: 44px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   line-height: 1.25;
@@ -326,7 +359,7 @@ body::after {
 /* Every section head on every page is this size. Do not override it
    per section: 30, 34 and 36px co-existed on one page until 2026-09-12. */
 .section-head {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: var(--fs-h2);
   letter-spacing: -0.025em;
@@ -353,7 +386,7 @@ body::after {
 .close-aside .label { margin-bottom: 18px; }
 
 .close-aside-head {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: -0.025em;
@@ -379,7 +412,7 @@ body::after {
 }
 
 .close-aside-links a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   color: var(--cobalt);
@@ -485,7 +518,7 @@ footer {
 
 /* Use <a class="footer-wordmark" href="…"> in markup — links to homepage. */
 .footer-wordmark {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 1.375rem;
   letter-spacing: -0.025em;
@@ -502,7 +535,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 /* Contrast fix: --cream-muted (#A5A09A) = 7.4:1 on ink.
    Was cream @38% opacity → 3.9:1 — failed WCAG AA.              */
 .footer-tagline {
-  font-family: 'Source Serif 4', serif;
+  font-family: 'Source Serif 4', 'Source Serif 4 Fallback', serif;
   font-weight: 400;
   font-size: 0.9375rem;
   color: var(--cream-muted);
@@ -513,7 +546,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 /* Footer text uses solid rgba colours, not opacity (opacity also dims
    focus rings). Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-contact {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   color: rgba(250,248,244,0.5);
@@ -529,7 +562,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 /* Contrast fix: removed opacity: 0.7.
    Full --periwinkle (#7B7FD4) on ink = 5.3:1 — passes AA.        */
 .footer-col-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: 0.13em;
@@ -544,7 +577,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 
 /* Cream at 88% on ink, passes AAA. */
 .footer-nav-list a {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
@@ -569,7 +602,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 
 /* Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-legal-link {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: 0.8125rem;
   color: rgba(250,248,244,0.5);
@@ -584,7 +617,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 
 /* Cream at 50% on ink = 5.06:1, passes AA. */
 .footer-meta {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: 0.8125rem;
   color: rgba(250,248,244,0.5);
@@ -614,7 +647,7 @@ a.footer-wordmark:active { opacity: 0.85; }
 /* Contrast fix: --ink-muted (#706D68) = 4.8:1 on cream.
    Was ink @45% opacity → 2.7:1 — failed WCAG AA.                 */
 .cta-email {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   color: var(--ink-muted);

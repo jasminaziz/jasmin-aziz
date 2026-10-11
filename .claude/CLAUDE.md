@@ -9,7 +9,7 @@
 
 ## Key facts
 - Homepage file is `index.html` (renamed from "jasminaziz-homepage v2.html")
-- Fonts load from CDN — never reference the local Fonts/ directory
+- Fonts load from CDN — never reference the local Fonts/ directory. **Since 11 Oct 2026 the two font stylesheets do not block first paint** (preload that switches to a stylesheet on load, plus `<noscript>`), and each family has a width-matched fallback face in `site.css` named second in every stack (`'Chillax Fallback'` and the rest; values in spec section 2). A new font-family stack must carry its fallback, or the swap moves the page. Chillax cannot be self-hosted: its Fontshare licence bars it.
 - Contact form wired to Resend via api/contact.js — branded HTML notification to hello@jasminaziz.co.uk and auto-reply to enquirer
 - Analytics: NONE. Google Analytics was removed site-wide on 2026-08-22 and nothing installed in its place. The site sets no tracking cookies and shows no consent banner; the Legal page says so. Do not reinstate analytics without an explicit decision.
 - Scroll-to-top: scroll-top.js loaded on all six pages; styles in site.css; hidden at ≥901px

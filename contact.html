@@ -25,8 +25,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=chillax@500,700&display=swap" rel="stylesheet">
+<!-- Fonts load without blocking first paint (11 Oct 2026); noscript keeps them for visitors without JavaScript -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400&display=swap"></noscript>
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=chillax@500,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=chillax@500,700&display=swap"></noscript>
 <link rel="stylesheet" href="site.css">
 <style>
 
@@ -49,7 +52,7 @@
 .contact-intro .label { margin-bottom: 20px; }
 
 .contact-h1 {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   /* Capped at 48px: the intro column is narrower than other pages', and
      at the full 52px "on." falls to a third line on its own. */
@@ -96,7 +99,7 @@
 }
 
 .contact-direct-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: 0.13em;
@@ -109,7 +112,7 @@
 /* Links, so cobalt and sentence case. They were grey tracked capitals,
    overriding the Chillax .bridge-link style meant for two of them. */
 .contact-direct a {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   color: var(--cobalt);
@@ -135,7 +138,7 @@
 }
 
 .form-box-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: 0.13em;
@@ -160,7 +163,7 @@
 }
 
 .form-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: 0.12em;
@@ -190,7 +193,7 @@
   color: var(--cream);
   /* Chillax medium for what the enquirer types (Jasmin's call, 13 Sept): friendlier
      than the serif. 16px at every width, so iPads do not zoom on focus either. */
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -237,7 +240,7 @@
   background: var(--cobalt);
   color: var(--cream);
   border: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 600;
   font-size: var(--fs-small);
   padding: 16px 24px;
@@ -250,7 +253,7 @@
 .form-submit:hover { background: var(--ink); } /* matches .pill-cobalt */
 
 .form-note {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
   font-weight: 500;
   font-size: 0.8125rem;
   color: rgba(250,248,244,0.5);
@@ -269,7 +272,7 @@
 }
 
 .form-confirmation p {
-  font-family: 'Chillax', 'Helvetica Neue', sans-serif;
+  font-family: 'Chillax', 'Chillax Fallback', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.3;
@@ -531,7 +534,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     errorEl.className = 'form-error-msg';
     errorEl.setAttribute('role', 'alert');
     errorEl.textContent = text;
-    errorEl.style.cssText = 'font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;line-height:1.5;color:#ff7f6e;margin-bottom:12px;';
+    errorEl.style.cssText = 'font-family:"Plus Jakarta Sans","Plus Jakarta Sans Fallback",sans-serif;font-size:12px;line-height:1.5;color:#ff7f6e;margin-bottom:12px;';
     btn.parentNode.insertBefore(errorEl, btn);
   }
 
