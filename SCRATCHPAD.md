@@ -75,6 +75,52 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-10-10/11 (followups-2026-10-10; NOT merged)
+
+Branch `followups-2026-10-10`, built on `geo/sourced-claims` (fa16c00), so merging it
+merges both. Tip d169e88. Jasmin merges to production herself. Every change is signed off.
+Preview: https://jasmin-aziz-git-followups-2026-10-10-jasminazizs-projects.vercel.app
+
+### Commits
+- `3a6c32b` CLAUDE.md: the GEO block is the one Services block its copy column sets (242px
+  copy, 418px block at 1440; the other five 376px).
+- `19392e9` 404: 30-second redirect and countdown removed (WCAG 2.2.1).
+- `9dcc8ec` robots.txt: GPTBot, ClaudeBot, Google-Extended allowed by name, decision dated.
+- `928dd29` All 12 prose links underlined (11 inline plus the 404 mailto). axe WCAG 2.2 AA:
+  no violations on seven templates at 390 and 1440.
+- `beb8906` Auto-reply: acknowledgement only; signature links jasminaziz.co.uk only.
+- `dfab81f` Notice: Google Workspace, Google Fonts and Fontshare named; own complaints route
+  first, then the ICO; "How I handle your data" link under the submit button.
+- `895d1da` Portraits WebP only, plus a 680px phone crop (19KB) via srcset, sizes 90vw.
+- `be721e0` Portrait box reserved before load (About CLS 0.33; Home had the same fault ≤900).
+- `d0f0a7f` Fonts non-blocking, noscript fallback, width-matched fallback faces.
+- `d169e88` GEO citation framed as controlled experiments on a research answer engine.
+
+### Measured 11 Oct 2026
+- Lighthouse 12.8.2 mobile, preview, three cold runs (cache cleared per run, share cookie
+  kept): Home 94/94/99, LCP 2.9/3.0/1.6s; About 94/99/95, LCP 3.0/1.8/2.8s; FCP 1.6s and
+  CLS 0 on every run. LCP over 2.5s on the median: accepted by Jasmin, not holding the merge.
+  Remaining LCP is Lantern's simulated download of a 19KB image (0.3s to 1.7s run to run).
+- CLS sweep, fonts held back 1.5s, seven pages at nine widths 360 to 1440: worst 0.030
+  (Legal 600). Before: Services 0.317 at 768 and 0.364 at 820, AI 0.123 at 820.
+- PageSpeed Insights itself not run (keyless quota). Auto-reply tested with fetch mocked only;
+  the live check is at www after merge.
+
+### Waiting on Jasmin
+- DPF participant-list check of Vercel, Resend and Google, with the date. Then add the
+  drafted transfer lines as "Each is certified ... (checked [date])". Postmark is not named:
+  the alert carries enquiry type and UTC time only.
+- Postmark setup, POSTMARK_SERVER_TOKEN in Vercel (only RESEND_API_KEY exists, checked 10 Oct),
+  the domain DKIM record via gddy (none found in DNS), and the forced-failure test on an
+  `alert-test` branch with a branch-scoped bad Resend key. Before DMARC p=quarantine (22 Oct).
+- The merge.
+
+### Next step
+After merge, on production: Rich Results Test on / and /services, opengraph previews for six
+URLs, PageSpeed mobile on five pages (dated), a live form test at www typed fresh, site-steward
+for J1. Then font option C on its own branch (self-host Plus Jakarta Sans and Source Serif 4;
+Chillax stays on Fontshare; Google out of the notice in the same branch).
+
 ## Session: 2026-10-09 (geo/sourced-claims, second pass; NOT merged)
 
 Branch `geo/sourced-claims`, built on 372927b. Jasmin merges to production herself.

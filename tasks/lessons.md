@@ -880,3 +880,47 @@ A stray `cp ... /Users/jasminaziz/Developer/jasmin-aziz/..` rode along at the en
 encode command and dropped a 1.3MB PNG into ~/Developer. Removed after `cmp` matched the
 scratchpad copy. Rule: one purpose per command; anything that writes outside the
 scratchpad gets its own step.
+
+## Lighthouse with a kept profile measures a warm cache (2026-10-10)
+To keep a Vercel share cookie, Lighthouse ran with `disableStorageReset`, which also kept the
+HTTP cache: FCP read 0.9s on throttled mobile with two external blocking stylesheets, which is
+impossible. Rule: clear the browser cache over DevTools (`Network.clearBrowserCache`) before
+every run, keep cookies, and treat any mobile FCP under about 1.5s as a cache until proven.
+
+## `document.fonts.check` returns true when no face matches (2026-10-11)
+A probe flagged fonts "missing" on five pages and passed Contact and Legal. Both readings were
+wrong: `check()` is false for a declared face that has not loaded (that weight was unused on
+the page) and true when nothing is declared at all, so a pass can mean broken. Rule: read the
+final `rel` of the font links and list `document.fonts` entries with `status === 'loaded'`.
+
+## Measure a variable font's width at the size the site sets it (2026-10-11)
+Source Serif 4 has an optical-size axis. Measured at 100px it set 92% of Georgia; at 16 to
+17px, the body size, it sets 104%. The 92% fallback made font-swap shifts worse (AI 0.35 at
+768). Rule: measure `size-adjust` on real page text at real sizes, and sweep CLS with fonts
+held back before committing a fallback value.
+
+## A late image shifts the page only when it loses the race to first paint (2026-10-11)
+In the stacked layouts the portrait's wrap was a flex item that shrank to its content, 0px
+until the photo loaded. Lighthouse mostly scored 0 because the preload usually won; one run
+in three showed 0.33. Rule: hold the LCP image back on purpose (route with a delay) and
+measure CLS, and read computed widths up the parent chain: the first fix sat one level too low.
+
+## Sweep CLS across widths, not just Lighthouse's two (2026-10-11)
+Services moved by 0.317 at 768 and 0.364 at 820 when Chillax swapped in; Lighthouse tests 412
+and desktop, so it never showed. Rule: sweep 360 to 1440 with fonts delayed after any font or
+layout change.
+
+## zsh path modifiers inside `$var:...` (2026-10-11)
+`git show $r:about.html` failed: zsh read `:a` as the absolute-path modifier. Write `${r}:file`.
+Same session: `grep --include=*.html` died with "no matches found"; quote the glob.
+
+## Write a register note in Jasmin's words, not an explanation of them (2026-10-11)
+"The six-year line stands" was first recorded with a reason she never gave. Corrected to her
+words. Rule: a claims-register note quotes the ruling; any reason in it is hers or is marked
+unverified.
+
+## A share link may outlive an alias move, and cannot be renewed early (2026-10-11)
+`get_access_to_vercel_url` reused the same link after a push and kept its expiry; it still
+reached the new build. The 9 Oct failure was real too. Rule: assert host and title on every
+fetch as before; to give Jasmin a link past expiry, request one after it lapses, or point her
+at the preview signed in.
