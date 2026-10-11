@@ -38,9 +38,10 @@
 
 /* =================================================================
    DIAGNOSIS BAND
-   Words verbatim. The three short opening sentences are the lead, set
-   large on the left; the argument runs on the right (the site's
-   heading-left, body-right pattern). This fills the band's width with
+   The lead, set large on the left, is a standalone line (approved
+   2026-10-11); the whole argument runs on the right, opening with the
+   three short sentences that were the lead until then, words verbatim
+   (the site's heading-left, body-right pattern). This fills the band's width with
    type: the old single column left a 364px empty strip at 1440. The
    band's own CTA was removed 2026-09-12 (the hero has one and the next
    section is the offer).
