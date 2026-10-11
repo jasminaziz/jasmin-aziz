@@ -8,8 +8,19 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Training crawlers (GPTBot, ClaudeBot, Google-Extended) are not blocked.
-# That is a separate decision from answer visibility and is still open.
+# Training crawlers, allowed by name. Deliberate choice, decided 11 Oct 2026.
+# Google-Extended also controls grounding in Gemini Apps and Vertex AI, and
+# does not affect Google Search (Google's crawler documentation, checked
+# 11 Oct 2026).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 
