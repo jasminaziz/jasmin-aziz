@@ -366,7 +366,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 8px;
+    width: 100%;
   }
+  /* Both widths matter: the grid's align-items: start shrinks the wrap, and the wrap's
+     own flex row shrinks the <picture>, each to its content, which is 0px until the
+     photo arrives. Without them the text below jumps down by the photo's height (CLS 0.33) */
+  .headshot-wrap picture { width: 100%; }
   .headshot-image {
     max-width: 100%;
     aspect-ratio: 1/1;

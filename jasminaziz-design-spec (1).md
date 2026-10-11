@@ -188,7 +188,7 @@ Desktop-first `max-width` queries at **900, 768, 640 and 480px**.
 
 | Grid | Definition | Collapses |
 |---|---|---|
-| Homepage hero `.hero-grid` | `minmax(0, 1fr) 300px`, gap 64, centred | ≤900: flex column, portrait first as a 2/1 landscape capsule; ≤640: 3/2 |
+| Homepage hero `.hero-grid` | `minmax(0, 1fr) 300px`, gap 64, centred | ≤900: flex column, portrait first as a 2/1 landscape capsule, its wrap at `width: 100%` so the box is reserved before the photo loads; ≤640: 3/2 |
 | Diagnosis band `.diag-grid` | `minmax(0, 5fr) minmax(0, 6fr)`, gap 72: the lead left, the argument right | ≤768: one column, lead above |
 | Homepage How I work `.shapes-row` | `minmax(0, 1.75fr) minmax(0, 1fr) minmax(0, 1fr)`, gap 48: Fractional's definition is three times the others' length | ≤768: one column |
 | Homepage `.diff-body-grid` | `1fr 1fr`, gap 72 | ≤768: one column |
@@ -199,7 +199,7 @@ Desktop-first `max-width` queries at **900, 768, 640 and 480px**.
 | AI Edit panel `.ai-edit` | `minmax(0, 1fr) auto`, gap 48, end-aligned | ≤768: one column |
 | AI training top `.ai-training-top` | `1fr 1fr`, column gap 48: the same tracks as the rooms grid below, heading left, intro right | ≤900: one column, intro capped at 720px |
 | Heading-left, body-right (About, AI governance) | `1fr 2fr`, gap 80, start-aligned | ≤768: one column |
-| About hero | `minmax(0, 1fr) 320px`, gap 72 | ≤768: `1fr 200px`; ≤640: column, portrait first |
+| About hero | `minmax(0, 1fr) 320px`, gap 72 | ≤768: `1fr 200px`; ≤640: column, portrait first, `.headshot-wrap` and its `<picture>` both at `width: 100%` so the box is reserved before the photo loads |
 | Contact `.contact-layout` | `minmax(0, 1fr) 480px`, form spans two rows | ≤900: one column |
 | Footer `.footer-grid` | `2fr 1fr 1fr`, gap 56 | ≤768: brand full width; ≤480: one column, centred |
 

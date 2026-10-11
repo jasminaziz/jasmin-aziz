@@ -422,7 +422,9 @@
 
   /* Stack from 900px down: portrait above the H1, landscape crop */
   .hero-grid { display: flex; flex-direction: column; gap: 28px; }
-  .hero-portrait-wrap { order: -1; }
+  /* Full width: the grid's align-items: center would otherwise shrink the wrap to its
+     content, which is 0px until the photo arrives, and the H1 jumps down when it does */
+  .hero-portrait-wrap { order: -1; width: 100%; }
   /* 2/1 trims the 3/2 photo top and bottom; bias the crop to the face */
   .hero-portrait { aspect-ratio: 2/1; object-position: center 22%; }
 }
