@@ -924,3 +924,10 @@ unverified.
 reached the new build. The 9 Oct failure was real too. Rule: assert host and title on every
 fetch as before; to give Jasmin a link past expiry, request one after it lapses, or point her
 at the preview signed in.
+
+## Open a document before saying which agent gates it (2026-10-11)
+The Transition Board was named as governance-reviewer's to gate, on its "board" title alone.
+It is Jasmin's own career board, not client-facing governance output, so no agent gates it.
+Caught a turn later by reading its first lines. Rule: before naming the agent, gate or rule
+that covers a document, read what the document is, and correct a wrong premise in the next
+message, plainly.

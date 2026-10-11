@@ -78,7 +78,8 @@ contradicts the live AI page outright.
 ## Session: 2026-10-10/11 (followups-2026-10-10; NOT merged)
 
 Branch `followups-2026-10-10`, built on `geo/sourced-claims` (fa16c00), so merging it
-merges both. Tip d169e88. Jasmin merges to production herself. Every change is signed off.
+merges both. Tip 1089464 (notes and CLAUDE.md commits after d169e88). Jasmin merges to production herself.
+Every change is signed off.
 Preview: https://jasmin-aziz-git-followups-2026-10-10-jasminazizs-projects.vercel.app
 
 ### Commits
@@ -114,6 +115,9 @@ Preview: https://jasmin-aziz-git-followups-2026-10-10-jasminazizs-projects.verce
   the domain DKIM record via gddy (none found in DNS), and the forced-failure test on an
   `alert-test` branch with a branch-scoped bad Resend key. Before DMARC p=quarantine (22 Oct).
 - The merge.
+- Her Cowork pass on the Web Build Guide: Gate 2 text in
+  `Knowledge Base/Build Guides/web-build-guide_gate2-2026-10-11_INSERT.md` (staleness line at
+  the foot of this file). Not a merge blocker.
 
 ### Next step
 After merge, on production: Rich Results Test on / and /services, opengraph previews for six
