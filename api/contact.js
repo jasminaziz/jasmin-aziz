@@ -138,12 +138,13 @@ function greeting(name) {
 // Email signature (design spec 7.14). The name and subline are a PNG so Chillax
 // shows in every inbox; the links stay live text. The cream PNG matches this
 // email's background. A changed image gets a new filename, never an overwrite.
-const SIG_DOT = '<span style="color:#706D68;">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>';
+// The auto-reply carries one link, the site: no The Edit, LinkedIn or Substack,
+// because it goes to whatever address was typed (compliance F3, ruled 11 Oct 2026).
 const SIGNATURE_HTML = `
     <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
       <tr><td style="padding:0 0 10px;"><img src="https://www.jasminaziz.co.uk/assets/email-signature-cream-2026-09.png" width="300" height="60" alt="Jasmin Aziz, strategic marketing, communications and AI" style="display:block;border:0;width:300px;height:60px;"></td></tr>
       <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;line-height:1.4;">
-        <a href="https://www.jasminaziz.co.uk" style="color:#2D35C9;text-decoration:none;">jasminaziz.co.uk</a>${SIG_DOT}<a href="https://theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">The Edit</a>${SIG_DOT}<a href="https://www.linkedin.com/in/jasmin-r-aziz/" style="color:#2D35C9;text-decoration:none;">LinkedIn</a>
+        <a href="https://www.jasminaziz.co.uk" style="color:#2D35C9;text-decoration:none;">jasminaziz.co.uk</a>
       </td></tr>
     </table>`;
 
@@ -151,12 +152,7 @@ function autoReplyHtml(name) {
   const body = `
     <p style="margin:0 0 20px;">${escapeHtml(greeting(name))}</p>
     <p style="margin:0 0 20px;">Thank you for your message. I&rsquo;ll reply within two working days.</p>
-    <p style="margin:0 0 20px;">From there, we&rsquo;ll usually book a discovery call. It&rsquo;s a chance to talk through what you&rsquo;re working on and whether I&rsquo;m the right person to help. If there&rsquo;s anything else I should know, just send it my way.</p>
-    <p style="margin:0 0 32px;">In the meantime, feel free to explore
-      <a href="https://theeditai.co.uk" style="color:#2D35C9;text-decoration:none;">The Edit</a>,
-      the AI tools directory I built for charity, cultural and heritage comms teams. I also write on
-      <a href="https://jasminaziz.substack.com" style="color:#2D35C9;text-decoration:none;">my Substack</a>
-      about strategy, communications and where AI fits.</p>
+    <p style="margin:0 0 32px;">From there, we&rsquo;ll usually book a discovery call. It&rsquo;s a chance to talk through what you&rsquo;re working on and whether I&rsquo;m the right person to help. If there&rsquo;s anything else I should know, just send it my way.</p>
     <p style="margin:0 0 16px;">Speak soon,</p>
     ${SIGNATURE_HTML}`;
 
@@ -287,7 +283,7 @@ module.exports = async function handler(req, res) {
       from: 'Jasmin Aziz <hello@jasminaziz.co.uk>',
       to: [em],
       subject: 'Thanks for getting in touch',
-      text: `${greeting(n)}\n\nThank you for your message. I'll reply within two working days.\n\nFrom there, we'll usually book a discovery call. It's a chance to talk through what you're working on and whether I'm the right person to help. If there's anything else I should know, just send it my way.\n\nIn the meantime, feel free to explore The Edit (https://theeditai.co.uk), the AI tools directory I built for charity, cultural and heritage comms teams. I also write on my Substack (https://jasminaziz.substack.com) about strategy, communications and where AI fits.\n\nSpeak soon,\n\nJasmin Aziz\nStrategic marketing, communications & AI\nhttps://www.jasminaziz.co.uk`,
+      text: `${greeting(n)}\n\nThank you for your message. I'll reply within two working days.\n\nFrom there, we'll usually book a discovery call. It's a chance to talk through what you're working on and whether I'm the right person to help. If there's anything else I should know, just send it my way.\n\nSpeak soon,\n\nJasmin Aziz\nhttps://www.jasminaziz.co.uk`,
       html: autoReplyHtml(n),
     });
   } catch (err) {
