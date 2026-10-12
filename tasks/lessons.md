@@ -834,3 +834,21 @@ connector (Jasmin's personal Gmail) returns RAW messages, and the
 `Authentication-Results` header of anything hello@ sent there proves SPF, DKIM and
 DMARC alignment, including the policy Gmail saw at the time. That is how the slip
 from p=quarantine (June) to p=none (September) was found.
+
+## A copy fit estimate is not a measurement: set the candidates in the real column (2026-10-11)
+site-copywriter judged whether display lines fitted "four lines at 32px in 435px" from
+character counts against one measured line. That is a guess about a proportional face
+with `text-wrap: balance`. Rule: before showing candidates, clone the real element
+(`cloneNode(false)`, `visibility: hidden`, inserted beside it, removed after), set each
+line, count `offsetHeight / lineHeight`, and include the current copy as a control that
+must reproduce its known line count. Assert `innerWidth` and the element width in the
+same reading, check that only one original remains afterwards, and repeat at each
+width where the size changes (the lead is a clamp: 32px at 1440, 24.6px at 1024, 22px
+at 768 and below).
+
+## This machine's grep is ugrep, and a complex pattern prints an error, not a result (2026-10-11)
+`grep -o '[^>]\{0,40\}one to one[^<]\{0,60\}'` failed with "exceeds complexity limits"
+inside a chained command, and the error sat between other commands' output where it
+could pass for an empty answer. Use `grep -F` for literal phrases and keep bounded
+classes short, and read a chained command's output line by line for an error before
+treating a missing result as "not found".

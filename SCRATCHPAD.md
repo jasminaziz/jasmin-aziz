@@ -75,6 +75,38 @@ contradicts the live AI page outright.
 
 # ═══ END REGISTER ═══
 
+## Session: 2026-10-11/12 (homepage diagnosis band, new display line)
+
+**Live on www since 11 Oct, commit `e257c87`** (fast-forward; branch
+`diag-lead-2026-10-11` deleted after merge).
+
+- **Lead replaced.** `.diag-lead` now reads "I give leaders the direction their
+  communications have been missing." Signed off by Jasmin after three
+  site-copywriter rounds. Round 1's "a busy communications team" failed because she
+  also works one to one with CEOs and leaders.
+- **Old lead moved word for word** to the top of `.hero-diagnosis` as a body
+  paragraph. The right column now reads whole and matches the voice spec's worked
+  example as one passage.
+- **No CSS rules changed.** The section comment in `homepage.css` and design spec
+  7.7a describe the new arrangement. Classes used nowhere else (grep checked).
+- **Origin of the layout:** `de9a631`, 12 Sept 2026 (look-and-feel pass).
+- **Measured cold, main against branch:** the lead sets in 3 lines at 1440 (was 4)
+  and in 1 line at 768. The band is 75px taller at 1024 and 1440, 16px at 768 and
+  71px at 390, because the right column gained a paragraph. No overflow at 390 to
+  1440, CLS no worse at any width, axe identical to main.
+
+**Next steps, all Jasmin's call:**
+1. Two axe findings already on main: four prose links told apart by colour only
+   (the inline `text-decoration:none` pattern), and focusable links inside the
+   closed mobile drawer at 390. A separate task chip was raised for them.
+2. Copywriter notes outside the brief: the right column opens with three short
+   sentences in a row (the voice spec's own foot list says "likely cut to two
+   beats"), and paragraph 2 is a contrast structure.
+3. The site claims one-to-one communications work nowhere except the AI page's CEO
+   fluency series. Only a question if she wants that work visible.
+4. At 768 the lead sits on one line at 22px over 16px body, so it stands out less
+   there than at other widths.
+
 ## Session: 2026-10-07/08 (email deliverability audit, contact form bot checks)
 
 ### Done
